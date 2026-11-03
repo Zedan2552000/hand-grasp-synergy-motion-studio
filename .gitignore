@@ -1,0 +1,6 @@
+scripts/
+dataset/
+*.mat
+*.tmp
+__pycache__/
+*.pyc

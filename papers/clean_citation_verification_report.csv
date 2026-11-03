@@ -1,0 +1,11 @@
+﻿input,verdict,score,matched_title,year,authors,doi
+10.1109/ACCESS.2023.3321510,VERIFIED,1.0,Functional Synergies Applied to a Publicly Available Dataset of Hand Grasps Show Evidence of Kinematic-Muscular Synergistic Control,2023,"Scano, Jarque-Bou, Brambilla",10.1109/access.2023.3321510
+10.1186/s12984-019-0536-6,VERIFIED,1.0,Kinematic synergies of hand grasps: a comprehensive study on a large publicly available dataset,2019,"Jarque-Bou, Scano, Atzori",10.1186/s12984-019-0536-6
+10.1016/j.bbe.2024.01.006,VERIFIED,1.0,"A comprehensive analysis of task-specific hand kinematic, muscle and force synergies",2024,"Lapresa, Corradini, Iacca",10.1016/j.bbe.2024.01.006
+10.1109/TMECH.2021.3124316,VERIFIED,1.0,Design and Experiments of a Three-Fingered Dexterous Hand Based on Biomechanical Characteristics of Human Hand Synergies,2022,"Chen, Wang, Xiao",10.1109/tmech.2021.3124316
+10.1109/TRO.2021.3132532,VERIFIED,1.0,Design Principle of a Dual-Actuated Robotic Hand With Anthropomorphic Self-Adaptive Grasping and Dexterous Manipulation Abilities,2022,"Sun, Gong, Liang",10.1109/tro.2021.3132532
+10.1109/LRA.2022.3194677,NOT_FOUND,0.0,,,,
+10.1109/TNSRE.2021.3124744,VERIFIED,1.0,Evaluation of Synergy-Based Hand Gesture Recognition Method Against Force Variation for Robust Myoelectric Control,2021,"Teng, Xu, Liang",10.1109/tnsre.2021.3124744
+10.1109/LRA.2023.3329764,VERIFIED,1.0,Self-Supervised Regression of sEMG Signals Combining Non-Negative Matrix Factorization With Deep Neural Networks for Robot Hand Multiple Grasping Motion Control,2023,"Meattini, Caporali, Bernardini",10.1109/lra.2023.3329764
+10.1109/TBME.2022.3150665,VERIFIED,1.0,Co-Adaptive Control of Bionic Limbs via Unsupervised Adaptation of Muscle Synergies,2022,"Yeung, Guerra, Barner-Rasmussen",10.1109/tbme.2022.3150665
+10.3390/s21216948,VERIFIED,1.0,Design of a Data Glove for Assessment of Hand Performance Using Supervised Machine Learning,2021,"Sarwat, Sarwat, Maged",10.3390/s21216948

@@ -1,0 +1,11 @@
+﻿input,verdict,score,matched_title,year,authors,doi
+10.1109/ACCESS.2023.3323041,NOT_FOUND,0.0,,,,
+10.1186/s12984-021-00854-w,NOT_FOUND,0.0,,,,
+10.1016/j.bbe.2024.03.002,VERIFIED,1.0,Multiwavelength laser doppler holography (MLDH) in spatiotemporal optical coherence tomography (STOC-T),2024,"Borycki, Auksorius, Węgrzyn",10.1016/j.bbe.2024.03.002
+10.1109/TMECH.2022.3168239,NOT_FOUND,0.0,,,,
+10.1109/TRO.2022.3143232,NOT_FOUND,0.0,,,,
+10.1109/LRA.2022.3194677,NOT_FOUND,0.0,,,,
+10.1109/TNSRE.2021.3123862,NOT_FOUND,0.0,,,,
+10.1109/LRA.2023.3329764,VERIFIED,1.0,Self-Supervised Regression of sEMG Signals Combining Non-Negative Matrix Factorization With Deep Neural Networks for Robot Hand Multiple Grasping Motion Control,2023,"Meattini, Caporali, Bernardini",10.1109/lra.2023.3329764
+10.1109/TBME.2022.3150532,NOT_FOUND,0.0,,,,
+10.3390/s21216948,VERIFIED,1.0,Design of a Data Glove for Assessment of Hand Performance Using Supervised Machine Learning,2021,"Sarwat, Sarwat, Maged",10.3390/s21216948

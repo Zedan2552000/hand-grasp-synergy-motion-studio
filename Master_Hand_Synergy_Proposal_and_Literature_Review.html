@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>خطة ومشروع الماجستير: التآزر الحركي والعضلي واختزال الأبعاد للأيدي الروبوتية</title>
+<style>
+    @page {
+        size: A4 landscape;
+        margin: 5mm 8mm 5mm 8mm;
+    }
+    * { box-sizing: border-box; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body {
+        font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+        direction: rtl;
+        text-align: right;
+        margin: 0; padding: 0;
+        color: #1e293b;
+        background-color: #ffffff;
+        font-size: 8pt;
+        line-height: 1.25;
+    }
+    .page { page-break-after: always; height: 198mm; max-height: 198mm; overflow: hidden; }
+    .header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+        color: #ffffff;
+        padding: 6px 14px;
+        border-radius: 6px;
+        border-bottom: 2.5px solid #38bdf8;
+        margin-bottom: 6px;
+    }
+    .header h1 { margin: 0 0 2px 0; font-size: 13pt; color: #f8fafc; font-weight: 800; }
+    .header .sub { font-size: 8.8pt; color: #7dd3fc; font-weight: 700; margin-bottom: 2px; }
+    .header .auth { font-size: 7.5pt; color: #cbd5e1; }
+    
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 6px; }
+    .card {
+        border-radius: 5px; padding: 6px 10px; font-size: 7.2pt; border: 1.2px solid #cbd5e1; line-height: 1.22;
+    }
+    .c-red { background-color: #fef2f2; border-color: #f87171; }
+    .c-blue { background-color: #eff6ff; border-color: #60a5fa; }
+    .c-green { background-color: #f0fdf4; border-color: #4ade80; }
+    .c-amber { background-color: #fffbeb; border-color: #f59e0b; }
+    .card-title { font-size: 8.2pt; font-weight: 800; margin-bottom: 4px; }
+    .t-red { color: #b91c1c; } .t-blue { color: #1e3a8a; } .t-green { color: #15803d; } .t-amber { color: #b45309; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 6.0pt; line-height: 1.15; margin-top: 4px; }
+    th { background-color: #0f172a; color: #ffffff; padding: 2.5px 3px; border: 1px solid #334155; font-weight: 700; }
+    td { padding: 2px 3.5px; border: 1px solid #cbd5e1; vertical-align: top; }
+    tr:nth-child(even) td { background-color: #f8fafc; }
+    .td-q { font-weight: 700; color: #0284c7; background-color: #eff6ff; text-align: center; }
+    .td-res { background-color: #f0fdf4; color: #166534; font-weight: 600; }
+    .td-lim { background-color: #fef2f2; color: #991b1b; }
+    .td-gap { background-color: #ecfeff; color: #0e7490; font-weight: 700; }
+
+    .paper-box {
+        border: 1.2px solid #cbd5e1; border-radius: 6px; margin-bottom: 8px; padding: 8px 12px; background-color: #ffffff;
+    }
+    .paper-banner {
+        background-color: #0f172a; color: #ffffff; padding: 5px 10px; border-radius: 4px; display: flex; justify-content: space-between; font-weight: 700; font-size: 8.5pt; margin-bottom: 6px;
+    }
+    .badge { background-color: #0284c7; color: #ffffff; padding: 2px 6px; border-radius: 3px; font-size: 7.5pt; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: Master Proposal & Alignment -->
+<div class="page">
+    <div class="header">
+        <h1>مشروع رسالة الماجستير: الترابط بين التآزر الحركي والعضلي واختزال الأبعاد للأيدي الروبوتية</h1>
+        <div class="sub">Kinematic-Muscular Synergy Coupling & Dimensionality Reduction for Underactuated Anthropomorphic Robotic Hands</div>
+        <div class="auth">
+            مقدم إلى: أ.د. محمد حمدي عبد الحفيظ & د. محمد إبراهيم عوض — قسم هندسة الميكاترونيات، كلية الهندسة، جامعة عين شمس<br>
+            إعداد الباحث: م. محمد زيدان (Eng. Mohamed Zedan) | نوفمبر 2026 — صياغة بحثية دقيقة متوافقة 100% مع توجيهات لجنة الإشراف
+        </div>
+    </div>
+
+    <div class="grid-3">
+        <div class="card c-red">
+            <div class="card-title t-red">🛑 ما تم إلغاؤه نهائياً (وفقاً لتوجيهات الإشراف)</div>
+            • <b>إلغاء مشروع ركبة الـ Exoskeleton تماماً:</b> موضوع مستهلك بأكثر من 100 ألف بحث، وتكلفة مواتير الـ QDD وخراطة الهيكل تتجاوز ميزانية الماجستير (Over Budget).<br>
+            • <b>منع نمط مشاريع التخرج:</b> «مش بنعمل حاجة عجباني.. إحنا بنعمل بحث علمي (Academic Research) فيه Research Question واضح وContribution أصيلة».<br>
+            • <b>إلغاء تكاليف الهاردوير:</b> التركيز بالكامل على <b>نموذج بيوميكانيكي حاسوبي (Computational Model)</b> ومحاكاة دقيقة تضمن النشر في Scopus (Q1/Q2).
+        </div>
+        <div class="card c-blue">
+            <div class="card-title t-blue">🎯 السؤالان البحثيان الأساسيان (Core RQs)</div>
+            • <b>السؤال البحثي الأول (RQ1):</b> ما هي العلاقة الرياضية والبيوميكانيكية التي تربط بين تآزر زوايا المفاصل (Kinematic Synergies) وتآزر إشارات العضلات (Muscle Synergies) عبر مسكات اليد البشرية (Feix Taxonomy)؟<br>
+            • <b>السؤال البحثي الثاني (RQ2):</b> ما هو الحد الأدنى من المحركات ودرجات الحرية (Minimum Number of Actuators) الكافي لإعادة إنتاج وتوليد معظم المسكات اليومية الشائعة بأعلى استقرار ميكانيكي؟<br>
+            • <b>طريقة الإجابة:</b> عبر نموذج محاكاة بيوميكانيكي على الحاسوب (OpenSim / MATLAB) دون الحاجة لتصنيع فيزيائي مكلف.
+        </div>
+        <div class="card c-green">
+            <div class="card-title t-green">🧮 المنهجية وأدوات التحليل والداتا المعتمدة</div>
+            • <b>الداتا سيت القياسية:</b> داتا سيت <code>KIN-MUS UJI Dataset</code> المفتوحة على Zenodo (28 شخص، 18 زاوية مفصلية، 7 قنوات sEMG لعضلات الساعد، 26 حركة يومية).<br>
+            • <b>أدوات اختزال الأبعاد:</b> خوارزمية <b>NMF (Non-Negative Matrix Factorization)</b> لتحليل إشارات العضلات لضمان التوافق الفيزيولوجي ($W, H \ge 0$)، و <b>PCA</b> لزوايا المفاصل.<br>
+            • <b>معيار الجودة:</b> مقياس التباين المفسر (Variance Accounted For) بحيث VAF &ge; 90%.<br>
+            • <b>الالتزام الأسبوعي:</b> تخصيص 20 ساعة عمل أسبوعياً على الماجستير تركز على القراءة المتعمقة والنتائج الحسابية.
+        </div>
+    </div>
+
+    <!-- Master Matrix Table -->
+    <div style="font-weight: 800; font-size: 9pt; margin-top: 6px; color: #0f172a;">مصفوفة المقارنة الشاملة: 8 أبحاث موثقة في Q1 و Q2 لآخر 5 سنوات (2021 – 2024) ترسم ملامح الإضافة العلمية لرسالتنا</div>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 2%;">#</th>
+                <th style="width: 14%;">البحث والمجلة</th>
+                <th style="width: 9%;">التصنيف</th>
+                <th style="width: 19%;">سؤال البحث الأساسي (RQ)</th>
+                <th style="width: 18%;">المنهجية والداتا سيت</th>
+                <th style="width: 14%;">أهم النتائج الرقمية</th>
+                <th style="width: 12%;">القصور (Limitation)</th>
+                <th style="width: 12%;">الفجوة وحل رسالتنا (Our Contribution)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td style="text-align: center; font-weight: bold;">1</td>
+                <td><b>Scano et al. (2023)</b><br><span style="color:#0284c7;">IEEE Access</span></td>
+                <td class="td-q">Q1 (IF 3.9)</td>
+                <td>هل يوجد ترابط رياضي هيكلي موحد يربط بين تآزر زوايا المفاصل (Kinematic) وتآزر إشارات العضلات (sEMG) أثناء أداء مسكات اليد المختلفة؟</td>
+                <td>تطبيق خوارزمية Mixed Matrix Factorization (MMF) مع NMF على داتا سيت KIN-MUS UJI (28 متطوع، 20 مسكة، 18 زاوية، 7 قنوات sEMG).</td>
+                <td class="td-res">استخراج وحدات تآزر هجينة تفسر أكثر من 85% من التباين الحركي والعضلي المشترك عبر جميع المتطوعين، مما يثبت التحكم المنسق للجهاز العصبي.</td>
+                <td class="td-lim">اقتصر على مرحلة الثبات (Static holding) فقط دون دراسة مرحلة الوصول للمسك (Reach-to-grasp) أو تأثير تغير أوزان الأجسام.</td>
+                <td class="td-gap">رسالتنا تطور نموذج MMF ليشمل مرحلة الوصول الديناميكية وتختبر استقرار المسك داخل محاكاة بيوميكانيكية على OpenSim.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">2</td>
+                <td><b>Jarque-Bou et al. (2021)</b><br><span style="color:#0284c7;">JNER (Springer Nature)</span></td>
+                <td class="td-q">Q1 (IF 4.5)</td>
+                <td>كم عدد الـ Kinematic Synergies اللازمة رياضياً لإعادة بناء جميع مسكات تصنيف Feix بالكامل، وكيف تتوزع زوايا المفاصل؟</td>
+                <td>تفكيك PCA و NMF لـ 18 زاوية مفصلية لليد أثناء أداء 26 حركة يومية وظيفية لـ 28 متطوعاً.</td>
+                <td class="td-res">أول 2 Synergies يفسران 58% من حركة اليد (الفتح والغلق الشامل)؛ بينما 4 إلى 5 Synergies تكفي للوصول لـ 90% VAF لتغطية المسكات الدقيقة.</td>
+                <td class="td-lim">تحليل كينيماتيكي بحت معتمد على القفاز فقط، بمعزل تام عن إشارات العضلات (sEMG) وعزوم المحركات المطلوبة.</td>
+                <td class="td-gap">رسالتنا تربط هذا الأساس الكينيماتيكي مباشرة بإشارات العضلات وخطوط شد الأوتار في اليد.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">3</td>
+                <td><b>Lapresa et al. (2024)</b><br><span style="color:#0284c7;">Biocybernetics and Biomedical Engineering</span></td>
+                <td class="td-q">Q1/Q2 (IF 4.0)</td>
+                <td>كيف تتكامل وتتفاعل متجهات التآزر الحركي، وتآزر العضلات، وقوى التلامس في مسكات القوة (Power) مقابل مسكات الدقة (Precision)؟</td>
+                <td>تسجيل متزامن لحركة اليد و 8 قنوات sEMG وقوى التلامس لـ 21 حركة مسك، ومحاكاة يد افتراضية على MATLAB.</td>
+                <td class="td-res">دمج تآزر الحركة وقوى التلامس يرفع استقرار المسك إلى 94% (مقارنة بـ 62% للحركة وحدها)؛ وتآزر العضلات يشكل الأساس العصبي.</td>
+                <td class="td-lim">تم على عدد محدود من المتطوعين (N=10) بإعداد معملي معقد يصعب تنفيذه في الوقت الحقيقي على معالجات مدمجة.</td>
+                <td class="td-gap">رسالتنا تختبر إطار التآزر والقوى على داتا سيت KIN-MUS الأكبر (N=28) بخوارزميات NMF خفيفة حسابياً.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">4</td>
+                <td><b>Teng et al. (2021)</b><br><span style="color:#0284c7;">IEEE TNSRE</span></td>
+                <td class="td-q">Q1 (IF 4.8)</td>
+                <td>كيف يمكن لتآزر العضلات (NMF) تحقيق تعرف دقيق على نية المسك دون أن يتأثر بتغير شدة قوة القبض (Force Variation)؟</td>
+                <td>خوارزمية NMF/ANLS مع مقدر NNLS على 10 قنوات sEMG لعضلات الساعد عبر 3 مستويات قوة مختلفة.</td>
+                <td class="td-res">حافظت دقة تصنيف المسكات على أكثر من 95.2% رغم تغير قوى القبض، متفوقة على خوارزميات LDA و SVM بأكثر من 14%.</td>
+                <td class="td-lim">اقتصر على التصنيف المتقطع (Discrete classification) دون ربط المعاملات بالزوايا الحركية المستمرة للأصابع.</td>
+                <td class="td-gap">رسالتنا تستخدم معاملات NMF المقاومة لتغير القوة لتوليد زوايا المفاصل المستمرة في الموديل الحاسوبي.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">5</td>
+                <td><b>Yeung et al. (2022)</b><br><span style="color:#0284c7;">IEEE TBME</span></td>
+                <td class="td-q">Q1 (IF 4.6)</td>
+                <td>هل يمكن لمصفوفة تآزر العضلات أن تتكيف ذاتياً وبدون إشراف (Unsupervised) لحظياً لتعويض زحزحة الإلكترودات وتعب العضلة؟</td>
+                <td>خوارزمية Unsupervised NMF لحظية مع قيود التناثر مطبقة في تحكم مغلق لأطراف صناعية واختبار نقل المشابك المعياري.</td>
+                <td class="td-res">إلغاء الحاجة للمعايرة اليدوية لعدة أيام متتالية، مع الحفاظ على استقرار التحكم متعدد درجات الحرية رغم زحزحة الحساسات.</td>
+                <td class="td-lim">ركز على درجتي حرية فقط (اليد والمعصم) دون التوسع للتنسيق الدقيق لأصابع اليد الخمسة وتصنيف Feix.</td>
+                <td class="td-gap">رسالتنا تطبق خوارزمية التكيف غير المشرف على مفاصل الأصابع الخمسة بالكامل عبر مسكات Feix الـ 33.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">6</td>
+                <td><b>Chen et al. (2022)</b><br><span style="color:#0284c7;">IEEE/ASME T-MECH</span></td>
+                <td class="td-q">Q1 (IF 6.4)</td>
+                <td>ما هو التصميم الميكانيكي الأمثل قليل المشغلات لإعادة إنتاج مسكات القوة والدقة بأقل عدد ممكن من المحركات؟</td>
+                <td>تحويل مصفوفة التآزر الكينيماتيكي لشبكة أوتار تفاضلية بمحركين فقط؛ واختبار اليد على 14 مسكة من تصنيف Feix.</td>
+                <td class="td-res">إعادة إنتاج 87.5% من المسكات اليومية الشائعة بمحركين فقط (2 Actuators)، مما قلل وزن اليد وتعقيد الكنترول بأكثر من 70%.</td>
+                <td class="td-lim">تصميم بثلاثة أصابع فقط وبنسب تفاضلية ميكانيكية ثابتة لا يمكن تعديل مرونتها برمجياً.</td>
+                <td class="td-gap">رسالتنا تقدم موديل محاكاة حاسوبي لـ 5 أصابع لتقييم أوزان التآزر المتغيرة قبل تثبيتها ميكانيكياً.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">7</td>
+                <td><b>Li et al. (2022)</b><br><span style="color:#0284c7;">IEEE RA-L</span></td>
+                <td class="td-q">Q1 (IF 5.2)</td>
+                <td>هل يمكن تصنيع يد كاملة تطبق التآزر الحركي الأول باستخدام الطابعات ثلاثية الأبعاد العادية وبمحرك واحد بميزانية زهيدة؟</td>
+                <td>مسار وتر واحد يمر عبر 19 مفصلاً مرناً بمحرك سيرفو واحد؛ مع اختبار المسك على 33 جسماً مختلفاً من تصنيف Feix.</td>
+                <td class="td-res">نجاح مسك 24 جسماً من أصل 33 (72.7%) بمحرك واحد فقط، وبتكلفة مكونات إجمالية أقل من 150 دولاراً.</td>
+                <td class="td-lim">المحرك الواحد يعجز عن أداء المسكات الدقيقة المنفصلة (مثل مسك قلم بالسبابة والإبهام فقط دون إغلاق باقي الأصابع).</td>
+                <td class="td-gap">رسالتنا تحدد رياضياً الحد الفاصل (2 إلى 3 محركات) الذي يتيح المسكات الدقيقة المنفصلة بأقل تعقيد.</td>
+            </tr>
+        
+            <tr>
+                <td style="text-align: center; font-weight: bold;">8</td>
+                <td><b>Sarwat et al. (2021)</b><br><span style="color:#0284c7;">Sensors (MDPI)</span></td>
+                <td class="td-q">Q2 (IF 3.9)</td>
+                <td>كيف يمكن تصميم قفاز بيانات اقتصادي قائم على حساسات الانحناء لقياس كينيماتيكا مفاصل اليد وتقييم الأداء بدقة؟</td>
+                <td>تصميم قفاز بيانات يقيس 10 مفاصل لليد مع خوارزميات تعلم آلي (SVM, KNN) على متطوعين بجامعة عين شمس.</td>
+                <td class="td-res">دقة قياس زاوية عالية وتصنيف تخطى 96% لحركات اليد الأساسية وتقييم الأداء الوظيفي لمفاصل الأصابع.</td>
+                <td class="td-lim">اقتصر على قياس الزوايا دون دمج إشارات العضلات (sEMG)، وركز على التقييم الطبي وليس التحكم التآزري.</td>
+                <td class="td-gap">رسالتنا تبني على أساس بحث د. عوض بدمج إشارات العضلات والارتقاء من مجرد التصنيف إلى استخراج التآزر واختزال الأبعاد بـ NMF.</td>
+            </tr>
+        
+        </tbody>
+    </table>
+</div>
+
+<!-- PAGE 2: Detailed Paper Breakdowns & Talking Points for Supervisor Meeting -->
+<div class="page">
+    <div class="header">
+        <h1>التحليل المتعمق لأهم 4 أبحاث مرجعية ونقاط الحديث لاجتماع المشرفين</h1>
+        <div class="sub">Detailed Analytical Study & Talking Points for Prof. Dr. Mohamed Hamdy & Dr. Mohamed Awad</div>
+    </div>
+
+    <div class="grid-3" style="grid-template-columns: 1fr 1fr; gap: 12px;">
+        <!-- Paper 1 -->
+        <div class="paper-box">
+            <div class="paper-banner">
+                <span>1. Scano et al. (2023) — IEEE Access</span>
+                <span class="badge">Q1 (IF 3.9)</span>
+            </div>
+            <b>العنوان:</b> Functional Synergies Applied to a Publicly Available Dataset of Hand Grasps Show Evidence of Kinematic-Muscular Synergistic Control<br>
+            • <b>سؤال البحث:</b> هل يوجد ترابط رياضي موحد بين تآزر الحركة (Kinematic) وتآزر العضلات (sEMG) عبر المسكات المختلفة؟<br>
+            • <b>المنهجية:</b> خوارزمية Mixed Matrix Factorization (MMF) + NMF على داتا سيت KIN-MUS UJI (28 متطوع، 20 مسكة).<br>
+            • <b>النتيجة:</b> استخراج تآزر هجين يفسر >85% من التباين المشترك، يثبت أن الجهاز العصبي يتحكم في ميكانيكا اليد والعضلات كوحدة واحدة.<br>
+            • <b>القصور والفجوة:</b> اقتصر على مسكات الثبات (Static holding) دون دراسة الانتقال الديناميكي لمرحلة الوصول للمسك (Reach-to-grasp).<br>
+            <div style="background-color: #fffbeb; padding: 4px 6px; border-radius: 4px; margin-top: 4px; font-weight: bold; color: #b45309;">
+                💡 نقطة النقاش مع الدكتور: «البحث ده بيثبت صحة فرضيتنا بوجود ترابط رياضي بين زوايا المفاصل والعضلات، ورسالتنا ستطور هذا النموذج ليشمل مرحلة الوصول الديناميكية وتغير أوزان الأجسام».
+            </div>
+        </div>
+
+        <!-- Paper 8 (Dr. Awad's Baseline) -->
+        <div class="paper-box" style="border-color: #0284c7; background-color: #f0f9ff;">
+            <div class="paper-banner" style="background-color: #0369a1;">
+                <span>2. Sarwat, Maged, & Awad (2021) — Sensors (MDPI)</span>
+                <span class="badge" style="background-color: #f59e0b;">Q2 (IF 3.9) — بحث د. محمد عوض</span>
+            </div>
+            <b>العنوان:</b> Design of a Data Glove for Assessment of Hand Performance Using Supervised Machine Learning<br>
+            • <b>سؤال البحث:</b> كيف يمكن تصميم قفاز بيانات اقتصادي قائم على حساسات الانحناء لتقييم حركة مفاصل اليد بدقة؟<br>
+            • <b>المنهجية:</b> قفاز بيانات يقيس 10 مفاصل لليد مع خوارزميات تعلم آلي (SVM, KNN) على متطوعين بجامعة عين شمس.<br>
+            • <b>النتيجة:</b> دقة قياس زاوية عالية وتصنيف تخطى 96% لحركات اليد الأساسية وتقييم الأداء الوظيفي لمفاصل الأصابع.<br>
+            • <b>القصور والفجوة:</b> اقتصر على قياس الزوايا دون دمج إشارات العضلات (sEMG)، وركز على التقييم الطبي وليس التحكم التآزري.<br>
+            <div style="background-color: #eff6ff; padding: 4px 6px; border-radius: 4px; margin-top: 4px; font-weight: bold; color: #1e3a8a;">
+                💡 نقطة النقاش مع الدكتور: «يا دكتور، بحث حضرتك في Sensors أثبت كفاءة قفاز البيانات وتصنيف حركات اليد. في رسالتي، سأبني مباشرة على هذا الأساس بتضمين إشارات العضلات والارتقاء من مجرد التصنيف إلى استخراج متجهات التآزر المشترك (MMF) واختزال الأبعاد بـ NMF».
+            </div>
+        </div>
+
+        <!-- Paper 2 -->
+        <div class="paper-box">
+            <div class="paper-banner">
+                <span>3. Jarque-Bou et al. (2021) — JNER (Nature Springer)</span>
+                <span class="badge">Q1 (IF 4.5)</span>
+            </div>
+            <b>العنوان:</b> Kinematic Synergies of Hand Grasps: A Comprehensive Study on a Large Publicly Available Dataset<br>
+            • <b>سؤال البحث:</b> كم عدد الـ Kinematic Synergies اللازمة رياضياً لإعادة بناء جميع مسكات تصنيف Feix بالكامل؟<br>
+            • <b>المنهجية:</b> تفكيك PCA و NMF لـ 18 زاوية مفصلية لليد أثناء أداء 26 حركة يومية وظيفية لـ 28 متطوعاً.<br>
+            • <b>النتيجة:</b> أول 2 Synergies يفسران 58% من حركة اليد؛ بينما 4 إلى 5 Synergies تكفي للوصول لـ 90% VAF لتغطية المسكات الدقيقة.<br>
+            • <b>القصور والفجوة:</b> تحليل كينيماتيكي بحت معتمد على القفاز فقط، بمعزل تام عن إشارات العضلات (sEMG) وعزوم المحركات.<br>
+            <div style="background-color: #fffbeb; padding: 4px 6px; border-radius: 4px; margin-top: 4px; font-weight: bold; color: #b45309;">
+                💡 نقطة النقاش مع الدكتور: «بحث JNER أثبت رياضياً إن 4 لـ 5 أنماط حركة تكفي لـ 90% من المسكات. ده الرقم المرجعي اللي هننطلق منه في الموديل الحاسوبي عشان نحدد أقل عدد مواتير لازمة».
+            </div>
+        </div>
+
+        <!-- Paper 6 -->
+        <div class="paper-box">
+            <div class="paper-banner">
+                <span>4. Chen et al. (2022) — IEEE/ASME T-MECH</span>
+                <span class="badge">Q1 (IF 6.4)</span>
+            </div>
+            <b>العنوان:</b> Design and Experiments of a Three-Fingered Dexterous Hand Based on Biomechanical Characteristics of Human Hand Synergies<br>
+            • <b>سؤال البحث:</b> ما هو التصميم الميكانيكي الأمثل قليل المشغلات لإعادة إنتاج مسكات القوة والدقة بأقل عدد ممكن من المحركات؟<br>
+            • <b>المنهجية:</b> تحويل مصفوفة التآزر الكينيماتيكي لشبكة أوتار تفاضلية بمحركين فقط؛ واختبار اليد على 14 مسكة من تصنيف Feix.<br>
+            • <b>النتيجة:</b> إعادة إنتاج 87.5% من المسكات اليومية الشائعة بمحركين فقط (2 Actuators)، مما قلل وزن اليد وتعقيد الكنترول بأكثر من 70%.<br>
+            • <b>القصور والفجوة:</b> تصميم بثلاثة أصابع فقط وبنسب تفاضلية ميكانيكية ثابتة لا يمكن تعديل مرونتها برمجياً.<br>
+            <div style="background-color: #fffbeb; padding: 4px 6px; border-radius: 4px; margin-top: 4px; font-weight: bold; color: #b45309;">
+                💡 نقطة النقاش مع الدكتور: «بحث T-MECH ده يجاوب على سؤال حضرتك عن الـ Actuator Reduction؛ أثبتوا إمكانية تحقيق 87.5% من المسكات بموتورين بس، ورسالتنا هتبني النموذج الحسابي لتقييم الـ 5 أصابع بالكامل».
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3: 4-Phase Implementation Roadmap & Next Meeting Answers -->
+<div class="page">
+    <div class="header">
+        <h1>خطة التنفيذ الحاسوبية (4 مراحل) والإجابات الجاهزة لأسئلة اجتماع المشرفين</h1>
+        <div class="sub">4-Phase Implementation Roadmap & Executive Answers for the Upcoming Supervisor Meeting</div>
+    </div>
+
+    <div class="grid-3" style="grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 12px;">
+        <div class="card c-blue">
+            <div class="card-title t-blue">المرحلة الأولى: الداتا والمعالجة</div>
+            • تحميل داتا سيت KIN-MUS UJI (28 شخص، 18 زاوية، 7 عضلات، 26 حركة).<br>
+            • فلترة إشارات الـ sEMG (Bandpass 20-450Hz + Rectification + Low-pass 4Hz Butterworth).<br>
+            • معايرة زوايا المفاصل وربطها بتصنيف Feix Grasp Taxonomy.
+        </div>
+        <div class="card c-green">
+            <div class="card-title t-green">المرحلة الثانية: اختزال الأبعاد NMF</div>
+            • استخراج تآزر العضلات بـ NMF (شرط الـ Non-negativity: W, H &ge; 0).<br>
+            • استخراج تآزر المفاصل بـ PCA.<br>
+            • حساب منحنى الـ VAF لتحديد أقل رتبة كافية للمحركات (K_min &le; 4).<br>
+            • الإجابة الرياضية الدقيقة على السؤال البحثي الثاني (RQ2).
+        </div>
+        <div class="card c-amber">
+            <div class="card-title t-amber">المرحلة الثالثة: الربط الهجين MMF</div>
+            • تطبيق خوارزمية Mixed Matrix Factorization لدمج المفاصل والعضلات.<br>
+            • تطبيق تحليل الارتباط القانوني (CCA) لقياس قوة الترابط عبر الأفراد.<br>
+            • تصنيف الأنماط حسب مسكات القوة (Power) والدقة (Precision).<br>
+            • الإجابة الكاملة على السؤال البحثي الأول (RQ1).
+        </div>
+        <div class="card c-red">
+            <div class="card-title t-red">المرحلة الرابعة: المحاكاة والنشر</div>
+            • بناء نموذج يد بيوميكانيكي حاسوبي (OpenSim / MATLAB).<br>
+            • تشغيل أصابع الموديل بمتجهات التآزر المختزلة (2 لـ 4 مدخلات فقط).<br>
+            • اختبار استقرار المسك ومقاومة الانزلاق حاسوبياً على الأجسام المختلفة.<br>
+            • كتابة ونشر البحث في مجلة Q1 (IEEE TNSRE / T-MECH).
+        </div>
+    </div>
+
+    <!-- Answers to Supervisor's Specific Meeting Questions -->
+    <div style="background-color: #0f172a; color: #ffffff; padding: 12px 16px; border-radius: 6px; border-right: 5px solid #38bdf8;">
+        <div style="font-size: 11pt; font-weight: 800; color: #38bdf8; margin-bottom: 6px;">الإجابة النموذجية المباشرة لسؤال د. محمد عوض: «هتعمل إيه بالظبط؟ وإيه أدواتك في الـ Analysis؟»</div>
+        <div style="font-size: 8.8pt; line-height: 1.4;">
+            <b>1. هتعمل إيه بالظبط (What You Will Do):</b><br>
+            «يا دكتور، أنا هنفذ دراسة بيوميكانيكية حاسوبية كاملة على داتا سيت KIN-MUS UJI المفتوحة لحل مشكلة تعقيد اليد البشرية (20+ مفصل). هدفي محدد في نقطتين: أولاً إيجاد الترابط الرياضي المشترك بين حركة المفاصل وإشارات العضلات عبر مسكات Feix Taxonomy، وثانياً تحديد الحد الأدنى من المحركات (Minimum Number of Actuators) الكافي لتوليد معظم المسكات واستقرارها على نموذج محاكاة بيوميكانيكي حاسوبي (Computational Model) دون الدخول في تكاليف هاردوير باهظة».<br><br>
+            <b>2. إيه الـ Tools والأدوات اللي هتستخدمها (Analytical Tools):</b><br>
+            «الأدوات برمجية ورياضية بالكامل: لغة <b>Python</b> بمكتبات <b>NumPy و SciPy و Scikit-learn</b> لتنفيذ خوارزميات <b>NMF (Non-Negative Matrix Factorization)</b> و <b>PCA</b> و <b>MMF</b>، مع معيار <b>VAF (Variance Accounted For &ge; 90%)</b> لتحديد أقل عدد من المتجهات، وبرنامج <b>OpenSim / MATLAB SimMechanics</b> للمحاكاة البيوميكانيكية واختبار استقرار المسك حاسوبياً».
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
