@@ -661,14 +661,14 @@
       },
       {
         id: "p02",
-        code: "[P02] JARQUE-2021",
-        journal: "Nature Scientific Data | Q1 (IF: 8.5)",
-        qBadge: "Nature Sci Data Q1",
+        code: "[P02] LAPRESA-2024",
+        journal: "Biocybernetics & Biomedical Eng. (Elsevier) | Q1 (IF: 4.6)",
+        qBadge: "Elsevier BBE Q1",
         isQ1: true,
-        title_ar: "تحليل شامل لتنسيق كينيماتيكا اليد والعضلات والقوى حسب نوع المهمة أثناء أنشطة الحياة اليومية",
-        title_en: "A comprehensive analysis of task-specific hand kinematic, muscle and force coordination during everyday activities",
-        authors: "جارك-بو، فيرغارا، سانشو-برون، سانشيز-مارين (2021)",
-        pdf_file: "Translated_Paper_02_JarqueBou_2021.pdf",
+        title_ar: "تحليل شامل للتآزر الكينيماتيكي والعضلي وتآزر القوة الخاص بالمهام في اليد البشرية أثناء الأنشطة اليومية",
+        title_en: "A comprehensive analysis of task-specific hand kinematic, muscle and force synergies",
+        authors: "مارتينا لابريسا، لوريدانا زولو، وفرانشيسكا كورديلا (2024)",
+        pdf_file: "Translated_Paper_02_Lapresa_2024_BBE.pdf",
         inputs: "تسجيل متزامن ثلاثي المحاور: كينيماتيكا 16 زاوية مفصلية + sEMG لـ 8 عضلات سواعد + 31 حساس ضغط FSR لقياس قوى التلامس الموزعة عبر 26 نشاطاً يومياً.",
         outputs: "خريطة بيوميكانيكية شاملة لربط زوايا انثناء المفاصل بقوى الضغط المطبقة ونشاط العضلات؛ إثبات أن نمط المسك يفرض توزيع القوى.",
         algorithm: "تزامن زمني بدقة الميلي ثانية (Multi-modal Synchronization) + تطبيع قوى MVC والانقباض الإرادي الأقصى.",
@@ -859,7 +859,139 @@
         ],
         golden_script: "'يا دكتور عوض، رسالتنا بتبني مباشرة فوق إنجاز معمل حضرتك في بيبر 2021: قفاز البيانات اللي صممتوه بدقة 96.5% هيكون هو أداة جمع البيانات الكينيماتيكية الأساسية عندنا، وهنطور خوارزمياته من مجرد تصنيف حركات منفصلة إلى استخراج متجهات التآزر الكينيماتيكي المستمرة للتحكم في اليد الروبوتية!'"
       }
-    ];
+    ,
+      {
+        id: "p11",
+        code: "[P11] BAZINA-2024",
+        journal: "MDPI Robotics | Q2 (IF: 3.7)",
+        qBadge: "MDPI Robotics Q2",
+        isQ1: false,
+        title_ar: "تقليل كينيماتيكا اليد عبر تقديم الاعتماديات البينية للأصابع الموجهة نحو الإمساك",
+        title_en: "Reducing Hand Kinematics by Introducing Grasp-Oriented Intra-Finger Dependencies",
+        authors: "توميسلاف بازينا، غوران ماوشا، ساشا زيلينيكا، إرفين كامينار (2024)",
+        pdf_file: "Translated_Paper_11_Bazina_2024_Robotics.pdf",
+        inputs: "قواعد بيانات Ninapro DB1 و DB2 و DB5 لـ 77 شخصاً سليمين يؤدون 23 حركة إمساك لأنشطة الحياة اليومية (ADL) مع تسجيل 16 درجة حرية لانثناء/مد المفاصل.",
+        outputs: "إثبات إمكانية اختزال 16 درجة حرية إلى ما بين 5 و 15 درجة حرية باستخدام 30 نموذج عنقودي للاعتماديات البينية بين مفاصل الأصبع الواحد بنسبة تباين مفسر عالية جداً وخطأ زاوية ضئيل.",
+        algorithm: "النماذج الخطية المعممة (GLM) + نماذج التأثيرات الخطية المختلطة الموزونة (Weighted LME) + التجميع التراكمي الهرمي (Agglomerative Clustering).",
+        supervisor_target: "الرد الرياضي على تقليل درجات الحرية الكينيماتيكية داخل الإصبع الواحد (Intra-finger) والربط المباشر مع مفاصل MCP و PIP و DIP في اليد الصناعية.",
+        equation: "\mathbf{\theta}_{DIP} = \beta_0 + \beta_1 \mathbf{\theta}_{PIP} + \mathbf{b}_i + \epsilon, \quad R^2 > 0.92, \quad \text{DOFs: } 16 \rightarrow 5..15",
+        hardware: [
+          { name: "قفاز البيانات المرجعي", model: "CyberGlove I & II (22 Bend Sensors)", role: "قياس زوايا مفاصل الأصابع عبر قواعد بيانات Ninapro" },
+          { name: "منظومة التسجيل", model: "Vicon Motion Capture & EMG Delsys", role: "التحقق المرجعي من صحة الزوايا وحركات اليد" },
+          { name: "حزم التحليل الإحصائي", model: "R & MATLAB LME Toolbox", role: "حساب نماذج LME وبناء الـ 30 عنقوداً للاعتماديات" }
+        ],
+        golden_script: "'يا دكتور عوض، بيبر بازينا 2024 في MDPI Robotics بتقدملنا الحل الأمثل لاختزال مفاصل الإصبع الواحد: اختزلت 16 زاوية لـ 5 أو 8 فقط عبر نمذجة LME لاعتماد مفصل DIP على PIP، وده بيمكنا من استخدام وتر واحد أو ميكانيزم متصل لكل إصبع بدون فقدان دقة المسك!'"
+      },
+      {
+        id: "p12",
+        code: "[P12] PHAM-2026",
+        journal: "Frontiers in Robotics and AI | Q1 (IF: 4.3)",
+        qBadge: "Front. Robot. AI Q1",
+        isQ1: true,
+        title_ar: "تعميم كينيماتيكا مفاصل الأصابع لمهام التنظيف باستخدام التآزر الحركي والبدائيات الحركية الاحتمالية (ProMPs)",
+        title_en: "Generalization of finger-joint kinematics for cleaning tasks",
+        authors: "كلارا فام، يان-فيليب تاوشر، كولين غروث، يوخن ج. شتايل (2026)",
+        pdf_file: "Translated_Paper_12_Pham_2026_Frontiers.pdf",
+        inputs: "تسجيل حركات الأصابع بـ 20 درجة حرية باستخدام قفاز SenseGlove DK1 أثناء تنفيذ مهام التنظيف الديناميكية المعقدة (مسح الأسطح بالخرقة، الإسفنج، والفرشاة).",
+        outputs: "تعميم حركة المفاصل بنجاح ونقلها من الإنسان إلى يد Shadow Hand (20-DOF في المحاكاة) ويد Aeon Robotics Handeffector (15-DOF فيزيائية حقيقية) عبر دمج ProMPs مع التآزر الحركي.",
+        algorithm: "تحليل المكونات الرئيسية (PCA) + البدائيات الحركية الاحتمالية (ProMPs) + ضرب الخبراء (Product-of-Experts PoE) والخلط المحدب للمسارات.",
+        supervisor_target: "الانتقال بالتآزر من مجرد مسكات استاتيكية ثابتة (Grasping) إلى مهام مناولة وتنظيف ديناميكية مستمرة (Dynamic Manipulation) ونقلها لروبوتات حقيقية.",
+        equation: "\mathcal{P}(\mathbf{q}) \propto \prod_{k} \mathcal{N}(\mathbf{\mu}_k, \mathbf{\Sigma}_k), \quad \mathbf{q}(t) = \mathbf{\Phi}(t) \mathbf{w}, \quad \text{PoE Generalization}",
+        hardware: [
+          { name: "قفاز التتبع البصري القائم على القوة", model: "SenseGlove DK1 (20 Joint Angles + Force Feedback)", role: "تسجيل كينيماتيكا اليد وتغذية قوى التلامس" },
+          { name: "اليد الروبوتية المتقدمة", model: "Shadow Dexterous Hand (20 DOFs)", role: "محاكاة وتنفيذ مهام التنظيف ثلاثية الأبعاد" },
+          { name: "اليد الصناعية الميدانية", model: "Aeon Robotics Handeffector (15 DOFs)", role: "التطبيق الفيزيائي الفعلي لمهام المسح والتنظيف" }
+        ],
+        golden_script: "'بيبر فام 2026 في Frontiers بتنقل بحثنا من مجرد قبضة ثابتة للتحكم الديناميكي الكامل: باستخدام ProMPs و PoE دمجوا متجهات التآزر مع البدائيات الحركية الاحتمالية لتوليد حركات مستمرة لأيدي Shadow و Aeon أثناء مهام التنظيف، وده نفس المفهوم اللي هنطبقه في التحكم الذاتي ليدنا!'"
+      },
+      {
+        id: "p13",
+        code: "[P13] WEST-2025",
+        journal: "IEEE TMRB | Q1 (IF: 4.8)",
+        qBadge: "IEEE TMRB Q1",
+        isQ1: true,
+        title_ar: "دراسة التلاعب الماهر باليد: مؤشر التعقيد القائم على التآزر الحركي (VAF-CI)",
+        title_en: "The Study of Dexterous Hand Manipulation: A Synergy-Based Complexity Index",
+        authors: "أ. مايكل ويست جونيور، فيديريكو تيساري، مارغريت وانغ، نيفيل هوغان - MIT (2025)",
+        pdf_file: "Translated_Paper_13_West_2025_IEEE_TMRB.pdf",
+        inputs: "تسجيل كينيماتيكا اليد لـ 16 مفصلاً عبر 3 مهام متباينة في المهارة: الوصول للمسك (Reach-to-Grasp)، واستخدام الأدوات وتركيب أسلاك الطائرات (Tool Use)، وعزف البيانو المعقد.",
+        outputs: "تطوير مؤشر رياضي كمي موحد (VAF-CI: Variance-Accounted-For Complexity Index) يثبت أن مهام المناولة الماهرة تتطلب أبعاد تآزر أعلى بكثير من مجرد الوصول للمسك، وتصنيف المهام عنقودياً بدقة.",
+        algorithm: "تفكيك القيمة المفردة (SVD) لحساب مصفوفات التآزر + حساب مساحة منحنى VAF وتطبيعه + خوارزمية k-means العنقودية.",
+        supervisor_target: "تقديم معيار رياضي صريح وواضح لدكتور عوض لحساب (مؤشر المهارة والتعقيد VAF-CI) لتقييم اليد الروبوتية مقارنة باليد البشرية.",
+        equation: "\text{VAF-CI} = \frac{1}{N} \sum_{k=1}^N (1 - \text{VAF}(k)), \quad \text{Cluster Separation } p < 0.001",
+        hardware: [
+          { name: "نظام التتبع الحركي البصري", model: "Qualisys Optical Motion Capture (12 Oqus Cameras)", role: "تتبع 23 عاكس ضوئي على مفاصل اليد بتردد 120 هرتز" },
+          { name: "لوحة مفاتيح البيانو الإلكترونية", model: "Yamaha Clavinova MIDI Interface", role: "تسجيل دقيق لتزامن الضربات ونغمات الأصابع" },
+          { name: "منصة التجميع الصناعي", model: "MIT Aerospace Wire-Harnessing Jig", role: "محاكاة مهام تركيب كابلات وضفائر الطائرات" }
+        ],
+        golden_script: "'يا دكتور عوض، بيبر ويست وهوغان في MIT (2025) حلت معضلة قياس المهارة: اخترعوا مؤشر VAF-CI اللي بيقيس رياضياً درجة تعقيد التآزر، وأثبتوا بالأرقام إن مهام الأدوات وعزف البيانو بتشغل أبعاد تآزرية مستقلة غير مسكات سانتيلو البسيطة، وده المؤشر اللي هنقيس بيه كفاءة يدنا في المناولة الماهرة!'"
+      },
+      {
+        id: "p14",
+        code: "[P14] LAPRESA-2022",
+        journal: "Frontiers in Bioeng. Biotech. | Q1 (IF: 5.7)",
+        qBadge: "Front. Bioeng. Q1",
+        isQ1: true,
+        title_ar: "صندوق أدوات آلي وسهل الاستخدام للتحليل الكينيماتيكي لليد، التقييم السريري، واستخراج التآزر الوضعي",
+        title_en: "A user-friendly automatic toolbox for hand kinematic analysis, clinical assessment and postural synergies extraction",
+        authors: "مارتينا لابريسا، لوريدانا زولو، فرانشيسكا كورديلا - روما (2022)",
+        pdf_file: "Translated_Paper_14_Lapresa_2022_Frontiers.pdf",
+        inputs: "بيانات تتبع بصري لحركة اليد بـ 28 عاكساً ضوئياً لقياس 23 زاوية مفصلية، وتطبيق الصندوق على متطوعين أصحاء ومرضى سكتة دماغية أثناء 13 مسكة وظيفية.",
+        outputs: "صندوق أدوات برمجي كامل ومتوافق مع SynGrasp يحسب آلياً مؤشرات PGA و tPGA و JGrasp واستخراج تآزرات الوضعيات (Postural Synergies) عبر PCA وتصدير التقارير الطبية والهندسية.",
+        algorithm: "التحويل الكينيماتيكي للكواشف البصرية إلى زوايا مفصلية عبر جبر المتجهات + تحليل المكونات الأساسية (PCA) وتطبيع البيانات.",
+        supervisor_target: "دمج الكينيماتيكا الحسابية مع صندوق أدوات SynGrasp المعياري، واعتماد المؤشرات الحركية الموحدة في اختبارات معمل الميكاترونيات.",
+        equation: "\mathbf{q}_{norm} = \frac{\mathbf{q} - \mathbf{\mu}_q}{\mathbf{\sigma}_q}, \quad \text{PGA} = \max_t \|\mathbf{p}_{thumb}(t) - \mathbf{p}_{index}(t)\|, \quad \text{SynGrasp Ready}",
+        hardware: [
+          { name: "نظام التتبع الكينيماتيكي", model: "Vicon Motion Systems (8 Vero Cameras)", role: "تتبع 28 عاكس ريترو-ريفليكتيف على اليد بتردد 100 هرتز" },
+          { name: "صندوق الأدوات البرمجي", model: "HandKinAnalysis MATLAB Toolbox", role: "حساب مؤشرات PGA و tPGA واستخراج التآزر الوضعي" },
+          { name: "منصة المحاكاة الروبوتية", model: "SynGrasp Robotic Grasping Simulator", role: "تطبيق متجهات التآزر على نماذج الأيدي الروبوتية" }
+        ],
+        golden_script: "'بيبر لابريسا 2022 في Frontiers بتوفر لنا الأساس البرمجي للمعمل: صندوق أدوات MATLAB كامل بيحسب PGA و tPGA ومربوط مباشرة بـ SynGrasp، وده بيختصر علينا شهور من كتابة كود حساب الزوايا واستخراج التآزر من بيانات الحساسات والكاميرات!'"
+      },
+      {
+        id: "p15",
+        code: "[P15] OLIKKAL-2022",
+        journal: "Sensors (MDPI) | Q2 (IF: 3.9)",
+        qBadge: "MDPI Sensors Q2",
+        isQ1: false,
+        title_ar: "التآزر العضلي الهيكلي القائم على دمج البيانات في يد الإمساك (دمج sEMG مع الزوايا الكينيماتيكية)",
+        title_en: "Data Fusion-Based Musculoskeletal Synergies in the Grasping Hand",
+        authors: "ب. أوليكال، د. بي، ت. أدالي، ن. بانيرجي، ر. فينجاموري (2022)",
+        pdf_file: "Translated_Paper_15_Olikkal_2022_Sensors.pdf",
+        inputs: "تسجيل متزامن لـ 16 زاوية كينيماتيكية باستخدام CyberGlove مع 16 قناة sEMG على الساعد أثناء أداء 17 مسكة وظيفية من تصنيف Cutkosky.",
+        outputs: "استخراج تآزرات مدمجة (Joint-and-Individual Synergies) تربط العضلات بالحركة الميكانيكية، وإثبات أن دمج البيانات يفسر التحكم العصبي المشترك بدقة أعلى بكثير من عزل كل إشارة.",
+        algorithm: "دمج البيانات المتقدم (Joint and Individual Variation Explained - JIVE) + تفكيك المصفوفات المزدوج (Joint NMF / Canonical Correlation Analysis).",
+        supervisor_target: "الدمج الرياضي بين إشارات العضلات sEMG وزوايا المفاصل Kinematics في مصفوفة تآزر عصبية-ميكانيكية واحدة.",
+        equation: "\mathbf{X}_{fused} = [\mathbf{X}_{kin}; \mathbf{X}_{emg}] = \mathbf{J}_{shared} + \mathbf{I}_{individual} + \mathbf{E}, \quad \text{JIVE Fusion}",
+        hardware: [
+          { name: "قفاز الزوايا الكينيماتيكية", model: "CyberGlove I (18 Sensors)", role: "تسجيل 16 زاوية لمفاصل اليد بتردد 100 هرتز" },
+          { name: "نظام تخطيط العضلات السطحي", model: "Delsys Trigno Wireless EMG (16 Channels)", role: "تسجيل إشارات sEMG لـ 16 عضلة بالساعد" },
+          { name: "خوارزمية دمج البيانات", model: "JIVE Multi-Source Decomposition", role: "استخراج التباين المشترك بين الميكانيكا والفسيولوجيا" }
+        ],
+        golden_script: "'بيبر أوليكال وفينجاموري في Sensors حلت حلقة الوصل المفقودة: دمجت إشارات عضلات الساعد sEMG مع زوايا المفاصل في خوارزمية واحدة (JIVE)، وأثبتت إن التحكم العصبي بيبعت أوامر تآزرية مشتركة بتتحكم في العضلات والمفاصل معاً، وده بيدينا الإطار الرياضي لربط قفاز د. عوض بإشارات sEMG!'"
+      },
+      {
+        id: "p16",
+        code: "[P16] WEST-2024",
+        journal: "Journal of Neurophysiology | Q1 (IF: 3.1)",
+        qBadge: "J. Neurophysiol. Q1",
+        isQ1: true,
+        title_ar: "اختلاف التآزر الكينيماتيكي لليد بين الوصول والإمساك وبين التلاعب الوظيفي بالأشياء",
+        title_en: "Kinematic Hand Synergies Differ Between Reach-and-Grasp and Functional Object Manipulation",
+        authors: "أ. مايكل ويست جونيور، نيفيل هوغان - MIT & Johns Hopkins (2024)",
+        pdf_file: "Translated_Paper_16_West_2024_JNeurophysiol.pdf",
+        inputs: "دراسة شاملة وتجريبية معمقة (38 صفحة) تقارن كينيماتيكا اليد لـ 20 شخصاً بين حركات الوصول للمسك الكلاسيكية (Reach-to-Grasp) وحركات التلاعب المستمر الماهر بالأدوات والمفاتيح والمقصات.",
+        outputs: "إثبات قاطع بالتحليل الإحصائي المقارن أن متجهات التآزر الكينيماتيكية لحركات المسك تختلف جوهرياً في تركيبتها ومساحتها الفراغية عن حركات التلاعب الماهر (Manipulation Synergies)، وأن اليد توظف درجات حرية إضافية غير قابلة للاختزال أثناء المناولة.",
+        algorithm: "تحليل المكونات الأساسية المتعدد (Multi-set PCA) + حساب مصفوفات الزوايا وتطبيع الأنماط + اختبارات التماثل والتطابق الزاوي (Subspace Angles & Cosine Similarity).",
+        supervisor_target: "المرجع التأسيسي الفارق لرسالة الماجستير: توضيح الحدود الفاصلة بين تآزر القبض الاستاتيكي وتآزر المناولة الحركية لتفادي أخطاء التصميم في الأطراف التعويضية.",
+        equation: "\cos(\theta_k) = \max_{\mathbf{u} \in \mathcal{S}_{grasp}, \mathbf{v} \in \mathcal{S}_{manip}} \frac{\mathbf{u}^T \mathbf{v}}{\|\mathbf{u}\| \|\mathbf{v}\|}, \quad \text{Subspace Overlap } < 0.65",
+        hardware: [
+          { name: "نظام التتبع الحركي فائق الدقة", model: "Qualisys Oqus 7+ Optical Tracker (14 Cameras)", role: "تتبع مفاصل الأصابع بدقة 0.1 مم بتردد 150 هرتز" },
+          { name: "منصة الأدوات الوظيفية", model: "ADL Functional Manipulation Workstation", role: "أدوات يومية: مفاتيح، مسامير، أدوات تقطيع، كابلات" },
+          { name: "بيئة النمذجة البيوميكانيكية", model: "OpenSim Hand Model & MATLAB Pipeline", role: "محاكاة الحركات واستخراج فضاءات التآزر الفرعية" }
+        ],
+        golden_script: "'أهم مرجع في رسالتنا هو بحث د. ويست ود. هوغان من MIT المنشور في Journal of Neurophysiology: في 38 صفحة أثبتوا بالدليل القاطع إن تآزر المسك غير تآزر التلاعب، وإن مسكات سانتيلو لا تكفي للمناولة الماهرة، وده الأساس العلمي اللي بنبني عليه رسالتنا لتطوير يد روبوتية قادرة على التلاعب بالأشياء مش بس مسكها!'"
+      }];
 
     // State Variables
     let currentPaperIdx = 0;
