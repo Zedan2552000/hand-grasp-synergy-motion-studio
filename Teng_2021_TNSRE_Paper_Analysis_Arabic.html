@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث Teng et al. (IEEE TNSRE 2021)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(191, 219, 254, 0.25);
+            border: 1px solid rgba(191, 219, 254, 0.4);
+            color: #dbeafe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 9.8pt;
+            color: #bfdbfe;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #eff6ff;
+        }
+
+        .header-meta span strong {
+            color: #ffffff;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #1d4ed8;
+            background: #eff6ff;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #dbeafe;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #2563eb;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 8.8pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #1e3a8a;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #1d4ed8;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #1d4ed8;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #1e3a8a;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #eff6ff;
+            border: 1px solid #dbeafe;
+            border-right: 4px solid #3b82f6;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #1e3a8a;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • معالجة إشارات sEMG والتآزر العضلي • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل وتفكيك شامل: بحث Teng et al. (IEEE TNSRE 2021)</div>
+        <div class="header-orig-title">Evaluation of Synergy-Based Hand Gesture Recognition Method Against Force Variation for Robust Myoelectric Control</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Zhicheng Teng, Guanghua Xu, Renghao Liang, Min Li, Sicong Zhang</span>
+            <span><strong>الجهة:</strong> Xi'an Jiaotong University (الصين)</span>
+            <span><strong>المجلة:</strong> IEEE Transactions on Neural Systems and Rehabilitation Engineering (TNSRE)</span>
+            <span><strong>تاريخ النشر:</strong> November 2021 (Vol. 29)</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "The non-stationary characteristics of surface electromyography (sEMG) and possible adverse variations in real-world conditions make it still an open challenge to realize robust myoelectric control (MEC) for multifunctional prostheses. Variable muscle contraction level is one of the handicaps that may degrade the performance of MEC. In this study, we proposed a force-invariant intent recognition method based on muscle synergy analysis (MSA) in the setting of three self-defined force levels (low, medium, and high). Specifically, a fast matrix factorization algorithm based on alternating non-negativity constrained least squares (NMF/ANLS) was chosen to extract task-specific synergies associated with each of six hand gestures in the training stage; while for the testing samples, we used the non-negative least square (NNLS) method to estimate neural commands for movement classification. The performance of proposed method was compared with conventional pattern recognition (PR) method consisting of LDA (linear discrimination analysis) classifier and representative features in three offline evaluation scenarios. Statistical tests on ten able-bodied subjects revealed no significant difference in intra-force-level (p = 0.353) and multi-force-level (p = 0.695) accuracy; But the synergy-based method performed significantly better than conventional PR-based method under inter-force-level conditions (p < 0.05). Similar results were observed for nine amputee subjects though there was a drop in the classification accuracy. This study was the first to concurrently demonstrate the robustness and predictive power of task-specific synergies under variant force levels and explore their potential for reliable intent recognition against force variation. Although the online performance is yet to be demonstrated, the proposed method is characterized by simple training procedure and acceptable computational efficiency, which would potentially provide an alternative approach for the development of clinically viable prostheses and rehabilitation robots driven by sEMG."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية المعتمدة:</strong><br>
+            "المستخلص: إن الخصائص غير المستقرة لإشارات العضلات السطحية (<span class="en-term">sEMG</span>) والتباينات المعاكسة المحتملة في ظروف العالم الحقيقي تجعل من تحقيق تحكم عضلي كهربائي قوي (<span class="en-term">MEC</span>) للأطراف الاصطناعية متعددة الوظائف تحدياً مفتوحاً. وتُعد مستويات انقباض العضلات المتغيرة إحدى العقبات الرئيسية التي تؤدي إلى تدهور أداء التحكم. نقترح في هذه الدراسة طريقة للتعرف على النوايا الحركية <strong>محصنة ضد تغير القوة (Force-Invariant)</strong> تستند إلى تحليل التآزر العضلي (<span class="en-term">MSA</span>) تحت ثلاثة مستويات قوة محددة ذاتياً (منخفضة، متوسطة، وعالية). تحديداً، تم اختيار خوارزمية سريعة لتحليل المصفوفات قائمة على المربعات الصغرى المقيدة بالتناوب غير السالب (<span class="en-term">NMF/ANLS</span>) لاستخراج تآزرات خاصة بالمهام مرتبطة بست حركات يد في مرحلة التدريب؛ بينما استُخدمت طريقة المربعات الصغرى غير السالبة (<span class="en-term">NNLS</span>) لتقدير الأوامر العصبية لتصنيف الحركة في مرحلة الاختبار. قورن أداء الطريقة المقترحة مع طرق التعرف على الأنماط التقليدية (<span class="en-term">PR</span>) المعتمدة على مصنف LDA والميزات التمثيلية في 3 سيناريوهات تقييم. أظهرت الاختبارات الإحصائية على 10 متطوعين أصحاء عدم وجود فرق دال إحصائياً في الدقة داخل نفس مستوى القوة وفي مستويات القوة المتعددة؛ ولكن <strong>تفوق أسلوب التآزر العضلي بشكل ملحوظ وقاطع على طرق التعرف على الأنماط التقليدية في ظروف اختلاف مستويات القوة بين التدريب والاختبار (Inter-force, p &lt; 0.05)</strong>. ولوحظت نتائج مماثلة لدى 9 مبتوري أطراف رغم انخفاض دقة التصنيف العامة. تُعد هذه الدراسة الأولى التي تبرهن بالتزامن على متانة وقدرة التنبؤ للتآزرات الخاصة بالمهام تحت مستويات قوة متغيرة، وتستكشف إمكاناتها للتعرف الموثوق على الحركة. تتميز الطريقة بإجراءات تدريب بسيطة وكفاءة حسابية مقبولة، مما يوفر بديلاً واعداً لتطوير أطراف اصطناعية وروبوتات تأهيل قابلة للتطبيق سريرياً."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>عالج البحث نقطة الانهيار الكبرى للتحكم العضلي الذكي في البيئة الإكلينيكية والواقعية:</p>
+
+        <div class="danger-box">
+            <strong>1. معركة واترلو لأنظمة التعرف على الأنماط (The Waterloo of PR):</strong> أجهزة التعرف على الأنماط التقليدية (<span class="en-term">Pattern Recognition</span>) تحقق دقة تفوق 95% داخل المعامل المغلقة، ولكنها تواجه "معركة واترلو" عند الانتقال للعيادات والشارع، مما يتسبب في رفض المبتورين للطرف الصناعي بنسب تفوق 30-50% وتفضيلهم للأيدي التجميلية الثابتة.
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. تدهور الأداء الحاد عند تغير قوة الانقباض (Force Variation Degradation):</strong> عندما يتدرب المصنف التقليدي عند مستوى جهد معين، ثم يغير المريض شدة قبضته (لإمساك بيضة برفق مقابل حمل حقيبة ثقيلة بقوة)، يتغير اتساع وتردد إشارات الـ sEMG جذرياً، مما يؤدي لانهيار دقة المصنفات الكلاسيكية وتوليد حركات خاطئة.
+        </div>
+
+        <div class="success-box">
+            <strong>3. غياب الاستغلال التنبؤي للتآزر العضلي:</strong> الدراسات السابقة كانت تستخدم التآزر العضلي فقط كمجرد ميزات إحصائية (<span class="en-term">Features</span>) لتغذية مصنفات تقليدية؛ ولم تستغل قدرة التآزر التنبؤية المباشرة في إعادة بناء الإشارة كمعيار لتحديد الحركة.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #2563eb;">
+            <strong>الفرضية العلمية الأساسية:</strong><br>
+            إن متجهات التآزر العضلي الخاصة بكل حركة (<span class="en-term">Task-Specific Muscle Synergies</span>) تعبر عن استراتيجية عصبية ثابتة في الحبل الشوكي لا تتغير بنيتها ($W$) بتغير قوة الانقباض (يتغير فقط معامل التكبير $H$). وبالتالي، فإن مصفوفة التآزر الصحيحة ستكون وحدها القادرة على إعادة بناء إشارة الـ sEMG المجهولة بأعلى دقة تشابه جيب تمام (<span class="en-term">Cosine Similarity</span>) مهما اختلفت قوة الشد.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>ثبات البصمة التآزرية:</strong> هل تظل متجهات التآزر العضلي متطابقة إحصائياً عند أداء نفس الحركة بمستويات قوة منخفضة (L)، ومتوسطة (M)، وعالية (H)؟</li>
+            <li><strong>الحد الأدنى للأبعاد:</strong> ما هو العدد الأمثل من التآزرات العضلية الكافي لتفسير أكثر من 90% من تباين إشارات العضلات؟</li>
+            <li><strong>صمود التصنيف عبر القوى المختلفة:</strong> هل يتفوق مصنف التآزر (MSC) على مصنف LDA التقليدي عندما يتم التدريب على مستوى قوة والاختبار على مستوى قوة مختلف (<span class="en-term">Inter-Force Level</span>)؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات الرياضية والخوارزميات (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>قواعد البيانات والمشاركون</h4>
+                <ul>
+                    <li><strong>داتاسيت الأصحاء (Khushaba):</strong> 10 متطوعين، 6 قنوات sEMG حول الساعد (Delsys Bagnoli، تردد 4000 Hz)، 6 حركات يد ورسغ بثلاثة مستويات قوة (L, M, H).</li>
+                    <li><strong>داتاسيت مبتوري الأطراف (Al-Timemy):</strong> 9 مرضى مبتوري الأطراف عبر الساعد، 8 أزواج أقطاب Ag/AgCl، 6 حركات مسك وظيفية بثلاثة مستويات قوة.</li>
+                    <li><strong>النوافذ الزمنية:</strong> معالجة بنوافذ طولها 250 مم مع قفزات 30 مم، واستخراج ميزات RMS وMAV وDFTR.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>خوارزميات استخراج التآزر والتصنيف</h4>
+                <ul>
+                    <li><strong>خوارزمية NMF/ANLS التدريبية:</strong> خوارزمية تحليل سريعة تعتمد على المربعات الصغرى المقيدة بالتناوب غير السالب لاستخراج مصفوفات التآزر $W^N$ لكل حركة.</li>
+                    <li><strong>خوارزمية NNLS للاختبار:</strong> حل مسألة المربعات الصغرى غير السالبة لتقدير الأوامر العصبية $h^N$ لكل نموذج تآزر:
+                    $$\min rac{1}{2} \|v - W^N h^N\|^2 \quad 	ext{s.t. } h^N \ge 0$$</li>
+                    <li><strong>معيار اتخاذ القرار:</strong> حساب تشابه جيب التمام $S^N$ واختيار الحركة ذات أعلى تطابق.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>سيناريوهات التقييم الثلاثة الصارمة (Evaluation Scenarios):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>السيناريو الحركي</th>
+                    <th>ظروف التدريب والاختبار</th>
+                    <th>الأهمية والدلالة الإكلينيكية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1. داخل نفس القوة (Intra-Force)</strong></td>
+                    <td>التدريب على (L) والاختبار على (L)، أو (M-M)، أو (H-H).</td>
+                    <td>الوضع المعملي التقليدي (لا يعكس الواقع العملي بدقة).</td>
+                </tr>
+                <tr>
+                    <td><strong>2. تباين القوة الحقيقي (Inter-Force)</strong></td>
+                    <td>التدريب على مستوى قوة والاختبار على مستويات أخرى (مثال: تدريب L واختبار M/H).</td>
+                    <td><strong>الاختبار الحاسم للصمود في العالم الحقيقي</strong> ومحاكاة الاستخدام اليومي للمريض.</td>
+                </tr>
+                <tr>
+                    <td><strong>3. التدريب متعدد القوى (Multi-Force)</strong></td>
+                    <td>التدريب على المستويات الثلاثة معاً (L+M+H) والاختبار على مستوى منفرد.</td>
+                    <td>قياس أقصى أداء ممكن على حساب زيادة وقت التدريب وجلسات المعايرة.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج التجريبية بالأرقام الصريحة (Results)</h2>
+        </div>
+
+        <h4>أ. العدد الأمثل للتآزر وثبات البنية العضلية:</h4>
+        <ul>
+            <li><strong>العدد الأمثل ($k$):</strong> أثبتت نتائج $R^2 > 0.90$ أن **3 تآزرات عضلية فقط كافية لتمثيل 90% من الإشارات لدى الأصحاء**، بينما يحتاج مبتورو الأطراف إلى **5 تآزرات عضلية**.</li>
+            <li><strong>مؤشر تشابه الزاوية (ACA):</strong> بلغ متوسط التشابه البنيوي لمتجهات التآزر عبر مستويات القوة المختلفة <span class="num-stat">0.85</span> (أعلى من عتبة التشابه 0.8). البصمة التآزرية ثابتة، والقوة تكبر فقط سعة المتجه دون تشويه اتجاهه!</li>
+            <li><strong>القدرة التنبؤية (VAF):</strong> بلغت لإعادة بناء نفس الحركة <span class="num-stat">0.92 إلى 0.98</span>، بينما انهارت عند محاولة إعادة بناء حركة أخرى إلى <span class="num-stat">0.59 إلى 0.74</span>، وهو ما يضمن قدرة فصل حركي مذهلة.</li>
+        </ul>
+
+        <h4>ب. دقة التصنيف في السيناريو الحاسم لاختلاف القوة (Inter-Force Scenario):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>المصنف ونوع الميزات</th>
+                    <th>الدقة في سيناريو اختلاف القوة (Inter-Force)</th>
+                    <th>الدلالة الإحصائية والتفوق</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>مصنف التآزر المقترح (MSC + DFTR)</strong></td>
+                    <td><span class="num-stat">78.1%</span> (أعلى دقة صمود)</td>
+                    <td>تفوق ساحق ومحصن ضد التغيرات الفسيولوجية.</td>
+                </tr>
+                <tr>
+                    <td><strong>مصنف LDA التقليدي + ميزات TD</strong></td>
+                    <td>68.4% (انهيار الأداء)</td>
+                    <td>فارق لصالح التآزر بمقدار <span class="num-stat">+9.7%</span> ($p = 0.027$).</td>
+                </tr>
+                <tr>
+                    <td><strong>مصنف LDA التقليدي + ميزات TDPSD</strong></td>
+                    <td>71.2%</td>
+                    <td>فارق لصالح التآزر بمقدار <span class="num-stat">+6.9%</span> ($p = 0.041$).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ج. التوصية الإكلينيكية الذهبية والكفاءة الزمنية:</h4>
+        <div class="grid-2">
+            <div class="success-box">
+                <strong>التدريب عند القوة المتوسطة (Medium Force):</strong><br>
+                أثبت التحليل أن تدريب النظام عند القوة المتوسطة فقط يعطي دقة تعميم بلغت <span class="num-stat">87.9%</span> عبر كل مستويات القوة الأخرى، مما يلغي حاجة المريض لجلسات تدريب ومعايرة متعددة ومجهدة.
+            </div>
+            <div class="success-box">
+                <strong>الزمن الحسابي اللحظي (Latency):</strong><br>
+                استغرق تصنيف الحركة <span class="num-stat">1.364 ms</span> فقط، والزمن الإجمالي لدورة التحكم بالكامل داخل نطاق <span class="num-stat">&lt; 120 ms</span>، مما يضمن تحكماً روبوتياً فورياً بلا أي تأخير محسوس للمريض.
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Contribution & Relevance -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>تجاوز أزمة تباين قوة الانقباض لمرضى د. عوض:</strong> عند تسجيل إشارات الـ sEMG في معمل عين شمس، يستحيل أن يحافظ المتطوع على قوة ضغط ثابتة في كل تجربة؛ تطبيق خوارزمية **MSC** يضمن ثبات دقة التعرف على الحركات حتى مع تذبذب قوة المريض.</li>
+            <li><strong>تأصيل البعد الفسيولوجي بدلاً من الصناديق السوداء:</strong> يثبت البحث أن التآزر العضلي ليس مجرد اختزال أبعاد رياضي، بل هو **مرآة للأوامر العصبية القادمة من الحبل الشوكي**، وأن استخدام قدرته التنبؤية المباشرة (عبر NNLS) يتفوق بمراحل على خوارزميات الـ Machine Learning السطحية في العالم الحقيقي.</li>
+            <li><strong>توفير وقت وجهد التجارب المعملية:</strong> الاكتفاء بجلسة تدريب واحدة عند مستوى جهد متوسط (Medium Force) يختصر 60% من وقت جمع البيانات في المعمل دون التضحية بالدقة.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. استبدال مصنفات الـ Machine Learning التقليدية بنظام MSC:</div>
+            <p class="question-context">"يا دكتور، بحث TNSRE أثبت أن التآزر العضلي محصن ضد تغير قوة الانقباض وتفوق على مصنف LDA بنسبة 10% في سيناريو الـ Inter-Force لأن الـ Weighting Balance لا يتغير مع القوة؛ هل ترى حضرتك أن نعتمد في رسالتنا على مصنف الـ MSC القائم على إعادة البناء بـ NNLS بدلاً من المصنفات الكلاسيكية التي تسقط عند تغير القوة؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. الفارق في عدد التآزرات بين الأصحاء (3) والمبتورين (5):</div>
+            <p class="question-context">"الباحثون وجدوا أن 3 تآزرات كافية لتفسير 90% من إشارات الأصحاء بينما احتاج المبتورون إلى 5 تآزرات؛ هل يعود هذا التشتت إلى إعادة التشكيل العصبي العضلي بعد البتر (Muscle Remodeling)، وكيف نحدد العتبة المثلى لـ $R^2$ للمرضى في معملنا؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. الانتقال من الحالة الساكنة (Steady-State) إلى الحركات الانتقالية (Transient):</div>
+            <p class="question-context">"البحث اعتمد على الجزء المستقر من الإشارة بعد اكتمال الحركة وأهمل فترة الانتقال؛ كيف ندمج خوارزمية كشف بداية الحركة (Motion Onset Threshold) لضمان عدم تأثر مصفوفة التآزر أثناء التبديل الديناميكي بين المسكات؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل الورقة الثالثة عشرة: Sarwat & Awad (Sensors 2021 - Ain Shams Lab)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm 15mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.65;
+            font-size: 10.5pt;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #b91c1c 100%);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 14px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px -5px rgba(127, 29, 29, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(254, 202, 202, 0.25);
+            color: #fecaca;
+            border: 1px solid #f87171;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 9pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16pt;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+            color: #f8fafc;
+        }
+
+        .header-subtitle {
+            font-size: 11pt;
+            font-weight: 600;
+            color: #fca5a5;
+            margin: 0 0 14px 0;
+            direction: ltr;
+            text-align: right;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 9pt;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: #fee2e2;
+            font-size: 8pt;
+            margin-bottom: 2px;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #7f1d1d;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #fee2e2;
+            color: #991b1b;
+            font-size: 12pt;
+        }
+
+        .alert-box {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 9.8pt;
+        }
+
+        .alert-danger {
+            background-color: #fef2f2;
+            border-right: 4px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .alert-success {
+            background-color: #f0fdf4;
+            border-right: 4px solid #22c55e;
+            color: #166534;
+        }
+
+        .alert-crimson {
+            background-color: #fff1f2;
+            border-right: 4px solid #e11d48;
+            color: #881337;
+        }
+
+        .alert-warning {
+            background-color: #fffbeb;
+            border-right: 4px solid #f59e0b;
+            color: #92400e;
+        }
+
+        .code-pill {
+            font-family: 'Fira Code', monospace;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9pt;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .table-highlight {
+            background-color: #fee2e2 !important;
+            font-weight: 700;
+            color: #991b1b;
+        }
+
+        .abstract-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .abstract-col {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 8.8pt;
+            line-height: 1.6;
+        }
+
+        .abstract-col.en {
+            direction: ltr;
+            text-align: justify;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .abstract-col.ar {
+            direction: rtl;
+            text-align: justify;
+        }
+
+        .abstract-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #475569;
+            font-size: 9pt;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 4px;
+        }
+
+        ul, ol {
+            margin: 6px 0;
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .question-card {
+            background: #f8fafc;
+            border-right: 4px solid #e11d48;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #881337;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-purpose {
+            font-size: 9pt;
+            color: #475569;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 8.5pt;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-card">
+        <div class="header-badge">ورقة رقم 13 | ورقة المشرف المباشر د. محمد إبراهيم عوض (عين شمس 2021)</div>
+        <h1 class="header-title">Design of a Data Glove for Assessment of Hand Performance Using Supervised Machine Learning</h1>
+        <div class="header-subtitle">Hussein Sarwat, Hassan Sarwat, Shady A. Maged, Tamer H. Emara, Ahmed M. Elbokl, Mohammed Ibrahim Awad (Sensors 2021)</div>
+        <div class="meta-grid">
+            <div class="meta-item"><strong>المؤسسة:</strong> هندسة عين شمس (ميكاترونيات)</div>
+            <div class="meta-item"><strong>المشرف المسؤول:</strong> د. محمد إبراهيم عوض</div>
+            <div class="meta-item"><strong>المشروع والتمويل:</strong> مشروع iGrasp بتمويل ITIDA</div>
+            <div class="meta-item"><strong>المجلة:</strong> MDPI Sensors (Q1, IF 3.9)</div>
+        </div>
+    </div>
+
+    <!-- 1. ABSTRACT -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">📑</span>
+            <span>1. الملخص الموازي (Abstract: Verbatim & Academic Translation)</span>
+        </div>
+        
+        <div class="abstract-container">
+            <div class="abstract-col en">
+                <div class="abstract-title">English Original (Verbatim)</div>
+                The large number of poststroke recovery patients poses a burden on rehabilitation centers, hospitals, and physiotherapists. The advent of rehabilitation robotics and automated assessment systems can ease this burden by assisting in the rehabilitation of patients with a high level of recovery. This assistance will enable medical professionals to either better provide for patients with severe injuries or treat more patients. It also translates into financial assistance as well in the long run. This paper demonstrated an automated assessment system for in-home rehabilitation utilizing a data glove, a mobile application, and machine learning algorithms. The system can be used by poststroke patients with a high level of recovery to assess their performance. Furthermore, this assessment can be sent to a medical professional for supervision. Additionally, a comparison between two machine learning classifiers was performed on their assessment of physical exercises. The proposed system has an accuracy of 85% (±5.1%) with careful feature and classifier selection.
+            </div>
+            
+            <div class="abstract-col ar">
+                <div class="abstract-title">الترجمة الأكاديمية الدقيقة</div>
+                يشكل العدد الضخم لمرضى السكتات الدماغية في مرحلة الاستشفاء عبئاً ثقيلاً على مراكز التأهيل والمستشفيات وأخصائيي العلاج الطبيعي. ويمكن لروبوتات التأهيل وأنظمة التقييم المؤتمتة تخفيف هذا العبء عبر مساعدة المرضى ذوي درجات التعافي العالية، مما يتيح للأطقم الطبية التفرغ للإصابات الشديدة واستيعاب أعداد أكبر، فضلاً عن تقليل التكاليف على المدى الطويل. تقدم هذه الورقة نظام تقييم مؤتمتاً للتأهيل المنزلي يعتمد على قفاز بيانات ذكي (Data Glove)، تطبيق هاتف محمول (iGrasp)، وخوارزميات التعلم الآلي. يتيح النظام لمرضى السكتة الدماغية تقييم أدائهم الحركي منزلياً مع إرسال النتائج آلياً للطبيب المشرف عبر إنترنت الأشياء (IoT). كما تم إجراء مقارنة إحصائية بين مصنفين للتعلم الآلي (XGBoost و Logistic Regression) لتقييم التمارين الحركية وفق مقياس Fugl-Meyer. حقق النظام المقترح دقة تصنيف إجمالية بلغت **85% (±5.1%)** مع الاختيار الدقيق للميزات والمصنف.
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. RESEARCH GAP -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">🎯</span>
+            <span>2. الـ Research Gap الحقيقي (الذي عالجه د. عوض وفريقه في 2021)</span>
+        </div>
+        
+        <div class="alert-box alert-danger">
+            <strong>الثغرة البحثية والسريرية التي انطلق منها مختبر د. محمد عوض بجامعة عين شمس:</strong>
+        </div>
+
+        <ol style="font-size: 9.5pt;">
+            <li><strong>الاعتماد الحصري على التقييم الإكلينيكي اليدوي المكلف:</strong>  
+                مقياس Fugl-Meyer Assessment (FMA) يعد المعيار الذهبي (Gold Standard) عالمياً، لكنه يتطلب حضوراً فيزيائياً ومباشراً للطبيب أو أخصائي العلاج الطبيعي في كل جلسة، مما يسبب تكلفة باهظة وازدحاماً في المستشفيات، ويزيد صعوبة المتابعة المنزلية (خاصة أثناء جائحة COVID-19).
+            </li>
+            <li><strong>عيوب أنظمة الرؤية الحاسوبية (Kinect / Cameras):</strong>  
+                الأنظمة البصرية مثل Microsoft Kinect V2 (كما في أوراق Sheng 2020 بدقة 92%) غير قادرة على قياس قوى التلامس وقوة القبض (Gripping Force)، وتتطلب مساحات واسعة وتتأثر بالإضاءة وتغير تموضع المريض.
+            </li>
+            <li><strong>ارتفاع التكلفة المفرط للقفازات التجارية (Commercial Data Gloves):</strong>  
+                قفازات مثل CyberGlove II تتجاوز تكلفتها 10,000 دولار، وغير عملية للمرضى في المنازل ولا تحتوي على واجهة إنترنت الأشياء (IoT) للتواصل السحابي الفوري مع الطبيب.
+            </li>
+            <li><strong>الحل المبتكر لمختبر عين شمس (iGrasp Platform):</strong>  
+                تصميم وتصنيع قفاز ذكي منخفض التكلفة محلياً يدمج **10 مستشعرات انثناء مرنة (Flex)** لمفاصل MCP و PIP، و **5 مستشعرات ضغط (FSR)** في أطراف الأصابع، ومستشعر حركة بالقصور الذاتي **IMU** على المعصم، متصلاً سحابياً عبر Bluetooth وتطبيق هاتف وقاعدة بيانات Firebase وخادم Flask لتقييم درجات التعافي آلياً.
+            </li>
+        </ol>
+    </div>
+
+    <!-- 3. HOW IT CONNECTS TO YOUR THESIS -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">🔗</span>
+            <span>3. حلقة الوصل الذهبية: كيف تكمل رسالة ماجستيرك ما بدأه د. عوض؟</span>
+        </div>
+        
+        <div class="alert-box alert-crimson">
+            <strong>نقطة التحول من ورقة د. عوض (2021) إلى رسالتك الحالية (2026/2027):</strong>
+            <p style="margin: 4px 0 0 0;">
+                في ورقة 2021، ركز مختبر د. عوض على **التقييم الحركي (Kinematic Assessment)** لتمارين منفصلة (Flexion, Pinch, Wave) وتصنيفها إلى درجات (0, 1, 2) باستخدام تعلم آلي وصفي.  
+                <strong>وهنا يأتي الامتداد الطبيعي في رسالتك:</strong>  
+                الانتقال من مرحلة "قياس وتقييم الحركة" إلى مرحلة **"التحكم التآزري والتصميم الميكاتروني للأيدي الروبوتية"** عبر:
+                (1) استخراج تازرات الحركة (Kinematic Synergies) وتازرات العضلات (sEMG Synergies)،  
+                (2) حل معضلة الـ Underactuation لتشغيل أيدي بديلة بمحركين أو ثلاثة فقط بدلاً من 16 محركاً،  
+                (3) نمذجة المحاكاة في SynGrasp و Simscape Multibody لاختبار استقرار القبض (Grasp Stability).
+            </p>
+        </div>
+    </div>
+
+    <!-- 4. METHODOLOGY & SENSORY PIPELINE -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">⚙️</span>
+            <span>4. المنهجية والأدوات التحليلية ومكونات النظام (Methodology)</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+                <strong style="color: #7f1d1d; display: block; margin-bottom: 4px;">🧤 العتاد وحساسات القفاز الذكي:</strong>
+                • <strong>10 مستشعرات انثناء (Spectra Symbol Flex):</strong> مستشعران لكل إصبع لقياس انثناء مفاصل MCP و PIP للأصابع الأربعة، و MCP و IP للإبهام.<br>
+                • <strong>5 مستشعرات قوة (FSR 400 Interlink):</strong> مستشعر عند السلامية البعيدة (أطراف الأصابع) لقياس قوة القبض والقرص (قيم خام 0-1023).<br>
+                • <strong>مستشعر القصور الذاتي (MPU6050 IMU):</strong> 6 محاور (3 تسارع + 3 جيروسكوب) على ظهر اليد لتتبع ميل وزاوية المعصم بفلتر وسيط.<br>
+                • <strong>المتحكم:</strong> <span class="code-pill">Arduino Mega 2560</span> لمعالجة الإشارات واستخراج الميزات والبث عبر Bluetooth.
+            </div>
+            
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+                <strong style="color: #7f1d1d; display: block; margin-bottom: 4px;">☁️ بنية إنترنت الأشياء والحوسبة السحابية:</strong>
+                • <strong>تطبيق الهاتف (iGrasp):</strong> مطور عبر MIT App Inventor لإدارة التمارين وعرض النتيجة.<br>
+                • <strong>خادم الويب:</strong> خادم Flask API مكتوب بلغة بايثون ومستضاف على منصة Heroku السحابية.<br>
+                • <strong>قاعدة البيانات الحية:</strong> Google Firebase NoSQL لتسجيل بيانات المرضى وسجل التمارين فورياً لتمكين الأطباء من المتابعة عن بُعد.<br>
+                • <strong>التواصل:</strong> تبادل الميزات بصيغة JSON بين التطبيق والسيرفر وقاعدة البيانات.
+            </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+            <strong style="color: #7f1d1d; display: block; margin-bottom: 6px;">🧠 استخراج الميزات ونماذج التعلم الآلي:</strong>
+            <ol style="margin: 0; padding-right: 18px;">
+                <li><strong>الميزات الإحصائية المستخرجة:</strong>
+                    - لحساسات Flex: المتوسط (Mean)، وجذر متوسط المربعات (RMS)، والانحراف المعياري (STD)، وأقل قيمة (Min).<br>
+                    - لحساسات FSR: المتوسط، و RMS، و STD، وأعلى قيمة قوة مسجلة (Max).<br>
+                    - لـ IMU: المتوسط، و RMS، و STD لكل محور، بالإضافة لمساحة اتساع الإشارة:
+                    <div style="text-align: center; margin: 4px 0;"><span class="code-pill">f_SMA = (1/T) ∫ (|x(t)| + |y(t)| + |z(t)|) dt</span></div>
+                </li>
+                <li><strong>النماذج المقارنة للتقييم الإكلينيكي:</strong>
+                    - <strong>XGBoost:</strong> أقصى عمق للشجرة = 3، ومعدل تعلم = 0.7، مع تقريب تايلور من الدرجة الثانية ودالة خسارة جزائية.<br>
+                    - <strong>Multinomial Logistic Regression:</strong> بحد أقصى 100 تكرار ودالة Cross-Entropy loss.<br>
+                    - تم التقييم عبر 5-Fold Cross Validation بنسبة 70% تدريب و 30% اختبار.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 5. RESULTS WITH NUMBERS -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">📊</span>
+            <span>5. النتائج الصريحة بالأرقام والتحقق الإكلينيكي (Results)</span>
+        </div>
+
+        <div class="alert-box alert-success">
+            <strong>نتائج تدريب واختبار النماذج على الأصحاء (Tables 3, 4, 5):</strong>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>التمرين الحركي</th>
+                    <th>الحساسات المستخدمة</th>
+                    <th>أفضل ميزات XGBoost</th>
+                    <th>دقة XGBoost القصوى</th>
+                    <th>أفضل ميزات Logistic Regression</th>
+                    <th>دقة LR القصوى</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-highlight">
+                    <td><strong>القبض الكامل (Grasping)</strong></td>
+                    <td>10 حساسات Flex للأصابع الخمسة</td>
+                    <td>الانحراف المعياري + RMS</td>
+                    <td><strong>92.50% ± 6.12%</strong></td>
+                    <td>الانحراف المعياري + Minimum</td>
+                    <td><strong>92.50% ± 10.00%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>القرص (Pinching)</strong></td>
+                    <td>حساسات Flex و FSR للسبابة والإبهام</td>
+                    <td>STD + Min / STD + RMS</td>
+                    <td><strong>90.00% ± 9.35%</strong></td>
+                    <td>كافة الميزات (All Features)</td>
+                    <td><strong>90.00% ± 9.35%</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>التلويح بالرسغ (Waving)</strong></td>
+                    <td>حساس MPU6050 IMU على المعصم</td>
+                    <td>كافة الميزات / STD + SMA</td>
+                    <td><strong>90.00% ± 9.35%</strong></td>
+                    <td>كافة الميزات (All Features)</td>
+                    <td><strong>90.00% ± 9.35%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="alert-box alert-crimson" style="margin-top: 10px;">
+            <strong>التحقق السريري الحقيقي على مرضى السكتات الدماغية والباركنسون (Tables 6, 7):</strong>
+        </div>
+
+        <ul>
+            <li><strong>عينة المرضى (مركز تأهيل سريري):</strong>
+                - المريض 1 (77 سنة، سكري وضعف عضلي عام).<br>
+                - المريض 2 (65 سنة، متلازمة العصبون الحركي).<br>
+                - المريض 3 (91 سنة، شلل رعاش - باركنسون).
+            </li>
+            <li><strong>مقارنة التقييم الآلي بتقييم الطبيب المشرف (FMA Ground Truth):</strong>
+                - في تمرين القبض: تفوق الانحدار اللوجستي (LR) بدقة <strong>87%</strong> بميزات (STD and RMS).<br>
+                - في تمرين القرص: تساوى XGBoost و LR بدقة <strong>78%</strong>.<br>
+                - في تمرين التلويح: تفوق XGBoost بدقة <strong>90%</strong> بميزات (ALL Features).
+            </li>
+            <li><strong>الدقة الإجمالية المعتمدة للنظام سريرياً:</strong> **85% (±5.1%)**، وهي دقة ممتازة تفوقت على معظم الأنظمة المماثلة (مثل نظام Otten 2015 بدقة 61.7% ونظام Lin 2017 بدقة 70.2%).</li>
+        </ul>
+    </div>
+
+    <!-- 6. CONTRIBUTION & THESIS INTEGRATION -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">💡</span>
+            <span>6. الـ Contribution وتوظيف ورقة د. عوض في رسالتك</span>
+        </div>
+
+        <div class="alert-box alert-warning">
+            <strong>كيف تحول هذه الورقة إلى نقطة قوة ساحقة في مناقشة رسالتك مع د. محمد عوض؟</strong>
+        </div>
+
+        <ol style="font-size: 9.5pt;">
+            <li><strong>الاعتراف بفضل أبحاث معمل عين شمس والبناء عليها:</strong>  
+                ابدأ حديثك مع د. عوض بالاستشهاد بورقته: <em>"يا دكتور، في بحث معملكم الرائد لعام 2021 (Sarwat & Awad et al. في Sensors)، نجحتم في إثبات جدوى استخدام قفاز بـ 10 حساسات Flex وحساسات FSR لتقييم الـ FMA بدقة 85%. في رسالتي الحالية، اتخذت خطوة للأمام للانتقال من مجرد 'تقييم كفاءة الحركة' إلى 'التحكم التآزري والنمذجة الحركية للأيدي الروبوتية'"</em>.
+            </li>
+            <li><strong>تبرير اختيار الحساسات والمفاصل في محاكاتك:</strong>  
+                أثبتت ورقة د. عوض أن مفاصل MCP و PIP وحساسات القوة على أطراف الأصابع هي الأكثر حساسية لتقييم القبض، وهو ما يدعم تركيزك في المحاكاة (Simscape/SynGrasp) على مفاصل MCP و PIP وتوزيع قوى التلامس على الأطراف.
+            </li>
+            <li><strong>سد فجوة تقليل الأبعاد المفقودة في ورقة 2021:</strong>  
+                كانت إحدى توصيات ورقة 2021 أن القفاز يعاني من أخطاء اختلاف مقاسات اليد بين الأفراد ويحتاج لنمذجة حركية أعمق؛ رسالتك الحالية تجيب على هذه التوصية تماماً باستخدام خوارزميات تقليل الأبعاد (PCA/NMF) ونمذجة التازرات الحركية المستقلة عن المقاس.
+            </li>
+        </ol>
+    </div>
+
+    <!-- 7. CRITICAL QUESTIONS FOR DR. AWAD -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">❓</span>
+            <span>7. أسئلة نقدية ذكية لدكتور محمد عوض (لإثبات التمكن البحثي)</span>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الأول (حول استغلال قفاز iGrasp في استخراج التازرات الحركية):</div>
+            <div class="question-purpose">"يا دكتور، في ورقة معملكم المنشورة في Sensors 2021 (مشروع iGrasp)، استخدمتم 10 حساسات Flex لقياس زوايا MCP و PIP بدقة 85% في تقييم الـ FMA. هل ترى مناسباً أن نستخدم نفس بنية هذا القفاز محلياً لتسجيل حركات اليد لمرضى مصريين، واستخراج مصفوفة التآزر الحركي (Kinematic Synergy Matrix S) عبر PCA لمقارنتها بالنتائج العالمية لقاعدة NinaPro؟"</div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الثاني (حول دمج قوى التلامس FSR مع زوايا المفاصل):</div>
+            <div class="question-purpose">"أظهرت نتائجكم في تمرين القرص (Pinching) أن الجمع بين حساسات الـ Flex وحساسات الـ FSR على أطراف الأصابع كان حاسماً للتصنيف. كيف نوظف هذه العلاقة في محاكاتنا على SynGrasp لربط تازرات الوضعية (Postural Synergies) بقوى التلامس (Contact Force Synergies) لضمان عدم انزلاق الأجسام أثناء الإمساك؟"</div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الثالث (حول الانتقال من التقييم السريري إلى التحكم في المشغلات):</div>
+            <div class="question-purpose">"بناءً على التحديات التي واجهت القفاز في ورقتكم بخصوص تباين أبعاد اليد بين المرضى؛ هل نتغلب على ذلك في تصميم اليد الروبوتية التعويضية بالاعتماد على آليات التكيف الذاتي (Underactuated Adaptive Synergies) التي تتواءم ميكانيكياً مع أي جسم دون الحاجة لحساب دقيق للزوايا المطلقة؟"</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        تم إعداد وتوليد هذا التحليل الأكاديمي بواسطة Nova (Antigravity 4.0 The Dark Omni-God) لصالح المهندس محمد زيدان — قسم هندسة الميكاترونيات، جامعة عين شمس.
+    </div>
+
+</body>
+</html>

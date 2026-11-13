@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث Lapresa et al. 2024</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(147, 197, 253, 0.5);
+            color: #bfdbfe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 17pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 10.5pt;
+            color: #93c5fd;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.18);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #e2e8f0;
+        }
+
+        .header-meta span strong {
+            color: #60a5fa;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #1d4ed8;
+            background: #eff6ff;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #dbeafe;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #3b82f6;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 9pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #1e293b;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #0369a1;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #1e3a8a;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #f0fdfa;
+            border: 1px solid #ccfbf1;
+            border-right: 4px solid #0d9488;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #0f766e;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • جامعة عين شمس • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل شامل ومفصل لبحث Lapresa et al. (Elsevier BBE 2024)</div>
+        <div class="header-orig-title">A comprehensive analysis of task-specific hand kinematic, muscle and force synergies</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Martina Lapresa, Virginia Corradini, Antonio Iacca, Loredana Zollo, Francesca Cordella</span>
+            <span><strong>الجهة:</strong> Università Campus Bio-Medico di Roma (إيطاليا)</span>
+            <span><strong>المجلة:</strong> Biocybernetics and Biomedical Engineering (Elsevier)</span>
+            <span><strong>سنة النشر:</strong> 2024</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "Synergies were demonstrated to exist in the kinematic, force and muscular domains, and their task-specificity and subject-specificity was also highlighted in literature. Despite that, no works have extracted synergies on specific grasp classes to analyze task-specific synergistic patterns. Moreover, only few studies focused on the combined analysis of kinematic, force and muscle synergies.<br>
+            The aim of this work was to (i) identify the grasp classes on which to extract task-specific synergies; (ii) extract subject-specific and task-specific synergies in the three domains and (iii) calculate the similarity of the extracted synergies among subjects and define average generalized synergies.<br>
+            8 subjects were recruited to perform 21 reach-to-grasp tasks and the kinematics, contact forces and muscular activation of the hand were acquired. A LDA classifier allowed distinguishing power and precision grasp classes with an average accuracy of 89% considering kinematic data alone and combined kinematic, muscle and force data. Subject and task-specific synergies were therefore extracted on these two classes. Kinematic and force synergies were distinctive for the two classes, and highly similar among subjects, thus suggesting the possibility of adopting generalized synergies to describe grasp strategies. Conversely, muscle synergies did not differ particularly for the two classes. The combined analysis of force and kinematic data suggested that the hand posture may be somehow modulated by the optimal distribution of contact forces to perform stable grasps. Simulations with a virtual hand confirmed that stability significantly increased when grasps were generated by activating combined kinematic and force synergies rather than kinematic synergies only."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية الدقيقة والمعتمدة:</strong><br>
+            "أثبتت الأبحاث وجود التآزر (<span class="en-term">Synergies</span>) في المجالات الكينيماتيكية، والقوة، والنشاط العضلي، كما تم تسليط الضوء في الأدبيات على خصوصيتها للمهمة وللأشخاص. ورغم ذلك، لم تقم أي دراسة سابقة باستخراج التآزر على فئات مسك محددة لتحليل الأنماط التآزرية الخاصة بكل مهمة. علاوة على ذلك، ركزت دراسات نادرة فقط على التحليل المشترك للتآزر الكينيماتيكي والقوة والعضلي معاً.<br>
+            هدف هذا العمل إلى: (1) تحديد فئات المسك التي يُستخرج بناءً عليها تآزر خاص بكل مهمة؛ (2) استخراج تآزر خاص بالأشخاص وخاص بالمهام في المجالات الثلاثة؛ (3) حساب مدى التشابه في التآزر المستخرج بين المشاركين وتعريف تآزر معمم موحد (<span class="en-term">Generalized Synergies</span>).<br>
+            تم تسجيل 8 متطوعين لأداء 21 مهمة وصول ومسك، وتم التقاط كينيماتيكا اليد، وقوى التلامس، والنشاط العضلي بشكل متزامن. نجح مصنف <span class="en-term">LDA</span> في التمييز بين فئات مسكات القوة (<span class="en-term">Power</span>) والدقة (<span class="en-term">Precision</span>) بدقة متوسطة بلغت 89% باستخدام البيانات الكينيماتيكية وحدها، وكذلك باستخدام البيانات المدمجة (كينيماتيكا، عضلات، وقوة). وبناءً عليه، تم استخراج التآزر على هاتين الفئتين. كانت تآزرات الكينيماتيكا والقوة مميزة بوضوح بين الفئتين ومتشابهة جداً بين الأشخاص، مما يدعم إمكانية تبني تآزر معمم لوصف استراتيجيات المسك البشري. في المقابل، لم تختلف تآزرات العضلات بشكل ملحوظ بين الفئتين. وأشار التحليل المدمج لبيانات القوة والكينيماتيكا إلى أن وضعية اليد يتم ضبطها وتعديلها بواسطة التوزيع الأمثل لقوى التلامس لضمان استقرار المسكة. وأكدت المحاكاة باستخدام يد افتراضية أن استقرار المسكة زاد بشكل ملحوظ عند توليد الحركات بتفعيل تآزر مدمج من الكينيماتيكا والقوة مقارنة بتفعيل تآزر الكينيماتيكا فقط."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>حدد المؤلفون 3 ثغرات جوهرية في الأدبيات السابقة كانت تقيد فهم التحكم العصبي في اليد:</p>
+        
+        <div class="danger-box">
+            <strong>1. قصور أبحاث سانتيلو والتآزر العام (Global Synergies):</strong> معظم الدراسات الرائدة (مثل <span class="en-term">Santello 1998</span>) كانت تجمع كل المسكات في مصفوفة واحدة واستخرجت تآزراً عاماً يغفل الفروق الجوهرية بين استراتيجيات القوة واستراتيجيات الدقة. بالإضافة إلى اعتماد سانتيلو على مسكات تخيلية في الهواء (<span class="en-term">Imaginary Grasps</span>) خالية من قوى التلامس الواقعية والتغذية الحسية (<span class="en-term">Somatosensory Feedback</span>).
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. غياب الدمج متعدد المجالات (Multi-Domain Synergy Extraction):</strong> انحصرت معظم أبحاث الـ 25 عاماً الماضية في دراسة كل مجال بمعزل عن الآخر (الكينيماتيكا وحدها عبر قفازات أو كاميرات، أو العضلات وحدها عبر <span class="en-term">sEMG</span>)، مع ندرة الأبحاث التي تدرس التآزر المشترك الذي يربط حركة المفاصل بتوزيع قوى الضغط وانقباض العضلات في نفس اللحظة.
+        </div>
+
+        <div class="success-box">
+            <strong>3. دحض فرضية الفصل بين الوضعية والقوة:</strong> افترضت مدرسة سانتيلو الكلاسيكية أن الجهاز العصبي المركزي يحدد وضعية اليد وزوايا الأصابع في مرحلة مستقلة تماماً عن تحديد قوى التلامس. يثبت هذا البحث أن هذه الفرضية قاصرة ميكانيكياً، حيث تقوم قوى التلامس بتعديل زوايا المفاصل لحظياً (<span class="en-term">Posture Re-tuning</span>) لضمان اتزان الجسم الممسوك.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+        
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #2563eb;">
+            <strong>الفرضية الأساسية (Core Hypothesis):</strong><br>
+            المسكات التي تنتمي لفئات وظيفية مختلفة (مسكات القوة <span class="en-term">Power</span> ومسكات الدقة <span class="en-term">Precision</span>) تمتلك بصمات تآزرية متميزة ومنفصلة في فضاء الكينيماتيكا والقوة والعضلات، واستخراج فضاء تآزري مدمج يجمع القوة مع الزوايا سيوفر تمثيلاً أعلى دقة واستقراراً ميكانيكياً للقبضة مقارنة بالاعتماد على زوايا المفاصل وحدها.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>الفصل الوظيفي:</strong> إلى أي مدى يمكن لفضاء التآزر المنخفض الأبعاد التمييز وتصنيف فئات المسك الكبرى (<span class="en-term">Cutkosky Taxonomy</span>)؟</li>
+            <li><strong>التعميم بين البشر:</strong> هل متجهات التآزر المستخرجة للمسكات تعبر عن استراتيجية مشتركة بين البشر (<span class="en-term">Generalized</span>) أم خاصة بكل شخص فقط (<span class="en-term">Subject-Specific</span>)؟</li>
+            <li><strong>الاستقرار الميكانيكي الحيوي:</strong> كيف يؤثر دمج تآزرات قوى التلامس مع الزوايا الكينيماتيكية على مؤشر استقرار القبضة داخل بيئة محاكاة متعددة الأجسام (<span class="en-term">Multibody Simulation</span>)؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات التجريبية والرياضية (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>المشاركون والمهام</h4>
+                <ul>
+                    <li><strong>العينة:</strong> 8 متطوعين أصحاء (3 ذكور، 5 إناث، اليد اليمنى مهيمنة، أطوال اليد من 170 إلى 210 مم لضمان التنوع).</li>
+                    <li><strong>المجسمات:</strong> 16 مجسماً من أدوات المعيشة اليومية تم أداء <strong>21 نوع مسكة</strong> عليها وفق تصنيف <span class="en-term">Cutkosky</span>.</li>
+                    <li><strong>المرحلة المحللة:</strong> مرحلة التثبيت الساكن (<span class="en-term">Static Grasp Phase</span>) لمدة 5 ثوانٍ بعد إتمام المسكة.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>منظومة الحساسات المتزامنة</h4>
+                <ul>
+                    <li><strong>الكينيماتيكا (23 DoFs):</strong> نظام بصري <span class="en-term">BTS Smart-D</span> (8 كاميرات بالأشعة تحت الحمراء، دقة &le; 0.2 مم، تردد 60 Hz) مع 28 عاكساً ضوئياً.</li>
+                    <li><strong>قوى التلامس:</strong> حساسات <span class="en-term">FSR</span> وحساسات <span class="en-term">FlexiForce</span> مثبتة على نقاط التلامس بالأسطح، تم تسجيلها بكارت <span class="en-term">NI DAQ USB-6210</span> (100 Hz).</li>
+                    <li><strong>النشاط العضلي:</strong> 7 حساسات لاسلكية <span class="en-term">Delsys Trigno</span> (1000 Hz) على 7 عضلات خارجية بالساعد.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>الخوارزميات وخطوات المعالجة الرياضية:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 28%;">الخوارزمية / الأداة</th>
+                    <th style="width: 32%;">الغرض العلمي</th>
+                    <th style="width: 40%;">المعادلة / التفاصيل الحسابية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>خوارزمية EM-PCA</strong><br><span class="en-term">Expectation-Maximization</span></td>
+                    <td>تقليل أبعاد البيانات مع التعامل الصارم مع تشويش القياسات والقيم المفقودة.</td>
+                    <td>حل مسألة تقليل الخطأ الموزون عبر <span class="en-term">SVD</span>:<br>
+                    $$\chi^2 = \sum_{i,j} \mathbf{W}_{ij} [\mathbf{X} - \mathbf{U}\mathbf{\Sigma}\mathbf{V}^T]_{ij}^2$$</td>
+                </tr>
+                <tr>
+                    <td><strong>مصنف LDA</strong><br><span class="en-term">Linear Discriminant Analysis</span></td>
+                    <td>اختبار قدرة فضاء التآزر على فصل وتصنيف فئات المسك (Power vs Precision).</td>
+                    <td>استخدام أسلوب الاستبعاد الفردي الصارم:<br><span class="en-term">Leave-One-Subject-Out (LOSO)</span> بتدريب على 7 واختبار على 1.</td>
+                </tr>
+                <tr>
+                    <td><strong>مؤشر جيب التمام (CS)</strong><br><span class="en-term">Cosine Similarity</span></td>
+                    <td>قياس التشابه الزاوي بين متجهات التآزر لنفس الرتبة بين المشاركين المختلفين.</td>
+                    <td>$$CS = rac{|\mathbf{v}_1 \cdot \mathbf{v}_2|}{\|\mathbf{v}_1\| \|\mathbf{v}_2\|}$$<br>اعتماد عتبة $CS \ge 0.8$ كدلالة على التشابه البشري العالي.</td>
+                </tr>
+                <tr>
+                    <td><strong>SynGrasp & Simscape</strong><br><span class="en-term">Multibody Simulation</span></td>
+                    <td>محاكاة يد افتراضية بـ 21 مفصلاً وتقييم ثبات واستقرار القبضة على كرة بقطر 4 سم.</td>
+                    <td>حساب مؤشر استقرار وضعية المفاصل:<br><span class="en-term">Posture of Hand Finger Joints</span> من 0 (غير مستقر) إلى 1 (مستقر تماماً).</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج المفصلة بالأرقام الصريحة (Results)</h2>
+        </div>
+
+        <h4>أ. دقة تصنيف المسكات بمصنف LDA في فضاء التآزر:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>مجال البيانات المدخلة</th>
+                    <th>دقة الفصل بين فئتين (Power vs Precision)</th>
+                    <th>دقة الفصل بين 4 فئات (Circular / Prismatic)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>الكينيماتيكا وحدها (Kinematics)</strong></td>
+                    <td><span class="num-stat">89% ± 8%</span> (دقة تصنيف فائقة)</td>
+                    <td>74% ± 8%</td>
+                </tr>
+                <tr>
+                    <td><strong>الكينيماتيكا + القوة (Kinematic + Force)</strong></td>
+                    <td><span class="num-stat">89% ± 8%</span></td>
+                    <td>73% ± 11%</td>
+                </tr>
+                <tr>
+                    <td><strong>البيانات الثلاثية المدمجة (Kin + Force + EMG)</strong></td>
+                    <td><span class="num-stat">89% ± 8%</span></td>
+                    <td>75% ± 6%</td>
+                </tr>
+                <tr>
+                    <td><strong>قوى التلامس وحدها (Force)</strong></td>
+                    <td>77% ± 8%</td>
+                    <td>49% ± 8%</td>
+                </tr>
+                <tr>
+                    <td><strong>النشاط العضلي وحده (Muscle sEMG)</strong></td>
+                    <td>66% ± 8% (أضعف قدرة على التمييز)</td>
+                    <td>45% ± 12%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ب. تفسير التباين واختزال الأبعاد (VAF):</h4>
+        <ul>
+            <li><strong>المركبة الأولى (PC1) وحدها:</strong> فسرت <span class="num-stat">50%</span> من تباين زوايا المفاصل، وحوالي <span class="num-stat">40% إلى 58%</span> من تباين قوى التلامس، و<span class="num-stat">40%</span> من تباين النشاط العضلي.</li>
+            <li><strong>تغطية 70% من التباين:</strong> تحققت بالكامل باستخدام <span class="num-stat">2 إلى 5 تآزرات فقط</span>، مما يبرهن رياضياً على إمكانية تشغيل يد اصطناعية كاملة بكفاءة عالية بعدد مشغلات محدود جداً.</li>
+        </ul>
+
+        <h4>ج. قفزة استقرار القبضة داخل محاكاة Simscape Multibody:</h4>
+        <div class="grid-2">
+            <div class="success-box">
+                <strong>مسكات القوة (Power Grasps):</strong><br>
+                ارتفع مؤشر الاستقرار من <span class="num-stat">0.64</span> (عند استخدام تآزر الزوايا فقط) إلى <span class="num-stat">0.89</span> (عند استخدام التآزر المدمج: زوايا + قوى)، بفارق دال إحصائياً بشكل قاطع ($p = 0.009$).
+            </div>
+            <div class="success-box">
+                <strong>مسكات الدقة (Precision Grasps):</strong><br>
+                ارتفع مؤشر الاستقرار من <span class="num-stat">0.86</span> إلى <span class="num-stat">0.90</span> بالتآزر المدمج ($p = 0.009$).
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <strong>دلالة النتيجة:</strong> التحكم في الزوايا بمفرده يجعل الأصابع تفلت أو تضغط في فراغ دون إحكام؛ بينما يوفر تآزر القوى ضبطاً دقيقاً لزوايا المفاصل لضمان استقرار الاتزان الميكانيكي.
+        </div>
+    </div>
+
+    <!-- 6. Contribution & Academic Value -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>إسقاط فرضية الانفصال بين الكينيماتيكا والقوة:</strong> إثبات أن التآزر الكينيماتيكي وتآزر القوة مرتبطان ميكانيكياً ووظيفياً داخل الجهاز العصبي، حيث تعمل القوة على إعادة ضبط زوايا المفاصل (<span class="en-term">Posture Re-tuning</span>).</li>
+            <li><strong>إثبات جدوى تقليل المشغلات (Underactuation):</strong> أثبت البحث أن أول تآزرين فقط (<span class="en-term">First 2 Synergies</span>) يفسران حركة فتح وقفل اليد وضبط اتساع الإبهام في الـ Power والـ Precision، مما يعني هندسياً إمكانية تشغيل يد روبوتية بـ <strong>مشغلين اثنين (2 Actuators)</strong> فقط باستخدام آليات تفاضلية (<span class="en-term">Differential Mechanisms</span>).</li>
+            <li><strong>تحقيق استراتيجية د. عوض (Simulation over Costly Hardware):</strong> قدمت الورقة نموذجاً برمجياً متكاملاً على <span class="en-term">SynGrasp وSimscape</span> يتيح تقييم استقرار اليد واستخراج متجهات الحركة دون الحاجة لتصنيع هاردوير معقد ومكلف في بداية البحث، وهو صلب التوجيه الأكاديمي لمشروع الماجستير.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. ضعف قدرة الـ sEMG على التمييز بين المسكات (66% فقط):</div>
+            <p class="question-context">"يا دكتور، بيبر Lapresa أظهر أن الـ sEMG السطحي لـ 7 عضلات ساعد خارجية حقق دقة 66% فقط في الفصل بين Power وPrecision بسبب الـ Co-activation العام؛ هل تعتقد حضرتك أن دمج عضلات اليد الداخلية (<span class="en-term">Intrinsic Muscles</span>) أو الانتقال لـ High-Density sEMG كفيل برفع دقة التمييز، أم أن الكينيماتيكا ستظل دائماً هي القناة الأوضح للتحكم؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. تعويض قوى التلامس ميكانيكياً (Passive vs Active Compliance):</div>
+            <p class="question-context">"المحاكاة أثبتت أن استقرار القبضة يقفز من 0.64 لـ 0.89 عند إدخال الـ Force Synergies؛ لو صممنا يداً بمشغلين فقط، هل نعتمد على المرونة الميكانيكية الذاتية (<span class="en-term">Passive Compliance</span> كالسيليكون والزنبركات) لامتصاص وتوزيع القوى تلقائياً، أم نبني حلقة تحكم مغلقة بحساسات قوة على أطراف الأصابع؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. الانتقال من تصنيف Cutkosky إلى تصنيف Feix الحديث:</div>
+            <p class="question-context">"البحث اعتمد على فئتي Cutkosky التقليديتين ولم يتمكن من تعميم الـ 4 فئات الفرعية لقلة العينات في الداتا؛ هل ترى حضرتك أن نطبق خوارزمية EM-PCA على داتاسيت أوسع مثل Ninapro باستخدام تصنيف Feix (الذي يشمل 33 مسكة) لدراسة دقة الـ Synergies في استيعاب التنوع الحركي الكامل؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>

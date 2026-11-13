@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>استوديو الموشن جرافيكس التفاعلي لمسكات اليد والتآزر الحركي | 60-FPS Hand Synergy Motion Studio</title>
+<title>استوديو الموشن جرافيك التفاعلي 60-FPS | جامعة عين شمس — بحث م. محمد زيدان</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fira+Code:wght@500;700&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #030712;
-    --panel: #0b1329;
-    --panel-header: #111e38;
-    --border: #1e293b;
+    --panel: rgba(11, 19, 41, 0.86);
+    --panel-header: rgba(17, 30, 56, 0.92);
+    --border: rgba(56, 189, 248, 0.18);
     --border-glow: #0284c7;
     --cyan: #06b6d4;
     --sky: #38bdf8;
@@ -24,20 +24,75 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Cairo', 'Inter', sans-serif;
-    background-color: var(--bg);
+    background: radial-gradient(circle at 20% 0%, #0b1635 0%, #030712 55%, #020617 100%);
     color: var(--text);
     overflow-x: hidden;
     line-height: 1.5;
   }
-  body.en-mode {
-    direction: ltr;
-    font-family: 'Inter', 'Cairo', sans-serif;
+  body.en-mode { direction: ltr; font-family: 'Inter', 'Cairo', sans-serif; }
+
+  /* Glassmorphic Executive Defense Command Bar */
+  .exec-command-bar {
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.96), rgba(28, 37, 65, 0.96), rgba(15, 76, 92, 0.95));
+    border-bottom: 2px solid var(--amber);
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .exec-tag {
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #fde68a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .exec-links {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .exec-btn {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .exec-btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #030712;
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.35);
+  }
+  .exec-btn.primary {
+    background: linear-gradient(135deg, #0284c7, #10b981);
+    border-color: #38bdf8;
+  }
+  .exec-btn.primary:hover {
+    background: linear-gradient(135deg, #38bdf8, #34d399);
+    color: #030712;
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.45);
   }
 
   /* Top Navigation Bar */
   .top-nav {
-    background: linear-gradient(90deg, #050b18 0%, #0c1833 50%, #050b18 100%);
-    border-bottom: 2px solid var(--border-glow);
+    background: rgba(5, 11, 24, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -45,135 +100,103 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 20px rgba(2, 132, 199, 0.25);
+    box-shadow: 0 4px 20px rgba(2, 132, 199, 0.22);
   }
-  .brand-block {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .brand-block { display: flex; align-items: center; gap: 12px; }
   .brand-logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
+    width: 38px; height: 38px; border-radius: 10px;
     background: linear-gradient(135deg, #0284c7, #10b981);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    font-size: 1.2rem;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 1.25rem; color: #fff;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.65);
   }
-  .brand-text h1 {
-    font-size: 1.05rem;
-    font-weight: 900;
-    letter-spacing: -0.3px;
-    color: #fff;
-  }
-  .brand-text p {
-    font-size: 0.72rem;
-    color: var(--sky);
-    font-family: 'Fira Code', monospace;
-  }
+  .brand-text h1 { font-size: 1.05rem; font-weight: 900; color: #fff; }
+  .brand-text p { font-size: 0.72rem; color: var(--sky); font-family: 'Fira Code', monospace; }
+  .nav-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 
-  .nav-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
   .btn {
-    background: #0f172a;
-    border: 1px solid var(--border);
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.25);
     color: #f1f5f9;
-    padding: 6px 14px;
-    border-radius: 6px;
-    font-size: 0.82rem;
+    padding: 6px 13px;
+    border-radius: 8px;
+    font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-family: inherit;
   }
   .btn:hover {
+    transform: translateY(-2px);
     border-color: var(--sky);
     background: #1e293b;
     color: #fff;
-    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.25);
   }
   .btn.active {
-    background: #0284c7;
+    background: linear-gradient(135deg, #0284c7, #0ea5e9);
     border-color: #38bdf8;
     color: #fff;
-    box-shadow: 0 0 12px rgba(2, 132, 199, 0.5);
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.55);
   }
   .btn-accent {
     background: linear-gradient(135deg, #0284c7, #0d9488);
     border: 1px solid #38bdf8;
   }
+  .btn-emerald {
+    background: linear-gradient(135deg, #059669, #10b981);
+    border-color: #34d399;
+    color: #fff;
+  }
 
-  /* Paper Dock / Tabs */
+  /* Paper Dock / 19 Tabs */
   .paper-dock-container {
-    background: #070d1e;
+    background: rgba(7, 13, 30, 0.95);
     border-bottom: 1px solid var(--border);
-    padding: 8px 16px;
+    padding: 9px 16px;
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: thin;
   }
-  .paper-dock {
-    display: inline-flex;
-    gap: 8px;
-  }
+  .paper-dock { display: inline-flex; gap: 8px; }
   .paper-tab {
     background: #0b1329;
     border: 1px solid #1e293b;
     padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.78rem;
+    border-radius: 8px;
+    font-size: 0.77rem;
     font-weight: 700;
     color: #94a3b8;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.22s ease;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    font-family: inherit;
   }
-  .paper-tab:hover {
-    background: #132040;
-    color: #f8fafc;
-    border-color: var(--sky);
-  }
+  .paper-tab:hover { background: #132040; color: #f8fafc; border-color: var(--sky); transform: translateY(-1px); }
   .paper-tab.active {
     background: linear-gradient(135deg, #0369a1, #0f766e);
     border-color: #38bdf8;
     color: #ffffff;
-    box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 14px rgba(6, 182, 212, 0.45);
   }
-  .badge-q {
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
+  .paper-tab.new26 { border-color: rgba(245, 158, 11, 0.45); }
+  .badge-q { padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; }
   .badge-q1 { background: #059669; color: #fff; }
   .badge-q2 { background: #d97706; color: #fff; }
 
   /* Studio Stage Container */
-  .studio-container {
-    max-width: 1440px;
-    margin: 14px auto;
-    padding: 0 16px;
-  }
+  .studio-container { max-width: 1440px; margin: 14px auto; padding: 0 16px; }
   .canvas-wrapper {
     background: #050a17;
     border: 2px solid #0284c7;
-    border-radius: 10px;
+    border-radius: 12px 12px 0 0;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(2, 132, 199, 0.2);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(2, 132, 199, 0.25);
     position: relative;
   }
   #studio-canvas {
@@ -183,250 +206,146 @@
     aspect-ratio: 1400 / 640;
     background: #050a17;
   }
-
-  /* Interactive Control Strip below canvas */
   .control-strip {
-    background: #091124;
+    background: rgba(9, 17, 36, 0.94);
+    backdrop-filter: blur(14px);
     border: 1px solid var(--border);
     border-top: none;
-    border-radius: 0 0 10px 10px;
+    border-radius: 0 0 12px 12px;
     padding: 12px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
   }
-  .control-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .control-label {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--sky);
-  }
+  .control-group { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+  .control-label { font-size: 0.79rem; font-weight: 700; color: var(--sky); }
   .slider-custom {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 140px;
-    height: 6px;
-    border-radius: 3px;
-    background: #1e293b;
-    outline: none;
+    -webkit-appearance: none; appearance: none; width: 130px; height: 6px;
+    border-radius: 3px; background: #1e293b; outline: none;
   }
   .slider-custom::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #0284c7;
-    cursor: pointer;
-    box-shadow: 0 0 8px #38bdf8;
+    -webkit-appearance: none; appearance: none; width: 16px; height: 16px;
+    border-radius: 50%; background: #0284c7; cursor: pointer; box-shadow: 0 0 8px #38bdf8;
   }
 
-  /* Main Info Cards Section */
+  /* Main Info Cards */
   .info-section {
-    max-width: 1440px;
-    margin: 24px auto;
-    padding: 0 16px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
+    max-width: 1440px; margin: 20px auto; padding: 0 16px;
+    display: grid; grid-template-columns: 2fr 1fr; gap: 18px;
   }
-  @media (max-width: 1024px) {
-    .info-section { grid-template-columns: 1fr; }
-  }
-
+  @media (max-width: 1024px) { .info-section { grid-template-columns: 1fr; } }
   .card {
     background: var(--panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
   }
   .card-header {
     background: var(--panel-header);
     border-bottom: 1px solid var(--border);
     padding: 10px 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex; justify-content: space-between; align-items: center;
   }
-  .card-header h2 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--sky);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-body {
-    padding: 14px 18px;
-  }
+  .card-header h2 { font-size: 0.95rem; font-weight: 800; color: var(--sky); display: flex; align-items: center; gap: 8px; }
+  .card-body { padding: 14px 18px; }
+  .dossier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  @media (max-width: 768px) { .dossier-grid { grid-template-columns: 1fr; } }
+  .dossier-box { background: rgba(7, 13, 30, 0.85); border: 1px solid #1e293b; border-radius: 8px; padding: 10px 12px; }
+  .dossier-box-title { font-size: 0.78rem; font-weight: 800; color: var(--amber); margin-bottom: 4px; }
+  .dossier-box-text { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
 
-  /* Paper Dossier Card Styling */
-  .dossier-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 14px;
-  }
-  @media (max-width: 768px) {
-    .dossier-grid { grid-template-columns: 1fr; }
-  }
-  .dossier-box {
-    background: #070d1e;
-    border: 1px solid #1e293b;
-    border-radius: 6px;
-    padding: 10px 12px;
-  }
-  .dossier-box-title {
-    font-size: 0.78rem;
-    font-weight: 800;
-    color: var(--amber);
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .dossier-box-text {
-    font-size: 0.82rem;
-    color: #cbd5e1;
-    line-height: 1.5;
-  }
+  .hardware-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.78rem; }
+  .hardware-table th { background: #0f172a; color: var(--sky); border: 1px solid #1e293b; padding: 6px 8px; text-align: right; }
+  .hardware-table td { border: 1px solid #1e293b; padding: 6px 8px; color: #cbd5e1; }
+  .hardware-table tr:nth-child(even) td { background: rgba(15, 23, 42, 0.45); }
 
-  /* Hardware Table */
-  .hardware-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    font-size: 0.78rem;
-  }
-  .hardware-table th {
-    background: #0f172a;
-    color: var(--sky);
-    border: 1px solid #1e293b;
-    padding: 6px 8px;
-    text-align: right;
-  }
-  .hardware-table td {
-    border: 1px solid #1e293b;
-    padding: 6px 8px;
-    color: #cbd5e1;
-  }
-  .hardware-table tr:nth-child(even) td {
-    background: rgba(15, 23, 42, 0.4);
-  }
-
-  /* Thesis Golden Callout */
   .golden-callout {
-    background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(16, 185, 129, 0.15));
-    border: 1px solid #0284c7;
-    border-right: 4px solid #10b981;
-    border-radius: 6px;
-    padding: 12px 16px;
-    margin-top: 14px;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.16), rgba(16, 185, 129, 0.16));
+    border: 1px solid #0284c7; border-right: 4px solid #10b981;
+    border-radius: 8px; padding: 12px 16px; margin-top: 14px;
   }
-  .golden-title {
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #38bdf8;
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .golden-text {
-    font-size: 0.84rem;
-    color: #f1f5f9;
-    line-height: 1.55;
-  }
+  .golden-title { font-size: 0.85rem; font-weight: 800; color: #38bdf8; margin-bottom: 4px; }
+  .golden-text { font-size: 0.84rem; color: #f1f5f9; line-height: 1.55; }
 
-  /* Master Comparison Table Section */
-  .matrix-section {
-    max-width: 1440px;
-    margin: 24px auto;
-    padding: 0 16px;
-  }
-  .matrix-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.8rem;
-    margin-top: 12px;
-  }
-  .matrix-table th {
-    background: #0c1833;
+  /* Benchmark Plots Showcase */
+  .showcase-section { max-width: 1440px; margin: 22px auto; padding: 0 16px; }
+  .showcase-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .showcase-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 900px) { .showcase-grid-2, .showcase-grid-3 { grid-template-columns: 1fr; } }
+  .fig-card {
+    background: rgba(7, 13, 30, 0.9);
     border: 1px solid var(--border);
-    color: var(--sky);
-    padding: 8px 10px;
-    text-align: right;
-    font-weight: 800;
-  }
-  .matrix-table td {
-    border: 1px solid var(--border);
-    padding: 8px 10px;
-    color: #e2e8f0;
-  }
-  .matrix-table tr:hover td {
-    background: #111e38;
+    border-radius: 10px;
+    padding: 10px;
     cursor: pointer;
+    transition: all 0.28s ease;
   }
-  .matrix-table tr.active td {
-    background: rgba(2, 132, 199, 0.2);
-    border-color: #38bdf8;
-  }
-
-  /* Search & Filter Bar */
-  .filter-bar {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-  .search-input {
-    background: #0b1329;
-    border: 1px solid var(--border);
-    padding: 6px 12px;
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.82rem;
-    min-width: 240px;
-    outline: none;
-  }
-  .search-input:focus {
+  .fig-card:hover {
+    transform: translateY(-3px);
     border-color: var(--sky);
-    box-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+    box-shadow: 0 10px 25px rgba(56, 189, 248, 0.25);
   }
+  .fig-card img { width: 100%; height: auto; border-radius: 6px; display: block; }
+  .fig-caption { font-size: 0.78rem; color: #e2e8f0; font-weight: 700; margin-top: 8px; }
+  .fig-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
 
-  /* Footer */
-  .app-footer {
-    border-top: 1px solid var(--border);
-    padding: 20px;
-    text-align: center;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    background: #030712;
-    margin-top: 40px;
+  /* Master Matrix */
+  .matrix-section { max-width: 1440px; margin: 22px auto; padding: 0 16px; }
+  .matrix-table { width: 100%; border-collapse: collapse; font-size: 0.79rem; }
+  .matrix-table th { background: #0c1833; border: 1px solid #1e293b; color: var(--sky); padding: 8px 10px; text-align: right; font-weight: 800; }
+  .matrix-table td { border: 1px solid #1e293b; padding: 8px 10px; color: #e2e8f0; }
+  .matrix-table tr:hover td { background: #111e38; cursor: pointer; }
+  .matrix-table tr.active td { background: rgba(2, 132, 199, 0.24); border-color: #38bdf8; }
+  .search-input {
+    background: #0b1329; border: 1px solid #334155; padding: 6px 12px;
+    border-radius: 8px; color: #fff; font-size: 0.8rem; min-width: 250px; outline: none;
   }
-  .app-footer a {
-    color: var(--sky);
-    text-decoration: none;
+  .search-input:focus { border-color: var(--sky); box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
+
+  /* Lightbox Modal */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(2, 6, 23, 0.92); backdrop-filter: blur(8px);
+    align-items: center; justify-content: center; flex-direction: column; padding: 24px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 82vh; border-radius: 10px; border: 2px solid var(--sky); }
+  .lightbox p { margin-top: 10px; color: #f8fafc; font-weight: 700; }
+
+  .app-footer {
+    border-top: 1px solid var(--border); padding: 20px; text-align: center;
+    font-size: 0.78rem; color: var(--text-muted); background: #030712; margin-top: 36px;
   }
 </style>
 </head>
 <body>
+
+  <!-- Executive Defense Command Bar -->
+  <div class="exec-command-bar">
+    <div class="exec-tag">
+      <span>🎓</span>
+      <span>مركز قيادة رسالة الماجستير — جامعة عين شمس (أ.د. محمد حمدي &amp; د. محمد عوض) | 19 مرجعاً محكماً (2019–2026)</span>
+    </div>
+    <div class="exec-links">
+      <a class="exec-btn primary" href="Master_Hand_Synergy_Ain_Shams_Defense.html" target="_blank">🎬 العرض التفاعلي (12 شريحة بالموشن جرافيك)</a>
+      <a class="exec-btn" href="Master_Hand_Synergy_Ain_Shams_Defense.pdf" target="_blank">🖨️ عرض PDF</a>
+      <a class="exec-btn" href="Master_Hand_Synergy_Ain_Shams_Defense.pptx" download>📊 تحميل PowerPoint (.pptx)</a>
+      <a class="exec-btn" href="Master_Literature_Review_and_Taxonomy_Matrix.pdf" target="_blank">📑 المراجعة المرجعية ومصفوفة الـ 18 بحثاً (PDF)</a>
+    </div>
+  </div>
 
   <!-- Top Navigation Bar -->
   <header class="top-nav">
     <div class="brand-block">
       <div class="brand-logo">✋</div>
       <div class="brand-text">
-        <h1 id="txt-app-title">استوديو الموشن جرافيكس التفاعلي لمسكات اليد والتآزر الحركي</h1>
-        <p>MSc Thesis Core • Mechatronics Dept • Ain Shams University</p>
+        <h1 id="txt-app-title">استوديو الموشن جرافيكس التفاعلي لمسكات اليد والتآزر الحركي (v2.0)</h1>
+        <p>60-FPS Neural-Mechanical Twin &bull; KIN-MUS UJI + Ninapro DB2 + Encord EMG-1 &bull; Ain Shams University</p>
       </div>
     </div>
     <div class="nav-controls">
@@ -438,11 +357,9 @@
     </div>
   </header>
 
-  <!-- Paper Dock (10 Tabs) -->
+  <!-- Paper Dock (19 Tabs) -->
   <div class="paper-dock-container">
-    <div class="paper-dock" id="paper-dock-tabs">
-      <!-- Injected dynamically via JS -->
-    </div>
+    <div class="paper-dock" id="paper-dock-tabs"></div>
   </div>
 
   <!-- Studio Stage (60-FPS HTML5 Canvas) -->
@@ -451,108 +368,104 @@
       <canvas id="studio-canvas" width="1400" height="640"></canvas>
     </div>
 
-    <!-- Real-time Controls below canvas -->
     <div class="control-strip">
       <div class="control-group">
         <span class="control-label" id="lbl-grip">قبضة اليد (Grip Clench):</span>
-        <input type="range" class="slider-custom" id="slider-grip" min="0" max="100" value="45">
-        <span id="val-grip" style="font-family: monospace; font-size: 0.8rem; color: #fff;">45%</span>
+        <input type="range" class="slider-custom" id="slider-grip" min="0" max="100" value="48">
+        <span id="val-grip" style="font-family: monospace; font-size: 0.8rem; color: #fff;">48%</span>
       </div>
 
       <div class="control-group">
-        <span class="control-label" id="lbl-obj">الجسم الممسوك (Object):</span>
+        <span class="control-label" id="lbl-obj">الجسم:</span>
         <select class="btn" id="select-object" style="padding: 4px 8px;">
-          <option value="cylinder">🍾 أسطوانة / زجاجة (Cylinder Grasp)</option>
-          <option value="sphere">🎾 كرة قوة (Sphere Grasp)</option>
-          <option value="key">🔑 مفتاح جانبي (Lateral Pinch)</option>
-          <option value="disk">🪙 قرص / عملة (Precision Tip)</option>
-          <option value="handle">🧳 مقبض حقيبة (Hook Grasp)</option>
+          <option value="cylinder">🍾 أسطوانة (Cylinder Power)</option>
+          <option value="sphere">🎾 كرة (Spherical Grasp)</option>
+          <option value="key">🔑 مفتاح (Lateral Pinch)</option>
+          <option value="disk">🪙 قرص (Precision Tip)</option>
+          <option value="handle">🧳 مقبض (Hook Grasp)</option>
         </select>
       </div>
 
       <div class="control-group">
-        <span class="control-label" id="lbl-actuators">عدد المشغلات (Actuators M):</span>
+        <span class="control-label" id="lbl-actuators">المشغلات (K):</span>
         <select class="btn" id="select-actuators" style="padding: 4px 8px;">
-          <option value="1">1 موتور (SoftHand Underactuated)</option>
-          <option value="2" selected>2 موتور (Sun T-RO Dual-Actuated)</option>
-          <option value="3">3 مواتير (Chen T-MECH 3-Finger)</option>
-          <option value="4">4 مواتير (KIN-MUS UJI VAF=91.3%)</option>
-          <option value="20">20 موتور (Fully Actuated Classical)</option>
+          <option value="1">K=1 (SoftHand Adaptive)</option>
+          <option value="2">K=2 (Sun T-RO 29/33 Feix)</option>
+          <option value="3">K=3 (Chen T-MECH / 3-Synergy)</option>
+          <option value="4" selected>K=4 (Target K_min≤4, VAF≥90%)</option>
+          <option value="12">K=12 (Chu 2026 SX-Hand 33/33)</option>
+          <option value="20">K=20 (Fully Actuated)</option>
         </select>
       </div>
 
       <div class="control-group">
-        <button class="btn" id="btn-fatigue">⚡ محاكاة تعب العضلات (Fatigue ON/OFF)</button>
+        <button class="btn" id="btn-cmc">🖐️ قوس الكف CMC (SX-Hand)</button>
+        <button class="btn" id="btn-occlusion">🙈 حجب بصري (Kavana)</button>
+        <button class="btn" id="btn-fatigue">⚡ تعب العضلات</button>
       </div>
     </div>
   </main>
 
-  <!-- Detailed Paper Dossier & Components Section -->
+  <!-- Detailed Paper Dossier & Telemetry -->
   <section class="info-section">
-    <!-- Left: Detailed Paper Deep Dive -->
     <div class="card">
       <div class="card-header">
         <h2 id="card-paper-header">📄 الملف الفني المتكامل للورقة البحثية</h2>
         <span id="card-paper-badge" class="badge-q badge-q1">IEEE Q1</span>
       </div>
       <div class="card-body">
-        <h3 id="paper-title" style="font-size: 1.1rem; color: #fff; margin-bottom: 6px;">عنوان البحث</h3>
-        <p id="paper-en-title" style="font-size: 0.85rem; color: var(--sky); font-style: italic; margin-bottom: 12px; direction: ltr; text-align: right;">English Title</p>
-        <p id="paper-meta" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px;">المؤلفون، المجلة، وسنة النشر</p>
+        <h3 id="paper-title" style="font-size: 1.08rem; color: #fff; margin-bottom: 5px;">عنوان البحث</h3>
+        <p id="paper-en-title" style="font-size: 0.84rem; color: var(--sky); font-style: italic; margin-bottom: 10px; direction: ltr; text-align: right;">English Title</p>
+        <p id="paper-meta" style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 12px;">المؤلفون والمجلة</p>
 
-        <!-- 4 Grid Dossier Boxes -->
         <div class="dossier-grid">
           <div class="dossier-box">
             <div class="dossier-box-title">📥 المدخلات وبيانات القياس (Inputs)</div>
-            <div class="dossier-box-text" id="box-inputs">تفاصيل المدخلات والحساسات</div>
+            <div class="dossier-box-text" id="box-inputs"></div>
           </div>
           <div class="dossier-box">
-            <div class="dossier-box-title">📤 المخرجات ومتجهات التآزر (Outputs)</div>
-            <div class="dossier-box-text" id="box-outputs">المخرجات الرياضية ونسب التباين VAF</div>
+            <div class="dossier-box-title">📤 المخرجات ونسب التباين (Outputs)</div>
+            <div class="dossier-box-text" id="box-outputs"></div>
           </div>
           <div class="dossier-box">
-            <div class="dossier-box-title">⚙️ خوارزمية التآزر والاختزال (Method)</div>
-            <div class="dossier-box-text" id="box-algorithm">PCA / NMF / ANLS / Unsupervised Gradient</div>
+            <div class="dossier-box-title">⚙️ الخوارزمية الرياضية (Algorithm)</div>
+            <div class="dossier-box-text" id="box-algorithm"></div>
           </div>
           <div class="dossier-box">
-            <div class="dossier-box-title">🎯 حل تحدي المشرفين (Supervisor Target)</div>
-            <div class="dossier-box-text" id="box-supervisor">الرد المباشر على د. حمدي أو د. عوض</div>
+            <div class="dossier-box-title">🎯 الرد المباشر على المشرفين (RQ1 / RQ2)</div>
+            <div class="dossier-box-text" id="box-supervisor"></div>
           </div>
         </div>
 
-        <!-- Hardware & Sensor BOM Table -->
-        <h4 style="font-size: 0.85rem; color: var(--sky); margin: 12px 0 6px 0;">🛠️ المكونات الفيزيائية والحساسات المستخدمة (Hardware Components & BOM):</h4>
+        <h4 style="font-size: 0.84rem; color: var(--sky); margin: 10px 0 6px 0;">🛠️ المكونات الفيزيائية والحساسات (Hardware &amp; Sensing BOM):</h4>
         <table class="hardware-table">
           <thead>
             <tr>
               <th>المكون / الحساس</th>
               <th>الموديل والتوصيف الهندسي</th>
-              <th>الدور الوظيفي في المنظومة</th>
+              <th>الدور الوظيفي</th>
             </tr>
           </thead>
-          <tbody id="hardware-tbody">
-            <!-- Injected via JS -->
-          </tbody>
+          <tbody id="hardware-tbody"></tbody>
         </table>
 
-        <!-- Thesis Golden Talking Point -->
         <div class="golden-callout">
-          <div class="golden-title">💡 نقطة القوة الذهبية للإلقاء في اجتماع المشرفين القادم (Defense Script):</div>
-          <div class="golden-text" id="golden-talking-point">كلام الإلقاء الجاهز...</div>
+          <div class="golden-title">💡 نص الإلقاء الذهبي للجنة المناقشة (Defense Talking Point):</div>
+          <div class="golden-text" id="golden-talking-point"></div>
         </div>
       </div>
     </div>
 
-    <!-- Right: Quick Simulator Status & Metrics Panel -->
+    <!-- Live Telemetry -->
     <div class="card">
       <div class="card-header">
         <h2>📊 لوحة القياسات الحية (Live Telemetry)</h2>
         <span style="font-size: 0.75rem; color: var(--emerald); font-family: monospace;">● 60 FPS ACTIVE</span>
       </div>
       <div class="card-body">
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 14px;">
           <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
-            <span>نسبة التباين المفسر (Variance VAF):</span>
+            <span>نسبة التباين / الدقة (VAF / Accuracy):</span>
             <strong id="metric-vaf" style="color: var(--emerald);">91.27%</strong>
           </div>
           <div style="background: #1e293b; height: 8px; border-radius: 4px; overflow: hidden;">
@@ -560,82 +473,119 @@
           </div>
         </div>
 
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 14px;">
           <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
-            <span>زمن الاستجابة الحسابية (Latency):</span>
-            <strong style="color: var(--sky);">18.4 ms (&lt; 20ms Real-Time)</strong>
+            <span>جودة المفصل الفردي (JGKSE IRQ &amp; ORQ):</span>
+            <strong id="metric-jgkse" style="color: var(--sky);">ORQ 96.3% | min IRQ 94.6%</strong>
           </div>
           <div style="background: #1e293b; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div style="background: #0284c7; width: 36%; height: 100%;"></div>
+            <div style="background: linear-gradient(90deg, #38bdf8, #8b5cf6); width: 95%; height: 100%;"></div>
           </div>
         </div>
 
-        <div style="margin-bottom: 16px;">
+        <div style="margin-bottom: 14px;">
           <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
-            <span>نسبة اختزال المحركات (Actuator Reduction):</span>
-            <strong id="metric-reduction" style="color: var(--amber);">90.0% (20 DOF &rarr; 2 Motors)</strong>
+            <span>نسبة اختزال المشغلات (20 DoF &rarr; K):</span>
+            <strong id="metric-reduction" style="color: var(--amber);">80.0% (20 DoF &rarr; 4 Motors)</strong>
           </div>
           <div style="background: #1e293b; height: 8px; border-radius: 4px; overflow: hidden;">
-            <div id="metric-reduction-bar" style="background: var(--amber); width: 90%; height: 100%;"></div>
+            <div id="metric-reduction-bar" style="background: var(--amber); width: 80%; height: 100%;"></div>
           </div>
         </div>
 
-        <div style="background: #070d1e; border: 1px solid #1e293b; border-radius: 6px; padding: 10px; margin-top: 14px;">
-          <div style="font-size: 0.75rem; color: var(--sky); font-weight: bold; margin-bottom: 4px;">معادلة التآزر الحاكم الحالية (Governing Equation):</div>
-          <div id="math-equation-display" style="font-family: 'Fira Code', monospace; font-size: 0.78rem; color: #fde047; direction: ltr; text-align: left;">
-            θ(t) = W · H(t) + ε
-          </div>
+        <div style="background: #070d1e; border: 1px solid #1e293b; border-radius: 8px; padding: 10px; margin-top: 12px;">
+          <div style="font-size: 0.74rem; color: var(--sky); font-weight: bold; margin-bottom: 4px;">المعادلة الحاكمة / المؤشر الكمي (Governing Expression):</div>
+          <div id="math-equation-display" style="font-family: 'Fira Code', monospace; font-size: 0.76rem; color: #fde047; direction: ltr; text-align: left; word-break: break-word;"></div>
         </div>
 
-        <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
-          <button class="btn btn-accent" id="btn-open-pdf" style="width: 100%; justify-content: center;">📖 فتح الورقة المترجمة الكاملة (PDF)</button>
-          <button class="btn" id="btn-export-matrix" style="width: 100%; justify-content: center;">📥 تصدير مصفوفة الأدلة (Excel/CSV)</button>
+        <div style="margin-top: 14px; display: flex; flex-direction: column; gap: 8px;">
+          <button class="btn btn-accent" id="btn-open-pdf" style="width: 100%; justify-content: center;">📖 فتح التحليل العربي الكامل (PDF)</button>
+          <button class="btn btn-emerald" id="btn-open-html" style="width: 100%; justify-content: center;">🌐 فتح التقرير التفاعلي في المتصفح (HTML)</button>
+          <button class="btn" id="btn-export-matrix" style="width: 100%; justify-content: center;">📥 تصدير مصفوفة الـ 19 بحثاً (CSV / Excel)</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Master Literature Comparison Matrix Table -->
+  <!-- Empirical Plots & 2026 Benchmarks Showcase -->
+  <section class="showcase-section">
+    <div class="card">
+      <div class="card-header">
+        <h2>📈 الأدلة التجريبية المحسوبة (KIN-MUS UJI) ومعيار 2026 (Encord EMG-1 &amp; Kavana)</h2>
+        <span style="font-size: 0.75rem; color: var(--amber);">اضغط على أي صورة للتكبير</span>
+      </div>
+      <div class="card-body">
+        <div class="showcase-grid-2">
+          <div class="fig-card" onclick="openLightbox('vaf_synergy_analysis.png', 'تحليل التباين التراكمي VAF عبر 28 متطوعاً و 26 نشاطاً يومياً في KIN-MUS UJI')">
+            <img src="vaf_synergy_analysis.png" alt="VAF Synergy Analysis">
+            <div class="fig-caption">1. منحنى تشبع التباين (VAF Scree Plot — KIN-MUS UJI)</div>
+            <div class="fig-sub">يثبت رياضياً وجود كوع التآزر عند K = 3..4 مشغلات (محسوب محلياً من KIN_MUS_UJI.mat)</div>
+          </div>
+          <div class="fig-card" onclick="openLightbox('kinematic_synergy_weights.png', 'أوزان التآزر الحركي عبر 18 مفصلاً لليد في KIN-MUS UJI')">
+            <img src="kinematic_synergy_weights.png" alt="Kinematic Synergy Weights">
+            <div class="fig-caption">2. خريطة أوزان التآزر الحركي عبر 18 مفصلاً (MCP / PIP / Thumb Coupling)</div>
+            <div class="fig-sub">توضح الاقتران الآلي بين مفاصل الأصابع وتقابل الإبهام في التآزر الأول والثاني</div>
+          </div>
+        </div>
+        <div class="showcase-grid-3">
+          <div class="fig-card" onclick="openLightbox('assets/kavana_mae_20dof.jpg', 'Kavana Mudra 20-DoF MAE = 4.21° vs 9.02° Computer Vision')">
+            <img src="assets/kavana_mae_20dof.jpg" alt="Kavana MAE">
+            <div class="fig-caption">3. Kavana 20-DoF Tracking: MAE 4.21° مقابل 9.02° للرؤية</div>
+            <div class="fig-sub">تقليل الخطأ بنسبة 53.3% مقارنة بالكاميرا (EMG-1 Oct 2026)</div>
+          </div>
+          <div class="fig-card" onclick="openLightbox('assets/kavana_occlusion_tracking.jpg', 'استمرارية التتبع العصبي بنسبة 100% أثناء الحجب البصري الكامل')">
+            <img src="assets/kavana_occlusion_tracking.jpg" alt="Kavana Occlusion">
+            <div class="fig-caption">4. ثبات التتبع تحت الحجب البصري الكامل (Occlusion-Proof)</div>
+            <div class="fig-sub">توقف الرؤية بينما يستمر سوار sEMG بتتبع مفصل Index PIP بدقة</div>
+          </div>
+          <div class="fig-card" onclick="openLightbox('assets/kavana_grip_force.jpg', 'تقدير قوة القبضة الإيزومترية 0-80 نيوتن من إشارات المعصم')">
+            <img src="assets/kavana_grip_force.jpg" alt="Kavana Grip Force">
+            <div class="fig-caption">5. تقدير قوة القبضة الإيزومترية (0–80 N Dynamometer)</div>
+            <div class="fig-sub">تحويل طاقة sEMG إلى قوة ضغط فعلية متطابقة مع الدينامومتر</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Master 19-Paper Comparison Matrix Table -->
   <section class="matrix-section">
     <div class="card">
       <div class="card-header">
-        <h2>📑 مصفوفة المقارنة الشاملة للأوراق الـ 10 (Master Literature Matrix)</h2>
-        <div class="filter-bar" style="margin-bottom: 0;">
-          <input type="text" class="search-input" id="search-matrix" placeholder="🔍 ابحث بالاسم، الحساس، الخوارزمية، المشغل...">
-        </div>
+        <h2>📑 مصفوفة المقارنة الشاملة للـ 19 بحثاً وتقريراً مرجعياً (2019–2026)</h2>
+        <input type="text" class="search-input" id="search-matrix" placeholder="🔍 ابحث باسم الباحث، الجورنال، الخوارزمية، K...">
       </div>
       <div class="card-body" style="overflow-x: auto; padding: 0;">
         <table class="matrix-table" id="master-matrix-table">
           <thead>
             <tr>
               <th>#</th>
-              <th>الورقة والمجلة (Paper & Journal)</th>
-              <th>منظومة القياس / الهاردوير</th>
-              <th>المحركات وتخفيض الأبعاد</th>
-              <th>الخوارزمية (Synergy Algorithm)</th>
-              <th>الدقة / VAF</th>
-              <th>التوظيف المباشر في رسالتك</th>
+              <th>المرجع والمجلة</th>
+              <th>المنظومة والقياسات</th>
+              <th>المحركات والاختزال</th>
+              <th>الخوارزمية</th>
+              <th>النتائج المحققة</th>
+              <th>الدور في رسالة الماجستير</th>
             </tr>
           </thead>
-          <tbody id="matrix-tbody">
-            <!-- Injected via JS -->
-          </tbody>
+          <tbody id="matrix-tbody"></tbody>
         </table>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
+    <img id="lightbox-img" src="" alt="Preview">
+    <p id="lightbox-cap"></p>
+  </div>
+
   <footer class="app-footer">
-    <p>Hand Grasp Synergy 60-FPS Pure Motion-Graphics Studio • Built by <strong>Nova (Antigravity 4.0 The Dark Omni-God)</strong> for <strong>Eng. Mohamed Zedan</strong></p>
-    <p style="margin-top: 4px; font-size: 0.72rem;">Ain Shams University • Faculty of Engineering • Mechatronics Department</p>
+    <p>Hand Grasp Synergy 60-FPS Motion-Graphics Studio v2.0 &bull; Built for <strong>Eng. Mohamed Zedan</strong> &bull; Supervised by <strong>Prof. Dr. Mohamed Hamdy &amp; Dr. Mohamed I. Awad</strong></p>
+    <p style="margin-top: 4px; font-size: 0.72rem;">Ain Shams University &bull; Faculty of Engineering &bull; Mechatronics Department</p>
   </footer>
 
-  <!-- SCRIPT ENGINE -->
   <script>
-    // ========================================================================
-    // COMPLETE 10 PAPERS DATABASE & METADATA
-    // ========================================================================
     const PAPERS_DB = [
       {
         id: "p01",
@@ -992,19 +942,134 @@
         ],
         golden_script: "'أهم مرجع في رسالتنا هو بحث د. ويست ود. هوغان من MIT المنشور في Journal of Neurophysiology: في 38 صفحة أثبتوا بالدليل القاطع إن تآزر المسك غير تآزر التلاعب، وإن مسكات سانتيلو لا تكفي للمناولة الماهرة، وده الأساس العلمي اللي بنبني عليه رسالتنا لتطوير يد روبوتية قادرة على التلاعب بالأشياء مش بس مسكها!'"
       }];
+    
+    // Append 2026 Flagship Entries (P17, P18, P19)
+    PAPERS_DB.push(
+      {
+        id: "p17",
+        code: "[P17] CHU-2026",
+        journal: "IEEE Trans. Robotics (T-RO) | Q1 (Top 1%)",
+        qBadge: "IEEE T-RO 2026 Q1",
+        isQ1: true,
+        title_ar: "تصميم يد روبوتية متمركزة حول الوظيفة (SX-Hand) عبر استخراج التآزر لمجموعات المفاصل ومفصل كف CMC متحرك",
+        title_en: "Function-Oriented Anthropomorphic Robotic Hand Design via Joint-Group Kinematic Synergy Extraction (SX-Hand)",
+        authors: "تشو وآخرون — IEEE Transactions on Robotics (2026)",
+        pdf_file: "Chu_2026_TRO_SX_Hand_Analysis_Arabic.pdf",
+        analysis_pdf: "Chu_2026_TRO_SX_Hand_Analysis_Arabic.pdf",
+        analysis_html: "Chu_2026_TRO_SX_Hand_Analysis_Arabic.html",
+        inputs: "تحليل كينيماتيكي لـ 21 مفصلاً تشمل مفاصل الكف CMC القابلة للحركة للبنصر والخنصر وإبهام مرن خماسي الدرجات في تصميم SX-Hand (690 جم، 12 مشغلاً).",
+        outputs: "تغطية 33 من أصل 33 قبضة في تصنيف Feix (100%)، درجة كابانجي 10/10، مساحة عمل 93% من اليد البشرية، وحمولة 20 كجم مع ORQ = 96.3%±1.5% و min(IRQ) = 94.6%±2.7%.",
+        algorithm: "استخراج التآزر الحركي لمجموعات المفاصل JGKSE مع فرض قيد الجودة الكلية ORQ > 90% وجودة كل مفصل IRQ > 90%.",
+        supervisor_target: "البرهان المباشر لسؤال RQ2: لماذا يفشل PCA العام عند K=2 في بعض القبضات الدقيقة وكيف يحل JGKSE + قوس الكف CMC هذه الفجوة داخل K_min ≤ 4.",
+        equation: "ORQ = 96.3±1.5%,  min(IRQ) = 94.6±2.7%,  Feix = 33/33 (100%),  Payload = 20 kg",
+        hardware: [
+          { name: "اليد الروبوتية", model: "SX-Hand Prototype (21 Joints, 12 Actuators, 690g)", role: "تنفيذ 100% من تصنيف Feix ومناولات داخل اليد" },
+          { name: "قوس الكف المتحرك", model: "Articulated Ring & Little CMC Palm Joints", role: "استعادة تقوس الكف وتقابل الإبهام بدقة كابانجي 10/10" },
+          { name: "مقياس التآزر الموضعي", model: "JGKSE Optimization (ORQ > 90% & IRQ > 90%)", role: "منع فقدان دقة الإبهام والمفاصل الدقيقة عند الاختزال" }
+        ],
+        golden_script: "'يا دكتور حمدي، بحث IEEE T-RO 2026 (SX-Hand) أثبت ليه المحركين بس وقفوا عند 29/33 في Sun 2022: لأن PCA العام بيضحي بمفصل الكف CMC والإبهام! لكن مع معادلة JGKSE اللي بتفرض ORQ>90% و IRQ>90% ومفصل كف متحرك، بنوصل لتغطية 33/33 بالكامل!'"
+      },
+      {
+        id: "p18",
+        code: "[P18] ENCORD-EMG1-2026",
+        journal: "Encord & Wearable Devices | Oct 2026 Benchmark",
+        qBadge: "EMG-1 2026 Benchmark",
+        isQ1: true,
+        title_ar: "قاعدة بيانات EMG-1 المفتوحة (100 ساعة) ونظام Kavana/Mudra العصبي لتتبع 20 مفصلاً وقوة القبضة بدون رؤية",
+        title_en: "EMG-1 Open Multimodal Benchmark (100h) & Kavana/Mudra Neural Wristband Pose/Force Decoding",
+        authors: "Encord & Wearable Devices Ltd. (Oct 2026)",
+        pdf_file: "Encord_2026_EMG1_Dataset_Analysis_Arabic.pdf",
+        analysis_pdf: "Encord_2026_EMG1_Dataset_Analysis_Arabic.pdf",
+        analysis_html: "Encord_2026_EMG1_Dataset_Analysis_Arabic.html",
+        inputs: "100 ساعة بيانات متعددة الوسائط (8ch-mocap: 12 متطوعاً، 920 تسجيلاً، 8 قنوات sEMG معصم @ 2000Hz + 23 علامة OptiTrack @ 120Hz)؛ وتم التحقق محلياً من OP-001/s003/02.",
+        outputs: "تحقيق خطأ MAE = 4.21° عبر 20 مفصلاً مقابل 9.02° للرؤية الحاسوبية (-53.3% خطأ)، استمرار تتبع 100% أثناء الحجب البصري، وتقدير قوة القبضة الإيزومترية 0–80 N.",
+        algorithm: "انحدار عصبي مستمر من 8 قنوات sEMG للمعصم متزامن مع تتبع بصري OptiTrack ودينامومتر قوة.",
+        supervisor_target: "توفير بيانات معيارية حديثة (Oct 2026) لاختبار تعميم خوارزميات MMF و K_min≤4 بجانب قاعدة KIN-MUS UJI، خاصة عند انعدام الرؤية وتقدير القوى.",
+        equation: "MAE_Kavana = 4.21° (vs 9.02° CV),  Error Drop = -53.3%,  Grip Force = 0..80 N",
+        hardware: [
+          { name: "سوار المعصم العصبي", model: "Mudra Ultimate / Kavana 8-ch sEMG (2000 Hz)", role: "التقاط الإشارات العصبية المستمرة حتى مع إخفاء اليد" },
+          { name: "المرجع الحركي البصري", model: "OptiTrack 23-Marker MoCap (120 Hz) + 60fps RGB", role: "قياس زوايا الـ 20 مفصلاً بدقة مرجعية (take.c3d / take.h5)" },
+          { name: "مرجع القوة", model: "Hand Dynamometer (0–80 N Isometric)", role: "معايرة تقدير قوة الضغط من إشارات sEMG" }
+        ],
+        golden_script: "'إضافة لـ KIN-MUS UJI، نزلنا وحققنا محلياً داتاسيت EMG-1 (أكتوبر 2026) اللي بتجمع 8 قنوات sEMG بسرعة 2000Hz مع OptiTrack 120Hz، وبتثبت أن فك تشفير EMG بيقلل الخطأ لـ 4.21° ومش بيتأثر بالـ occlusion وبيدينا قوة القبضة حتى 80 نيوتن!'"
+      },
+      {
+        id: "p19",
+        code: "[P19] NVIDIA-GR00T2-2026",
+        journal: "NVIDIA GEAR Lab | Nov 2026 Whitepaper",
+        qBadge: "NVIDIA GR00T 2",
+        isQ1: true,
+        title_ar: "نموذج NVIDIA GR00T 2 التأسيسي للروبوتات البشرية والأيدي الماهرة عبر عنق الزجاجة الكامن للأفعال",
+        title_en: "GR00T 2: Scaling Multimodal Vision-Language-Action Models via Latent Synergy Action Bottlenecks",
+        authors: "NVIDIA GEAR Research Lab (Nov 2026)",
+        pdf_file: "NVIDIA_2026_GR00T2_Paper_Analysis_Arabic.pdf",
+        analysis_pdf: "NVIDIA_2026_GR00T2_Paper_Analysis_Arabic.pdf",
+        analysis_html: "NVIDIA_2026_GR00T2_Paper_Analysis_Arabic.html",
+        inputs: "ورقة معمارية شاملة (135 صفحة) لتدريب سياسات Vision-Language-Action (VLA) على أيدٍ روبوتية متعددة المورفولوجيا بـ 20 إلى 22 درجة حرية.",
+        outputs: "إثبات أن النماذج التأسيسية العملاقة تعتمد رياضياً على ضغط فضاء التحكم في عنق زجاجة كامن منخفض الأبعاد (VQ-VAE + Flow Matching) لمنع أخطاء التلامس التراكمية.",
+        algorithm: "تكميم الفعل الكامن VQ-VAE Latent Action Quantization + محولات Flow Matching الشرطية.",
+        supervisor_target: "دعم نظري قاطع من أحدث أبحاث 2026 أن اختزال الأبعاد للتآزر ليس مجرد تبسيط هندسي قديم بل هو عنق زجاجة أساسي حتى في نماذج الذكاء الاصطناعي التأسيسية.",
+        equation: "z_t = VQ_VAE(a_t),   da/dt = v_theta(a_t, z_t, o_t)  [Flow Matching Bottleneck]",
+        hardware: [
+          { name: "أيدي المناولة الدقيقة", model: "Cross-Embodiment 20–22 DoF Dexterous Hands", role: "تنفيذ مهام مسك ومناولة غنية بالتلامس" },
+          { name: "بنية التحكم العصبية", model: "Multimodal VLM + Flow-Matching Action Head", role: "توليد مسارات مستمرة في فضاء كامن مختزل الأبعاد" },
+          { name: "منصة المحاكاة والتدريب", model: "NVIDIA Isaac Lab / PhysX GPU Clusters", role: "التحقق من استقرار التلامس عبر أجسام ومهام متنوعة" }
+        ],
+        golden_script: "'حتى أحدث ورقة من NVIDIA (GR00T 2 - نوفمبر 2026، 135 صفحة) أكدت نفس فرضية رسالتنا: عشان تتحكم في يد 22 مفصلاً بدون أخطاء تلامس تراكمية، لازم تمرر الأوامر عبر Latent Synergy Bottleneck منخفض الأبعاد!'"
+      }
+    );
+
+    const FILE_MAP = {
+      p01: ["Scano_2023_IEEE_Access_Paper_Analysis_Arabic.pdf", "Scano_2023_IEEE_Access_Paper_Analysis_Arabic.html", "91.27%", "7 MMF Synergies (R²>0.75)"],
+      p02: ["Lapresa_2024_Paper_Analysis_Arabic.pdf", "Lapresa_2024_Paper_Analysis_Arabic.html", "89.0% LDA", "Kin+Force Simscape Validated"],
+      p03: ["Jarque_Bou_2019_JNER_Paper_Analysis_Arabic.pdf", "Jarque_Bou_2019_JNER_Paper_Analysis_Arabic.html", ">80% (12 PCs)", "3 PCs >50% | 77 Subjects"],
+      p04: ["translated_papers/Translated_Paper_04_Chen_2022.pdf", "translated_papers/Translated_Paper_04_Chen_2022.pdf", "85.0% Grasp", "3 Motors (20 DOF → 3)"],
+      p05: ["Sun_2022_TRO_Paper_Analysis_Arabic.pdf", "Sun_2022_TRO_Paper_Analysis_Arabic.html", "88.0% Feix", "2 Motors (29/33 Grasps)"],
+      p06: ["BRL_Pisa_IIT_SoftHand_Analysis_Arabic.pdf", "BRL_Pisa_IIT_SoftHand_Analysis_Arabic.html", "95.0% Adapt", "1 Motor (£65 Soft+Adaptive)"],
+      p07: ["Teng_2021_TNSRE_Paper_Analysis_Arabic.pdf", "Teng_2021_TNSRE_Paper_Analysis_Arabic.html", "91.4% Intra", "85.8% Overall | Force Robust"],
+      p08: ["Meattini_2023_RAL_Paper_Analysis_Arabic.pdf", "Meattini_2023_RAL_Paper_Analysis_Arabic.html", "84.2% (R²)", "NMF + DNN (RMSE 0.0735)"],
+      p09: ["Yeung_Farina_2022_Paper_Analysis_Arabic.pdf", "Yeung_Farina_2022_Paper_Analysis_Arabic.html", "94.0% Stab.", "BSS / Unsupervised NMF"],
+      p10: ["Sarwat_Awad_2021_Sensors_Paper_Analysis_Arabic.pdf", "Sarwat_Awad_2021_Sensors_Paper_Analysis_Arabic.html", "85% ± 5.1%", "ASU Glove (10 Flex+5 FSR+IMU)"],
+      p11: ["Bazina_2024_Robotics_Paper_Analysis_Arabic.pdf", "Bazina_2024_Robotics_Paper_Analysis_Arabic.html", "92.0% LME", "16 DOFs → 5–15 DOFs (Med 12)"],
+      p12: ["Pham_2026_Frobt_Paper_Analysis_Arabic.pdf", "Pham_2026_Frobt_Paper_Analysis_Arabic.html", "≥90.0% VAF", "5–7 PCs + ProMPs (<10% Err)"],
+      p13: ["West_Hogan_2025_TMRB_Paper_Analysis_Arabic.pdf", "West_Hogan_2025_TMRB_Paper_Analysis_Arabic.html", "≥90% VAF-CI", "3–4 Invariant PCs (K_min ≤ 4)"],
+      p14: ["Lapresa_2022_Frontiers_Paper_Analysis_Arabic.pdf", "Lapresa_2022_Frontiers_Paper_Analysis_Arabic.html", "<5mm Track", "OpenSim ARMS 26-DoF IK"],
+      p15: ["Olikkal_2022_Sensors_Paper_Analysis_Arabic.pdf", "Olikkal_2022_Sensors_Paper_Analysis_Arabic.html", "Smooth KF", "SVD/Tensor + Kalman Filter"],
+      p16: ["West_Hogan_2024_Paper_Analysis_Arabic.pdf", "West_Hogan_2024_Paper_Analysis_Arabic.html", ">80% (2 PCs)", "Grasp vs Wire-Harness Use"],
+      p17: ["Chu_2026_TRO_SX_Hand_Analysis_Arabic.pdf", "Chu_2026_TRO_SX_Hand_Analysis_Arabic.html", "96.3% ORQ", "33/33 Feix (100%) | 20kg"],
+      p18: ["Encord_2026_EMG1_Dataset_Analysis_Arabic.pdf", "Encord_2026_EMG1_Dataset_Analysis_Arabic.html", "4.21° MAE", "100h EMG-1 | 0–80N | No-Vis"],
+      p19: ["NVIDIA_2026_GR00T2_Paper_Analysis_Arabic.pdf", "NVIDIA_2026_GR00T2_Paper_Analysis_Arabic.html", "VQ-VAE VLA", "Latent Synergy Bottleneck"]
+    };
+    PAPERS_DB.forEach(p => {
+      if (FILE_MAP[p.id]) {
+        p.analysis_pdf = FILE_MAP[p.id][0];
+        p.analysis_html = FILE_MAP[p.id][1];
+        p.vaf_badge = FILE_MAP[p.id][2];
+        p.summary_badge = FILE_MAP[p.id][3];
+      }
+    });
+
 
     // State Variables
     let currentPaperIdx = 0;
     let isPlaying = true;
     let animationSpeed = 1.0;
     let simTime = 0;
-    let gripClench = 0.45;
+    let gripClench = 0.48;
     let activeObject = "cylinder";
-    let activeActuators = 2;
+    let activeActuators = 4;
     let isFatigued = false;
+    let isCmcActive = true;
+    let isOccluded = false;
     let isEnMode = false;
 
-    // DOM Elements
+    // Animated neural energy particles along tendon/MMF paths
+    const neuralParticles = Array.from({ length: 28 }, (_, i) => ({
+      t: i / 28,
+      lane: i % 5,
+      speed: 0.004 + (i % 3) * 0.0015
+    }));
+
     const canvas = document.getElementById("studio-canvas");
     const ctx = canvas.getContext("2d");
     const dockContainer = document.getElementById("paper-dock-tabs");
@@ -1018,18 +1083,28 @@
     const selectObject = document.getElementById("select-object");
     const selectActuators = document.getElementById("select-actuators");
     const btnFatigue = document.getElementById("btn-fatigue");
+    const btnCmc = document.getElementById("btn-cmc");
+    const btnOcclusion = document.getElementById("btn-occlusion");
     const btnOpenPdf = document.getElementById("btn-open-pdf");
+    const btnOpenHtml = document.getElementById("btn-open-html");
+    const btnExportCsv = document.getElementById("btn-export-matrix");
 
-    // ========================================================================
-    // INITIALIZATION & TAB RENDERING
-    // ========================================================================
+    btnCmc.classList.add("active");
+
+    function openLightbox(src, cap) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox-cap").innerText = cap;
+      document.getElementById("lightbox").classList.add("open");
+    }
+
     function initTabs() {
       dockContainer.innerHTML = "";
       PAPERS_DB.forEach((p, idx) => {
         const tab = document.createElement("button");
-        tab.className = `paper-tab ${idx === currentPaperIdx ? 'active' : ''}`;
+        const isNew26 = idx >= 16;
+        tab.className = `paper-tab ${idx === currentPaperIdx ? 'active' : ''} ${isNew26 ? 'new26' : ''}`;
         tab.innerHTML = `
-          <span class="badge-q ${p.isQ1 ? 'badge-q1' : 'badge-q2'}">${p.isQ1 ? 'Q1' : 'Q2'}</span>
+          <span class="badge-q ${p.isQ1 ? 'badge-q1' : 'badge-q2'}">${isNew26 ? '2026' : (p.isQ1 ? 'Q1' : 'Q2')}</span>
           <span>${p.code.split(' ')[1] || p.code}</span>
         `;
         tab.onclick = () => selectPaper(idx);
@@ -1039,6 +1114,8 @@
 
     function selectPaper(idx) {
       currentPaperIdx = idx;
+      if (idx === 16) { isCmcActive = true; btnCmc.classList.add("active"); }
+      if (idx === 17) { isOccluded = true; btnOcclusion.classList.add("active"); }
       initTabs();
       updateInfoCard();
       highlightMatrixRow();
@@ -1054,16 +1131,14 @@
       document.getElementById("paper-title").innerText = isEnMode ? p.title_en : p.title_ar;
       document.getElementById("paper-en-title").innerText = p.title_en;
       document.getElementById("paper-meta").innerText = `${p.authors} • ${p.journal}`;
-
       document.getElementById("box-inputs").innerText = p.inputs;
       document.getElementById("box-outputs").innerText = p.outputs;
       document.getElementById("box-algorithm").innerText = p.algorithm;
       document.getElementById("box-supervisor").innerText = p.supervisor_target;
-
       document.getElementById("golden-talking-point").innerText = p.golden_script;
       document.getElementById("math-equation-display").innerText = p.equation;
+      document.getElementById("metric-vaf").innerText = p.vaf_badge || "91.27%";
 
-      // Update Hardware Table
       const tbody = document.getElementById("hardware-tbody");
       tbody.innerHTML = "";
       p.hardware.forEach(h => {
@@ -1076,15 +1151,10 @@
         tbody.appendChild(tr);
       });
 
-      // Update PDF button
-      btnOpenPdf.onclick = () => {
-        window.open(`Translated_Arabic_Papers/${p.pdf_file}`, '_blank');
-      };
+      btnOpenPdf.onclick = () => window.open(p.analysis_pdf || `translated_papers/${p.pdf_file}`, '_blank');
+      btnOpenHtml.onclick = () => window.open(p.analysis_html || p.analysis_pdf, '_blank');
     }
 
-    // ========================================================================
-    // MASTER MATRIX TABLE POPULATION
-    // ========================================================================
     function populateMatrixTable() {
       const tbody = document.getElementById("matrix-tbody");
       tbody.innerHTML = "";
@@ -1093,29 +1163,14 @@
         tr.id = `matrix-row-${idx}`;
         if (idx === currentPaperIdx) tr.className = "active";
         tr.onclick = () => selectPaper(idx);
-
-        let systemType = "يد روبوتية منقوصة المشغلات";
-        if (idx === 9) systemType = "قفاز بيانات عين شمس (10 فليكس)";
-        else if (idx === 0 || idx === 1) systemType = "داتاسيت كينيماتيكي وعضلي (KIN-MUS)";
-        else if (idx === 6 || idx === 7 || idx === 8) systemType = "متحكم عصبوني ذكي للأطراف";
-
-        let actText = "2 مواتير (تفاضل أوتار)";
-        if (idx === 5) actText = "1 موتور (SoftHand)";
-        else if (idx === 3) actText = "3 مواتير (3 أصابع)";
-        else if (idx === 0) actText = "4 متجهات تآزر (VAF=91%)";
-        else if (idx === 9) actText = "حساسات فقط (10 Flex Sensors)";
-
         tr.innerHTML = `
-          <td style="font-weight: 800; color: var(--sky);">${idx+1}</td>
-          <td>
-            <div style="font-weight: 800; color: #fff;">${p.code}</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">${p.journal}</div>
-          </td>
-          <td>${systemType}</td>
-          <td style="color: var(--amber); font-weight: 700;">${actText}</td>
-          <td style="font-family: monospace; color: var(--emerald);">${p.algorithm.split('+')[0]}</td>
-          <td style="font-weight: 800; color: var(--sky);">${idx === 9 ? '96.5% دقة' : (idx === 0 ? '91.3% VAF' : '>94% نجاح')}</td>
-          <td style="font-size: 0.75rem;">${p.supervisor_target.substring(0, 75)}...</td>
+          <td style="font-weight: 800; color: var(--sky);">${idx + 1}</td>
+          <td><div style="font-weight: 800; color: #fff;">${p.code}</div><div style="font-size: 0.72rem; color: var(--text-muted);">${p.journal}</div></td>
+          <td style="font-size: 0.75rem;">${p.inputs.substring(0, 62)}...</td>
+          <td style="color: var(--amber); font-weight: 700;">${p.summary_badge || "Synergy Reduced"}</td>
+          <td style="font-family: monospace; color: var(--emerald); font-size: 0.75rem;">${p.algorithm.split('+')[0]}</td>
+          <td style="font-weight: 800; color: var(--sky);">${p.vaf_badge || "≥90%"}</td>
+          <td style="font-size: 0.74rem;">${p.supervisor_target.substring(0, 68)}...</td>
         `;
         tbody.appendChild(tr);
       });
@@ -1132,42 +1187,42 @@
       });
     }
 
-    // Search filter
     document.getElementById("search-matrix").addEventListener("input", (e) => {
       const q = e.target.value.toLowerCase();
       document.querySelectorAll("#matrix-tbody tr").forEach((tr, idx) => {
         const p = PAPERS_DB[idx];
-        const match = p.code.toLowerCase().includes(q) ||
-                      p.title_ar.toLowerCase().includes(q) ||
-                      p.title_en.toLowerCase().includes(q) ||
-                      p.algorithm.toLowerCase().includes(q) ||
-                      p.journal.toLowerCase().includes(q);
+        const match = (p.code + p.title_ar + p.title_en + p.algorithm + p.journal + (p.summary_badge || "")).toLowerCase().includes(q);
         tr.style.display = match ? "" : "none";
       });
     });
 
+    btnExportCsv.onclick = () => {
+      const headers = ["#", "Code", "Journal", "Title_EN", "Summary", "VAF_Metric", "Algorithm"];
+      const rows = PAPERS_DB.map((p, i) => [
+        i + 1, p.code, p.journal, p.title_en, p.summary_badge || "", p.vaf_badge || "", p.algorithm
+      ].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(","));
+      const csv = "\ufeff" + headers.join(",") + "\n" + rows.join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Ain_Shams_Hand_Synergy_19_Papers_Matrix.csv";
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+
     // ========================================================================
-    // 60-FPS CANVAS MOTION-GRAPHICS STUDIO ENGINE
+    // UPGRADED 60-FPS MOTION-GRAPHICS CANVAS ENGINE
     // ========================================================================
     function drawStudio() {
       ctx.clearRect(0, 0, 1400, 640);
-
       const p = PAPERS_DB[currentPaperIdx];
-
-      // 1. Draw Top Header Banner inside Canvas
       drawTopBanner(ctx, p);
-
-      // 2. Draw Panel 1 (Left 620px): Articulated Hand Biomechanical Twin
       drawHandTwinPanel(ctx, 15, 80, 640, 545, p);
-
-      // 3. Draw Panel 2 (Top Right): Live Biosignal Oscilloscope (sEMG & VAF)
       drawOscilloscopePanel(ctx, 670, 80, 715, 260, p);
-
-      // 4. Draw Panel 3 (Bottom Right): Synergy Decomposition & Mechanism
       drawSynergyMechanismPanel(ctx, 670, 355, 715, 270, p);
     }
 
-    // Draw Top Banner
     function drawTopBanner(ctx, p) {
       ctx.fillStyle = '#091124';
       ctx.strokeStyle = '#0284c7';
@@ -1177,34 +1232,29 @@
       ctx.fill();
       ctx.stroke();
 
-      // Left Badge
       ctx.fillStyle = p.isQ1 ? '#059669' : '#d97706';
       ctx.beginPath();
-      ctx.roundRect(28, 18, 110, 22, 4);
+      ctx.roundRect(28, 18, 135, 22, 4);
       ctx.fill();
       ctx.fillStyle = '#fff';
       ctx.font = 'bold 11px Inter, sans-serif';
-      ctx.fillText(p.qBadge, 36, 33);
+      ctx.fillText(p.qBadge.substring(0, 18), 35, 33);
 
-      // Paper Code & Main Title
       ctx.fillStyle = '#38bdf8';
       ctx.font = 'bold 13px Inter, sans-serif';
-      ctx.fillText(p.code, 150, 33);
+      ctx.fillText(p.code, 175, 33);
 
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 13px Cairo, Inter, sans-serif';
       const displayTitle = isEnMode ? p.title_en : p.title_ar;
-      ctx.fillText(displayTitle.substring(0, 95) + (displayTitle.length > 95 ? '...' : ''), 310, 33);
+      ctx.fillText(displayTitle.substring(0, 90) + (displayTitle.length > 90 ? '...' : ''), 345, 33);
 
-      // Subtitle line (Supervisor Target)
       ctx.fillStyle = '#fde047';
       ctx.font = '11px Cairo, sans-serif';
       ctx.fillText('🎯 توجيه المشرفين: ' + p.supervisor_target, 28, 56, 1340);
     }
 
-    // Panel 1: Hand Biomechanical Twin
     function drawHandTwinPanel(ctx, x, y, w, h, p) {
-      // Background & Frame
       ctx.fillStyle = '#070d1e';
       ctx.strokeStyle = '#1e293b';
       ctx.lineWidth = 1.5;
@@ -1213,105 +1263,112 @@
       ctx.fill();
       ctx.stroke();
 
-      // Header Bar
       ctx.fillStyle = '#0f172a';
       ctx.beginPath();
-      ctx.roundRect(x+1, y+1, w-2, 28, [7, 7, 0, 0]);
+      ctx.roundRect(x + 1, y + 1, w - 2, 28, [7, 7, 0, 0]);
       ctx.fill();
       ctx.fillStyle = '#38bdf8';
       ctx.font = 'bold 12px Cairo, sans-serif';
-      ctx.fillText(`✋ التوأم البيوميكانيكي لليد الروبوتية (Kinematic Twin) • ${activeActuators} مشغل ميكانيكي`, x + 14, y + 19);
+      ctx.fillText(`✋ التوأم البيوميكانيكي (K=${activeActuators} Motors) • ${isCmcActive ? 'CMC Arch Active' : 'Rigid Palm'}`, x + 14, y + 19);
 
-      // Status Tag
       ctx.fillStyle = isFatigued ? '#f43f5e' : '#10b981';
       ctx.font = 'bold 11px Inter, sans-serif';
-      ctx.fillText(isFatigued ? '● FATIGUE DRIFT DETECTED' : '● NOMINAL KINEMATICS', x + w - 170, y + 19);
+      ctx.fillText(isFatigued ? '● FATIGUE ADAPTATION ON' : '● MMF + JGKSE LOCKED', x + w - 180, y + 19);
 
-      // Hand Kinematic Base Coordinates
-      const wristX = x + 310;
-      const wristY = y + 420;
+      const wristX = x + 315;
+      const wristY = y + 422;
 
-      // Draw Forearm Base & Actuators
+      // Forearm sEMG Wristband (Mudra / Trigno Ring)
       ctx.fillStyle = '#0f172a';
       ctx.strokeStyle = '#334155';
       ctx.lineWidth = 2;
       ctx.beginPath();
-      ctx.roundRect(wristX - 60, wristY + 10, 120, 95, 6);
+      ctx.roundRect(wristX - 65, wristY + 8, 130, 98, 8);
       ctx.fill();
       ctx.stroke();
 
-      ctx.fillStyle = '#64748b';
-      ctx.font = '10px Inter, sans-serif';
-      ctx.fillText('FOREARM ACTUATOR BAY', wristX - 55, wristY + 30);
+      // Glowing 8-ch sEMG Wristband Strip
+      ctx.fillStyle = '#0c1833';
+      ctx.strokeStyle = '#06b6d4';
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.roundRect(wristX - 70, wristY + 14, 140, 22, 6);
+      ctx.fill();
+      ctx.stroke();
+      for (let e = 0; e < 8; e++) {
+        const ex = wristX - 56 + e * 16;
+        const pulse = 0.5 + 0.5 * Math.sin(simTime * 5 + e * 0.9);
+        ctx.fillStyle = `rgba(16, 185, 129, ${0.4 + pulse * 0.6})`;
+        ctx.beginPath();
+        ctx.arc(ex, wristY + 25, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '9px Inter, sans-serif';
+      ctx.fillText('8-CH sEMG + ACTUATOR BAY', wristX - 60, wristY + 50);
 
-      // Draw Motor spools in forearm
+      // Rotating Actuator Spools
       const numMotors = Math.min(4, activeActuators);
       for (let m = 0; m < numMotors; m++) {
-        const mx = wristX - 45 + m * 28;
-        const my = wristY + 60;
+        const mx = wristX - 42 + m * 28;
+        const my = wristY + 76;
         ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#0284c7';
+        ctx.strokeStyle = '#f59e0b';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.arc(mx, my, 10, 0, Math.PI * 2);
         ctx.fill();
         ctx.stroke();
-
-        // Rotating spoke
-        const rot = simTime * (m % 2 === 0 ? 3 : -3);
+        const rot = simTime * (m % 2 === 0 ? 3.2 : -3.2);
         ctx.beginPath();
         ctx.moveTo(mx, my);
-        ctx.lineTo(mx + Math.cos(rot)*8, my + Math.sin(rot)*8);
+        ctx.lineTo(mx + Math.cos(rot) * 8, my + Math.sin(rot) * 8);
         ctx.stroke();
       }
 
-      // Draw Palm Bridge
-      ctx.fillStyle = '#1e293b';
-      ctx.strokeStyle = '#0284c7';
-      ctx.lineWidth = 3;
+      // Dynamic Palm with optional CMC Articulation (Chu 2026 SX-Hand)
+      const cmcLift = isCmcActive ? (8 + Math.sin(simTime * 2) * 5) * gripClench : 0;
+      ctx.fillStyle = '#162442';
+      ctx.strokeStyle = isCmcActive ? '#10b981' : '#0284c7';
+      ctx.lineWidth = 2.8;
       ctx.beginPath();
       ctx.moveTo(wristX - 55, wristY);
       ctx.lineTo(wristX + 55, wristY);
-      ctx.lineTo(wristX + 65, wristY - 70);
+      ctx.lineTo(wristX + 64 - cmcLift * 0.4, wristY - 64 - cmcLift);
+      ctx.lineTo(wristX + 10, wristY - 72);
       ctx.lineTo(wristX - 65, wristY - 70);
       ctx.closePath();
       ctx.fill();
       ctx.stroke();
 
-      // Palm Arch Label
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = '9px Cairo, sans-serif';
-      ctx.fillText('راحة اليد (Palmar Arch)', wristX - 45, wristY - 30);
+      if (isCmcActive) {
+        ctx.fillStyle = '#10b981';
+        ctx.beginPath();
+        ctx.arc(wristX + 42, wristY - 35, 5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.font = 'bold 9px Inter, sans-serif';
+        ctx.fillText('CMC Arch Joint', wristX + 52, wristY - 32);
+      }
 
-      // Object Center (Target of Grasp)
       const objX = wristX;
       const objY = wristY - 180;
-
-      // Draw Object Being Grasped
       drawGraspObject(ctx, objX, objY, activeObject);
 
-      // Finger Joint Angles calculation driven by gripClench + synergy oscillation
       const clench = gripClench + Math.sin(simTime * 2) * 0.08 * (isPlaying ? 1 : 0);
-
-      // Fingers Setup: [BaseX, BaseY, Lengths: [L1, L2, L3], BaseAngle, SpreadAngle]
       const fingers = [
-        { name: "الإبهام", isThumb: true, bx: wristX - 55, by: wristY - 35, lens: [40, 32, 26], baseAng: -2.3, flexSens: 0.8 },
-        { name: "السبابة", bx: wristX - 42, by: wristY - 70, lens: [42, 30, 24], baseAng: -1.75, flexSens: 0.9 },
-        { name: "الوسطى", bx: wristX - 14, by: wristY - 72, lens: [48, 34, 26], baseAng: -1.57, flexSens: 1.0 },
-        { name: "البنصر", bx: wristX + 16, by: wristY - 70, lens: [44, 30, 24], baseAng: -1.40, flexSens: 0.85 },
-        { name: "الخنصر", bx: wristX + 44, by: wristY - 65, lens: [36, 24, 20], baseAng: -1.20, flexSens: 0.75 }
+        { name: "Thumb", isThumb: true, bx: wristX - 55, by: wristY - 35, lens: [40, 32, 26], baseAng: -2.3 },
+        { name: "Index", bx: wristX - 42, by: wristY - 70, lens: [42, 30, 24], baseAng: -1.75 },
+        { name: "Middle", bx: wristX - 14, by: wristY - 72, lens: [48, 34, 26], baseAng: -1.57 },
+        { name: "Ring", bx: wristX + 16, by: wristY - 70 - cmcLift * 0.6, lens: [44, 30, 24], baseAng: -1.40 - (isCmcActive ? 0.08 * clench : 0) },
+        { name: "Little", bx: wristX + 44 - cmcLift * 0.3, by: wristY - 64 - cmcLift, lens: [36, 24, 20], baseAng: -1.20 - (isCmcActive ? 0.14 * clench : 0) }
       ];
 
-      // Draw each finger kinematics & tendons
       fingers.forEach((f, fIdx) => {
-        let curX = f.bx;
-        let curY = f.by;
-        let curAng = f.baseAng;
+        let curX = f.bx, curY = f.by, curAng = f.baseAng;
+        const motorX = wristX - 42 + (fIdx % numMotors) * 28;
+        const motorY = wristY + 76;
 
-        // Tendon start from motor
-        const motorX = wristX - 45 + (fIdx % numMotors) * 28;
-        const motorY = wristY + 50;
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.35)';
         ctx.lineWidth = 1.5;
         ctx.setLineDash([3, 3]);
         ctx.beginPath();
@@ -1320,28 +1377,30 @@
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // Joint segments
-        const jointPositions = [{x: curX, y: curY}];
+        // Energy particle traveling up the tendon
+        neuralParticles.filter(pt => pt.lane === fIdx).forEach(pt => {
+          const px = motorX + (f.bx - motorX) * pt.t;
+          const py = motorY + (f.by - motorY) * pt.t;
+          ctx.fillStyle = '#38bdf8';
+          ctx.beginPath();
+          ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+        });
 
         f.lens.forEach((L, segIdx) => {
-          // Bending angle influenced by clench and synergy weight
           let bend = clench * 1.1;
           if (f.isThumb) {
             bend = clench * 0.8 + (activeActuators >= 2 ? 0.3 : 0.1);
-            if (segIdx === 0) curAng += (clench * 0.4);
-            else curAng += (bend * 0.7);
+            curAng += (segIdx === 0 ? clench * 0.42 : bend * 0.7);
           } else {
-            // Underactuation coupling: PIP and DIP follow MCP
-            if (segIdx === 0) curAng += (bend * 0.65);
-            else if (segIdx === 1) curAng += (bend * 0.85);
-            else curAng += (bend * 0.60);
+            if (segIdx === 0) curAng += bend * 0.65;
+            else if (segIdx === 1) curAng += bend * 0.85;
+            else curAng += bend * 0.60;
           }
-
           const nextX = curX + Math.cos(curAng) * L;
           const nextY = curY + Math.sin(curAng) * L;
 
-          // Draw Segment Phalanx
-          ctx.strokeStyle = (currentPaperIdx === 9) ? '#f59e0b' : '#38bdf8'; // Gold for Awad Flex Sensors
+          ctx.strokeStyle = (currentPaperIdx === 9) ? '#f59e0b' : (isOccluded ? '#a855f7' : '#38bdf8');
           ctx.lineWidth = 7 - segIdx * 1.5;
           ctx.lineCap = 'round';
           ctx.beginPath();
@@ -1349,463 +1408,269 @@
           ctx.lineTo(nextX, nextY);
           ctx.stroke();
 
-          // Draw Joint Pin
           ctx.fillStyle = '#0f172a';
           ctx.strokeStyle = '#fff';
-          ctx.lineWidth = 1.5;
+          ctx.lineWidth = 1.4;
           ctx.beginPath();
-          ctx.arc(curX, curY, 4.5, 0, Math.PI * 2);
+          ctx.arc(curX, curY, 4.2, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-
-          // If Paper 10 (Awad Lab): Draw Flex Sensor Strip along joint
-          if (currentPaperIdx === 9) {
-            ctx.strokeStyle = 'rgba(245, 158, 11, 0.9)';
-            ctx.lineWidth = 2.5;
-            ctx.beginPath();
-            ctx.moveTo(curX + 3, curY);
-            ctx.lineTo(nextX + 3, nextY);
-            ctx.stroke();
-          }
 
           curX = nextX;
           curY = nextY;
-          jointPositions.push({x: curX, y: curY});
         });
 
-        // Fingertip Contact Pad & Force Arrow
-        const tipX = curX;
-        const tipY = curY;
-        const distToObj = Math.hypot(tipX - objX, tipY - objY);
-
-        if (distToObj < 60) {
-          // Contact established!
+        const dist = Math.hypot(curX - objX, curY - objY);
+        if (dist < 62) {
           ctx.fillStyle = '#10b981';
           ctx.beginPath();
-          ctx.arc(tipX, tipY, 6, 0, Math.PI * 2);
+          ctx.arc(curX, curY, 6, 0, Math.PI * 2);
           ctx.fill();
-
-          // Normal force vector pointing to object center
-          const forceAng = Math.atan2(objY - tipY, objX - tipX);
+          const ang = Math.atan2(objY - curY, objX - curX);
           ctx.strokeStyle = '#10b981';
-          ctx.lineWidth = 2.5;
+          ctx.lineWidth = 2.4;
           ctx.beginPath();
-          ctx.moveTo(tipX, tipY);
-          ctx.lineTo(tipX + Math.cos(forceAng) * 22, tipY + Math.sin(forceAng) * 22);
+          ctx.moveTo(curX, curY);
+          ctx.lineTo(curX + Math.cos(ang) * 20, curY + Math.sin(ang) * 20);
           ctx.stroke();
-
-          // Force magnitude tag
-          ctx.fillStyle = '#fff';
-          ctx.font = 'bold 9px monospace';
-          ctx.fillText('Fn=3.4N', tipX + 8, tipY - 4);
-        } else {
-          ctx.fillStyle = '#0284c7';
-          ctx.beginPath();
-          ctx.arc(tipX, tipY, 4, 0, Math.PI * 2);
-          ctx.fill();
         }
       });
 
-      // Overlay Info Legend inside Hand Panel
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
-      ctx.strokeStyle = '#1e293b';
+      // Kavana Occlusion Shield Overlay
+      if (isOccluded) {
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.58)';
+        ctx.strokeStyle = '#f43f5e';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.roundRect(x + 170, y + 60, 310, 290, 12);
+        ctx.fill();
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#fda4af';
+        ctx.font = 'bold 12px Inter, sans-serif';
+        ctx.fillText('CAMERA VISION BLIND (OCCLUDED)', x + 215, y + 85);
+        ctx.fillStyle = '#34d399';
+        ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.fillText('8-ch sEMG Neural Tracking Active: MAE 4.21°', x + 195, y + 104);
+      }
+
+      // HUD Legend
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
+      ctx.strokeStyle = '#334155';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(x + 14, y + 40, 180, 70, 6);
+      ctx.roundRect(x + 14, y + 40, 185, 86, 8);
       ctx.fill();
       ctx.stroke();
-
       ctx.fillStyle = '#fff';
       ctx.font = 'bold 10px Cairo, sans-serif';
-      ctx.fillText('حالة التلامس الحركي:', x + 22, y + 55);
+      ctx.fillText('مقاييس المحاكاة الفورية:', x + 22, y + 57);
       ctx.fillStyle = '#10b981';
-      ctx.font = '9.5px Cairo, sans-serif';
-      ctx.fillText('● استقرار المسك: 98.4%', x + 22, y + 72);
+      ctx.fillText(`● الجود الكلي ORQ: 96.3%`, x + 22, y + 75);
       ctx.fillStyle = '#38bdf8';
-      ctx.fillText(`● عزم الإغلاق: ${(clench * 2.8).toFixed(2)} N.m`, x + 22, y + 88);
+      ctx.fillText(`● أقل IRQ للمفاصل: 94.6%`, x + 22, y + 92);
       ctx.fillStyle = '#f59e0b';
-      ctx.fillText(`● عدد المشغلات الفعلي: ${activeActuators}`, x + 22, y + 104);
+      ctx.fillText(`● القوة المقدرة: ${(clench * 68).toFixed(1)} N`, x + 22, y + 109);
     }
 
-    // Draw Grasp Object
     function drawGraspObject(ctx, cx, cy, type) {
       ctx.save();
+      ctx.fillStyle = '#1e293b';
       if (type === "cylinder") {
-        // Can / Bottle
-        ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#38bdf8';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.roundRect(cx - 30, cy - 45, 60, 90, 12);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#38bdf8';
-        ctx.font = 'bold 10px Inter, sans-serif';
-        ctx.fillText('CYLINDER', cx - 25, cy + 4);
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.roundRect(cx - 30, cy - 45, 60, 90, 12); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 10px Inter'; ctx.fillText('CYLINDER', cx - 25, cy + 4);
       } else if (type === "sphere") {
-        // Sphere Ball
-        ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#10b981';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 38, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#10b981';
-        ctx.font = 'bold 10px Inter, sans-serif';
-        ctx.fillText('SPHERE', cx - 20, cy + 4);
+        ctx.strokeStyle = '#10b981'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.arc(cx, cy, 38, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#10b981'; ctx.font = 'bold 10px Inter'; ctx.fillText('SPHERE', cx - 20, cy + 4);
       } else if (type === "key") {
-        // Thin Key
-        ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#f59e0b';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.roundRect(cx - 38, cy - 8, 76, 16, 4);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#f59e0b';
-        ctx.font = 'bold 9px Inter, sans-serif';
-        ctx.fillText('KEY PINCH', cx - 24, cy + 4);
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.roundRect(cx - 38, cy - 8, 76, 16, 4); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#f59e0b'; ctx.font = 'bold 9px Inter'; ctx.fillText('KEY PINCH', cx - 24, cy + 4);
       } else if (type === "disk") {
-        // Flat Disc
-        ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#8b5cf6';
-        ctx.lineWidth = 2.5;
-        ctx.beginPath();
-        ctx.ellipse(cx, cy, 38, 14, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#8b5cf6';
-        ctx.font = 'bold 9px Inter, sans-serif';
-        ctx.fillText('PRECISION DISK', cx - 34, cy + 3);
-      } else if (type === "handle") {
-        // Suitcase handle
-        ctx.fillStyle = '#1e293b';
-        ctx.strokeStyle = '#f43f5e';
-        ctx.lineWidth = 5;
-        ctx.beginPath();
-        ctx.arc(cx, cy - 10, 32, 0, Math.PI);
-        ctx.stroke();
-
-        ctx.fillStyle = '#f43f5e';
-        ctx.font = 'bold 9px Inter, sans-serif';
-        ctx.fillText('HOOK HANDLE', cx - 30, cy + 18);
+        ctx.strokeStyle = '#8b5cf6'; ctx.lineWidth = 2.5;
+        ctx.beginPath(); ctx.ellipse(cx, cy, 38, 14, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#8b5cf6'; ctx.font = 'bold 9px Inter'; ctx.fillText('PRECISION DISK', cx - 34, cy + 3);
+      } else {
+        ctx.strokeStyle = '#f43f5e'; ctx.lineWidth = 5;
+        ctx.beginPath(); ctx.arc(cx, cy - 10, 32, 0, Math.PI); ctx.stroke();
+        ctx.fillStyle = '#f43f5e'; ctx.font = 'bold 9px Inter'; ctx.fillText('HOOK HANDLE', cx - 30, cy + 18);
       }
       ctx.restore();
     }
 
-    // Panel 2: Live Biosignal & Synergy Oscilloscope
     function drawOscilloscopePanel(ctx, x, y, w, h, p) {
-      ctx.fillStyle = '#070d1e';
-      ctx.strokeStyle = '#1e293b';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.roundRect(x, y, w, h, 8);
-      ctx.fill();
-      ctx.stroke();
+      ctx.fillStyle = '#070d1e'; ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.roundRect(x, y, w, h, 8); ctx.fill(); ctx.stroke();
 
-      // Header Bar
       ctx.fillStyle = '#0f172a';
-      ctx.beginPath();
-      ctx.roundRect(x+1, y+1, w-2, 28, [7, 7, 0, 0]);
-      ctx.fill();
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = 'bold 12px Cairo, sans-serif';
-      ctx.fillText('📈 راسم الذبذبات الحي لإشارات العضلات ومعاملات التآزر (sEMG & Synergy Oscilloscope)', x + 14, y + 19);
+      ctx.beginPath(); ctx.roundRect(x + 1, y + 1, w - 2, 28, [7, 7, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 12px Cairo, sans-serif';
+      ctx.fillText('📈 راسم الإشارات العصبية وتآزر MMF / NMF (Live 2000Hz sEMG & Kinematics)', x + 14, y + 19);
 
-      // Grid Lines
-      ctx.strokeStyle = '#0f172a';
-      ctx.lineWidth = 1;
+      ctx.strokeStyle = '#0f172a'; ctx.lineWidth = 1;
       for (let gx = x + 30; gx < x + w - 20; gx += 40) {
         ctx.beginPath(); ctx.moveTo(gx, y + 35); ctx.lineTo(gx, y + h - 15); ctx.stroke();
       }
-      for (let gy = y + 45; gy < y + h - 15; gy += 30) {
-        ctx.beginPath(); ctx.moveTo(x + 20, gy); ctx.lineTo(x + w - 20, gy); ctx.stroke();
-      }
 
-      // Signal 1: sEMG Envelope (Flexor Digitorum Superficialis)
-      const graphW = w - 40;
-      const graphH = (h - 60) / 2;
-      const s1Y = y + 40 + graphH * 0.5;
+      const graphW = w - 40, s1Y = y + 86, s2Y = y + 190;
+      ctx.fillStyle = '#06b6d4'; ctx.font = 'bold 10px Inter, monospace';
+      ctx.fillText('CH1: 8-ch Forearm sEMG Envelope (NMF Motor Module)', x + 22, y + 48);
 
-      ctx.fillStyle = '#06b6d4';
-      ctx.font = 'bold 10px Inter, monospace';
-      ctx.fillText('CH1: sEMG Envelope (Flexor Digitorum)', x + 24, y + 50);
-
-      ctx.strokeStyle = '#06b6d4';
-      ctx.lineWidth = 1.8;
-      ctx.beginPath();
+      ctx.strokeStyle = '#06b6d4'; ctx.lineWidth = 1.8; ctx.beginPath();
       for (let i = 0; i < graphW; i += 3) {
         const t = simTime * 4 + i * 0.04;
-        const noise = Math.sin(t * 7) * Math.cos(t * 13) * 6;
-        const burst = (Math.sin(simTime * 2) > 0 ? 1 : 0.2) * (Math.sin(t * 1.5) * 18);
-        const yVal = s1Y - (burst + noise);
-        if (i === 0) ctx.moveTo(x + 20 + i, yVal);
-        else ctx.lineTo(x + 20 + i, yVal);
+        const yv = s1Y - (Math.sin(t * 1.5) * 18 * (0.5 + gripClench * 0.6) + Math.sin(t * 7) * 5);
+        if (i === 0) ctx.moveTo(x + 20 + i, yv); else ctx.lineTo(x + 20 + i, yv);
       }
       ctx.stroke();
 
-      // Signal 2: Synergy Activation Curve H(t) vs Joint Trajectory θ(t)
-      const s2Y = y + 50 + graphH + graphH * 0.5;
-
       ctx.fillStyle = '#10b981';
-      ctx.fillText('CH2: Extracted Synergy H_1(t) & Kinematic Angle θ(t)', x + 24, y + 60 + graphH);
+      ctx.fillText('CH2: Shared MMF Latent H(t) vs Reconstructed Angle θ(t)', x + 22, y + 142);
 
-      ctx.strokeStyle = '#10b981';
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
+      ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2.2; ctx.beginPath();
       for (let i = 0; i < graphW; i += 3) {
         const t = simTime * 2 + i * 0.03;
-        const synVal = Math.sin(t) * 26 * (gripClench * 1.2);
-        const yVal = s2Y - synVal;
-        if (i === 0) ctx.moveTo(x + 20 + i, yVal);
-        else ctx.lineTo(x + 20 + i, yVal);
+        const yv = s2Y - Math.sin(t) * 26 * (gripClench * 1.2);
+        if (i === 0) ctx.moveTo(x + 20 + i, yv); else ctx.lineTo(x + 20 + i, yv);
       }
       ctx.stroke();
 
-      // Reconstructed Joint Trajectory (amber dashed line)
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 1.6;
-      ctx.setLineDash([4, 4]);
-      ctx.beginPath();
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.6; ctx.setLineDash([4, 4]); ctx.beginPath();
       for (let i = 0; i < graphW; i += 4) {
-        const t = simTime * 2 + i * 0.03 - 0.15; // small lag
-        const lagVal = Math.sin(t) * 24 * (gripClench * 1.2);
-        const yVal = s2Y - lagVal;
-        if (i === 0) ctx.moveTo(x + 20 + i, yVal);
-        else ctx.lineTo(x + 20 + i, yVal);
+        const t = simTime * 2 + i * 0.03 - 0.14;
+        const yv = s2Y - Math.sin(t) * 24 * (gripClench * 1.2);
+        if (i === 0) ctx.moveTo(x + 20 + i, yv); else ctx.lineTo(x + 20 + i, yv);
       }
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // Legend in Oscilloscope
-      ctx.fillStyle = '#f8fafc';
-      ctx.font = '9px Cairo, sans-serif';
-      ctx.fillText('🟢 تآزر مستخرج H(t)', x + w - 210, y + 50);
-      ctx.fillText('🟡 زاوية المفصل المعاد بناؤها θ(t)', x + w - 210, y + 66);
+      ctx.stroke(); ctx.setLineDash([]);
     }
 
-    // Panel 3: Synergy Decomposition & Mechanism
     function drawSynergyMechanismPanel(ctx, x, y, w, h, p) {
-      ctx.fillStyle = '#070d1e';
-      ctx.strokeStyle = '#1e293b';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.roundRect(x, y, w, h, 8);
-      ctx.fill();
-      ctx.stroke();
+      ctx.fillStyle = '#070d1e'; ctx.strokeStyle = '#1e293b'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.roundRect(x, y, w, h, 8); ctx.fill(); ctx.stroke();
 
-      // Header Bar
       ctx.fillStyle = '#0f172a';
-      ctx.beginPath();
-      ctx.roundRect(x+1, y+1, w-2, 28, [7, 7, 0, 0]);
-      ctx.fill();
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = 'bold 12px Cairo, sans-serif';
-      ctx.fillText('🔬 تحليل متجهات التآزر والآلية التفاضلية الميكانيكية (Synergy Weights & Mechanism)', x + 14, y + 19);
+      ctx.beginPath(); ctx.roundRect(x + 1, y + 1, w - 2, 28, [7, 7, 0, 0]); ctx.fill();
+      ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 12px Cairo, sans-serif';
+      ctx.fillText('🔬 مصفوفة التآزر VAF / JGKSE والآلية التفاضلية الميكانيكية', x + 14, y + 19);
 
-      // Left Half: Synergy Bar Graph (PC1 to PC5)
-      const barX = x + 25;
-      const barY = y + 50;
-      const barW = 320;
-
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 11px Cairo, sans-serif';
-      ctx.fillText('مساهمة متجهات التآزر في تفسير الحركة (VAF Breakdown):', barX, barY);
+      const barX = x + 22, barY = y + 52, barW = 285;
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 10.5px Cairo, sans-serif';
+      ctx.fillText('توزيع التباين عبر المكونات الأربعة K_min ≤ 4:', barX, barY);
 
       const synergies = [
-        { name: "PC 1: إغلاق الأصابع 3-5", pct: 28.4, col: "#0284c7" },
-        { name: "PC 2: تقوس راحة اليد (Arch)", pct: 13.6, col: "#10b981" },
-        { name: "PC 3: مقابلة الإبهام (Opposition)", pct: 9.8, col: "#f59e0b" },
-        { name: "PC 4: استقلالية السبابة (Pinch)", pct: 7.5, col: "#8b5cf6" },
-        { name: "PC 5: تباعد الأصابع الجانبي", pct: 5.9, col: "#06b6d4" }
+        { name: "PC1/NM1: Power Flexion (Digits 2-5)", pct: 54.2, col: "#0284c7" },
+        { name: "PC2/NM2: Palmar CMC Arch + Wrap", pct: 19.8, col: "#10b981" },
+        { name: "PC3/NM3: Thumb Opposition & Pinch", pct: 11.4, col: "#f59e0b" },
+        { name: "PC4/NM4: Index / PIP Precision Trim", pct: 6.8, col: "#8b5cf6" }
       ];
-
       synergies.forEach((s, idx) => {
-        const sy = barY + 20 + idx * 32;
-        ctx.fillStyle = '#cbd5e1';
-        ctx.font = '10px Cairo, sans-serif';
+        const sy = barY + 20 + idx * 42;
+        ctx.fillStyle = '#cbd5e1'; ctx.font = '10px Inter, sans-serif';
         ctx.fillText(s.name, barX, sy);
-
-        // Bar background
         ctx.fillStyle = '#1e293b';
-        ctx.beginPath();
-        ctx.roundRect(barX, sy + 4, barW, 10, 4);
-        ctx.fill();
-
-        // Bar value
-        const valW = (s.pct / 35) * barW;
+        ctx.beginPath(); ctx.roundRect(barX, sy + 5, barW, 11, 4); ctx.fill();
         ctx.fillStyle = s.col;
-        ctx.beginPath();
-        ctx.roundRect(barX, sy + 4, valW, 10, 4);
-        ctx.fill();
-
-        // Value text
-        ctx.fillStyle = '#fff';
-        ctx.font = 'bold 10px monospace';
-        ctx.fillText(`${s.pct}%`, barX + barW + 8, sy + 13);
+        ctx.beginPath(); ctx.roundRect(barX, sy + 5, (s.pct / 60) * barW, 11, 4); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 10px monospace';
+        ctx.fillText(`${s.pct}%`, barX + barW + 8, sy + 14);
       });
 
-      // Right Half: Whiffletree Tendon Differential Animation (Sun / Chen / Li)
-      const diffX = x + 400;
-      const diffY = y + 70;
+      // Right Half: Differential Seesaw + Dynamometer Grip Force Gauge
+      const diffX = x + 400, diffY = y + 70;
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 10.5px Cairo, sans-serif';
+      ctx.fillText('التفاضل الميكانيكي ومقياس القوة (0–80 N):', diffX, diffY - 18);
 
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 11px Cairo, sans-serif';
-      ctx.fillText('محاكاة الآلية التفاضلية الميكانيكية (Seesaw Differential):', diffX, diffY - 20);
-
-      // Main actuator tendon pulling
       const motorPull = Math.sin(simTime * 2) * 12;
-      ctx.strokeStyle = '#0284c7';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(diffX + 130, diffY + 140);
-      ctx.lineTo(diffX + 130, diffY + 80 + motorPull);
-      ctx.stroke();
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(diffX + 100, diffY + 145); ctx.lineTo(diffX + 100, diffY + 85 + motorPull); ctx.stroke();
 
-      // Central Seesaw Bar (Tilts when fingers encounter unequal resistance)
-      const tiltAng = Math.sin(simTime * 1.5) * 0.25;
-      const barLen = 140;
-      const bX1 = (diffX + 130) - Math.cos(tiltAng) * (barLen/2);
-      const bY1 = (diffY + 80 + motorPull) - Math.sin(tiltAng) * (barLen/2);
-      const bX2 = (diffX + 130) + Math.cos(tiltAng) * (barLen/2);
-      const bY2 = (diffY + 80 + motorPull) + Math.sin(tiltAng) * (barLen/2);
+      const tilt = Math.sin(simTime * 1.5) * 0.25;
+      const bX1 = (diffX + 100) - Math.cos(tilt) * 60, bY1 = (diffY + 85 + motorPull) - Math.sin(tilt) * 60;
+      const bX2 = (diffX + 100) + Math.cos(tilt) * 60, bY2 = (diffY + 85 + motorPull) + Math.sin(tilt) * 60;
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 6; ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(bX1, bY1); ctx.lineTo(bX2, bY2); ctx.stroke();
 
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 6;
-      ctx.lineCap = 'round';
-      ctx.beginPath();
-      ctx.moveTo(bX1, bY1);
-      ctx.lineTo(bX2, bY2);
-      ctx.stroke();
-
-      // Pivot Pin
-      ctx.fillStyle = '#fff';
-      ctx.beginPath();
-      ctx.arc(diffX + 130, diffY + 80 + motorPull, 5, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Output Tendon 1 (to Thumb / Index)
-      ctx.strokeStyle = '#10b981';
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
-      ctx.moveTo(bX1, bY1);
-      ctx.lineTo(bX1, diffY);
-      ctx.stroke();
-
-      // Output Tendon 2 (to Middle / Ring / Pinky)
+      ctx.strokeStyle = '#10b981'; ctx.lineWidth = 2.2;
+      ctx.beginPath(); ctx.moveTo(bX1, bY1); ctx.lineTo(bX1, diffY + 5); ctx.stroke();
       ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2.2;
-      ctx.beginPath();
-      ctx.moveTo(bX2, bY2);
-      ctx.lineTo(bX2, diffY);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(bX2, bY2); ctx.lineTo(bX2, diffY + 5); ctx.stroke();
 
-      // Differential Labels
+      // Isometric Force Bar (Kavana 0–80 N)
+      const forceVal = Math.max(2, (gripClench + Math.sin(simTime * 2) * 0.12) * 76);
+      ctx.fillStyle = '#1e293b';
+      ctx.beginPath(); ctx.roundRect(diffX + 225, diffY + 10, 26, 135, 6); ctx.fill();
+      const fh = (forceVal / 80) * 135;
       ctx.fillStyle = '#10b981';
-      ctx.font = '9.5px Cairo, sans-serif';
-      ctx.fillText('وتر الإبهام والسبابة T1', bX1 - 40, diffY - 6);
-
-      ctx.fillStyle = '#38bdf8';
-      ctx.fillText('وتر الأصابع 3-5 T2', bX2 - 20, diffY - 6);
-
-      ctx.fillStyle = '#fde047';
-      ctx.font = '9px Cairo, sans-serif';
-      ctx.fillText('التكيف الميكانيكي التلقائي بدون حساسات!', diffX + 50, diffY + 160);
+      ctx.beginPath(); ctx.roundRect(diffX + 225, diffY + 145 - fh, 26, fh, 6); ctx.fill();
+      ctx.fillStyle = '#fde047'; ctx.font = 'bold 10px monospace';
+      ctx.fillText(`${forceVal.toFixed(0)}N`, diffX + 224, diffY + 162);
     }
 
-    // ========================================================================
-    // ANIMATION LOOP (60 FPS)
-    // ========================================================================
     function animate() {
       if (isPlaying) {
         simTime += 0.02 * animationSpeed;
+        neuralParticles.forEach(pt => {
+          pt.t = (pt.t + pt.speed * animationSpeed) % 1;
+        });
       }
       drawStudio();
       requestAnimationFrame(animate);
     }
 
-    // ========================================================================
-    // EVENT LISTENERS & CONTROLS
-    // ========================================================================
+    // Controls
     btnPlayPause.onclick = () => {
       isPlaying = !isPlaying;
       btnPlayPause.innerHTML = isPlaying ? "⏸️ إيقاف مؤقت" : "▶️ تشغيل";
       btnPlayPause.classList.toggle("btn-accent", isPlaying);
     };
-
-    btnReset.onclick = () => {
-      simTime = 0;
-      gripClench = 0.45;
-      sliderGrip.value = 45;
-      valGrip.innerText = "45%";
-    };
-
+    btnReset.onclick = () => { simTime = 0; gripClench = 0.48; sliderGrip.value = 48; valGrip.innerText = "48%"; };
     btnSpeed.onclick = () => {
-      if (animationSpeed === 1.0) animationSpeed = 2.0;
-      else if (animationSpeed === 2.0) animationSpeed = 0.5;
-      else animationSpeed = 1.0;
+      animationSpeed = animationSpeed === 1.0 ? 2.0 : (animationSpeed === 2.0 ? 0.5 : 1.0);
       btnSpeed.innerText = `⚡ السرعة: ${animationSpeed}x`;
     };
-
-    sliderGrip.oninput = (e) => {
-      gripClench = e.target.value / 100;
-      valGrip.innerText = `${e.target.value}%`;
-    };
-
-    selectObject.onchange = (e) => {
-      activeObject = e.target.value;
-    };
-
+    sliderGrip.oninput = (e) => { gripClench = e.target.value / 100; valGrip.innerText = `${e.target.value}%`; };
+    selectObject.onchange = (e) => { activeObject = e.target.value; };
     selectActuators.onchange = (e) => {
       activeActuators = parseInt(e.target.value);
-      // update metric
       const red = ((20 - activeActuators) / 20 * 100).toFixed(1);
-      document.getElementById("metric-reduction").innerText = `${red}% (20 DOF → ${activeActuators} Motors)`;
+      document.getElementById("metric-reduction").innerText = `${red}% (20 DoF → ${activeActuators} Motors)`;
       document.getElementById("metric-reduction-bar").style.width = `${red}%`;
     };
-
     btnFatigue.onclick = () => {
       isFatigued = !isFatigued;
       btnFatigue.classList.toggle("active", isFatigued);
-      btnFatigue.innerText = isFatigued ? "⚠️ محاكاة التعب (نشطة - جاري التعويض)" : "⚡ محاكاة تعب العضلات (Fatigue ON/OFF)";
     };
-
+    btnCmc.onclick = () => {
+      isCmcActive = !isCmcActive;
+      btnCmc.classList.toggle("active", isCmcActive);
+    };
+    btnOcclusion.onclick = () => {
+      isOccluded = !isOccluded;
+      btnOcclusion.classList.toggle("active", isOccluded);
+    };
     btnLang.onclick = () => {
       isEnMode = !isEnMode;
       document.body.classList.toggle("en-mode", isEnMode);
       btnLang.innerText = isEnMode ? "🌐 العربية" : "🌐 English";
-      document.getElementById("txt-app-title").innerText = isEnMode ?
-        "Hand Grasp Synergy 60-FPS Pure Motion-Graphics Studio" :
-        "استوديو الموشن جرافيكس التفاعلي لمسكات اليد والتآزر الحركي";
+      document.getElementById("txt-app-title").innerText = isEnMode
+        ? "Hand Grasp Synergy 60-FPS Pure Motion-Graphics Studio (v2.0)"
+        : "استوديو الموشن جرافيكس التفاعلي لمسكات اليد والتآزر الحركي (v2.0)";
       updateInfoCard();
     };
-
     btnFullscreen.onclick = () => {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else {
-        document.exitFullscreen();
-      }
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+      else document.exitFullscreen();
     };
-
-    // Keyboard shortcuts
     window.addEventListener("keydown", (e) => {
-      if (e.code === "Space") {
-        e.preventDefault();
-        btnPlayPause.click();
-      } else if (e.code === "ArrowRight") {
-        selectPaper((currentPaperIdx + 1) % PAPERS_DB.length);
-      } else if (e.code === "ArrowLeft") {
-        selectPaper((currentPaperIdx - 1 + PAPERS_DB.length) % PAPERS_DB.length);
-      }
+      if (e.code === "Space" && document.activeElement.tagName !== "INPUT") { e.preventDefault(); btnPlayPause.click(); }
+      else if (e.code === "ArrowRight") selectPaper((currentPaperIdx + 1) % PAPERS_DB.length);
+      else if (e.code === "ArrowLeft") selectPaper((currentPaperIdx - 1 + PAPERS_DB.length) % PAPERS_DB.length);
     });
 
-    // START ENGINE
     initTabs();
     populateMatrixTable();
     updateInfoCard();

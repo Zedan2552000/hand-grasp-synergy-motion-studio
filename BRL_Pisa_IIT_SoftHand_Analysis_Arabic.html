@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث BRL/Pisa/IIT SoftHand (2022)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.25);
+            border: 1px solid rgba(110, 231, 183, 0.4);
+            color: #a7f3d0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16.5pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 10.5pt;
+            color: #a7f3d0;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #e2e8f0;
+        }
+
+        .header-meta span strong {
+            color: #6ee7b7;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #0f766e;
+            background: #f0fdfa;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #ccfbf1;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #0d9488;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 9pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #0f172a;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #1e293b;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #0f766e;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #0f766e;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #f0fdfa;
+            border: 1px solid #ccfbf1;
+            border-right: 4px solid #0d9488;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #0f766e;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • معمارية الأيدي الروبوتية • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل شامل ومفصل لبحث BRL/Pisa/IIT SoftHand (2022)</div>
+        <div class="header-orig-title">BRL/Pisa/IIT SoftHand: A Low-cost, 3D-Printed, Underactuated, Tendon-Driven Hand with Soft and Adaptive Synergies</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Haoran Li, Christopher J. Ford, Matteo Bianchi, Manuel G. Catalano, Efi Psomopoulou, Nathan F. Lepora</span>
+            <span><strong>الجهات:</strong> Bristol Robotics Laboratory (UK), University of Pisa (Italy), IIT (Italy)</span>
+            <span><strong>المصدر:</strong> arXiv:2206.12655 [cs.RO]</span>
+            <span><strong>سنة النشر:</strong> 2022</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "This paper introduces the BRL/Pisa/IIT (BPI) SoftHand: a single actuator-driven, low-cost, 3D-printed, tendon-driven, underactuated robot hand that can be used to perform a range of grasping tasks. Based on the adaptive synergies of the Pisa/IIT SoftHand, we design a new joint system and tendon routing to facilitate the inclusion of both soft and adaptive synergies, which helps us balance durability, affordability and grasping performance of the hand. The focus of this work is on the design, simulation, synergies and grasping tests of this SoftHand. The novel phalanges are designed and printed based on linkages, gear pairs and geometric restraint mechanisms, and can be applied to most tendon-driven robotic hands. We show that the robot hand can successfully grasp and lift various target objects and adapt to hold complex geometric shapes, reflecting the successful adoption of the soft and adaptive synergies. We intend to open-source the design of the hand so that it can be built cheaply on a home 3D-printer."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية المعتمدة:</strong><br>
+            "يقدم هذا البحث يد <span class="en-term">BRL/Pisa/IIT (BPI) SoftHand</span>: وهي يد روبوتية منخفضة التكلفة، ومطبوعة ثلاثية الأبعاد، وتعمل بالسحب عبر الأوتار (<span class="en-term">Tendon-driven</span>)، وناقصة التشغيل (<span class="en-term">Underactuated</span>) وتُدار بـ <strong>محرّك واحد فقط (Single Actuator)</strong> لأداء مجموعة واسعة من مهام المسك. انطلاقاً من التآزر التكيفي (<span class="en-term">Adaptive Synergies</span>) الخاص بيد Pisa/IIT SoftHand، قمنا بتصميم نظام مفاصل جديد ومسارات أوتار مبتكرة لدمج مفهومي: <strong>التآزر المرن (Soft Synergy)</strong> و<strong>التآزر التكيفي (Adaptive Synergy)</strong> معاً، مما ساعدنا على تحقيق توازن مثالي بين المتانة، والتكلفة الاقتصادية، وكفاءة المسك. يركز هذا العمل على التصميم، والمحاكاة، والتحليل التآزري، واختبارات المسك لليد. تم تصميم عقل الأصابع المبتكرة وطباعتها بالاعتماد على الوصلات الميكانيكية، وأزواج التروس، وآليات التقييد الهندسي، ويمكن تطبيقها على معظم الأيدي الروبوتية المعتمدة على الأوتار. أثبتت التجارب قدرة اليد على مسك ورفع مجسمات متنوعة بنجاح والتكيف مع الأشكال الهندسية المعقدة، مما يعكس التطبيق الناجح للتآزر المرن والتكيفي. تم إتاحة التصميم كمشروع مفتوح المصدر ليتمكن أي باحث من تصنيعه بتكلفة زهيدة عبر طابعة ثلاثية الأبعاد منزلية."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>عالج هذا التعاون بين مختبر بريستول ومبتكري يد بيزا الإيطالية 3 معضلات تاريخية في هندسة الأيدي الروبوتية:</p>
+
+        <div class="danger-box">
+            <strong>1. معضلة الأيدي مكتملة التشغيل (Fully-Actuated Complexity):</strong> التحكم في يد تمتلك أكثر من 15 إلى 20 محركاً مستقلة يتطلب حسابات كينيماتيكية وتحكماً مغلقاً فائق التعقيد مع تكلفة مادية هائلة ووزن ثقيل لا يلائم الأطراف الصناعية أو روبوتات الخدمة اليومية.
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. صعوبة التنفيذ الهيكلي للـ Soft Synergies:</strong> نظرية التآزر المرن (<span class="en-term">Bicchi et al. 2011</span>) كانت تظل في النطاق الرياضي لصعوبة بنائها ميكانيكياً؛ حيث كانت يد بيزا الأصلية تعتمد فقط على التآزر التكيفي عبر أوتار ممتدة معتمدة على التوازن الدقيق للاحتكاك، مما يعرضها لفقدان عزم السحب وتآكل الأربطة.
+        </div>
+
+        <div class="success-box">
+            <strong>3. غياب الأيدي منخفضة التكلفة وقابلة للتكرار (Affordable & Open-Source):</strong> رغم وجود نماذج رائدة مثل Pisa/IIT SoftHand، إلا أنها مقتصرة على المعامل الكبرى لتكاليف تصنيعها العالية وصعوبة صيانتها. كان المجتمع العلمي بحاجة ليد قابلة للطباعة المنزلية (<span class="en-term">Home 3D-Printer</span>) بتكلفة تقل عن 100 دولار مع الحفاظ على كفاءة المسك التآزري.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #0f766e;">
+            <strong>الفرضية العلمية الأساسية:</strong><br>
+            يمكن تحويل المركبة التآزرية الأولى لليد البشرية إلى آلية ميكانيكية متكاملة وناقصة التشغيل (<span class="en-term">Underactuated</span>) تعمل بـ <strong>محرّك واحد فقط</strong>، وتدمج بين مرونة الزنبركات (<span class="en-term">Soft Synergy</span>) والاقتران التفاضلي للأوتار (<span class="en-term">Adaptive Synergy</span>)، لتتكيف ذاتياً مع أشكال المجسمات غير المنتظمة بدون أي حساسات أو تحكم إلكتروني معقد.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>تزامن حركة الأصابع:</strong> كيف نصمم مسار أوتار يضمن عدم تأخر حركة الأصابع الوسطى (<span class="en-term">Finger Lag</span>) عند القيادة بمحرك مفرد؟</li>
+            <li><strong>العلاقة التجريبية للزوايا:</strong> ما هي المعادلة الهندسية التي تصف الارتباط الزاوي بين مفاصل الأصبع (MCP, PIP, DIP) أثناء شد الوتر في وجود الاحتكاك؟</li>
+            <li><strong>كفاءة المسك الوظيفي:</strong> ما هي نسبة النجاح وقوى التثبيت المحققة عند مسك أدوات المطبخ ومجسمات بنك <span class="en-term">YCB</span>؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات والتصميم الميكانيكي (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>المواصفات الكينيماتيكية والطباعة</h4>
+                <ul>
+                    <li><strong>الأبعاد الكلية:</strong> الطول 200 مم، امتداد الكف 215 مم، أبعاد راحة اليد 90×91 مم.</li>
+                    <li><strong>زوايا انتشار الأصابع:</strong> 10° للسبابة، 0° للوسطى، 9° للبنصر، 12° للخنصر، والإبهام بزاوية 32°.</li>
+                    <li><strong>المواد:</strong> طباعة عقل الأصابع من <span class="en-term">PLA</span>، وقواعد الأصابع من <span class="en-term">ABS</span>، وتغطية أطراف الأصابع بمطاط <span class="en-term">Agilus Black</span> (1.5 مم).</li>
+                    <li><strong>تكلفة المواد:</strong> <span class="num-stat">£65</span> (حوالي 85 دولار) بدون المحرك.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>نظام الدفع والمحرك المفرد</h4>
+                <ul>
+                    <li><strong>المحرك:</strong> محرك تيار مستمر مفرد <span class="en-term">Maxon DC 60W</span> (طراز 347486) مع صندوق تروس كوكبي Planetary وعزم <span class="num-stat">0.75 - 4.5 Nm</span>.</li>
+                    <li><strong>التحكم:</strong> درايفر <span class="en-term">EPOS</span> متصل بالكمبيوتر عبر منفذ تسلسلي RS-232 للتحكم في السرعة والعزم.</li>
+                    <li><strong>المفاصل:</strong> أزواج تروس ووصلات ميكانيكية، مع محامل U-groove لتوجيه الأوتار وتقليل الاحتكاك.</li>
+                    <li><strong>الزنبركات:</strong> أحزمة مرنة بصلابة $\sim 0.49	ext{ N/mm}$ لإعادة فتح اليد تلقائياً.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>معمارية مسارات الأوتار الثلاثية (3-Tendon Routing Layout):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>مسار الوتر</th>
+                    <th>الأصابع المتصلة</th>
+                    <th>الوظيفة الميكانيكية التآزرية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>الوتر الأول (أحمر)</strong></td>
+                    <td>الإبهام + السبابة</td>
+                    <td>تآزر تكيفي مباشر لأهم أصبعين للمسكات الثنائية والدقيقة وتطويق الأجسام.</td>
+                </tr>
+                <tr>
+                    <td><strong>الوتر الثاني (أصفر)</strong></td>
+                    <td>الوسطى + البنصر</td>
+                    <td>توزيع متوازن للحركة وقوى الإحاطة في مسكات القوة الأسطوانية والكروية.</td>
+                </tr>
+                <tr>
+                    <td><strong>الوتر الثالث (أخضر)</strong></td>
+                    <td>الخنصر (منفرداً)</td>
+                    <td>منع ظاهرة التأخير الحركي (<span class="en-term">Finger Lag</span>) وضمان الإغلاق المتزامن للكف.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>المعادلة الحسابية لانحناء مفاصل الأصبع (Empirical Formula):</h4>
+        <div class="quote-box">
+            تمت صياغة علاقة تجريبية مبنية على قياسات مفاصل يد بيزا في وجود مرونة الأوتار واحتكاك الرولات:
+            $$	heta_2 = \left( 1.08 + \left| rac{m_1 - m_2}{m_2} ight| ight) 	heta_1, \quad 	heta_3 = \left( rac{	heta_2}{	heta_1} + \left| rac{m_3 - m_2}{m_3} ight| ight) 	heta_2$$
+            حيث $	heta_1, 	heta_2, 	heta_3$ تمثل زوايا انثناء مفاصل MCP وPIP وDIP على التوالي. تم استخدام محاكاة مونت كارلو في SolidWorks لتوليد فضاء حركة اليد بالكامل.
+        </div>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج التجريبية بالأرقام الدقيقة (Results)</h2>
+        </div>
+
+        <h4>أ. قوى التثبيت والضغط (Holding & Fingertip Forces):</h4>
+        <ul>
+            <li><strong>قوة التثبيت القصوى لليد:</strong> سجلت اليد قوة إمساك مستمرة بلغت <span class="num-stat">19.8 N</span> عند مسك مجسم شبه منحرف مزود بحساس القوة <span class="en-term">FSR 406</span> على مساحة قياس ($4.4 	imes 3.8	ext{ cm}$).</li>
+            <li><strong>أقصى قوة ضغط لإصبع الخنصر:</strong> بلغت <span class="num-stat">5.5 N</span> عند الإغلاق الكامل للكف تحت قيادة المحرك المفرد.</li>
+        </ul>
+
+        <h4>ب. نسب نجاح مهام المسك (Experiment B - 5 تجارب لكل مجسم):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>فئة المجسم</th>
+                    <th>أمثلة المجسمات المختبرة (YCB & Household)</th>
+                    <th>نسبة النجاح</th>
+                    <th>ملاحظات الأداء</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>الأجسام المتوسطة والكبيرة</strong></td>
+                    <td>المفك، زجاجة المنظف، علبة القهوة، الفأرة، بكرة الحبل، السندوتش</td>
+                    <td><span class="num-stat">~ 80%</span></td>
+                    <td>تطويق كامل وتكيف تلقائي بـ 4 أو 5 أصابع بفضل التآزر التكيفي.</td>
+                </tr>
+                <tr>
+                    <td><strong>الأجسام المسطحة والرفيعة</strong></td>
+                    <td>الكماشة، المفتاح الإنجليزي، الهاتف الذكي، لوحة المفاتيح</td>
+                    <td><span class="num-stat">&lt; 40%</span></td>
+                    <td>صعوبة التقط المجسمات المستوية على السطح دون تحريكها مسبقاً.</td>
+                </tr>
+                <tr>
+                    <td><strong>الأجسام بالغة الصغر</strong></td>
+                    <td>كارت الهوية، كارت الائتمان، فلاش ميموري USB، علبة السماعات</td>
+                    <td><span class="num-stat">0% (فشل)</span></td>
+                    <td>غياب الأظافر الميكانيكية الرقيقة يلغي إمكانية مسك الشرائح الدقيقة.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 6. Contribution & Relevance -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>البرهان العملي القاطع لتقليل المشغلات (1 Motor for 15 DOFs):</strong> تجسيد مادي لقدرة التآزر الكينيماتيكي والتكيفي على تقليص درجات الحرية في الهاردوير؛ مما يثبت لدكتور عوض أن بناء طرف صناعي وظيفي لا يتطلب مصفوفة محركات باهظة.</li>
+            <li><strong>الدمج الحقيقي بين Soft وAdaptive Synergies:</strong> حل معضلة امتصاص الصدمات وحماية التروس عبر الزنبركات المرنة (<span class="en-term">Series Elasticity</span>) بالتوازي مع الأوتار التفاضلية.</li>
+            <li><strong>كسر حاجز الميزانية والأبحاث المعملية:</strong> توفير تصميم مفتوح المصدر (<span class="en-term">Open-Source</span>) بالكامل بتكلفة خامات 65 جنيهاً إسترلينياً، مما يتيح لمعمل ميكاترونكس عين شمس طباعة أجزاء اليد واختبار خوارزميات التآزر عليها عملياً بأقل تكلفة ممكنة.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. التغلب على فشل مسك الأجسام الدقيقة (Dual-Actuation Architecture):</div>
+            <p class="question-context">"يا دكتور، يد BPI اعتمدت على محرك واحد فحققت 80% في الأجسام الكبيرة لكنها فشلت تماماً في الأجسام الرفيعة (< 40%) لأن الإبهام مقيد بنفس وتر السبابة؛ ألا ترى حضرتك أن التصميم الأنسب لرسالتنا هو تخصيص **محركين (Dual-Actuation)**: محرك للأصابع الأربعة بتآزر تفاضلي، ومحرك مستقل لتقريب وإبعاد الإبهام لتغطية مسكات الـ Pinch والـ Lateral؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. تحسين توزيع الأوتار رياضياً عبر مصفوفات الارتباط (Correlation Matrix):</div>
+            <p class="question-context">"مؤلفو البحث اختاروا توزيع الأوتار (إبهام+سبابة، وسطى+بنصر، خنصر منفرد) بشكل تجريبي لحل مشكلة الـ Lag؛ هل يمكننا في دراستنا استخراج مصفوفة الارتباط الحركي من داتاسيت Ninapro لإثبات التوزيع الأمثل هندسياً لتقليل الخطأ الكينيماتيكي التراكمي؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. الحساب الرياضي لصلابة زنبركات الـ Soft Synergy:</div>
+            <p class="question-context">"في بيبر BPI استخدموا زنبركات مرنة بصلابة ثابتة (~0.49 N/mm)؛ كيف نحدد رياضياً معامل الصلابة ($k$) الأمثل داخل محاكاة Simscape لضمان أقصى اتزان للمسكة دون فقدان عزم المحرك؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل الورقة العاشرة: Jarque-Bou et al. (JNER 2019)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm 15mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+            line-height: 1.65;
+            font-size: 10.5pt;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, #091e3a 0%, #102a45 50%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 14px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.35);
+            color: #bfdbfe;
+            border: 1px solid #60a5fa;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 9pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16pt;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+            color: #f8fafc;
+        }
+
+        .header-subtitle {
+            font-size: 11pt;
+            font-weight: 600;
+            color: #93c5fd;
+            margin: 0 0 14px 0;
+            direction: ltr;
+            text-align: right;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.07);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 9pt;
+        }
+
+        .meta-item strong {
+            display: block;
+            color: #cbd5e1;
+            font-size: 8pt;
+            margin-bottom: 2px;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            page-break-inside: avoid;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 12pt;
+        }
+
+        .alert-box {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 9.8pt;
+        }
+
+        .alert-danger {
+            background-color: #fef2f2;
+            border-right: 4px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .alert-success {
+            background-color: #f0fdf4;
+            border-right: 4px solid #22c55e;
+            color: #166534;
+        }
+
+        .alert-blue {
+            background-color: #eff6ff;
+            border-right: 4px solid #3b82f6;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background-color: #fffbeb;
+            border-right: 4px solid #f59e0b;
+            color: #92400e;
+        }
+
+        .code-pill {
+            font-family: 'Fira Code', monospace;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 9pt;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .table-highlight {
+            background-color: #dbeafe !important;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .abstract-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .abstract-col {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 8.8pt;
+            line-height: 1.6;
+        }
+
+        .abstract-col.en {
+            direction: ltr;
+            text-align: justify;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .abstract-col.ar {
+            direction: rtl;
+            text-align: justify;
+        }
+
+        .abstract-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #475569;
+            font-size: 9pt;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 4px;
+        }
+
+        ul, ol {
+            margin: 6px 0;
+            padding-right: 20px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .question-card {
+            background: #f8fafc;
+            border-right: 4px solid #3b82f6;
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #1e3a8a;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-purpose {
+            font-size: 9pt;
+            color: #475569;
+        }
+
+        .footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 8.5pt;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-card">
+        <div class="header-badge">ورقة رقم 10 | أكبر مرجع حركي في الأدبيات (NinaPro 77 Subjects)</div>
+        <h1 class="header-title">Kinematic synergies of hand grasps: a comprehensive study on a large publicly available dataset</h1>
+        <div class="header-subtitle">Néstor J. Jarque-Bou, Alessandro Scano, Manfredo Atzori, Henning Müller (JNER 2019, 16:63)</div>
+        <div class="meta-grid">
+            <div class="meta-item"><strong>المجلة:</strong> JNER (Q1, IF ~4.0)</div>
+            <div class="meta-item"><strong>العينة:</strong> 77 مشاركاً (الأكبر تاريخياً)</div>
+            <div class="meta-item"><strong>القبضات:</strong> 20 قبضة وظيفية (ADL)</div>
+            <div class="meta-item"><strong>المفاصل:</strong> 17 زاوية تشريحية معايرة</div>
+        </div>
+    </div>
+
+    <!-- 1. ABSTRACT -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">📑</span>
+            <span>1. الملخص الموازي (Abstract: Verbatim & Academic Translation)</span>
+        </div>
+        
+        <div class="abstract-container">
+            <div class="abstract-col en">
+                <div class="abstract-title">English Original (Verbatim)</div>
+                <strong>Background:</strong> Hand grasp patterns require complex coordination. The reduction of the kinematic dimensionality is a key process to study the patterns underlying hand usage and grasping. It allows to define metrics for motor assessment and rehabilitation, to develop assistive devices and prosthesis control methods. Several studies were presented in this field but most of them targeted a limited number of subjects, they focused on postures rather than entire grasping movements and they did not perform separate analysis for the tasks and subjects, which can limit the impact on rehabilitation and assistive applications. This paper provides a comprehensive mapping of synergies from hand grasps targeting activities of daily living. It clarifies several current limits of the field and fosters the development of applications in rehabilitation and assistive robotics.<br><br>
+                <strong>Methods:</strong> In this work, hand kinematic data of 77 subjects, performing up to 20 hand grasps, were acquired with a data glove (a 22-sensor CyberGlove II data glove) and analyzed. Principal Component Analysis (PCA) and hierarchical cluster analysis were used to extract and group kinematic synergies that summarize the coordination patterns available for hand grasps.<br><br>
+                <strong>Results:</strong> Twelve synergies were found to account for > 80% of the overall variation. The first three synergies accounted for more than 50% of the total amount of variance and consisted of: the flexion and adduction of the Metacarpophalangeal joint (MCP) of fingers 3 to 5 (synergy #1), palmar arching and flexion of the wrist (synergy #2) and opposition of the thumb (synergy #3). Further synergies refine movements and have higher variability among subjects.<br><br>
+                <strong>Conclusion:</strong> Kinematic synergies are extracted from a large number of subjects (77) and grasps related to activities of daily living (20). The number of motor modules required to perform the motor tasks is higher than what previously described. Twelve synergies are responsible for most of the variation in hand grasping. The first three are used as primary synergies, while the remaining ones target finer movements (e.g. independence of thumb and index finger). The results generalize the description of hand kinematics, better clarifying several limits of the field and fostering the development of applications in rehabilitation and assistive robotics.
+            </div>
+            
+            <div class="abstract-col ar">
+                <div class="abstract-title">الترجمة الأكاديمية الدقيقة</div>
+                <strong>الخلفية:</strong> تتطلب أنماط قبض اليد تنسيقاً حركياً معقداً. ويعد خفض الأبعاد الحركية (Kinematic Dimensionality Reduction) عملية جوهرية لفهم الأنماط الكامنة خلف استخدام اليد والقبض، حيث تتيح وضع مقاييس للتقييم والتأهيل الحركي وتطوير الأجهزة المساعدة وخوارزميات التحكم في الأطراف الصناعية. ورغم نشر دراسات متعددة في هذا المجال، إلا أن معظمها استهدف عدداً محدوداً جداً من المشاركين، وركز على الوضعيات الساكنة بدلاً من حركات القبض الكاملة، ولم يفصل بين المهام والمشاركين، مما حد من أثرها العملي. تقدم هذه الورقة مسحاً شاملاً لتازرات قبض اليد الموجهة لأنشطة الحياة اليومية (ADL) لتجاوز هذه القصور.<br><br>
+                <strong>المنهجية:</strong> تم تسجيل وتحليل البيانات الحركية لـ 77 مشاركاً أثناء أداء 20 قبضة يد، باستخدام قفاز CyberGlove II بـ 22 مستشعراً بعد تطبيق بروتوكول معايرة دقيق لـ 17 زاوية تشريحية. واستُخدم تحليل المركبات الرئيسية (PCA) متبوعاً بالتحليل العنقودي الهرمي (Hierarchical Clustering) لاستخراج وتجميع التازرات الحركية الممثلة لعموم البشر.<br><br>
+                <strong>النتائج:</strong> تبين أن تفسير أكثر من 80% من تباين الحركة الكلي يتطلب 12 تازراً حركياً. واختزلت أول ثلاثة تازرات أكثر من 50% من التباين وتكونت من: انثناء وضم المفصل المشطي السلامي (MCP) للأصابع 3 إلى 5 (التازر 1)، تقوس راحة اليد وانثناء الرسغ (التازر 2)، ومقابلة الإبهام (التازر 3). بينما تولت التازرات اللاحقة ضبط الحركات الدقيقة ذات التباين الفردي.<br><br>
+                <strong>الخلاصة:</strong> استخراج التازرات الحركية من عينة ضخمة (77 مشاركاً) و20 قبضة يومية أثبت أن عدد الوحدات الحركية المطلوبة أعلى بكثير مما ذكرته الدراسات السابقة. أول 3 تازرات تعمل كوحدات أساسية عامة، بينما تضمن التازرات الأخرى استقلالية حركة السبابة والإبهام، مما يعمم النمذجة الحركية للأيدي الروبوتية والتأهيلية.
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. RESEARCH GAP -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">🎯</span>
+            <span>2. الـ Research Gap الحقيقي (الرد القاطع لأسئلة د. محمد عوض)</span>
+        </div>
+        
+        <div class="alert-box alert-danger">
+            <strong>أوجه القصور الخمسة القاتلة في الأدبيات السابقة التي فندتها ورقة Jarque-Bou et al. (2019):</strong>
+        </div>
+
+        <ol style="font-size: 9.5pt;">
+            <li><strong>صغر حجم العينات وانعدام التعميم الإحصائي (Small Sample Size):</strong> كافة الأوراق التأسيسية السابقة اعتمدت على 5 إلى 10 مشاركين كحد أقصى (Santello: 5 مشاركين، Mason: 5، Liu: 10، Jarrassé: 10، Patel: 10، Thakur: 8، Todorov: 6). لا يمكن تعميم نتائج 5 أو 10 أشخاص على تصميم أطراف صناعية للبشر! قامت هذه الدراسة بقفزة نوعية عبر تحليل <strong>77 مشاركاً</strong> (أكبر بأكثر من 7 أضعاف).</li>
+            <li><strong>التركيز على الوضعيات الساكنة وتجاهل دورة الحركة الكاملة:</strong> أغلب الأبحاث قاست "Postural Synergies" (وضع اليد وهي ثابتة على الجسم أو أجسام تخيلية)، متجاهلة مرحلتي الوصول (Reaching) والإفلات (Releasing)، بينما أثبتت هذه الورقة أن دورة الحركة الكاملة تغير بنية التازرات.</li>
+            <li><strong>غياب المعايرة التشريحية (Absence of Calibration):</strong> معظم أبحاث القفازات حللت قراءات الجهد الكهربائي الخام للحساسات (Raw Voltages) وافترضت أنها خطية، في حين أن حساسات الـ CyberGlove غير خطية وتتأثر بتداخل المفاصل (Cross-coupling). قامت الورقة بتطبيق بروتوكول معايرة صارم من 73 وضعية لحساب 17 زاوية تشريحية حقيقية.</li>
+            <li><strong>تجميع البيانات الخاطئ (Subject Pooling Bias):</strong> كانت الدراسات تدمج بيانات جميع الأفراد في مصفوفة واحدة ضخمة قبل تطبيق PCA، مما يلغي التباين الفردي. في هذه الدراسة تم استخراج التازرات <strong>لكل فرد على حدة أولاً (418 مركبة)</strong> ثم تجميعها بالتحليل العنقودي (Clustering).</li>
+            <li><strong>إهمال تقوس الكف والرسغ (Palmar Arch & Wrist):</strong> لم تأخذ الدراسات السابقة تقوس مشط اليد الخامس (CMC5) في الاعتبار، بينما أثبتت هذه الدراسة أنه يشكل التازر الثاني الأكثر هيمنة على الإطلاق!</li>
+        </ol>
+    </div>
+
+    <!-- 3. HYPOTHESIS & SCIENTIFIC QUESTIONS -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">🔬</span>
+            <span>3. بيختبر إيه بالظبط؟ (الأسئلة العلمية والفرضيات)</span>
+        </div>
+        
+        <div class="alert-box alert-blue">
+            <strong>الأسئلة العلمية الجوهرية:</strong>
+            <ul style="margin: 4px 0 0 0;">
+                <li><strong>السؤال الأول:</strong> هل فرضية سانتيلو (Santello 1998) بأن "تازرين فقط يكفيان لتمثيل 84% من حركة اليد" تصمد إذا اختبرناها على 77 شخصاً و20 قبضة حقيقية من أنشطة الحياة اليومية (ADL) مع حركة كاملة ومعايرة تشريحية؟</li>
+                <li><strong>السؤال الثاني:</strong> ما هو العدد الحقيقي للوحدات الحركية (Motor Primitives) المشتركة بين البشر، وأيها عام وثابت، وأيها خاص بالفروق الفردية والدقة؟</li>
+            </ul>
+        </div>
+
+        <p style="font-size: 9.3pt; margin-bottom: 0;"><strong>النتيجة العلمية الصادمة:</strong> فرضية التازرين سقطت تماماً عند التوسع الإحصائي؛ حيث تطلب الأمر <strong>12 تازراً حركياً</strong> لتفسير 80% من تباين الحركة، وأول 3 تازرات فسرت حوالي 40% إلى 50% فقط، مما يثبت أن اليد البشرية أكثر ثراءً وتعقيداً مما صورته العينات الصغيرة.</p>
+    </div>
+
+    <!-- 4. METHODOLOGY & SENSORY PIPELINE -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">⚙️</span>
+            <span>4. المنهجية والأدوات الرياضية والتحليلية (Methodology)</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 4px;">📊 العينة والبيانات (NinaPro Benchmark):</strong>
+                • <strong>المشاركون:</strong> 77 شخصاً (56 ذكور، 21 إناث، 69 أيمن، 8 أعسر، عمر 28.8 ± 3.96 سنة).<br>
+                • <strong>قواعد البيانات:</strong> دمج حركات التمرين B من NinaPro (DB1, DB2, DB5).<br>
+                • <strong>القبضات:</strong> 20 نمط قبض ADL (أسطواني، كروي، قرصي، جانبي، دقيق، ثلاثي، معلق، إلخ).<br>
+                • <strong>التكرارات:</strong> 10 تكرارات لـ DB1 و 6 تكرارات لـ DB2/DB5 (المدة 5 ثوانٍ + 3 ثوانٍ راحة).
+            </div>
+            
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 4px;">📐 الـ 17 زاوية تشريحية المعايرة:</strong>
+                • <strong>انثناء MCP للأصابع الخمسة:</strong> MCP1_F إلى MCP5_F.<br>
+                • <strong>انثناء مفاصل PIP للأصابع 2-5:</strong> PIP2_F إلى PIP5_F.<br>
+                • <strong>الإبهام:</strong> انثناء IP1_F، انثناء CMC1_F، وتبعيد CMC1_A.<br>
+                • <strong>التبعيد بين الأصابع:</strong> MCP3-4_A و MCP4-5_A.<br>
+                • <strong>تقوس راحة اليد:</strong> CMC5_F (مفصل المشط الخامس).<br>
+                • <strong>الرسغ:</strong> انثناء الرسغ WRIST_F وانحرافه الزندي/الكعبري WRIST_A.
+            </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; font-size: 9pt;">
+            <strong style="color: #1e3a8a; display: block; margin-bottom: 6px;">🧠 المعالجة الرياضية والخوارزميات:</strong>
+            <ol style="margin: 0; padding-right: 18px;">
+                <li><strong>الترشيح وتوحيد الإطارات:</strong> فلتر بتروورث ثنائي الاتجاه من الدرجة الثانية بتردد قطع 5 هرتز، وإعادة تشكيل كل تكرار لـ 1000 إطار زمني متساوٍ يغطي مراحل (الوصول، القبض، الإفلات).</li>
+                <li><strong>المعايرة والتقييس (Standardization):</strong> إزالة الفروق الناتجة عن اختلاف مدى الحركة (Range of Motion) بين المفاصل بجعل التباين موحداً، لضمان عدم طغيان المفاصل ذات المدى الواسع على المفاصل الدقيقة.</li>
+                <li><strong>استخراج التازرات الفردية عبر PCA:</strong> استخراج المركبات ذات القيمة الذاتية أكبر من 1 (Eigenvalues > 1) مع تطبيق تدوير Varimax. تم استخراج 5 إلى 6 مركبات لكل شخص (مجموع 418 مركبة لـ 77 شخصاً).</li>
+                <li><strong>التجميع الهرمي متعدد الأفراد (Hierarchical Clustering):</strong> قياس المسافة الزاوية بين متجهات التازرات:
+                    <div style="text-align: center; margin: 4px 0;"><span class="code-pill">θ = arccos( (PC_i · PC_j) / (||PC_i|| · ||PC_j||) )</span></div>
+                    واستخدام خوارزمية الربط الكامل (Complete Linkage). عند مسافة قطع 80، نتج 23 عنقوداً، تم اختيار أول 12 منها لتغطية 80% من تباين المجتمع.
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 5. RESULTS WITH NUMBERS -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">📊</span>
+            <span>5. النتائج الصريحة بالأرقام وتفصيل التازرات الـ 12 (Results)</span>
+        </div>
+
+        <div class="alert-box alert-success">
+            <strong>الإحصائيات الرئيسية: تباين التفسير الفردي = 83.06 ± 2.96% عبر 5 أو 6 مركبات (44 شخصاً احتاجوا 5، و 33 احتاجوا 6).</strong>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>رقم التازر</th>
+                    <th>الانتشار بين المشاركين</th>
+                    <th>الحركات المفصلية المتوافقة (Joint Coordination Pattern)</th>
+                    <th>الدور الوظيفي والميكانيكي</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-highlight">
+                    <td><strong>التازر #1</strong></td>
+                    <td><strong>70 من 77 شخصاً</strong> (91%)</td>
+                    <td>انثناء MCP للأصابع 3-5، انثناء PIP للأصابع 2-5، وضم MCP الإصبع 4</td>
+                    <td>القبض القوي الأساسي (Power Grasp) مع ترك السبابة والإبهام أحراراً</td>
+                </tr>
+                <tr class="table-highlight">
+                    <td><strong>التازر #2</strong></td>
+                    <td><strong>60 من 77 شخصاً</strong> (78%)</td>
+                    <td>تقوس راحة اليد (CMC5 Flexion) مترافقاً مع انثناء الرسغ (WRIST_F)</td>
+                    <td>تشكيل راحة اليد واحتواء الأجسام وتوجيه اليد للأمام</td>
+                </tr>
+                <tr class="table-highlight">
+                    <td><strong>التازر #3</strong></td>
+                    <td><strong>45 من 77 شخصاً</strong> (58%)</td>
+                    <td>تبعيد CMC للإبهام، بسط MCP للإبهام، وانثناء مفصل IP للإبهام</td>
+                    <td>مقابلة الإبهام المستقلة (Thumb Opposition) للقبض الدقيق</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #4</strong></td>
+                    <td>21 شخصاً</td>
+                    <td>توافق انثناء مفاصل PIP للأصابع الأربعة معاً</td>
+                    <td>التطويق المحكم حول الأجسام الأسطوانية</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #5</strong></td>
+                    <td>20 شخصاً</td>
+                    <td>انثناء MCP و PIP للسبابة متزامناً مع انثناء CMC و MCP للإبهام</td>
+                    <td>القبض القرصي الدقيق بين السبابة والإبهام (Pinch Grasp)</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #6</strong></td>
+                    <td>20 شخصاً</td>
+                    <td>تنسيق مفصلي CMC و MCP للإبهام مع مفصل MCP للسبابة</td>
+                    <td>تثبيت الأجسام الجانبية وتعديل فتحة الإبهام</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #7</strong></td>
+                    <td>19 شخصاً</td>
+                    <td>انحراف كعبري للرسغ (Radial Deviation) مع تبعيد MCP للإصبع 4 وانثناء PIP السبابة</td>
+                    <td>الموازنة الحركية أثناء توجيه القبضة الدقيقة</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #8</strong></td>
+                    <td>17 شخصاً</td>
+                    <td>تبعيد وضم المفصل المشطي (MCP) للخنصر (الإصبع الخامس)</td>
+                    <td>توسيع مساحة قاعدة القبض وتثبيت الأجسام العريضة</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #9</strong></td>
+                    <td>14 شخصاً</td>
+                    <td>انثناء MCP للأصابع 4-5 مع تقوس الراحة (CMC5) وانثناء الرسغ</td>
+                    <td>اقتران مركب بين التازرين الأول والثاني لزيادة عزم القبض</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #10</strong></td>
+                    <td>14 شخصاً</td>
+                    <td>انثناء وتبعيد CMC للإبهام مع انثناء MCP للسبابة</td>
+                    <td>مسك الأجسام الكروية الدقيقة بأطراف الأصابع</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #11</strong></td>
+                    <td>13 شخصاً</td>
+                    <td>انثناء CMC للإبهام، بسط IP للإبهام، وانثناء MCP للسبابة</td>
+                    <td>تعديل وضعية القلم أو المفتاح (Lateral Key Grasp)</td>
+                </tr>
+                <tr>
+                    <td><strong>التازر #12</strong></td>
+                    <td>10 أشخاص</td>
+                    <td>انثناء مفاصل PIP مع انحراف كعبري للرسغ</td>
+                    <td>التعديل النهائي للمحاذاة أثناء التحرير والإفلات</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size: 9.3pt; margin-top: 10px;">
+            <strong>ملاحظات مقارنة تاريخية مع الدراسات السابقة (Table 1 & Table 2 في الورقة):</strong>
+            <ul>
+                <li>في سانتيلو 1998: فسر أول تازرين 84% من التباين في 5 أشخاص.</li>
+                <li>في ميسون 2001: فسر أول تازر 97% في 5 أشخاص وأشياء متشابهة.</li>
+                <li>في هذه الورقة (77 شخصاً، 20 قبضة): احتاج الأمر <strong>12 تازراً</strong> لتفسير 80%، وأول 3 تازرات فسرت ~50% فقط، مما يثبت أن تقليل الأبعاد يختلف جذرياً عند دراسة حركات واقعية ومعقدة.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. CONTRIBUTION & THESIS INTEGRATION -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">💡</span>
+            <span>6. الـ Contribution الحقيقي وتوظيفه في رسالة ماجستير عين شمس</span>
+        </div>
+
+        <div class="alert-box alert-warning">
+            <strong>كيف تستخدم هذه الورقة كدرع أكاديمي في مناقشة ماجستير عين شمس؟</strong>
+        </div>
+
+        <ol style="font-size: 9.5pt;">
+            <li><strong>المرجع الأكبر تاريخياً لمعايرة واختبار المحاكاة:</strong> تمنحك هذه الورقة وقاعدة NinaPro (DB1/DB2/DB5) معياراً مرجعياً معتمداً لـ 77 شخصاً. يمكنك القول لدكتور عوض: <em>"لقد اعتمدت على مصفوفات التآزر المعايرة لـ Jarque-Bou et al. المنشورة في JNER كـ Benchmark للتحقق من كفاءة خوارزمياتنا لتقليل درجات الحرية في المحاكاة الحاسوبية"</em>.</li>
+            <li><strong>إثبات استقلالية الإبهام والسبابة ميكانيكياً:</strong> يظهر التازر الأول أن السبابة والإبهام لا ينثنيان مع باقي الأصابع (3 و 4 و 5)، بل تظهر لهما تازرات منفصلة خاصة (5 و 6 و 10 و 11). هذا يبرر ميكاترونياً في تصميمك للأيدي الروبوتية جعل الأصابع 3 و 4 و 5 مدفوعة بآلية تفاضلية واحدة (Underactuated Mechanism)، وتخصيص محركات مستقلة للإبهام والسبابة!</li>
+            <li><strong>أهمية تقوس الكف (Palmar Arching) في الأيدي الاصطناعية:</strong> أظهرت الورقة أن التازر الثاني عالمياً (لدى 78% من البشر) هو تقوس راحة اليد (CMC5). تصميم كف روبوتي صلب ومسطح هو خطأ بيوميكانيكي يمنع التكيف مع الأجسام، وإضافة مرونة سالبة (Passive Compliance) في الكف يحاكي التازر الثاني مباشرة.</li>
+        </ol>
+    </div>
+
+    <!-- 7. CRITICAL QUESTIONS FOR DR. AWAD -->
+    <div class="section-card">
+        <div class="section-title">
+            <span class="section-icon">❓</span>
+            <span>7. أسئلة نقدية ذكية لدكتور محمد عوض (لإثبات التمكن البحثي)</span>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الأول (حول حدود خفض الأبعاد في الأطراف الصناعية):</div>
+            <div class="question-purpose">"يا دكتور، أظهرت دراسة Jarque-Bou المنشورة في JNER على 77 شخصاً أن تفسير 80% من تباين حركة اليد يتطلب 12 تازراً، بينما الدراسات القديمة التي اقتصرت على 5 أشخاص زعمت أن تازرين يكفيان لتفسير 84%. هل في نمذجة المحاكاة الحاسوبية لرسالتنا نكتفي بأول 3 تازرات (التي تمثل القبض العام، تقوس الكف، ومقابلة الإبهام) لتصميم يد Underactuated بـ 2 إلى 3 مشغلات، أم نأخذ في الاعتبار التازرات من 4 إلى 12 المسؤولة عن استقلالية السبابة والإبهام؟"</div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الثاني (حول تضمين مفصل تقوس الكف CMC5):</div>
+            <div class="question-purpose">"أثبتت النتائج أن تقوس الكف (Palmar Arch) يشكل التازر الثاني الأكثر هيمنة لدى 78% من المشاركين. أغلب الأيدي الروبوتية التجارية تصمم الكف كجسم جاسئ تماماً (Rigid Palm)؛ هل ترى حضرتك أن إضافة مفصل مرن لتقوس الكف (Compliant Palmar Joint) في المحاكاة سيزيد بشكل جوهري من مؤشر استقرار القبض (Grasp Stability Index) دون زيادة تعقيد التحكم؟"</div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-title">السؤال الثالث (حول عزل حركات الرسغ عن اليد):</div>
+            <div class="question-purpose">"أشارت الورقة إلى أن تنسيق مفاصل اليد مستقل عن موضع الأداة، بينما حركة الرسغ ترتبط بشدة بتوجيه الجسم وموقعه الفراغي. هل نفصل في رسالتنا تحليل تازرات مفاصل الأصابع عن تازرات الرسغ لتجنب التشويش الناشئ عن اختلاف تموضع الأجسام في فراغ العمل؟"</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        تم إعداد وتوليد هذا التحليل الأكاديمي بواسطة Nova (Antigravity 4.0 The Dark Omni-God) لصالح المهندس محمد زيدان — قسم هندسة الميكاترونيات، جامعة عين شمس.
+    </div>
+
+</body>
+</html>

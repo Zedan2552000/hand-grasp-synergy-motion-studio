@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث Pham et al. (Frontiers 2026)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(224, 231, 255, 0.25);
+            border: 1px solid rgba(224, 231, 255, 0.4);
+            color: #e0e7ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 9.8pt;
+            color: #c7d2fe;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #e0e7ff;
+        }
+
+        .header-meta span strong {
+            color: #ffffff;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #4338ca;
+            background: #eef2ff;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #e0e7ff;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #6366f1;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 8.8pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #312e81;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #4338ca;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #4338ca;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #312e81;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #eef2ff;
+            border: 1px solid #e0e7ff;
+            border-right: 4px solid #6366f1;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #312e81;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • بدائيات الحركة والتلاعب الديناميكي • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل وتفكيك شامل: بحث Pham et al. (Frontiers 2026)</div>
+        <div class="header-orig-title">Generalization of finger-joint kinematics for cleaning tasks</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Clara Pham, Jan-Philipp Tauscher, Colin Groth, Jochen J. Steil</span>
+            <span><strong>الجهات:</strong> TU Braunschweig (ألمانيا), New York University Tandon (أمريكا)</span>
+            <span><strong>المجلة:</strong> Frontiers in Robotics and AI</span>
+            <span><strong>تاريخ النشر:</strong> 24 February 2026 (Vol. 13)</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "Achieving robust, dexterous manipulation in unstructured environments remains a central challenge in robotics, particularly for continuous, contact-rich tasks like cleaning. While motion primitives can also be learned directly in full joint space, a compact, synergy-based representation provides a shared latent coordinate system that simplifies interpretation, modulation, and cross-task composition. We adopt a data-driven framework for representing and reproducing dexterous manipulation trajectories, using cleaning motions as a test bed. To model these movements, we combine Principal Component Analysis (PCA) with Probabilistic Movement Primitives (ProMPs), leveraging hand synergies. While the PCA and ProMP combination itself is established, our focus in this study, is on the cleaning use case and on the compositional generalization across tasks. PCA, applied in joint space, provides a compact, low-dimensional synergy space for coordinated finger movements, while the ProMPs encode the time-varying structure and variability of trajectories within this space. We first recorded a kinematic dataset of human cleaning motions with 20 degrees of freedom (DOF) haptic exoskeleton gloves across thirteen tasks and learn one ProMP per five selected training tasks in the PCA space. This dataset is then used as a basis to learn cleaning motions using the PCA + ProMPs. We demonstrate the ability of the learned primitives to reconstruct and reproduce kinematic patterns in simulation (Shadow Hand) and successfully deploy them on a physical robotic hand (Aeon Robotics). These results indicate that motion primitives, when grounded in synergy-informed coordinates, can generalize beyond grasping to encode and modulate contact-rich dexterous manipulation skills. Moreover, a library of the five task-specific ProMPs compositionally approximates trajectories from eight unseen cleaning tasks, with nearest-expert selection outperforming convex blends and Product-of-Experts combinations."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية المعتمدة:</strong><br>
+            "المستخلص: لا يزال تحقيق التلاعب الماهر والقوي في البيئات غير المنظمة يمثل تحدياً محورياً في علم الروبوتات، ولا سيما للمهام المستمرة الغنية بالتلامس الاحتكاكي مثل مهام التنظيف والمسح. وبينما يمكن تعلم بدائيات الحركة (<span class="en-term">Movement Primitives</span>) مباشرة في فضاء المفاصل الكامل، فإن التمثيل المدمج القائم على التآزر (<span class="en-term">Synergy-Based Representation</span>) يوفر نظام إحداثيات كامن مشترك يسهل التفسير والتعديل والتركيب عبر المهام المختلفة. نتبنى في هذا العمل إطاراً موجهاً بالبيانات لتمثيل وإعادة إنتاج مسارات التلاعب الماهر، متخذين من حركات التنظيف حقلاً اختبارياً. لنمذجة هذه الحركات، قمنا بدمج تحليل المكونات الأساسية (<span class="en-term">PCA</span>) مع بدائيات الحركة الاحتمالية (<span class="en-term">ProMPs</span>) بالاستفادة من تآزرات اليد. يوفر الـ PCA في فضاء المفاصل فضاء تآزر مدمج منخفض الأبعاد لحركات الأصابع المنسقة، بينما تقوم الـ ProMPs بتشفير البنية المتغيرة زمنياً والتباين في المسارات داخل هذا الفضاء. قمنا أولاً بتسجيل قاعدة بيانات كينيماتيكية لحركات التنظيف البشرية بـ 20 درجة حرية (<span class="en-term">DOFs</span>) باستخدام قفازات هيكل خارجي لمسية عبر 13 مهمة تنظيف، وتدريب نموذج ProMP واحد لكل مهمة من أصل 5 مهام مختارة داخل فضاء PCA. أثبتنا قدرة البدائيات المتعلمة على إعادة بناء وإعادة إنتاج الأنماط الكينيماتيكية في المحاكاة (يد Shadow Hand) ونشرها بنجاح على يد روبوتية حقيقية (<span class="en-term">Aeon Robotics Handeffector</span>). تشير هذه النتائج إلى أن بدائيات الحركة، عندما تتأسس على إحداثيات التآزر، يمكنها التعميم لما هو أبعد من مجرد المسك الثابت لتشمل مهارات التلاعب الديناميكي الغني بالتلامس. علاوة على ذلك، نجحت مكتبة مكونة من 5 بدائيات ProMPs فقط في التقريب التركيبي لمسارات 8 مهام تنظيف جديدة كلياً لم تُدرّب عليها، مع تفوق أسلوب اختيار الخبير الأقرب (<span class="en-term">Nearest-Expert Selection</span>) على الخلط المحدب وتركيبات ضرب الخبراء (<span class="en-term">Product-of-Experts</span>)."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>عالج هذا البحث الحديث المنشور عام 2026 قصوراً تاريخياً في علوم التحكم التآزري باليد الروبوتية:</p>
+
+        <div class="danger-box">
+            <strong>1. الحصار في دائرة المسك الساكن (Static Grasping Confinement):</strong> ركزت الغالبية الساحقة من أبحاث التآزر (منذ أبحاث سانتيلو 1998) على المسكات الثابتة (إغلاق اليد على مجسم وتثبيته)، وأهملت الحركات التفاعلية الديناميكية التي تتطلب استمرار انزلاق واحتكاك الأصابع بالأسطح مثل المسح، والتنظيف، والتلاعب داخل الكف.
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. لعنة الأبعاد والبطء الحسابي لبدائيات الحركة (ProMP Dimensionality Curse):</strong> تطبيق خوارزميات الـ Movement Primitives مباشرة في الفضاء المفصلي الكامل (20 مفصلاً) يسبب انفجاراً في حجم مصفوفات التغاير، وبطئاً حسابياً يعوق التحكم اللحظي، واستهلاكاً كبيراً للذاكرة، فضلاً عن إغفال الترابط الفسيولوجي الطبيعي بين الأصابع.
+        </div>
+
+        <div class="success-box">
+            <strong>3. غياب التعميم التركيبي عبر المهام (Cross-Task Compositionality):</strong> عجزت الأنظمة السابقة عن توليد حركات لمهام جديدة لم تتدرب عليها اليد مسبقاً. كان الهدف هو ابتكار مكتبة مهارات صغيرة ومدمجة (5 بدائيات فقط) يمكن دمجها وتعديلها لتوليد مسارات لعشرات المهام الجديدة.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #4338ca;">
+            <strong>الفرضية العلمية الأساسية:</strong><br>
+            إن دمج الـ PCA لاختزال أبعاد زوايا المفاصل مع الـ ProMPs لتشفير التباين الزمني للمسارات قادر على توليد حركات تلاعب ديناميكية احتكاكية بدقة خطأ تقل عن 10%، مع **تسريع الحسابات بـ 10 أضعاف** وخفض الذاكرة بنسبة 75%، وتمكين مكتبة من 5 مهارات أساسية من تعميم وتوليد مسارات 8 مهام تنظيف جديدة كلياً بنجاح.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>ضغط التآزر (Synergy Compression):</strong> هل يمكن ضغط مسارات 20 مفصلاً إلى 5 أو 7 مركبات تآزر فقط لتفسير 90% من التباين وبخطأ أقل من 10%؟</li>
+            <li><strong>الكفاءة الحسابية:</strong> ما هو الفارق في زمن المعالجة واستهلاك الذاكرة بين التعلم في فضاء التآزر والتعلم في الفضاء الكامل؟</li>
+            <li><strong>التعميم التركيبي (Compositionality):</strong> أي الآليات الرياضية (الخبير الأقرب أم الخلط المحدب أم ضرب الخبراء) هي الأكثر دقة في توليد المهام غير المدربة؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات والتجهيزات التجريبية (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>تسجيل البيانات وقاعدة البيانات</h4>
+                <ul>
+                    <li><strong>العينة:</strong> 22 متطوعاً بالغاً (12 يميناً، 10 يساراً، تباين أعمار 23 - 61 سنة).</li>
+                    <li><strong>القفاز الحركي:</strong> قفاز هيكل خارجي لمسي <span class="en-term">SenseGlove DK1</span> يسجل 20 مفصلاً حركياً بتردد 97 Hz متزامناً مع OptiTrack.</li>
+                    <li><strong>المهام:</strong> 13 مهمة تنظيف مبنية على إطار الأصابع الافتراضية (<span class="en-term">Virtual Fingers</span>)؛ تم اختيار 5 مهام للتدريب واحتجاز 8 للاختبار.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>المنصات الروبوتية المنفذة</h4>
+                <ul>
+                    <li><strong>المحاكاة:</strong> يد روبوتية بشرية كاملة <span class="en-term">Shadow Hand</span> بـ 20 درجة حرية لمقارنة كينيماتيكا الأصابع في بيئة افتراضية.</li>
+                    <li><strong>الروبوت الحقيقي:</strong> يد <span class="en-term">Handeffector (Aeon Robotics)</span> بـ 15 درجة حرية (11 مفصلاً نشطاً مزوداً بحساسات قوة <span class="en-term">Force Feedback</span>).</li>
+                    <li><strong>التحقق الفيزيائي:</strong> طلاء أطراف الأصابع بالحبر لتأكيد مسار التلامس واستمراريته.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>المعادلة الرياضية الشاملة لدمج PCA مع ProMPs:</h4>
+        <div class="quote-box">
+            يتم إسقاط مسارات زوايا المفاصل أولاً عبر PCA للحصول على مسار المعاملات التآزرية $y_t$، ثم نمذجتها عبر ProMP كتوزيع احتمالي فوق دوال غاوسية زمنية $\Phi_t$ ($M = 20$ دالة):
+            $$y_t = \Phi_t^T w + \epsilon_t, \quad w \sim \mathcal{N}(\mu_w, \Sigma_w), \quad \epsilon_t \sim \mathcal{N}(0, R)$$
+            حيث يتم استخراج متجه الأوزان $w$ عبر انحدار ريدج المنتظم ($\lambda = 10^{-6}$):
+            $$w = (\Phi^T \Phi + \lambda I)^{-1} \Phi^T y$$
+        </div>
+
+        <h4>آليات التعميم الثلاث عبر المهام غير المدربة (Cross-Task Mechanisms):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>الآلية التركيبية</th>
+                    <th>طريقة الدمج الرياضي في فضاء التآزر</th>
+                    <th>الوظيفة والهدف</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>الخبير الأقرب (Best-Single)</strong></td>
+                    <td>اختيار البدائية التي يحقق متوسط مسارها أقل خطأ مربعات مع المسار المستهدف.</td>
+                    <td>تحديد ما إذا كانت الحركة الجديدة مجرد تعديل طفيف لمهارة مكتسبة سابقاً.</td>
+                </tr>
+                <tr>
+                    <td><strong>الخلط المحدب (Convex Blend)</strong></td>
+                    <td>توليد مجموع موزون للبدائيات الخمس بأوزان غير سالبة مجموعها 1: $\sum lpha_i \mu_i$.</td>
+                    <td>اختبار ما إذا كانت الحركة الجديدة تقع ضمن الفضاء الخطي للمهارات الخمس.</td>
+                </tr>
+                <tr>
+                    <td><strong>ضرب الخبراء (PoE)</strong></td>
+                    <td>ضرب التوزيعات الغاوسية للأوزان لدمج الخبرات: $\Sigma_{	ext{new}}^{-1} = \sum \Sigma_i^{-1}$.</td>
+                    <td>تضييق التباين وتوليد استجابة موحدة في مناطق توافق الخبراء تحت القيود.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج التجريبية بالأرقام الدقيقة (Results)</h2>
+        </div>
+
+        <h4>أ. ضغط الأبعاد ودقة إعادة البناء الكينيماتيكي:</h4>
+        <ul>
+            <li><strong>تفسير 90% من التباين الحركي:</strong> تحقق باستخدام **5 مركبات تآزر فقط (5 PCs)** لمعمارية الـ 15 DoFs، و**7 مركبات تآزر (7 PCs)** لمعمارية الـ 20 DoFs.</li>
+            <li><strong>خطأ إعادة البناء المفصلي (MSE):</strong> بلغ <span class="num-stat">9.02%</span> لمعمارية 20 DoFs، و<span class="num-stat">8.94%</span> لمعمارية 15 DoFs، وهو متطابق تقريباً مع التشتت الطبيعي لتكرار المتطوعين البشريين ($8.57\% - 8.63\%$).</li>
+        </ul>
+
+        <h4>ب. القفزة الكبرى في السرعة الحسابية وخفض استهلاك الذاكرة (10x Speedup):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>المنظومة المفصلية</th>
+                    <th>زمن التدريب في الفضاء الكامل (ProMP Only)</th>
+                    <th>زمن التدريب في فضاء التآزر (PCA + ProMP)</th>
+                    <th>نسبة التسريع واستهلاك الذاكرة</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>معمارية 15 DoFs (انثناء فقط)</strong></td>
+                    <td>102.4 ثانية</td>
+                    <td><span class="num-stat">13.1 ثانية</span></td>
+                    <td>تسريع بنحو <span class="num-stat">8 أضعاف</span>، وخفض الذاكرة من 109 MB إلى 37 MB.</td>
+                </tr>
+                <tr>
+                    <td><strong>معمارية 20 DoFs (انثناء + تبعيد)</strong></td>
+                    <td>198.8 ثانية</td>
+                    <td><span class="num-stat">19.9 ثانية</span></td>
+                    <td>تسريع كاسح بنحو <span class="num-stat">10 أضعاف</span>، وخفض الذاكرة من 195 MB إلى 50 MB!</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ج. نتائج التنفيذ الحقيقي والتعميم على المهام غير المدربة:</h4>
+        <div class="grid-2">
+            <div class="success-box">
+                <strong>التنفيذ على يد Aeon Robotics:</strong><br>
+                حققت اليد الروبوتية الحقيقية نسبة نجاح بلغت <span class="num-stat">81.7%</span> (392 نقطة من 480) عبر 40 مساراً متنوعاً، مع إثبات ثبات القوة واستمرارية أثر الحبر وتطويق الأسطح المنحنية والزوايا.
+            </div>
+            <div class="success-box">
+                <strong>التعميم على 8 مهام غير مدربة:</strong><br>
+                تفوق أسلوب الخبير الأقرب (<span class="en-term">Best-Single</span>) مسجلاً أقل خطأ تعميم: <span class="num-stat">MSE = 0.183</span> و<span class="num-stat">RMSE = 0.415</span>، متفوقاً على الخلط المحدب (0.278) وضرب الخبراء (0.343).
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Contribution & Relevance -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>توسيع أفق التآزر الحركي لرسالة عين شمس:</strong> نقل أبحاث الماجستير من النطاق الضيق لمسكات التثبيت الساكنة إلى التلاعب الحركي الديناميكي المستمر الغني بالتلامس الاحتكاكي.</li>
+            <li><strong>الحل العملي للمعالجات المدمجة (Embedded Systems):</strong> تسريع الخوارزمية بـ 10 أضعاف وخفض استهلاك الرام بـ 75% يثبت إمكانية تشغيل خوارزميات التآزر والـ ProMPs على متحكمات دقيقة مدمجة رخيصة داخل الطرف الصناعي دون الحاجة لحاسوب مركزي ضخم.</li>
+            <li><strong>مفهوم مكتبة البدائيات التركيبية (Modular Skills):</strong> إثبات إمكانية الاكتفاء بتسجيل وتدريب 5 حركات أساسية في المعمل لتركيب وتوليد مسارات عشرات الحركات والمسكات غير المرئية عبر اختيار الخبير الأقرب في فضاء التآزر.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. دمج PCA مع ProMPs للانتقال إلى التلاعب الديناميكي:</div>
+            <p class="question-context">"يا دكتور، بحث Frontiers 2026 أثبت أن دمج PCA مع ProMPs خفض زمن الحساب بـ 10 أضعاف ومكّن الروبوت من مسح الأسطح بتلامس احتكاكي مستمر؛ هل نطبق نفس النهج في رسالتنا لتمكين اليد ناقصة التشغيل من أداء مهام مناولة تفاعلية بدلاً من الاقتصار على المسك الساكن؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. تفوق Best-Single على Product-of-Experts (PoE):</div>
+            <p class="question-context">"البحث وجد أن اختيار الخبير الأقرب (Best-Single) حقق خطأ تعميم أقل بكثير (0.183) مقارنة بخلط الخبراء (0.343) في المهام غير المدربة؛ هل يرجع ذلك إلى أن التآزر العضلي بطبيعته يتكون من وحدات حركية متخصصة ومستقلة، وأن خلطها جبرياً يشوه التناسق الطبيعي لحركة المفاصل؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. إدخال قيود القوة داخل فضاء الـ ProMPs:</div>
+            <p class="question-context">"البحث اقتصر على كينيماتيكا الزوايا واعتمد على مرونة الروبوت الفيزيائية؛ كيف يمكننا دمج إشارات قوى التلامس كقيد احتمالي (Via-Point Conditioning) داخل الـ ProMP لضبط ضغط الأصابع تلقائياً عند تغير مقاومة السطح في محاكاة Simscape؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>

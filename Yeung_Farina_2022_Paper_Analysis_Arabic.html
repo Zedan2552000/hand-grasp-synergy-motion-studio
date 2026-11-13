@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث Yeung et al. (IEEE TBME 2022)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(129, 140, 248, 0.25);
+            border: 1px solid rgba(199, 210, 254, 0.4);
+            color: #e0e7ff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16.5pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 10pt;
+            color: #c7d2fe;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #e2e8f0;
+        }
+
+        .header-meta span strong {
+            color: #a5b4fc;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #4338ca;
+            background: #eef2ff;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #e0e7ff;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #4f46e5;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 8.8pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #1e1b4b;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #312e81;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #4338ca;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #312e81;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            border-right: 4px solid #6366f1;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #4338ca;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • التحكم العصبي العضلي • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل وتفكيك شامل: بحث Yeung et al. (IEEE TBME 2022)</div>
+        <div class="header-orig-title">Co-Adaptive Control of Bionic Limbs via Unsupervised Adaptation of Muscle Synergies</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Dennis Yeung, Irene Mendez Guerra, Ian Barner-Rasmussen, Emilia Siponen, Dario Farina, Ivan Vujaklija</span>
+            <span><strong>الجهات:</strong> Aalto University (Finland), Imperial College London (UK), Helsinki University Hospital</span>
+            <span><strong>المجلة:</strong> IEEE Transactions on Biomedical Engineering (TBME)</span>
+            <span><strong>تاريخ النشر:</strong> August 2022</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "Objective: In this work, we present a myoelectric interface that extracts natural motor synergies from multi-muscle signals and adapts in real-time with new user inputs. With this unsupervised adaptive myocontrol (UAM) system, optimal synergies for control are continuously co-adapted with changes in user motor control, or as a function of perturbed conditions via online non-negative matrix factorization guided by physiologically informed sparseness constraints in lieu of explicit data labelling. Methods: UAM was tested in a set of virtual target reaching tasks completed by able-bodied and amputee subjects. Tests were conducted under normative and electrode perturbed conditions to gauge control robustness with comparisons to non-adaptive and supervised adaptive myocontrol schemes. Furthermore, UAM was used to interface an amputee with a multi-functional powered hand prosthesis during standardized Clothespin Relocation Tests, also conducted in normative and perturbed conditions. Results: In virtual tests, UAM effectively mitigated performance degradation caused by electrode displacement, affording greater resilience over an existing supervised adaptive system for amputee subjects. Induced electrode shifts also had negligible effect on the real world control performance of UAM with consistent completion times (23.91 ± 1.33 s) achieved across Clothespin Relocation Tests in the normative and electrode perturbed conditions. Conclusion: UAM affords comparable robustness improvements to existing supervised adaptive myocontrol interfaces whilst providing additional practical advantages for clinical deployment. Significance: The proposed system uniquely incorporates neuromuscular control principles with unsupervised online learning methods and presents a working example of a freely co-adaptive bionic interface."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية المعتمدة:</strong><br>
+            "الهدف: نقدم في هذا العمل واجهة تحكم عضلية كهربائية تستخرج التآزرات الحركية الطبيعية من إشارات العضلات المتعددة وتتكيف في الوقت الحقيقي (<span class="en-term">Real-Time</span>) مع مدخلات المستخدم الجديدة. عبر هذا النظام القائم على التحكم العضلي التكيفي غير الخاضع للإشراف (<span class="en-term">UAM</span>)، يتم تحديث التآزرات المثلى للتحكم باستمرار وتكييفها بشكل متبادل مع التغيرات في التحكم الحركي للمستخدم أو كدالة للاضطرابات الخارجية، وذلك باستخدام خوارزمية تحليل المصفوفات غير السالبة المتزامنة (<span class="en-term">Online NMF</span>) الموجهة بقيود التشتت الفسيولوجية (<span class="en-term">Sparseness Constraints</span>) بدلاً من وضع العلامات الصريحة على البيانات. الطرق: تم اختبار نظام UAM في مهام وصول افتراضية إلى أهداف نفذها متطوعون أصحاء ومبتورو الأطراف، في ظل ظروف معيارية وظروف إزاحة للحساسات لتقييم متانة التحكم، مع المقارنة بأنظمة غير تكيفية وأخرى خاضعة للإشراف. كما تم ربط النظام بيد اصطناعية روبوتية تجارية متعددة الوظائف لمريض مبتور اليد أثناء اختبارات نقل مشابك الغسيل المعيارية (<span class="en-term">Clothespin Relocation Tests</span>). النتائج: نجح نظام UAM في التخفيف بفعالية من تدهور الأداء الناتج عن إزاحة الحساسات في الاختبارات الافتراضية، وقدم مرونة تفوقت على الأنظمة الخاضعة للإشراف لدى مبتوري الأطراف. كما لم يكن لإزاحة الحساسات أي تأثير يُذكر على التحكم الواقعي، حيث حقق المريض زمناً متسقاً لإنهاء المهام (23.91 ± 1.33 ثانية) في الظروف الطبيعية وظروف إزاحة الأقطاب. الخلاصة: يوفر UAM تحسناً مماثلاً في المتانة مقارنة بالأنظمة الخاضعة للإشراف مع تقديم ميزات سريرية عملية فائقة. الأهمية: يدمج النظام بشكل فريد مبادئ التحكم العصبي العضلي مع التعلم الآلي الذاتي اللحظي، مقدماً نموذجاً عملياً لواجهة بيونية ثنائية التكيف الحر."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>عالج هذا البحث بقيادة د. داريو فارينا ود. إيفان فوجاكليا 3 عيوب حرجة في أنظمة الأطراف الصناعية الذكية:</p>
+
+        <div class="danger-box">
+            <strong>1. معضلة إزاحة الحساسات عند الارتداء والخلع (Donning/Doffing Shift):</strong> بمجرد خلع المريض للطرف الصناعي وإعادة ارتدائه، تتحرك الأقطاب بنحو 1 إلى 2 سم، مما يؤدي إلى انهيار دقة فك الشفرة العضلية في الأنظمة الثابتة (<span class="en-term">Non-Adaptive Myocontrol - NAM</span>) وإجبار المريض على إعادة المعايرة اليومية المعقدة.
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. معضلة التسمية الخاطئة في التعلم الخاضع للإشراف (Supervised Mislabeling):</strong> الأنظمة التكيفية السابقة (<span class="en-term">SAM</span>) تعتمد على توجيه المريض بصرياً لتكرار حركات معينة؛ لكن مبتوري الأطراف يعانون من فقدان التغذية الحسية (<span class="en-term">Proprioceptive Feedback</span>) ولا يستطيعون تكرار الإشارة بنفس الدقة، مما يدرب النموذج على بيانات خاطئة تماماً.
+        </div>
+
+        <div class="success-box">
+            <strong>3. الحاجة لنظام تكيفي لحظي غير مقاطع للاستخدام (Online & Unsupervised):</strong> كانت الأنظمة غير الخاضعة للإشراف مقتصرة على جمع البيانات أوفلاين (<span class="en-term">Offline</span>)، مما يقاطع الاستخدام اليومي ويحرم المريض من معرفة أثر التعديل لحظياً.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #4338ca;">
+            <strong>الفرضية العلمية الأساسية:</strong><br>
+            يمكن بناء واجهة تحكم عضلية ثنائية التكيف (<span class="en-term">Co-Adaptive Interface</span>) تعتمد على خوارزمية <span class="en-term">Online NMF</span> الموجهة ذاتياً بقيد التشتت الفسيولوجي ($L_{1/2}	ext{ Sparsity}$)، تكتشف أخطاء التوافق تلقائياً من الأوامر المتضاربة وتعدل متجهات التآزر العضلي في الزمن الحقيقي بدون أي تدخل أو تسمية للبيانات من المريض.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>تعويض الإزاحة:</strong> هل يستطيع النظام التكيفي غير الخاضع للإشراف تعويض إزاحة فيزيائية للأقطاب بمقدار <span class="num-stat">1.2 سم</span> دون انخفاض في أداء التحكم؟</li>
+            <li><strong>مقارنة الأصحاء بالمبتورين:</strong> هل يتفوق التعلم غير الخاضع للإشراف (UAM) على الخاضع للإشراف (SAM) لدى مرضى البتر الحقيقيين؟</li>
+            <li><strong>التحقق الإكلينيكي الواقعي:</strong> ما مدى فاعلية النظام عند تطبيقه على يد تجارية (<span class="en-term">Michelangelo Hand</span>) في اختبار مشابك الغسيل المعياري؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات الرياضية والإكلينيكية (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>المشاركون والأجهزة</h4>
+                <ul>
+                    <li><strong>العينة:</strong> 10 متطوعين أصحاء + مريضان مبتورا الأطراف تحت الكوع (<span class="en-term">AM1</span> خبرة 24 سنة، و<span class="en-term">AM2</span> خبرة 8 سنوات).</li>
+                    <li><strong>الحساسات:</strong> سوار <span class="en-term">Myo Armband</span> (8 قنوات sEMG، تردد 200 Hz، معالجة RMS بنوافذ 160 مم وقفزات 40 مم).</li>
+                    <li><strong>الطرف التجاري:</strong> يد <span class="en-term">Michelangelo Hand (Ottobock)</span> مع معصم دوار نشط وقبضة قرصية، يتم التحكم بها عبر البلوتوث بمتحكم PID.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>معاملات التكيف وخوارزمية NMF</h4>
+                <ul>
+                    <li><strong>عامل النسيان التدريجي:</strong> $lpha_o = 0.9$ للبيانات القديمة و$lpha_f = 0.1$ للبيانات المتدفقة الجديدة.</li>
+                    <li><strong>حجم نافذة التحديث:</strong> $l = 1000$ عينة (آخر 40 ثانية من النشاط) لضمان استقرار المشتقات الرياضية.</li>
+                    <li><strong>قيد التشتت:</strong> وزن $\lambda = 5$ مع قيد النمط $L_{1/2}$ لفرض استقلالية متجهات التآزر.</li>
+                    <li><strong>زناد التكيف:</strong> عتبة 5% لتفعيل الأوامر المتضاربة المتزامنة لنفس المفصل.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>المعادلة الرياضية الشاملة للتحديث اللحظي (Online NMF with $L_{1/2}$ Sparsity):</h4>
+        <div class="quote-box">
+            دالة التكلفة المقيدة بالتشتت الفسيولوجي وعامل النسيان التدريجي:
+            $$D_{k+l} = lpha_o D_k + lpha_f \sum_{j=1}^{l} \left[ rac{1}{2} \sum_{i=1}^{n} \left( (\mathbf{X}_l)_{ij} - (\mathbf{W}_{k+l}\mathbf{F}_l)_{ij} ight)^2 + \lambda \sum_{a=1}^{2m} (\mathbf{F}_l)_{aj}^{1/2} ight]$$
+            حيث تم اشتقاق قواعد التحديث الضاربة (<span class="en-term">Multiplicative Update Rules</span>) لضمان بقاء قيم المصفوفات موجبة قطيعاً والحفاظ على تعقيد حسابي ثابت في الذاكرة:
+            $$(\mathbf{F}_l)_{aj} \leftarrow (\mathbf{F}_l)_{aj} rac{(\mathbf{W}_{k+l}^T \mathbf{X}_l)_{aj}}{(\mathbf{W}_{k+l}^T \mathbf{W}_{k+l}\mathbf{F}_l + rac{\lambda}{2}\mathbf{F}_l^{-1/2})_{aj}}$$
+        </div>
+
+        <h4>آلية إطلاق التكيف الذاتي (Conflict Detection Trigger):</h4>
+        <div class="highlight-box">
+            في التحكم الطبيعي بالوضعية، يستحيل فيزيولوجياً تفعيل حركتين متعاكستين لنفس المفصل (مثل القبض والبسط معاً). يراقب النظام الأوامر المولدة، وإذا تجاوزت القوتان المتضادتان عتبة <span class="num-stat">5%</span> في اللحظة ذاتها، يستنتج النظام حدوث إزاحة في الحساسات أو عدم توافق في متجهات التآزر، فيطلق التحديث اللحظي فوراً لتعديل زوايا المصفوفة $\mathbf{W}$ دون أن يشعر المريض بأي انقطاع!
+        </div>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج التجريبية بالأرقام الدقيقة (Results)</h2>
+        </div>
+
+        <h4>أ. أداء التحكم الافتراضي عند إزاحة الحساسات بمقدار 1.2 سم:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>النظام المستخدم</th>
+                    <th>معدل إتمام المهام (CR) بعد الإزاحة الجانبية</th>
+                    <th>معدل إتمام المهام (CR) بعد الإزاحة الإنسية</th>
+                    <th>الدلالة الإحصائية والتأثير</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>السيستم غير التكيفي (NAM)</strong></td>
+                    <td>انخفاض حاد بمقدار <span class="num-stat">-0.18</span></td>
+                    <td>انخفاض حاد بمقدار <span class="num-stat">-0.19</span></td>
+                    <td>انهيار الأداء ($p &lt; 0.001$) وعجز المريض عن التعويض منفرداً.</td>
+                </tr>
+                <tr>
+                    <td><strong>السيستم التكيفي الذاتي (UAM)</strong></td>
+                    <td>تفوق بمقدار <span class="num-stat">+0.17</span> مقارنة بـ NAM</td>
+                    <td>تفوق بمقدار <span class="num-stat">+0.13</span> مقارنة بـ NAM</td>
+                    <td>استعادة الأداء السلس للمستوى المعياري بالكامل ($p = 0.017$).</td>
+                </tr>
+                <tr>
+                    <td><strong>السيستم الخاضع للإشراف (SAM)</strong></td>
+                    <td>تفوق بمقدار <span class="num-stat">+0.22</span></td>
+                    <td>تفوق بمقدار <span class="num-stat">+0.20</span></td>
+                    <td>أداء ممتاز مع الأصحاء، لكنه تراجع مع المبتورين.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ب. تفوق UAM الكاسح لدى مرضى البتر (Amputee AM1 & AM2):</h4>
+        <ul>
+            <li>تفوق نظام <strong>UAM غير الخاضع للإشراف</strong> على نظام <strong>SAM الخاضع للإشراف</strong> في **3 من أصل 4 مؤشرات أداء** لدى المبتورين (+0.06 في معدل الإنجاز، وأسرع بـ 0.16 ثانية في زمن الوصول، وأعلى بنقل المعلومات بمقدار +0.02 bits/s).</li>
+            <li>السبب العلمي: تحصين النظام التلقائي ضد أخطاء تسمية البيانات الناتجة عن تذبذب إشارات المبتورين.</li>
+        </ul>
+
+        <h4>ج. نتائج اختبار مشابك الغسيل الإكلينيكي (Clothespin Relocation Test):</h4>
+        <div class="grid-2">
+            <div class="success-box">
+                <strong>زمن إتمام المهام تحت ظروف الإزاحة:</strong><br>
+                - الوضع الطبيعي: <span class="num-stat">22.48 s</span><br>
+                - إزاحة خارجية (1.2 سم): <span class="num-stat">24.12 s</span><br>
+                - إزاحة داخلية (1.2 سم): <span class="num-stat">25.12 s</span><br>
+                متوسط عام متسق للغاية: <span class="num-stat">23.91 ± 1.33 s</span> مع <strong>0% سقوط للمشابك</strong>.
+            </div>
+            <div class="success-box">
+                <strong>إلغاء الحركات التعويضية المرهقة:</strong><br>
+                الطرف القديم للمريض كان يجبره على انحناء جانبي مفرط للجذع وتدوير حاد للكتف للوصول للمشابك؛ بينما ألغى نظام UAM مع اليد متعددة الحركات هذه التشوهات الحركية وحافظ على استقامة العمود الفقري للمريض.
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Contribution & Relevance -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>حل معضلة عدم استقرار إشارات العضلات:</strong> يقدم البحث إطاراً رياضياً ثابتاً يضمن بقاء متجهات التآزر العضلي صالحة للتحكم حتى مع تغير موضع الحساسات أو ارتداء وخلع القفازات والأساور الحركية.</li>
+            <li><strong>معمارية التكيف المزدوج (Co-Adaptation Architecture):</strong> يثبت أن دمج التعلم البشري الطبيعي مع التكيف الآلي اللحظي يقلل العبء الإدراكي على المستخدم ويسرع من تبني الأطراف الذكية.</li>
+            <li><strong>تكامل التآزر العصبي مع أجهزة معمل عين شمس:</strong> يمكن دمج خوارزمية Online NMF المقيدة بـ $L_{1/2}$ مباشرة مع قفاز معمل عين شمس أو حساسات العضلات السطحية لمعالجة البيانات واستخراج الأوامر دون الحاجة لتصنيف يدوي مستمر.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. التمييز بين انقباض التثبيت والخطأ النموذجي (Antagonistic Co-activation):</div>
+            <p class="question-context">"يا دكتور، بحث Farina اعتمد على تنشيط العضلات المتضادة المتزامن كدليل قاطع على خطأ الموديل لإطلاق التكيف التلقائي؛ لكن فسيولوجياً، المريض يقوم بتفعيل العضلات المتضادة عمداً لزيادة صلابة المفصل (Joint Stiffness) عند مسك أجسام ثقيلة؛ كيف نضمن في خوارزميتنا ألا يطلق النظام تكيفاً كاذباً أثناء مسكات القوة العالية؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. تفوق الـ Unsupervised Learning الإكلينيكي على النماذج العميقة:</div>
+            <p class="question-context">"البحث أثبت أن التعلم غير الخاضع للإشراف تفوق على الخاضع للإشراف لدى المبتورين لأنهم يعانون من Sensory Deficit يؤدي لـ Mislabeling؛ ألا يرجح ذلك اعتمادنا في الماجستير على خوارزميات التآزر غير الخاضعة للإشراف (Unsupervised Synergies) بدلاً من مصنفات الـ Deep Learning المعقدة التي تفشل بمجرد تحرك الأقطاب؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. ثبات فضاء التآزر تحت تأثير الإجهاد العضلي والتعرق:</div>
+            <p class="question-context">"بيبر TBME ركز فقط على الإزاحة المكانية للأقطاب (1.2 سم)؛ كيف يمكن لنموذجنا التكيفي أن يتعامل مع تغير تردد الإشارة الناتج عن الإجهاد العضلي (Muscle Fatigue Shift) وتغير المقاومة الناتجة عن التعرق؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>

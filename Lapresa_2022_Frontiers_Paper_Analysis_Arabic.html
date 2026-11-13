@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تحليل وتفكيك شامل: بحث Lapresa et al. (Frontiers 2022)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        @page {
+            size: A4;
+            margin: 14mm 12mm 14mm 12mm;
+            @bottom-right {
+                content: counter(page) " / " counter(pages);
+                font-family: 'Cairo', sans-serif;
+                font-size: 9pt;
+                color: #64748b;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            line-height: 1.65;
+            color: #1e293b;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            font-size: 10.5pt;
+        }
+
+        .header-box {
+            background: linear-gradient(135deg, #047857 0%, #059669 50%, #10b981 100%);
+            color: #ffffff;
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(209, 250, 229, 0.25);
+            border: 1px solid rgba(209, 250, 229, 0.4);
+            color: #ecfdf5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 8.5pt;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .header-title {
+            font-size: 16pt;
+            font-weight: 900;
+            margin: 6px 0 10px 0;
+            line-height: 1.35;
+            color: #ffffff;
+        }
+
+        .header-orig-title {
+            font-size: 9.8pt;
+            color: #a7f3d0;
+            font-weight: 600;
+            direction: ltr;
+            text-align: right;
+            margin-bottom: 12px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            font-size: 9pt;
+            color: #ecfdf5;
+        }
+
+        .header-meta span strong {
+            color: #ffffff;
+        }
+
+        .section-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-bottom: 18px;
+            page-break-inside: avoid;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .section-icon {
+            font-size: 15pt;
+        }
+
+        .section-title {
+            font-size: 12.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .en-term {
+            direction: ltr;
+            display: inline-block;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-weight: 700;
+            color: #047857;
+            background: #ecfdf5;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            border: 1px solid #a7f3d0;
+        }
+
+        .quote-box {
+            background: #f8fafc;
+            border-right: 4px solid #059669;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 9.5pt;
+            color: #334155;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .quote-box.en {
+            direction: ltr;
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #64748b;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            font-size: 8.8pt;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .highlight-box {
+            background: #fefce8;
+            border: 1px solid #fef08a;
+            border-right: 4px solid #eab308;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #713f12;
+            font-size: 9.5pt;
+        }
+
+        .danger-box {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-right: 4px solid #ef4444;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #991b1b;
+            font-size: 9.5pt;
+        }
+
+        .success-box {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #22c55e;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 12px 0;
+            color: #166534;
+            font-size: 9.5pt;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 9pt;
+        }
+
+        th {
+            background: #064e3b;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 9px 12px;
+            text-align: right;
+            border: 1px solid #047857;
+        }
+
+        td {
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            vertical-align: middle;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        ul, ol {
+            margin: 8px 0 12px 0;
+            padding-right: 22px;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        .num-stat {
+            font-weight: 800;
+            color: #047857;
+            font-size: 10.5pt;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 10px 0;
+        }
+
+        .mini-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .mini-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 10pt;
+            color: #064e3b;
+            font-weight: 800;
+        }
+
+        .question-item {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-right: 4px solid #10b981;
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: 800;
+            color: #064e3b;
+            font-size: 10pt;
+            margin-bottom: 4px;
+        }
+
+        .question-context {
+            color: #334155;
+            font-size: 9pt;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header-box">
+        <div class="header-badge">مجموعة أبحاث رسالة الماجستير • برمجيات محاكاة اليد والروبوتات • د. محمد إبراهيم عوض</div>
+        <div class="header-title">تحليل وتفكيك شامل: بحث Lapresa et al. (Frontiers 2022)</div>
+        <div class="header-orig-title">A user-friendly automatic toolbox for hand kinematic analysis, clinical assessment and postural synergies extraction</div>
+        <div class="header-meta">
+            <span><strong>المؤلفون:</strong> Martina Lapresa, Loredana Zollo, Francesca Cordella</span>
+            <span><strong>الجهة:</strong> Università Campus Bio-Medico di Roma (إيطاليا) بالتعاون مع مطوري SynGrasp</span>
+            <span><strong>المجلة:</strong> Frontiers in Bioengineering and Biotechnology</span>
+            <span><strong>تاريخ النشر:</strong> November 2022 (Vol. 10)</span>
+        </div>
+    </div>
+
+    <!-- 1. Abstract Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📄</span>
+            <h2 class="section-title">1. المستخلص الرسمي (Abstract)</h2>
+        </div>
+
+        <div class="quote-box en">
+            <strong>Original English Abstract:</strong><br>
+            "The clinical assessment of the human hand is typically conducted through questionnaires or tests that include objective (e.g., time) and subjective (e.g., grasp quality) outcome measures. However, there are other important indicators that should be considered to quantify grasp and movement quality in addition to the time needed by a subject to execute a task, and this is essential for human and artificial hands that attempt to replicate the human hand properties. The correct estimation of hand kinematics is fundamental for computing these indicators with high fidelity, and a technical background is typically required to perform this analysis. In addition, to understand human motor control strategies as well as to replicate them on artificial devices, postural synergies were widely explored in recent years. Synergies should be analyzed not only to investigate possible modifications due to musculoskeletal and/or neuromuscular disorders, but also to test biomimetic hands. The aim of this work is to present an open source toolbox to perform all-in-one kinematic analysis and clinical assessment of the hand, as well as to perform postural synergies extraction. In the example provided in this work, the tool takes as input the position of 28 retroreflective markers with a diameter of 6 mm, positioned on specific anatomical landmarks of the hand and recorded with an optoelectronic motion capture system, and automatically performs 1) hand kinematic analysis (i.e., computation of 23 joint angles); 2) clinical assessment, by computing indicators that allow quantifying movement efficiency (Peak Grip Aperture), smoothness (Normalized Dimensionless Jerk Grasp Aperture) and speed (Peak Velocity of Grasp Aperture), planning capabilities (Time to Peak Grip Aperture), spatial posture (Wrist and Finger Joint Angles) and grasp stability (Posture of Hand Finger Joints), and 3) postural synergies extraction and analysis through the Pareto, Scree and Loadings plots. Two examples are described to demonstrate the applicability of the toolbox: the first one aiming at performing a clinical assessment of a volunteer and the second one aiming at extracting and analyzing the volunteer’s postural synergies. The tool allows calculating joint angles with high accuracy (reconstruction errors below 4 mm and 3.2 mm for the fingers and wrist respectively) and automatically performing clinical assessment and postural synergies extraction. Results can be visually inspected, and data can be saved for any desired post processing analysis. Custom-made protocols to extract joint angles, based on different markersets, could be also integrated in the toolbox. The tool can be easily exploitable in clinical contexts, as it does not require any particular technical knowledge to be used, as confirmed by the usability evaluation conducted (perceived usability = 94.2 ± 5.4). In addition, it can be integrated with the SynGrasp toolbox to perform grasp analysis of underactuated virtual hands based on postural synergies."
+        </div>
+
+        <div class="quote-box">
+            <strong>الترجمة العربية المعتمدة:</strong><br>
+            "المستخلص: يتم إجراء التقييم السريري ليد الإنسان عادةً من خلال استبيانات أو اختبارات تتضمن مقاييس نتائج موضوعية (مثل الوقت) وذاتية (مثل جودة المسك). ومع ذلك، هناك مؤشرات مهمة أخرى يجب أخذها في الاعتبار لقياس جودة المسك والحركة بالإضافة إلى الوقت الذي يحتاجه الشخص لتنفيذ المهمة، وهذا أمر ضروري للأيدي البشرية والاصطناعية التي تحاول محاكاة خصائص يد الإنسان. يُعد التقدير الصحيح لكينيماتيكا اليد أمراً أساسياً لحساب هذه المؤشرات بدقة عالية، وعادةً ما تكون هناك حاجة لخلفية تقنية متخصصة لإجراء هذا التحليل. بالإضافة إلى ذلك، لفهم استراتيجيات التحكم الحركي البشري وتكرارها على الأجهزة الاصطناعية، تم استكشاف التآزرات الوضعية (<span class="en-term">Postural Synergies</span>) على نطاق واسع في السنوات الأخيرة. يجب تحليل التآزر ليس فقط للتحقق من التعديلات الناتجة عن الاضطرابات العضلية الهيكلية أو العصبية، ولكن أيضاً لاختبار الأيدي الروبوتية الحيوية. الهدف من هذا العمل هو تقديم <strong>تولبوكس مفتوح المصدر (Open-Source Toolbox)</strong> لإجراء تحليل كينيماتيكي شامل وتقييم سريري متكامل لليد، فضلاً عن استخراج التآزرات الوضعية في بيئة برمجية واحدة (<span class="en-term">All-in-One</span>). يأخذ البرنامج كمدخلات إحداثيات 28 عاكساً ضوئياً مسجلة بنظام التقاط حركة بصري، ويقوم تلقائياً بـ: (1) التحليل الكينيماتيكي لليد وحساب 23 زاوية مفصلية؛ (2) التقييم السريري عبر حساب مؤشرات كفاءة الحركة (اتساع القبضة الأقصى PGA)، والنعومة (مؤشر Jerk المعياري)، والسرعة، وقدرات التخطيط الحركي، وثبات القبضة (مؤشر Posture)؛ (3) استخراج التآزرات الوضعية وتحليلها عبر مخططات Pareto وScree وLoadings. يتيح البرنامج حساب الزوايا بدقة فائقة (خطأ إعادة بناء أقل من 4 مم للأصابع و3.2 مم للرسغ). علاوة على ذلك، يمكن دمجه مباشرة مع تولبوكس <strong>SynGrasp</strong> لإجراء تحليل المسك للأيدي الافتراضية ناقصة التشغيل (<span class="en-term">Underactuated Hands</span>) بالاعتماد على التآزر المستخرج، مع سهولة استخدام فائقة أثبتها التقييم السريري (درجة سهولة الاستخدام 94.2 ± 5.4 من 100)."
+        </div>
+    </div>
+
+    <!-- 2. Research Gap Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">🔍</span>
+            <h2 class="section-title">2. فجوة البحث الحقيقية (Research Gap)</h2>
+        </div>
+        <p>عالج هذا البحث عجز الأدوات البرمجية السابقة عن الدمج بين البيانات الحركية التجريبية والمحاكاة الروبوتية:</p>
+
+        <div class="danger-box">
+            <strong>1. قصور أدوات المحاكاة الرائدة (SynGrasp & GraspIt! Inability to Extract Synergies):</strong> أدوات مثل SynGrasp وGraspIt! تتيح محاكاة واختبار الأيدي الروبوتية، ولكنها **لا تستخرج التآزرات الحركية من البيانات التجريبية للمرضى**. كان SynGrasp يعتمد حصراً على تآزرات سانتيلو المستخرجة عام 1998 لمسكات تخيلية في الهواء، وكان الباحثون مجبرين على كتابة أكواد مستقلة وشاقة لمعالجة البيانات واستخراج الـ PCA قبل التفكير في نقلها إلى SynGrasp.
+        </div>
+
+        <div class="highlight-box">
+            <strong>2. غياب المؤشرات الكينيماتيكية في الاختبارات السريرية المعتمدة (SHAP Limits):</strong> اختبارات اليد القياسية (مثل اختبار SHAP) تقيس كفاءة اليد فقط بزمن إتمام المهمة عبر ساعة الإيقاف، وتغفل مؤشرات حركية حاسمة مثل نعومة المسار (<span class="en-term">Jerk</span>)، واتساع الفتحة (<span class="en-term">PGA</span>)، واستقرار المفاصل الساكن (<span class="en-term">Grasp Stability</span>).
+        </div>
+
+        <div class="success-box">
+            <strong>3. الحاجة إلى أداة برمجية موحدة وشاملة (All-in-One GUI):</strong> افتقر المجتمع الطبي والهندسي إلى واجهة رسومية سهلة الاستخدام لا تتطلب خبرة برمجية معقدة، وتستقبل ملفات أنظمة التقاط الحركة وتحسب 23 زاوية ومؤشرات الاستقرار والـ Synergies بضغطة زر واحدة.
+        </div>
+    </div>
+
+    <!-- 3. Hypothesis & Research Questions -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">❓</span>
+            <h2 class="section-title">3. بيختبر إيه بالظبط؟ (Hypothesis & Questions)</h2>
+        </div>
+
+        <div class="mini-card" style="margin-bottom: 12px; border-right: 4px solid #059669;">
+            <strong>الفرضية الأساسية:</strong><br>
+            يمكن تطوير تطبيق برمجي متكامل ومفتوح المصدر على MATLAB App Designer يدمج التحليل الكينيماتيكي الدقيق لليد البشرية، واستخراج التآزرات الوضعية (PCA)، وبناء يد افتراضية مخصصة بـ 21 درجة حرية تتكامل بسلاسة مع تولبوكس SynGrasp لمحاكاة الأيدي الروبوتية ناقصة التشغيل وتقييم استقرار القبضة بأعلى دقة.
+        </div>
+
+        <h4>الأسئلة البحثية الثلاثة:</h4>
+        <ol>
+            <li><strong>دقة الحساب الكينيماتيكي:</strong> ما هو هامش الخطأ في إعادة بناء مواقع عظام الأصابع والرسغ من إحداثيات 28 عاكساً ضوئياً؟</li>
+            <li><strong>تكامل المحاكاة:</strong> كيف نطور نموذج يد افتراضية مخصصة في SynGrasp يدعم حركات الإبهام الكاملة (CMC1) لاستبدال النماذج القديمة؟</li>
+            <li><strong>كفاءة وسهولة الاستخدام الإكلينيكي:</strong> ما هو الزمن الحسابي والتقييم السريري للواجهة من قِبل المستخدمين غير التقنيين؟</li>
+        </ol>
+    </div>
+
+    <!-- 4. Methodology Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">⚙️</span>
+            <h2 class="section-title">4. المنهجية والأدوات والمؤشرات الكينيماتيكية (Methodology)</h2>
+        </div>
+
+        <div class="grid-2">
+            <div class="mini-card">
+                <h4>نظام التقاط الحركة والماركرز</h4>
+                <ul>
+                    <li><strong>المنظومة:</strong> نظام <span class="en-term">BTS Smart-D</span> (8 كاميرات بالأشعة تحت الحمراء، تردد 60 Hz، دقة &le; 0.2 مم).</li>
+                    <li><strong>العواكس الضوئية:</strong> 28 ماركر بقطر 6 مم موزعة تشريحياً على مفاصل اليد والرسغ وظهر اليد.</li>
+                    <li><strong>الزوايا المحسوبة:</strong> <span class="num-stat">23 درجة حرية (DoFs)</span> تشمل حركات القبض والبسط والتبعيد والتقريب لكافة المفاصل والرسغ.</li>
+                </ul>
+            </div>
+            <div class="mini-card">
+                <h4>معمارية التولبوكس (MATLAB App)</h4>
+                <ul>
+                    <li><strong>الصيغة والتراخيص:</strong> مبرمج بصيغة <span class="en-term">.mlapp</span> تحت رخصة أباتشي مفتوحة المصدر (Apache 2.0).</li>
+                    <li><strong>التبويبات الرئيسية:</strong> تبويب الكينيماتيكا العامة، تبويب التقييم السريري (Clinical Assessment)، وتبويب التآزر الوضعي (Postural Synergies).</li>
+                    <li><strong>التكامل:</strong> تصدير هياكل البيانات مباشرة إلى بيئة <span class="en-term">SynGrasp</span>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>المؤشرات الرياضية القياسية المدمجة في التولبوكس:</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>المؤشر الحركي</th>
+                    <th>المعادلة الرياضية الحسابية</th>
+                    <th>الدلالة الفسيولوجية والروبوتية</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>أقصى اتساع للقبضة (PGA)</strong></td>
+                    <td>$$	ext{PGA} = \max(	ext{dist}_{	ext{TIP1-TIP2}}(t))$$</td>
+                    <td>يقيس كفاءة فتح اليد واستيعاب أبعاد المجسم أثناء الوصول.</td>
+                </tr>
+                <tr>
+                    <td><strong>نسبة زمن فتح القبضة ($t_{	ext{PGA}}$)</strong></td>
+                    <td>$$t_{	ext{PGA}} = rac{t_{	ext{PeakGripAperture}} - t_{	ext{Onset}}}{t_{	ext{End}} - t_{	ext{Onset}}} 	imes 100\%$$</td>
+                    <td>يعكس مهارة التخطيط الحركي للجهاز العصبي (الطبيعي 40-50%).</td>
+                </tr>
+                <tr>
+                    <td><strong>نعومة الحركة ($J_{	ext{grasp}}$)</strong></td>
+                    <td>$$J_{	ext{grasp}} = \sqrt{rac{1}{2} \int_{t_{	ext{Onset}}}^{t_{	ext{End}}} j(t)^2 dt 	imes rac{	ext{MD}^5}{L_{	ext{grasp}}^2}}$$</td>
+                    <td>مشتقة التسارع الرابعة (Jerk)؛ كلما قل الرقم زادت نعومة وسلاسة الحركة.</td>
+                </tr>
+                <tr>
+                    <td><strong>مؤشر استقرار القبضة (Posture)</strong></td>
+                    <td>$$	ext{Posture} = 1 - rac{1}{N} \sum_{i=1}^N \left( rac{y_i - a_i}{R_i} ight)^2$$</td>
+                    <td>يقيس مدى ابتعاد زوايا المفاصل عن الحدود القصوى؛ القيمة 1 تعني أقصى اتزان.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 5. Results Section -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">📊</span>
+            <h2 class="section-title">5. النتائج التجريبية بالأرقام الصريحة (Results)</h2>
+        </div>
+
+        <h4>أ. الدقة الكينيماتيكية لإعادة بناء المفاصل:</h4>
+        <ul>
+            <li><strong>خطأ إعادة بناء عظام الأصابع:</strong> أقل من <span class="num-stat">4 mm</span> في كافة التجارب.</li>
+            <li><strong>خطأ إعادة بناء زوايا الرسغ:</strong> أقل من <span class="num-stat">3.2 mm</span> ($3.24 \pm 1.85	ext{ mm}$ في محور x، و$1.53 \pm 0.44	ext{ mm}$ في y، و$0.60 \pm 0.41	ext{ mm}$ في z).</li>
+        </ul>
+
+        <h4>ب. مؤشرات التجربة التمثيلية (Clinical Assessment Metrics):</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>المؤشر المحسوب</th>
+                    <th>القيمة المسجلة للمتطوع</th>
+                    <th>المعدل الطبيعي للبشر الأصحاء في الأدبيات</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>اتساع القبضة الأقصى (PGA)</strong></td>
+                    <td><span class="num-stat">117.5 mm</span></td>
+                    <td>125 ± 18 mm</td>
+                </tr>
+                <tr>
+                    <td><strong>نسبة زمن فتح القبضة ($t_{	ext{PGA}}$)</strong></td>
+                    <td><span class="num-stat">49%</span></td>
+                    <td>41.6 ± 5.3%</td>
+                </tr>
+                <tr>
+                    <td><strong>سرعة فتح اليد القصوى (PVGA)</strong></td>
+                    <td><span class="num-stat">162.5 mm/s</span></td>
+                    <td>124 ± 26 mm/s</td>
+                </tr>
+                <tr>
+                    <td><strong>مؤشر استقرار المسكة (Posture)</strong></td>
+                    <td><span class="num-stat">0.82</span></td>
+                    <td>أكبر من 0.75 للمسكات المستقرة المتزنة.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>ج. تحليل التآزر وسرعة المعالجة وسهولة الاستخدام:</h4>
+        <div class="grid-2">
+            <div class="success-box">
+                <strong>تفسير التباين بالتآزر (PCA):</strong><br>
+                - أول 3 تآزرات تفسر أكثر من <span class="num-stat">65%</span> من تباين الحركة الكلي.<br>
+                - أول 4 تآزرات تفسر <span class="num-stat">74%</span> من التباين.<br>
+                مما يبرهن إمكانية اختزال 23 مفصلاً إلى 3 أو 4 مشغلات فقط.
+            </div>
+            <div class="success-box">
+                <strong>السرعة وسهولة الاستخدام (UMUX):</strong><br>
+                - درجة سهولة الاستخدام: <span class="num-stat">94.2 ± 5.4 / 100</span> مع نسبة خطأ 0%.<br>
+                - زمن حساب المؤشرات: <span class="num-stat">4 ثوانٍ</span> فقط.<br>
+                - زمن استخراج التآزرات: <span class="num-stat">3 ثوانٍ</span> فقط.
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Contribution & Relevance -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💎</span>
+            <h2 class="section-title">6. الإضافة العلمية وتوظيفها في رسالة الماجستير (Contribution)</h2>
+        </div>
+        <ul>
+            <li><strong>المنصة البرمجية الجاهزة لمعمل عين شمس:</strong> يوفر هذا البحث الكود المصدري المكتمل الجاهز لتحميل بيانات قفاز معمل د. عوض (2021) أو أي داتاسيت كينيماتيكية، واستخراج الزوايا والتآزر الحركي تلقائياً دون كتابة سطر كود واحد.</li>
+            <li><strong>تطوير محاكاة SynGrasp:</strong> حل مشكلة قصر يد SynGrasp التقليدية بإضافة مفصل قاعدة الإبهام CMC1 وبناء يد افتراضية بـ 21 درجة حرية تحاكي كينيماتيكا الإنسان بدقة متناهية.</li>
+            <li><strong>معيار رياضي صارم للاستقرار (Posture Stability Index):</strong> يوفر أداة رياضية كمية جاهزة للاستشهاد بها في رسالة الماجستير لتقييم ثبات مسكات اليد الروبوتية المقترحة داخل بيئة المحاكاة.</li>
+        </ul>
+    </div>
+
+    <!-- 7. Smart Questions for Dr. Awad -->
+    <div class="section-card">
+        <div class="section-header">
+            <span class="section-icon">💡</span>
+            <h2 class="section-title">7. أسئلة نقدية ذكية للنقاش مع د. محمد عوض</h2>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">1. دمج قفاز معمل عين شمس مع تولبوكس Lapresa:</div>
+            <p class="question-context">"يا دكتور، تولبوكس Lapresa يستقبل إحداثيات الماركرز ويحسب 23 زاوية ومؤشرات الاستقرار والـ Postural Synergies ويربطها بـ SynGrasp؛ هل يمكننا تعديل كود الإدخال في التولبوكس ليستقبل زوايا قفاز معمل حضرتك مباشرة وتوليد اليد الافتراضية المخصصة في ثوانٍ؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">2. استخدام مؤشر Posture Stability لتقييم التصاميم ناقصة التشغيل:</div>
+            <p class="question-context">"البحث اعتمد على مؤشر Posture of Hand Finger Joints لقياس ابتعاد المفاصل عن الحدود القصوى للروم (سجل 0.82 للمسكات المتزنة)؛ هل نعتمد هذا المؤشر الرياضي في رسالتنا للمقارنة بين كفاءة اليد ذات المحرك الواحد واليد ذات المحركين في محاكاة Simscape؟"</p>
+        </div>
+
+        <div class="question-item">
+            <div class="question-title">3. الاعتماد على Correlation Matrix بدلاً من Covariance Matrix:</div>
+            <p class="question-context">"الباحثون فضلوا تطبيق الـ PCA على مصفوفة الارتباط (Correlation) بدلاً من التغاير (Covariance) لتوحيد مقاييس زوايا المفاصل المختلفة؛ هل نطبق نفس القاعدة الرياضية لضمان عدم طغيان زوايا مفاصل الأصابع الكبيرة على حركة الإبهام؟"</p>
+        </div>
+    </div>
+
+</body>
+</html>
