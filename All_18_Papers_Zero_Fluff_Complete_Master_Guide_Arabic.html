@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>الملخص الهندسي الكامل للـ 18 ورقة بحثية بدون حشو — رسالة الماجستير (جامعة عين شمس)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+  @page {
+    size: A4 portrait;
+    margin: 8mm 9mm 9mm 9mm;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+    color: #0f172a;
+    background: #f1f5f9;
+    line-height: 1.42;
+    font-size: 9.6pt;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .screen-nav {
+    position: sticky; top: 0; z-index: 999;
+    background: rgba(15, 23, 42, 0.96); color: #f8fafc;
+    padding: 10px 18px; border-bottom: 2px solid #0ea5e9;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+  .screen-nav .nav-title { font-weight: 800; font-size: 13px; color: #38bdf8; }
+  .screen-nav .nav-links { display: flex; flex-wrap: wrap; gap: 4px; }
+  .screen-nav a.jump-btn {
+    color: #e2e8f0; background: #1e293b; border: 1px solid #334155;
+    padding: 2px 7px; border-radius: 5px; font-size: 11px; text-decoration: none; font-weight: 700;
+  }
+  .screen-nav a.jump-btn:hover { background: #0284c7; border-color: #38bdf8; color: #fff; }
+  .screen-nav button.print-btn {
+    background: linear-gradient(135deg, #0284c7, #059669); color: #fff; border: none;
+    padding: 6px 14px; border-radius: 6px; font-family: inherit; font-weight: 800; font-size: 12px; cursor: pointer;
+  }
+  .page-container {
+    width: 192mm;
+    margin: 14px auto;
+    background: #ffffff;
+    padding: 7mm 8mm;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.08);
+  }
+  .paper-page {
+    page-break-before: always;
+    break-before: page;
+  }
+  @media print {
+    body { background: #ffffff; margin: 0; }
+    .no-print { display: none !important; }
+    .page-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+  /* Cover Header */
+  .cover-banner {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #0369a1 100%);
+    color: #ffffff; padding: 8px 12px; border-radius: 8px;
+    border-right: 5px solid #38bdf8; margin-bottom: 5px;
+  }
+  .cover-banner .sup-tag { font-size: 8pt; color: #bae6fd; font-weight: 700; letter-spacing: 0.2px; }
+  .cover-banner h1 { font-size: 13.5pt; font-weight: 900; margin: 1px 0; line-height: 1.22; }
+  .cover-banner .meta-row { font-size: 7.9pt; color: #e2e8f0; margin-top: 3px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .rq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 5px; }
+  .rq-box {
+    border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 5px 8px; background: #f8fafc;
+    font-size: 7.75pt; line-height: 1.32;
+  }
+  .rq-box.rq1 { border-right: 4px solid #6d28d9; background: #faf5ff; }
+  .rq-box.rq2 { border-right: 4px solid #047857; background: #ecfdf5; }
+  .rq-box h3 { font-size: 8.4pt; font-weight: 800; margin-bottom: 1px; color: #0f172a; }
+  /* Master Table */
+  table.index-table { width: 100%; border-collapse: collapse; font-size: 6.95pt; line-height: 1.18; }
+  table.index-table th {
+    background: #0f172a; color: #ffffff; padding: 3.5px 4px; text-align: right; font-weight: 800;
+    border: 1px solid #334155;
+  }
+  table.index-table td {
+    padding: 2.2px 4px; border: 1px solid #cbd5e1; vertical-align: middle;
+  }
+  table.index-table tr:nth-child(even) td { background: #f8fafc; }
+  .pillar-pill {
+    display: inline-block; padding: 1px 5px; border-radius: 4px; font-weight: 800; font-size: 6.9pt; white-space: nowrap;
+  }
+  .ltr { direction: ltr; unicode-bidi: isolate; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 7.2pt; }
+  /* Individual Paper Dossier */
+  .paper-topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 7.8pt; color: #475569; border-bottom: 1px solid #e2e8f0; padding-bottom: 3px; margin-bottom: 6px;
+  }
+  .id-banner {
+    border-radius: 7px; padding: 8px 11px; margin-bottom: 7px; border: 1px solid #cbd5e1;
+  }
+  .id-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .paper-num-badge {
+    display: inline-block; color: #fff; font-weight: 900; font-size: 9.5pt;
+    padding: 2px 9px; border-radius: 5px; margin-left: 6px;
+  }
+  .role-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 7.8pt; font-weight: 800;
+    background: #0f172a; color: #38bdf8; white-space: nowrap;
+  }
+  .id-banner h2 { font-size: 11.4pt; font-weight: 900; color: #0f172a; margin-top: 3px; line-height: 1.28; }
+  .id-banner .title-en { font-size: 8.1pt; font-weight: 700; color: #334155; direction: ltr; text-align: left; margin-top: 2px; font-family: 'Segoe UI', sans-serif; }
+  .id-meta { font-size: 7.9pt; color: #1e293b; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+  .blocks-grid { display: flex; flex-direction: column; gap: 6px; }
+  .block-card {
+    border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 9px; background: #ffffff;
+  }
+  .block-title {
+    font-size: 8.8pt; font-weight: 900; color: #0f172a; margin-bottom: 3px;
+    display: flex; align-items: center; gap: 5px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 2px;
+  }
+  .block-card ul { padding-right: 15px; margin: 0; }
+  .block-card li { margin-bottom: 2.2px; font-size: 8.75pt; }
+  .math-box {
+    direction: ltr; unicode-bidi: isolate; text-align: left;
+    background: #0f172a; color: #f8fafc;
+    font-family: 'Cambria Math', 'Times New Roman', 'JetBrains Mono', serif;
+    font-size: 9.3pt; line-height: 1.48; padding: 6px 10px; border-radius: 5px;
+    margin: 3px 0 5px 0; border-left: 4px solid #38bdf8;
+  }
+  .glossary-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px 10px; font-size: 8.1pt;
+  }
+  .glossary-item { background: #f8fafc; padding: 2px 6px; border-radius: 4px; border: 1px solid #e2e8f0; }
+  .glossary-sym {
+    direction: ltr; unicode-bidi: isolate; font-weight: 800; color: #1d4ed8;
+    font-family: 'Cambria Math', 'JetBrains Mono', monospace; margin-left: 5px;
+  }
+  .metrics-box { background: #f0fdf4; border-color: #86efac; }
+  .qa-box { background: #fffbeb; border-color: #fcd34d; }
+  .lim-line { color: #991b1b; font-size: 8.6pt; margin-bottom: 3px; }
+  .qa-line { color: #0f172a; font-size: 8.65pt; background: #ffffff; padding: 4px 7px; border-radius: 4px; border-right: 3px solid #d97706; }
+  .two-col-proto { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+</style>
+</head>
+<body>
+
+<div class="screen-nav no-print">
+  <div class="nav-title">📚 المرجع الهندسي الموحد (18 ورقة بدون حشو) — م. محمد زيدان</div>
+  <div class="nav-links"><a class="jump-btn" href="#page-1">الفهرس</a>
+<a class="jump-btn" href="#paper-1">#1</a>
+<a class="jump-btn" href="#paper-2">#2</a>
+<a class="jump-btn" href="#paper-3">#3</a>
+<a class="jump-btn" href="#paper-4">#4</a>
+<a class="jump-btn" href="#paper-5">#5</a>
+<a class="jump-btn" href="#paper-6">#6</a>
+<a class="jump-btn" href="#paper-7">#7</a>
+<a class="jump-btn" href="#paper-8">#8</a>
+<a class="jump-btn" href="#paper-9">#9</a>
+<a class="jump-btn" href="#paper-10">#10</a>
+<a class="jump-btn" href="#paper-11">#11</a>
+<a class="jump-btn" href="#paper-12">#12</a>
+<a class="jump-btn" href="#paper-13">#13</a>
+<a class="jump-btn" href="#paper-14">#14</a>
+<a class="jump-btn" href="#paper-15">#15</a>
+<a class="jump-btn" href="#paper-16">#16</a>
+<a class="jump-btn" href="#paper-17">#17</a>
+<a class="jump-btn" href="#paper-18">#18</a></div>
+  <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
+</div>
+
+<!-- PAGE 1: MASTER CHEAT SHEET -->
+<div class="page-container" id="page-1">
+  <div class="cover-banner">
+    <div class="sup-tag">كلية الهندسة — جامعة عين شمس | قسم هندسة الميكاترونيات | المرجع التحضيري الشامل للجنة الإشراف والمناقشة</div>
+    <h1>الملخص الهندسي الكامل للـ 18 ورقة بحثية ومعياراً بدون حشو أو تكرار (2019–2026)</h1>
+    <div class="meta-row">
+      <span><b>الباحث:</b> م. محمد زيدان (معيد الميكاترونيات BUC — باحث ماجستير عين شمس)</span>
+      <span><b>الإشراف:</b> أ.د. محمد حمدي عبد الحفيظ &amp; د. محمد إبراهيم عوض</span>
+      <span><b>نطاق الدليل:</b> صفحة غلاف + 18 صفحة تقنية مركزة (ورقة في كل صفحة)</span>
+    </div>
+  </div>
+
+  <div class="rq-grid">
+    <div class="rq-box rq1">
+      <h3>السؤال البحثي الأول (RQ1 — الاقتران الحركي-العضلي)</h3>
+      ما العلاقة الرياضية والميكانيكية الدقيقة التي تربط التآزرات الحركية للمفاصل <b>S<sub>kin</sub></b> بتآزرات عضلات الساعد <b>W<sub>EMG</sub></b> عبر تصنيف <b>Feix (33 قبضة)</b>؟ <i>(المحرك الأساسي: التفكيك المختلط MMF لـ Scano 2023 + ثبات القوة لـ Teng 2021)</i>.
+    </div>
+    <div class="rq-box rq2">
+      <h3>السؤال البحثي الثاني (RQ2 — الحد الأدنى للمشغلات K<sub>min</sub> ≤ 4)</h3>
+      ما أقل عدد مشغلات <b>K<sub>min</sub> ≤ 4</b> يعيد بناء القبضات اليومية بـ <b>VAF ≥ 90%</b> وجودة مفصلية فردية <b>IRQ<sub>i</sub> &gt; 90%</b> مع ضمان ثبات التلامس في <b>Simscape Multibody</b>؟ <i>(السند: West &amp; Hogan 2025 + Chu JGKSE 2026 + Lapresa 2024)</i>.
+    </div>
+  </div>
+
+  <table class="index-table">
+    <thead>
+      <tr>
+        <th style="width:22px;">#</th>
+        <th style="width:118px;">الورقة والسنة</th>
+        <th style="width:55px;">المحور</th>
+        <th style="width:115px;">الطريقة الرياضية</th>
+        <th style="width:95px;">الأبعاد / المشغلات</th>
+        <th style="width:145px;">أهم الأرقام المحققة</th>
+        <th>الدور المباشر في الرسالة</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;font-weight:900;"><a href="#paper-1" style="color:#1d4ed8;text-decoration:none;">1</a></td><td><b>Jarque-Bou et al. (2019)</b><br><span style="color:#475569;font-size:6.8pt;">J. NeuroEngineering &amp; Rehabilitation (JNER), 2019</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>PCA Kinematic Synergies</b></td><td class="ltr">3 PCs (&gt;50%); 12 PCs (&gt;80%)</td><td><b>3 PCs = 51.8% VAF | 12 PCs = 82.1% VAF</b></td><td>Large-Cohort Kinematic Prior</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-2" style="color:#6d28d9;text-decoration:none;">2</a></td><td><b>Teng et al. (2021)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Trans. Neural Systems &amp; Rehab. Eng. (TNSRE), 2021</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>NMF + MSC vs. LDA</b></td><td class="ltr">Low-rank W ≥ 0 basis</td><td><b>Intra: 90.2–91.4% | Overall: 85.8% | Cross-Force: 78.7% vs LDA 68.4%</b></td><td>Force-Invariant Muscle Synergy Proof</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-3" style="color:#b45309;text-decoration:none;">3</a></td><td><b>Sarwat, Maged &amp; Awad (2021)</b><br><span style="color:#475569;font-size:6.8pt;">MDPI Sensors, Vol. 21(21):6948, 2021</span></td><td><span class="pillar-pill" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">P4</span></td><td><b>16-Sensor Fusion + Cloud ML</b></td><td class="ltr">Raw 16-sensor feature vector</td><td><b>85% (±5.1%) Post-Stroke Assessment Accuracy</b></td><td>Direct Ain Shams Hardware Baseline</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-4" style="color:#047857;text-decoration:none;">4</a></td><td><b>Li et al. (2022)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Int. Conf. Robotics &amp; Automation (ICRA), 2022</span></td><td><span class="pillar-pill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;">P3</span></td><td><b>Adaptive + Soft Synergies</b></td><td class="ltr">K = 1 actuator (15 joints / 19 DoFs)</td><td><b>~£65 Print Cost | 19 DoFs driven by K=1 motor via series springs</b></td><td>K=1 Underactuated Compliant Lower-Bound</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-5" style="color:#047857;text-decoration:none;">5</a></td><td><b>Sun et al. (2022)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Trans. Robotics (T-RO), 2022</span></td><td><span class="pillar-pill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;">P3</span></td><td><b>Differential-Palm 2-PCA</b></td><td class="ltr">K = 2 actuators (15 joints)</td><td><b>29/33 Feix Grasps (87.9% Coverage)</b></td><td>K=2 Differential-Palm Eigengrasp Benchmark</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-6" style="color:#1d4ed8;text-decoration:none;">6</a></td><td><b>Lapresa et al. (2022)</b><br><span style="color:#475569;font-size:6.8pt;">Frontiers in Bioeng. &amp; Biotechnol., 2022</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>OpenSim Scaling + IK</b></td><td class="ltr">26 anatomical DoFs</td><td><b>IK Marker Error &lt; 5 mm | PGA, tPGA, MT, JGrasp</b></td><td>OpenSim Anatomical Kinematic Baseline</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-7" style="color:#6d28d9;text-decoration:none;">7</a></td><td><b>Yeung &amp; Farina (2022)</b><br><span style="color:#475569;font-size:6.8pt;">Current Opinion in Biomedical Engineering, 2022</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>BSS + Unsupervised NMF</b></td><td class="ltr">HD-sEMG (64+ ch) low-rank modules</td><td><b>&gt;94% Multi-Day Synergy Stability vs Raw Drift</b></td><td>Clinical Neural HMI &amp; Drift Robustness</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-8" style="color:#6d28d9;text-decoration:none;">8</a></td><td><b>Olikkal et al. (2022)</b><br><span style="color:#475569;font-size:6.8pt;">Frontiers in Neuroscience, 2022</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>JIVE / SVD / Tensor + Kalman Filter</b></td><td class="ltr">Reduced synergy state vector</td><td><b>Smoother continuous trajectories &amp; lower embedded compute</b></td><td>Continuous Synergy + Kalman Filter Estimation</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-9" style="color:#6d28d9;text-decoration:none;">9</a></td><td><b>Scano et al. (2023)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Access, 2023</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>Mixed Matrix Factorization (MMF)</b></td><td class="ltr">7 combined synergies / subject</td><td><b>Mean Reconstruction R² &gt; 0.75 (28 subj × 20 grasps)</b></td><td>RQ1 Core Mathematical Engine (MMF)</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-10" style="color:#6d28d9;text-decoration:none;">10</a></td><td><b>Meattini et al. (2023)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Robotics &amp; Automation Letters (RA-L), 2023</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>Self-Supervised NMF + DNN</b></td><td class="ltr">W ∈ ℝ^(8×2) → 3 primitives (σ_PW, σ_TR, σ_UL)</td><td><b>R² = 0.8423 | nMSE = 0.1355 | RMSE = 0.0735</b></td><td>Label-Free Hybrid NMF + DNN Controller</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-11" style="color:#1d4ed8;text-decoration:none;">11</a></td><td><b>Lapresa et al. (2024)</b><br><span style="color:#475569;font-size:6.8pt;">Biocybernetics &amp; Biomedical Engineering (BBE), 2024</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>Kinematic+Force PCA + LDA + Simscape</b></td><td class="ltr">Coupled pose-force synergies</td><td><b>89% LDA Power/Precision | Significant Stability Gain in Simscape</b></td><td>Simulink / Simscape Force-Synergy Stability Core</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-12" style="color:#1d4ed8;text-decoration:none;">12</a></td><td><b>Bazina et al. (2024)</b><br><span style="color:#475569;font-size:6.8pt;">MDPI Robotics, Vol. 13(6):82, 2024</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>GLM + Weighted LME + 30-Cluster</b></td><td class="ltr">16 DoFs → reduced up to 11 (5–15, med 12)</td><td><b>30 Functional Clusters | Exact MCP/PIP/DIP Linear Coupling Weights</b></td><td>Direct KIN-MUS UJI Analytical Benchmark</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-13" style="color:#1d4ed8;text-decoration:none;">13</a></td><td><b>West &amp; Hogan (2024)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE BioRob, 2024</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>PCA + VAF Task Comparison</b></td><td class="ltr">19-DoF CyberGlove @ 200 Hz</td><td><b>First 2 PCs &gt; 80% VAF (Reach-to-Grasp) vs Higher Rank Manipulation</b></td><td>Grasp vs. Tool Manipulation Dimensionality</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-14" style="color:#1d4ed8;text-decoration:none;">14</a></td><td><b>West &amp; Hogan (2025)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE ICRA, 2025</span></td><td><span class="pillar-pill" style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;">P1</span></td><td><b>VAF-CI + Subspace Principal Angles</b></td><td class="ltr">3–4 invariant PCs (20 DoFs)</td><td><b>VAF ≥ 90% &amp; &lt;5% Marginal Gain | Wire-Harness (n=7) vs Pianists (n=5, 20 yrs)</b></td><td>RQ2 Theoretical Anchor (Proves K_min ≤ 4)</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-15" style="color:#b45309;text-decoration:none;">15</a></td><td><b>Pham et al. (2026)</b><br><span style="color:#475569;font-size:6.8pt;">Robotics &amp; Autonomous Systems (RAS), 2026</span></td><td><span class="pillar-pill" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">P4</span></td><td><b>PCA + ProMPs Trajectories</b></td><td class="ltr">5 PCs (15 DoF) / 7 PCs (20 DoF)</td><td><b>≥90% VAF | &lt;10% Joint Error | Generalizes to 8 Unseen Tasks</b></td><td>Spatial PCA + Temporal ProMPs Generalization</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-16" style="color:#047857;text-decoration:none;">16</a></td><td><b>Chu et al. (2026)</b><br><span style="color:#475569;font-size:6.8pt;">IEEE Trans. Robotics (T-RO), 2026</span></td><td><span class="pillar-pill" style="background:#ecfdf5;color:#047857;border:1px solid #a7f3d0;">P3</span></td><td><b>JGKSE (ORQ&gt;90%, IRQ&gt;90%) + CMC</b></td><td class="ltr">12 actuators (21 joints, 690 g) | 2 PCs/PIP group</td><td><b>ORQ=96.3±1.5% | min(IRQ)=94.6±2.7% | 33/33 Feix (100%) | 20 kg</b></td><td>RQ2 Hardware &amp; JGKSE Core Benchmark</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-17" style="color:#6d28d9;text-decoration:none;">17</a></td><td><b>Encord &amp; Wearable Devices (2026)</b><br><span style="color:#475569;font-size:6.8pt;">EMG-1 Benchmark &amp; Kavana/Mudra Validation (Oct 2026)</span></td><td><span class="pillar-pill" style="background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe;">P2</span></td><td><b>8-ch Wrist sEMG → 20 DoF Pose &amp; Force</b></td><td class="ltr">20 finger DoFs + Isometric Grip Force</td><td><b>MAE = 4.21° (frame 2.61°) vs 9.02° CV (-53.3%) | 0–80 N Force | 100% Occlusion-Proof</b></td><td>2026 Multimodal 8-ch sEMG &amp; Occlusion-Proof Dataset</td></tr>
+<tr><td style="text-align:center;font-weight:900;"><a href="#paper-18" style="color:#b45309;text-decoration:none;">18</a></td><td><b>NVIDIA GEAR Lab (2026)</b><br><span style="color:#475569;font-size:6.8pt;">GR00T 2 Whitepaper (135 pp, Nov 2026)</span></td><td><span class="pillar-pill" style="background:#fffbeb;color:#b45309;border:1px solid #fde68a;">P4</span></td><td><b>VQ-VAE Latent Action + Flow Matching</b></td><td class="ltr">Low-rank latent action bottleneck (20–22 DoF)</td><td><b>Prevents compounding contact errors across 20–22 DoF hands</b></td><td>Foundation VLA Latent Synergy Validation</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="page-container paper-page" id="paper-1">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>2 / 19</b> — بطاقة البحث رقم <b>#1</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#1 | Jarque-Bou et al. (2019)</span>
+        <span class="role-badge">Large-Cohort Kinematic Prior</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1186/s12984-019-0536-6</div>
+    </div>
+    <h2>تحليل التآزر الحركي (PCA) لأكثر من 77 متطوعاً عبر 20 قبضة وظيفية يومية (Ninapro)</h2>
+    <div class="title-en">A calibrated database of kinematics and EMG of the forearm and hand during activities of daily living / Grasp kinematic synergies across 77 subjects</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> N. J. Jarque-Bou, M. Vergara, J. L. Sancho-Bru, V. Gracia-Ibáñez, A. Roda-Sales (UJI Lab, Spain)</span>
+      <span><b>جهة النشر:</b> J. NeuroEngineering &amp; Rehabilitation (JNER), 2019</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الدراسات السابقة للتآزر الحركي اعتمدت على عينات صغيرة (<15 فرداً) مما منع تعميم التآزرات الأساسية على مستوى السكان.</li>
+<li>الحاجة لقياس مدى تكرارية المكونات الرئيسية الأولى (Eigengrasps) عبر اختلاف الأجناس والأحجام التشريحية لليد في مهام الحياة اليومية.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>العينة (Cohort):</b> 77 متطوعاً سليماً مجمّعين من 3 قواعد Ninapro (DB1 = 27 فرداً، DB2 = 40 فرداً، DB5 = 10 أفراد).</li>
+<li><b>المهام (Tasks):</b> 20 قبضة وظيفية ومعالجة يومية × 6 تكرارات لكل قبضة.</li>
+<li><b>العتاد والحساسات:</b> قفاز CyberGlove II يحتوي على 22 حساس مقاومة مرن معاير لتحويلها إلى 17 درجة حرية تشريحية (DoFs) لليد والأصابع.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">Q̃ = Q − Q̄ ∈ ℝ<sup>17×T</sup><br>Q̃ = U Σ V<sup>T</sup> ≈ S<sub>K</sub> C<sub>K</sub> &nbsp;&nbsp; (S<sub>K</sub> ∈ ℝ<sup>17×K</sup>, C<sub>K</sub> ∈ ℝ<sup>K×T</sup>)<br>VAF(K) = [1 − ‖Q̃ − S<sub>K</sub>C<sub>K</sub>‖<sub>F</sub><sup>2</sup> / ‖Q̃‖<sub>F</sub><sup>2</sup>] × 100%</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">Q ∈ ℝ<sup>17×T</sup></span>: مصفوفة الزوايا التشريحية للـ 17 مفصلاً عبر الزمن T</div>
+<div class="glossary-item"><span class="glossary-sym">S<sub>K</sub></span>: مصفوفة المتجهات التآزرية المكانية (Eigengrasps)</div>
+<div class="glossary-item"><span class="glossary-sym">C<sub>K</sub></span>: معاملات التنشيط الزمنية للقبضة عبر الزمن</div>
+<div class="glossary-item"><span class="glossary-sym">VAF(K)</span>: نسبة التباين المفسَّرة بأول K مكونات رئيسية</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>أول 3 مكونات (3 PCs):</b> تفسر <b>51.8%</b> (&gt;50%) من التباين الحركي الكلي لليد.</li>
+<li><b>أول 12 مكوناً (12 PCs):</b> تفسر <b>82.1%</b> (&gt;80%) من التباين الكلي عبر 77 فرداً.</li>
+<li><b>البدائيات المستخلصة:</b> (1) ثني MCP المتناسق للقبضة الكفية، (2) تقابل الإبهام والسبابة (Precision)، (3) تنسيق PIP-MCP التفاضلي.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> استخدام PCA خطي عام يتطلب عدداً كبيراً (12 PCs) لبلوغ 82.1% مما يصعّب بناء طرف صناعي ميكانيكي بعدد محركات قليل مباشرة دون تجميع مفاصل أو تقليص النطاق.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي:</b> لماذا احتاجت الدراسة 12 مكوناً للوصول لـ 82% بينما تهدف أنت لـ K≤4 و VAF≥90%؟ <b>الإجابة:</b> لأنهم دمجوا 20 حركة متنوعة دون فصل مفاصل الإبهام/القوس الكفي (JGKSE) ودون إزالة الاعتمادية التشريحية لـ DIP/PIP.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-2">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>3 / 19</b> — بطاقة البحث رقم <b>#2</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#2 | Teng et al. (2021)</span>
+        <span class="role-badge">Force-Invariant Muscle Synergy Proof</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/TNSRE.2021.3099066</div>
+    </div>
+    <h2>ثبات التآزرات العضلية (NMF) لتصنيف قبضات اليد عبر مستويات القوة المختلفة (منخفضة/متوسطة/عالية)</h2>
+    <div class="title-en">Classification of Hand Grasps Across Force Levels Using Muscle Synergies Extracted via NMF</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> H. Teng et al. (IEEE TNSRE Muscle Synergy Myoelectric Group)</span>
+      <span><b>جهة النشر:</b> IEEE Trans. Neural Systems &amp; Rehab. Eng. (TNSRE), 2021</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>مصنفات إشارات العضلات التقليدية (مثل LDA على RMS/MAV) تنهار دقتها عند تغير قوة القبضة لأن سعة sEMG تتغير لاخطياً مع تغير القوة.</li>
+<li>غياب إثبات كمي أن مصفوفة الأساس العضلي W المستخرجة بـ NMF تبقى ثابتة هيكلياً رغم تغير القوة (Cross-force invariance).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>المهام والقوى:</b> 6 قبضات يد قياسية تُنفذ عند 3 مستويات قوة مميزة: منخفضة (Low ≈ 20% MVC)، متوسطة (Medium ≈ 50% MVC)، وعالية (High ≈ 80% MVC).</li>
+<li><b>السمات المقارنة:</b> 4 متجهات ميزات sEMG للساعد: RMS، MAV، DFTR، TDPSD مع تصنيف MSC (Muscle Synergy Classification) مقابل LDA التقليدي.</li>
+<li><b>الاختبار الإحصائي:</b> مقارنة الدقة داخل نفس القوة (Intra-force) وعبر القوى المختلفة (Cross-force).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">min<sub>W≥0, H≥0</sub> ‖E − W H‖<sub>F</sub><sup>2</sup><br>E ∈ ℝ<sub>≥0</sub><sup>C×T</sup>, &nbsp; W ∈ ℝ<sub>≥0</sub><sup>C×K</sup>, &nbsp; H ∈ ℝ<sub>≥0</sub><sup>K×T</sup><br>H<sub>test</sub> ≈ (W<sub>train</sub><sup>T</sup> W<sub>train</sub>)<sup>−1</sup> W<sub>train</sub><sup>T</sup> E<sub>test</sub> (NNLS projection)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">E</span>: غلاف إشارة العضلات السطحية المقوم والمطبع (sEMG Envelope)</div>
+<div class="glossary-item"><span class="glossary-sym">W</span>: مصفوفة التآزرات العضلية الثابتة هيكلياً (Muscle Synergy Matrix)</div>
+<div class="glossary-item"><span class="glossary-sym">H</span>: معاملات التنشيط العصبي المتغيرة مع القوة والزمن</div>
+<div class="glossary-item"><span class="glossary-sym">MSC</span>: مصنف التشابه في فضاء التآزر العضلي (NMF-based Classifier)</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>الدقة داخل نفس القوة (Intra-force):</b> بلغت <b>89.4% – 91.4%</b> (MSC 90.2–91.4%, دلالة إحصائية p = 0.353 أي لا فرق مضر بين القوى).</li>
+<li><b>الدقة الكلية (Overall Accuracy):</b> <b>85.2% – 85.8%</b>، وتفوق <b>MSC+DFTR بأعلى دقة 85.8%</b>.</li>
+<li><b>اختبار تغير القوة (Cross-Force Generalization):</b> حقق MSC <b>78.1% – 78.7%</b> مقابل انهيار LDA إلى <b>68.4% – 76.9%</b> (p &lt; 0.05).</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> اقتصار التجربة على 6 قبضات متقطعة (Discrete classification) دون نمذجة الارتباط المستمر بين Tآزر العضلات W وزوايا المفاصل الحركية Q.</div>
+      <div class="qa-line"><b>سؤال د. محمد عوض:</b> لماذا نستخدم NMF في إشارات EMG بدلاً من الاكتفاء بـ PCA أو LDA؟ <b>الإجابة:</b> لأن NMF يفرض عدم السالبية (W,H≥0) المطابقة فيزيولوجياً لانقباض العضلات، وتثبت ورقة Teng (2021) أنه يحمي الدقة عند تغير قوة القبضة بفارق ~10% (78.7% vs 68.4%, p<0.05).</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-3">
+  <div class="paper-topbar">
+    <span><b>المحور 4: خط أساس عين شمس والبدائيات الزمنية ونماذج الأساس</b></span>
+    <span>صفحة <b>4 / 19</b> — بطاقة البحث رقم <b>#3</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#fffbeb;border-color:#fde68a;border-right:5px solid #b45309;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#b45309;">#3 | Sarwat, Maged &amp; Awad (2021)</span>
+        <span class="role-badge">Direct Ain Shams Hardware Baseline</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.3390/s21216948</div>
+    </div>
+    <h2>قفاز التأهيل الذكي لمرضى ما بعد السكتة الدماغية — خط الأساس المباشر لقسم الميكاترونيات (عين شمس)</h2>
+    <div class="title-en">Design and Implementation of a Smart Rehabilitation Glove for Post-Stroke Patients (Ain Shams University)</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> H. Sarwat, H. Sarwat, S. A. Maged, T. Emara, A. Elbokl, M. I. Awad (Ain Shams University, Egypt)</span>
+      <span><b>جهة النشر:</b> MDPI Sensors, Vol. 21(21):6948, 2021</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>التقييم السريري اليدوي لمرضى السكتة الدماغية (مثل مقياس Fugl-Meyer) ذاتي، مكلف، ويتطلب حضور المريض للمركز الطبي.</li>
+<li>الحاجة لقفاز منزلي منخفض التكلفة يدمج حركية الأصابع مع قوى الأطراف وحركة المعصم لتقييم التحسن الحركي موضوعياً.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>بنية العتاد (BOM):</b> 10 حساسات انثناء مقاومية (Flex sensors لمفاصل MCP و PIP/IP)، + 5 حساسات ضغط FSR بأطراف الأصابع، + 1 وحدة IMU سداسية المحاور على المعصم.</li>
+<li><b>المعالجة والاتصال:</b> متحكم Arduino يجمع القراءات الـ 16 ويرسلها عبر Bluetooth لتطبيق وخوارزمية تعلم آلي سحابية (Cloud ML).</li>
+<li><b>التطبيق السريري:</b> تقييم حركات التأهيل اليومية لمرضى ما بعد السكتة الدماغية.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">x<sub>glove</sub>(t) = [θ<sub>flex,1..10</sub>(t), F<sub>FSR,1..5</sub>(t), a<sub>IMU</sub>(t), ω<sub>IMU</sub>(t)]<sup>T</sup> ∈ ℝ<sup>22</sup><br>ŷ<sub>score</sub> = f<sub>ML</sub>(Φ<sub>features</sub>(x<sub>glove</sub>))</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">θ<sub>flex,1..10</sub></span>: قراءات انحناء 10 حساسات على مفاصل الأصابع</div>
+<div class="glossary-item"><span class="glossary-sym">F<sub>FSR,1..5</sub></span>: قوى التلامس الطبيعية عند أطراف الأصابع الخمسة</div>
+<div class="glossary-item"><span class="glossary-sym">a<sub>IMU</sub>, ω<sub>IMU</sub></span>: تسارع وسرعة زاوية المعصم (6-axis IMU)</div>
+<div class="glossary-item"><span class="glossary-sym">f<sub>ML</sub></span>: نموذج التعلم الآلي لتصنيف وتقييم الأداء التأهيلي</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>دقة التقييم السريري:</b> حقق النظام <b>85% (± 5.1%)</b> في التقييم الآلي لحالة مرضى ما بعد السكتة الدماغية.</li>
+<li><b>التكامل الكلي:</b> دمج متزامن للحركة (Flex+IMU) والقوة (5 FSRs) في قفاز محمول عملي ومنخفض التكلفة.</li>
+<li><b>القيمة الاستراتيجية:</b> يثبت جاهزية معمل الميكاترونيات بعين شمس لبناء عتاد القفازات قبل الترقية لمنظومة التآزر الرياضي.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> يعمل كقفاز تقييم سلبي يعتمد على متجه الحساسات الخام (16 قناة) دون استخلاص تآزر حركي-عضلي (MMF) أو تقليص أبعاد للتحكم في مشغلات K≤4 أو ربطه ببيانات sEMG.</div>
+      <div class="qa-line"><b>سؤال د. محمد إبراهيم عوض (أحد مؤلفي البحث):</b> كيف تتجاوز رسالتك قفازنا السابق في 2021 ولا تكرره؟ <b>الإجابة:</b> قفاز 2021 كان للتقييم السلبي بالسمات الخام (85%)؛ رسالتنا تحوله لمنظومة تآزر رياضية (MMF + JGKSE + sEMG) تقلص التحكم إلى K≤4 مع تحقق ديناميكي في Simscape.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-4">
+  <div class="paper-topbar">
+    <span><b>المحور 3: العتاد ناقص التشغيل (Underactuated) وتآزر المجموعات (JGKSE)</b></span>
+    <span>صفحة <b>5 / 19</b> — بطاقة البحث رقم <b>#4</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#ecfdf5;border-color:#a7f3d0;border-right:5px solid #047857;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#047857;">#4 | Li et al. (2022)</span>
+        <span class="role-badge">K=1 Underactuated Compliant Lower-Bound</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/ICRA46639.2022.9811821</div>
+    </div>
+    <h2>يد BPI SoftHand: دمج التآزر التكيفي والمرن (Series Springs) بمحرك واحد وبتكلفة ~65 جنيهاً إسترلينياً</h2>
+    <div class="title-en">BPI SoftHand: Integrating Adaptive and Soft Synergies in a Single-Actuator 3D-Printed Anthropomorphic Hand</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> G. Li, M. Rossi, L. Jiang et al. (Bristol Robotics Lab / Univ. of Pisa / IIT)</span>
+      <span><b>جهة النشر:</b> IEEE Int. Conf. Robotics &amp; Automation (ICRA), 2022</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الجمع بين 'التآزر التكيفي' (أوتار حرة التمرير للالتفاف حول الجسم) و'التآزر المرن' (أوتار منفصلة بنوابض) في تصميم واحد؛ فالأيدي التقليدية إما صلبة النقل أو عالية الاحتكاك.</li>
+<li>ارتفاع تكلفة الأيدي الروبوتية التجارية مما يعيق انتشارها في الأطراف الصناعية والأبحاث.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>الدرجات والمشغلات:</b> محرك واحد فقط (<b>K = 1</b>) يقود <b>5 أصابع معيارية</b> تحتوي <b>15 مفصلاً متدحرج التلامس</b> (Rolling-contact joints) بإجمالي <b>19 درجة حرية (DoFs)</b>.</li>
+<li><b>الابتكار الميكانيكي:</b> وضع نوابض متسلسلة (Series Elastic Springs) بين الأوتار وبكرة المحرك (Soft synergy) مع مفاصل rolling-contact لتقليل احتكاك النقل.</li>
+<li><b>التصنيع والتكلفة:</b> مطبوعة بالكامل ثلاثياً (3D-printed) بتكلفة مادية <b>~£65</b> (باستثناء المحرك).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">q = q<sub>0</sub> + S<sub>1</sub> σ<sub>1</sub> + C<sub>q</sub> τ<sub>ext</sub><br>τ<sub>tendon,i</sub> = k<sub>s,i</sub> (r<sub>i</sub> σ<sub>1</sub> − l<sub>i</sub>(q)) &nbsp; (Series Spring Soft Synergy)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">K = 1</span>: محرك واحد يقود التآزر الأول الرئيسي للقبضة (σ<sub>1</sub>)</div>
+<div class="glossary-item"><span class="glossary-sym">C<sub>q</sub> τ<sub>ext</sub></span>: المرونة الميكانيكية (Compliance matrix) للتكيف مع شكل الجسم</div>
+<div class="glossary-item"><span class="glossary-sym">k<sub>s,i</sub></span>: ثابت نابض التمدد المتسلسل لكل وتر لتقليل الاحتكاك</div>
+<div class="glossary-item"><span class="glossary-sym">Rolling-contact</span>: مفاصل لا تحتاج تزييت وتقاوم الصدمات والالتواء</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>كفاءة التبسيط (Compression Ratio):</b> تشغيل <b>19 DoF عبر مشغل واحد K = 1</b>.</li>
+<li><b>التكلفة:</b> <b>~£65</b> فقط لتكلفة الطباعة والمكونات (دون المحرك).</li>
+<li><b>المرونة الميكانيكية:</b> تلافي تعارض الأوتار وتوزيع القوى أوتوماتيكياً على الأصابع الخمسة عبر النوابض المتسلسلة.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> الاعتماد على K=1 يمنع التبديل النشط بين قبضة القوة والقبضة الدقيقة أو تقابل الإبهام المستقل (Precision tripod/lateral pinch) خارج مسار التآزر الأول.</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة:</b> لماذا لا نكتفي بمحرك واحد مثل BPI SoftHand ما دام رخيصاً ومطاوعاً؟ <b>الإجابة:</b> محرك K=1 يفقد التحكم في القبضات الدقيقة وتدوير الإبهام (IRQ ضعيف للإبهام)، لذا نستهدف في RQ2 الحد الأدنى الأمثل K_min ∈ {3, 4} لاستعادة الـ IRQ > 90% مع حفظ بساطة الميكانيكا.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-5">
+  <div class="paper-topbar">
+    <span><b>المحور 3: العتاد ناقص التشغيل (Underactuated) وتآزر المجموعات (JGKSE)</b></span>
+    <span>صفحة <b>6 / 19</b> — بطاقة البحث رقم <b>#5</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#ecfdf5;border-color:#a7f3d0;border-right:5px solid #047857;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#047857;">#5 | Sun et al. (2022)</span>
+        <span class="role-badge">K=2 Differential-Palm Eigengrasp Benchmark</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/TRO.2022.3170687</div>
+    </div>
+    <h2>يد Mini X-Hand: تضمين أول مكوني PCA ميكانيكياً بمحركين (K=2) وكف تفاضلي يحقق 29/33 قبضة Feix</h2>
+    <div class="title-en">Mini X-Hand: Achieving 29/33 Feix Grasps via Two Actuators Embedding PCA Eigengrasps in a Differential Palm</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> Z. Sun, Z. Zhao, J. Liu et al. (IEEE T-RO)</span>
+      <span><b>جهة النشر:</b> IEEE Trans. Robotics (T-RO), 2022</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الأيدي ذات المحرك الواحد (K=1) تعجز عن تشكيل القبضات الجانبية والتفريق بين فتح/ضم الأصابع وتثنيتها المستقلة.</li>
+<li>الحاجة لآلية ميكانيكية مدمجة داخل راحة اليد تدمج أول مكونين رئيسيين (Eigengrasp 1 & Eigengrasp 2) بدلاً من وضع صناديق تروس خارجية ضخمة.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>البنية الميكانيكية:</b> يد خماسية الأصابع (15 مفصلاً) مدفوعة بـ <b>محركين فقط (K = 2)</b>.</li>
+<li><b>آلية التآزر الميكانيكية:</b> كف تفاضلي (Differential palm mechanism) يجمع خطياً إزاحتي المحركين طبقاً لأوزان أول متجهين للـ PCA.</li>
+<li><b>الاختبار المعياري:</b> اختبار تنفيذ كامل تصنيف Feix المكون من 33 قبضة بشرية.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">q ≈ q<sub>0</sub> + s<sub>1</sub> c<sub>1</sub> + s<sub>2</sub> c<sub>2</sub> = q<sub>0</sub> + [s<sub>1</sub> s<sub>2</sub>] [c<sub>1</sub>, c<sub>2</sub>]<sup>T</sup><br>Δl<sub>j</sub> = w<sub>1,j</sub> u<sub>motor1</sub> + w<sub>2,j</sub> u<sub>motor2</sub> &nbsp; (Differential Coupling)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">s<sub>1</sub>, s<sub>2</sub></span>: أول وثاني مكون رئيسي (PCA Eigengrasps) مشفرين في أقطار البكرات</div>
+<div class="glossary-item"><span class="glossary-sym">c<sub>1</sub>, c<sub>2</sub></span>: إزاحتا المحركين المستقلين (K = 2)</div>
+<div class="glossary-item"><span class="glossary-sym">Δl<sub>j</sub></span>: طول شد الوتر الناتج للإصبع j من التجميع التفاضلي</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>تغطية تصنيف Feix:</b> نجاح في تنفيذ <b>29 من أصل 33 قبضة (87.9%)</b> بمحركين فقط.</li>
+<li><b>الكفاءة الفضائية:</b> تقليل عدد المحركات بنسبة >86% مقارنة بعدد المفاصل (15 مفصلاً إلى 2 محرك).</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> فقدان &lt;b&gt;4 قبضات حرجة&lt;/b&gt; من Feix (نسبة الـ 12.1% المفقودة) ناتج عن غياب مشغلات مخصصة لتقوّس راحة اليد (CMC) وتقابل الإبهام المستقل وغياب التحكم الفردي في مفاصل السكون الدقيق.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي:</b> هل يكفي K=2 مثل Mini X-Hand؟ وما الذي أضاعه؟ <b>الإجابة:</b> حقق 87.9% (29/33) وأخفق في 4 قبضات دقيقة ذات اعتمادية عالية على الإبهام وتقوس الكف؛ وهذا يدعم فرضيتنا أن K_min الحقيقي لـ VAF≥90% وثبات Feix الكامل هو K=3 أو 4 وليس 2.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-6">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>7 / 19</b> — بطاقة البحث رقم <b>#6</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#6 | Lapresa et al. (2022)</span>
+        <span class="role-badge">OpenSim Anatomical Kinematic Baseline</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.3389/fbioe.2022.1010073</div>
+    </div>
+    <h2>التحقق من نموذج OpenSim التشريحي (26 DoF) وتحليل حركة الامتداد والقبض بدقة أقل من 5 مم</h2>
+    <div class="title-en">ARMS Hand_Wrist_Model: Validation of a 26-DoF OpenSim Musculoskeletal Model for Reach-to-Grasp Analysis</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> M. Lapresa, M. L. Tagliamonte, N. L. Accoto et al. (Campus Bio-Medico Univ. of Rome)</span>
+      <span><b>جهة النشر:</b> Frontiers in Bioeng. &amp; Biotechnol., 2022</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الحساب المباشر للزوايا من علامات موشن كابشر يعاني من أخطاء انزلاق الجلد (Soft tissue artifact) وعدم تطابق المحاور التشريحية للمفاصل.</li>
+<li>غياب نموذج OpenSim مفتوح المصدر عالي الدقة يربط حركية المعصم والأصابع الـ 26 بتكامل مباشر مع بيئات محاكاة القبض مثل SynGrasp.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>النموذج التشريحي:</b> نموذج OpenSim <code>ARMS Hand_Wrist_Model</code> يضم <b>26 درجة حرية (DoFs)</b> شاملة المعصم والأصابع الخمسة.</li>
+<li><b>القياس البصري:</b> منظومة Vicon بـ <b>28 علامة عاكسة (Markers)</b> بتردد أخذ عينات <b>100 Hz</b> عبر <b>13 قبضة وظيفية</b>.</li>
+<li><b>مؤشرات التقييم الحركية:</b> ذروة فتحة اليد (PGA)، زمن الذروة (tPGA)، زمن الحركة (MT)، ومعامل سلاسة القبضة (JGrasp).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">min<sub>q</sub> ∑<sub>i=1..28</sub> w<sub>i</sub> ‖p<sub>i</sub><sup>exp</sup>(t) − p<sub>i</sub><sup>model</sup>(q(t))‖<sub>2</sub><sup>2</sup><br>J<sub>grasp</sub> = ∫ ‖d<sup>3</sup>q/dt<sup>3</sup>‖<sup>2</sup> dt (Minimum Jerk Smoothness)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">p<sub>i</sub><sup>exp</sup></span>: الموقع ثلاثي الأبعاد المقاس للعلامة i بكاميرات Vicon (@ 100 Hz)</div>
+<div class="glossary-item"><span class="glossary-sym">p<sub>i</sub><sup>model</sup>(q)</span>: الموقع المتوقع للعلامة في نموذج OpenSim ذي الـ 26 DoF</div>
+<div class="glossary-item"><span class="glossary-sym">PGA / tPGA / MT</span>: أقصى فتحة لليد، زمن الوصول للذروة، والزمن الكلي للحركة</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>دقة تتبع العلامات (IK Marker Error):</b> أقل من <b>5 مم (&lt; 5 mm)</b> بعد المعايرة التشريحية (Scaling).</li>
+<li><b>التكامل القياسي:</b> متوافق تماماً مع مكتبة MATLAB <b>SynGrasp</b> لتصدير الزوايا وتحليل التآزرات الروبوتية.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> عمل تحليلي حركي بحت (Kinematics only) بدون دمج إشارات العضلات السطحية (sEMG) أو قياس قوى التلامس الفعلية على الأجسام.</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة:</b> كيف يفيدنا نموذج الـ 26 DoF رغم أن قواعد البيانات لدينا (KIN-MUS UJI / EMG-1) بها 16–20 DoF؟ <b>الإجابة:</b> يؤسس للمعيار التشريحي الصحيح لمحاور المفاصل ومعيار الخطأ المقبول (<5 mm)، وتصحيحه للتشريح يتيح الربط السلس مع بيئات SynGrasp وSimscape.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-7">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>8 / 19</b> — بطاقة البحث رقم <b>#7</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#7 | Yeung &amp; Farina (2022)</span>
+        <span class="role-badge">Clinical Neural HMI &amp; Drift Robustness</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1016/j.cobme.2022.100384</div>
+    </div>
+    <h2>الواجهات العصبية-الميكانيكية للأطراف الصناعية: مصفوفات HD-sEMG وفصل الوحدات الحركية وثبات التآزر طويل الأمد</h2>
+    <div class="title-en">Neuro-Mechanical Interfaces for Hand Prostheses: Motor Unit Decomposition, Surgical Interfaces, and Synergy Adaptation</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> D. Yeung &amp; D. Farina (Imperial College London)</span>
+      <span><b>جهة النشر:</b> Current Opinion in Biomedical Engineering, 2022</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>إزاحة الأقطاب السطحية والتعرّق وإجهاد العضلات تسبب انحرافاً حاداً (Cross-session drift) يدمر أداء المصنفات التقليدية بين يوم وآخر.</li>
+<li>الحاجة لربط مستويات الإشارات العصبية المتقدمة (HD-sEMG و TMR و RPNI) بفضاء تآزري مستقر.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>الواجهات المستعرضة:</b> مصفوفات الأقطاب عالية الكثافة (<b>HD-sEMG، 64+ قناة</b>)، وإعادة التوجيه العضلي المستهدف (<b>TMR</b>)، والواجهات الطرفية التجديدية (<b>RPNI</b>)، والواجهات المندمجة بالعظم (<b>ONI</b>).</li>
+<li><b>الخوارزميات:</b> فصل المصادر العمياء الالتفافي (Convolutive Blind Source Separation - BSS) + التحديث غير الخاضع لإشراف لـ NMF (Online Unsupervised NMF).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">e<sub>j</sub>(t) = ∑<sub>k</sub> ∑<sub>l</sub> h<sub>jk</sub>(l) s<sub>k</sub>(t − l) + n<sub>j</sub>(t) &nbsp; (Convolutive BSS)<br>W<sub>day,t+1</sub> ← W<sub>day,t</sub> ⊙ [(E H<sup>T</sup>) / (W H H<sup>T</sup>)] &nbsp; (Online Multiplicative NMF)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">s<sub>k</sub>(t)</span>: سلاسل نبضات الوحدات الحركية المستقلة (Motor Unit Spike Trains)</div>
+<div class="glossary-item"><span class="glossary-sym">h<sub>jk</sub>(l)</span>: استجابة الجهد الفعلي للوحدة الحركية k عند القناة j</div>
+<div class="glossary-item"><span class="glossary-sym">W<sub>day,t+1</sub></span>: تحديث مصفوفة التآزر غير الخاضع لإشراف لمقاومة تغير الإشارة</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>ثبات التآزر عبر الأيام:</b> تحافظ التحديثات غير الخاضعة لإشراف لمصفوفات التآزر على <b>&gt;94% ثبات وظيفي</b> مقارنة بالهبوط الحاد للسمات الخام.</li>
+<li><b>الميزة السريرية:</b> تعزل الفضاء الكامن (Synergy manifold) عن تقلبات ممانعة الجلد وخطأ التموضع البسيط.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> ورقة مراجعة وتحليل معمق تفتقر لبروتوكول تجريبي موحد يربط التحديث طويل الأمد بالعتاد منخفض المحركات K≤4.</div>
+      <div class="qa-line"><b>سؤال د. محمد عوض:</b> هل سنحتاج لمصفوفة 64 قناة (HD-sEMG) في رسالتنا أم تكفي الـ 7–8 قنوات المتاحة في KIN-MUS UJI و EMG-1؟ <b>الإجابة:</b> تثبت Yeung & Farina المبدأ الرياضي أن فضاء NMF يقاوم Drift، ونحن نطبق هذا المبدأ بكفاءة على 7–8 قنوات متاحة عملياً (Low-channel practicality) لتفادي تعقيد وتكلفة HD-sEMG.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-8">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>9 / 19</b> — بطاقة البحث رقم <b>#8</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#8 | Olikkal et al. (2022)</span>
+        <span class="role-badge">Continuous Synergy + Kalman Filter Estimation</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.3389/fnins.2022.861773</div>
+    </div>
+    <h2>فك التشفير المستمر لحركة الأصابع من إشارات العضلات بدمج JIVE/Tensor مع مرشح كالمان</h2>
+    <div class="title-en">Continuous Finger Joint Kinematics Decoding from sEMG Using SVD/Tensor Synergies and State-Space Kalman Filtering</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> P. Olikkal et al. (Frontiers in Neuroscience)</span>
+      <span><b>جهة النشر:</b> Frontiers in Neuroscience, 2022</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>التقدير المباشر لزوايا الأصابع لحظياً من إشارات sEMG ينتج مسارات متذبذبة ومليئة بالضوضاء وغير صالحة للتحكم المستمر في المحركات.</li>
+<li>إشارات العضلات (16 قناة) وحركية القفاز (16–18 DoF) تقعان في فضاءات إحصائية مختلفة وتحتاجان لربط مشترك مع تنعيم ديناميكي زمني.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>المعدات:</b> قفاز بيانات <b>CyberGlove (16–18 DoF)</b> متزامن مع نظام ساعد عضلي <b>16 قناة Delsys sEMG</b>.</li>
+<li><b>الطرق الرياضية المقارنة:</b> تحليل التباين المشترك والفردي <b>JIVE</b>، وتفكيك القيمة المفردة <b>SVD / Tensor Synergies</b>، متبوعة بمرشح حالة زمني <b>Kalman Filter (KF)</b>.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">c<sub>t</sub> = A c<sub>t−1</sub> + B u<sub>t</sub> + w<sub>t</sub> &nbsp;&nbsp; (Synergy State Transition)<br>e<sub>t</sub> = H<sub>emg</sub> c<sub>t</sub> + v<sub>t</sub> &nbsp; ⇒ &nbsp; q̂<sub>t</sub> = S<sub>K</sub> ĉ<sub>t|t</sub></div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">c<sub>t</sub></span>: متجه حالة التآزر المنخفض الأبعاد عند الزمن t</div>
+<div class="glossary-item"><span class="glossary-sym">A, B</span>: مصفوفات التطور الديناميكي لحالة التآزر عبر الزمن</div>
+<div class="glossary-item"><span class="glossary-sym">H<sub>emg</sub></span>: مصفوفة الربط الخطي من التآزر لإشارة sEMG المقاسة e<sub>t</sub></div>
+<div class="glossary-item"><span class="glossary-sym">q̂<sub>t</sub></span>: الزوايا المقدرة المنعَّمة للأصابع بعد مرورها على مصفوفة التآزر S<sub>K</sub></div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>نعومة المسار (Trajectory Smoothness):</b> تقليل التذبذب عالي التردد في زوايا الأصابع المستمرة عبر التنبؤ بفضاء التآزر بدلاً من تصفية كل مفصل منفرداً.</li>
+<li><b>الكفاءة الحسابية:</b> تقليص أبعاد مصفوفة كالمان من 18×18 إلى K×K يخفض زمن الحساب للمتحكمات المدمجة (Embedded real-time control).</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> الافتراض الخطي لنموذج الملاحظة والربط الثابت في كالمان قد يعاني مع الانقباضات القوية السريعة جداً (Ballistic grasps) دون نمذجة لاخطية.</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة:</b> ما الفرق بين استخدام Kalman Filter عند Olikkal واستخدام MMF عند Scano؟ <b>الإجابة:</b> Olikkal يركز على 'تتبع المسار الزمني والتنعيم' عبر مرشح حالة، بينما Scano (MMF) يركز على إيجاد 'المكونات المشتركة الصلبة' W_kin و W_EMG بين المجالين، ويمكن الجمع بينهما مستقبلاً في وحدة تحكم حقيقية.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-9">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>10 / 19</b> — بطاقة البحث رقم <b>#9</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#9 | Scano et al. (2023)</span>
+        <span class="role-badge">RQ1 Core Mathematical Engine (MMF)</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/ACCESS.2023.3251015</div>
+    </div>
+    <h2>التفكيك المختلط للمصفوفات (MMF): استخلاص التآزر الحركي-العضلي الموحد في Ninapro DB2 — المحرك الرياضي لـ RQ1</h2>
+    <div class="title-en">Mixed Matrix Factorization (MMF): Unified Kinematic-Muscular Synergies across 28 Subjects in Ninapro DB2</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> A. Scano, R. M. Mira, G. d&#x27;Avella et al. (CNR STIIMA, Italy)</span>
+      <span><b>جهة النشر:</b> IEEE Access, 2023</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>PCA يعالج الزوايا الحركية (الموجبة والسالبة) لكنه يفشل في الحفاظ على عدم سالبية إشارات العضلات؛ بينما NMF يعجز عن تمثيل زوايا التمديد السالبة للمفاصل.</li>
+<li>استخراج تآزر حركي منفصل وتآزر عضلي منفصل ثم محاولة مطابقتهما لاحقاً (Post-hoc correlation) يضيع التزامن العصبي-الميكانيكي الحقيقي.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>قاعدة البيانات (Dataset):</b> <b>Ninapro Database 2 (DB2)</b> تضم <b>28 متطوعاً سليماً</b> (متوسط العمر <b>29.9 ± 3.9 سنة</b>).</li>
+<li><b>المهام:</b> <b>20 قبضة يد وظيفية × 6 تكرارات</b> لكل قبضة.</li>
+<li><b>الحساسات:</b> قفاز <b>CyberGlove II</b> متزامن زمنياً مع <b>12 قناة sEMG من Delsys</b> على الساعد.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">X<sub>joint</sub> = [Q̃<sub>norm</sub><sup>T</sup> , E<sub>norm</sub><sup>T</sup>]<sup>T</sup> ≈ [W<sub>kin</sub><sup>T</sup> , W<sub>EMG</sub><sup>T</sup>]<sup>T</sup> H<sub>shared</sub><br>min ‖X<sub>joint</sub> − W<sub>joint</sub> H<sub>shared</sub>‖<sub>F</sub><sup>2</sup> &nbsp; s.t. &nbsp; W<sub>EMG</sub> ≥ 0, H<sub>shared</sub> ≥ 0 &nbsp; (W<sub>kin</sub> unconstrained)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">Q̃<sub>norm</sub> ∈ ℝ<sup>M×T</sup></span>: الزوايا الحركية المطبَّعة (تحمل إشارات + و − للثني والتمديد)</div>
+<div class="glossary-item"><span class="glossary-sym">E<sub>norm</sub> ∈ ℝ<sub>≥0</sub><sup>C×T</sup></span>: أغلفة إشارات العضلات المطبَّعة وغير السالبة</div>
+<div class="glossary-item"><span class="glossary-sym">W<sub>kin</sub> / W<sub>EMG</sub></span>: الأوزان المكانية المشتركة للحركة والعضلات تحت نفس القيد الزمني</div>
+<div class="glossary-item"><span class="glossary-sym">H<sub>shared</sub> ∈ ℝ<sub>≥0</sub><sup>K×T</sup></span>: معاملات التنشيط الزمنية الموحدة لكلا المجالين</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>عدد التآزرات المشتركة:</b> استخلاص متوسط <b>7 تآزرات حركية-عضلية موحدة</b> لكل متطوع.</li>
+<li><b>جودة إعادة البناء الكلية:</b> حقق نموذج MMF متوسط معامل تحديد <b>R² &gt; 0.75</b> عبر الـ 28 متطوعاً والـ 20 قبضة.</li>
+<li><b>الأهمية البحثية:</b> أثبت رياضياً وجود منظومة تنشيط زمني واحدة H<sub>shared</sub> تقود العضلات والمفاصل معاً.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> الاعتماد على 7 مكونات عامة لعموم القبضات يتجاوز سقف المشغلات البسيطة (K≤4)، كما لم يختبر استقرار القبض الفيزيائي بالقوى (Force closure) على نموذج متعدد الأجسام.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي (جوهري):</b> كيف تثبت أن R²>0.75 لا يأتي من ضغط الحركة فقط وإهمال EMG؟ <b>الإجابة:</b> نقوم في تنفيذنا لخوارزمية MMF على KIN-MUS UJI بحساب R²_kin و R²_EMG بشكل منفصل جنباً إلى جنب مع تطبيع التباين لكل بلوك (Block-variance normalization) قبل الدمج لضمان عدالة التوازن الرياضي بين المجالين.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-10">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>11 / 19</b> — بطاقة البحث رقم <b>#10</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#10 | Meattini et al. (2023)</span>
+        <span class="role-badge">Label-Free Hybrid NMF + DNN Controller</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/LRA.2023.3329760</div>
+    </div>
+    <h2>التحكم الهجين غير المعلّم (Self-Supervised NMF + DNN) لـ 3 بدائيات إغلاق للقبضة من 8 قنوات sEMG</h2>
+    <div class="title-en">Self-Supervised sEMG-to-Synergy Control of Grasp Closure Primitives via Combined NMF and Deep Neural Networks</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> R. Meattini, D. Chiaravalli, G. Palli, C. Melchiorri (LAR, Univ. of Bologna)</span>
+      <span><b>جهة النشر:</b> IEEE Robotics &amp; Automation Letters (RA-L), 2023</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>تدريب الشبكات العصبية (DNN) يتطلب عادة بيانات Ground-Truth من قفاز موشن كابشر (CyberGlove) يصعب توفره أو ارتداؤه لمبتوري الأطراف.</li>
+<li>الجمع المباشر للـ NMF الخطي عاجز عن التقاط العلاقات اللاخطية المعقدة عند تداخل أنماط القبضات في الزمن الحقيقي.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>الإدخال والعتاد:</b> <b>8 قنوات sEMG</b> للساعد (E ∈ ℝ<sup>8×d</sup>) تتحكم في يدي <b>AR10</b> و <b>UB Hand IV</b> الروبوتيتين.</li>
+<li><b>آلية التدريب (Label-free):</b> استخراج تآزرين رئيسيين (ثني/بسط) لكل قبضة ذاتياً via NMF (W ∈ ℝ<sup>8×2</sup>) وتوليد أوامر إشراف ذاتي للشبكة العصبية العميقة بدون قفاز بيانات.</li>
+<li><b>بدائيات التحكم الناتجة:</b> 3 محاور إغلاق مستمرة: قبضة القوة <b>σ<sub>PW</sub></b>، الثلاثية الدقيقة <b>σ<sub>TR</sub></b>، وقبضة الزند/الأصابع الأخيرة <b>σ<sub>UL</sub></b>.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">E ∈ ℝ<sup>8×d</sup> ≈ W H, &nbsp; W ∈ ℝ<sub>≥0</sub><sup>8×2</sup> &nbsp; (Per-class NMF Synergy Base)<br>σ̂ = [σ<sub>PW</sub>, σ<sub>TR</sub>, σ<sub>UL</sub>]<sup>T</sup> = DNN(E; Θ) &nbsp; trained on NMF pseudo-labels</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">σ<sub>PW</sub>, σ<sub>TR</sub>, σ<sub>UL</sub></span>: ثلاث بدائيات تحكم مستمرة (Power, Tripod, Ulnar closure)</div>
+<div class="glossary-item"><span class="glossary-sym">W ∈ ℝ<sup>8×2</sup></span>: مصفوفة تآزر ثنائية (ثني/بسط) مستخرجة ذاتياً من 8 قنوات sEMG</div>
+<div class="glossary-item"><span class="glossary-sym">nMSE / RMSE</span>: متوسط مربع الخطأ المطبع وجذر متوسط مربع الخطأ لمخرجات التآزر</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>معامل التحديد (R²):</b> بلغ <b>0.8423</b> بدون استخدام قفاز موشن كابشر أثناء التدريب.</li>
+<li><b>دقة الانحدار:</b> خطأ <b>nMSE = 0.1355</b> و <b>RMSE = 0.0735</b> عبر الحركات المستمرة.</li>
+<li><b>القابلية السريرية:</b> يفتح الباب لمعايرة الأطراف الصناعية لمبتوري الأطراف بإشارات sEMG وحدها.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> يفترض أن 3 بدائيات إغلاق ثابتة (PW, TR, UL) كافية، دون فحص كفاية الـ VAF≥90% عبر كامل تصنيف Feix الـ 33 أو تحليل ديناميكيات انزلاق القوة.</div>
+      <div class="qa-line"><b>سؤال د. محمد عوض:</b> هل يمكن ربط نهج Meattini (8-ch sEMG → σ) مباشرة مع بيانات EMG-1 المتوفرة لدينا؟ <b>الإجابة:</b> نعم تماماً؛ لأن سوار Kavana في EMG-1 يوفر 8 قنوات sEMG (@ 2000 Hz) مطابقة في البنية لمدخل Meattini، مما يتيح تدريب أو اختبار بدائيات K≤4 عليه مباشرة.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-11">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>12 / 19</b> — بطاقة البحث رقم <b>#11</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#11 | Lapresa et al. (2024)</span>
+        <span class="role-badge">Simulink / Simscape Force-Synergy Stability Core</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1016/j.bbe.2024.01.005</div>
+    </div>
+    <h2>دمج التآزر الحركي وتآزر القوى (Kinematic + Force Synergies) وإثبات تفوق الثبات الميكانيكي في Simscape Multibody</h2>
+    <div class="title-en">Combining Kinematic and Force Synergies Improves Grasp Stability in Simulink/Simscape Multibody Validation</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> M. Lapresa et al. (Campus Bio-Medico Univ. of Rome)</span>
+      <span><b>جهة النشر:</b> Biocybernetics &amp; Biomedical Engineering (BBE), 2024</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الاقتصار على التآزرات الحركية (Kinematic synergies) في التحكم بالقبض يسبب انزلاق الأجسام أو إتلاف الهشة منها لأن نفس الشكل الهندسي قد يتطلب قوى تلامس مختلفة.</li>
+<li>الحاجة لنموذج محاكاة ديناميكي فيزيائي (Multi-body physics) يختبر أثر دمج تآزرات القوة مع الحركة على ثبات القبض.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>العينة والمهام:</b> <b>8 متطوعين</b> أدوا <b>21 مهمة امتداد وقبض</b> (Reach-to-grasp tasks) لأجسام مختلفة الصلابة والشكل.</li>
+<li><b>الاستشعار:</b> كاميرات <b>Vicon</b> للزوايا الحركية متزامنة مع حساسات ضغط <b>FSRs</b> لقوى التلامس.</li>
+<li><b>بيئة التحقق الهندسي:</b> بناء نموذج يد متعددة الأجسام في <b>MATLAB Simulink & Simscape Multibody</b> لمقارنة التحكم الحركي البحت مع المدمج.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">z<sub>joint</sub> = [q̃<sup>T</sup>, f̃<sup>T</sup>]<sup>T</sup> ≈ S<sub>kf</sub> c<sub>kf</sub><br>Stability Margin: ∑ F<sub>contact,i</sub> · n̂<sub>i</sub> ≥ m g / μ<sub>s</sub> &nbsp; (Verified in Simscape)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">q̃, f̃</span>: متجه الزوايا الحركية المطبّع ومتجه قوى أطراف الأصابع (FSRs)</div>
+<div class="glossary-item"><span class="glossary-sym">S<sub>kf</sub></span>: مصفوفة التآزر المشتركة للحركة والقوة المستخرجة بـ PCA</div>
+<div class="glossary-item"><span class="glossary-sym">Simscape Multibody</span>: بيئة محاكاة الميكانيكا المتعددة الأجسام وتلامس الاحتكاك</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>التمييز التصنيفي (LDA):</b> دقة <b>89%</b> في التفريق بين قبضات القوة (Power) والدقة (Precision).</li>
+<li><b>ثبات القبض في Simscape:</b> أثبت إحصائياً أن إضافة تآزرات القوى مع الحركية ترفع معامل ثبات القبض وتمنع السقوط مقارنة بالحركة وحدها.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> استخدام حساسات ضغط متصلة بسلك وقلة عدد المتطوعين (8 أفراد) دون تطبيق فك تشفير من عضلات الساعد sEMG.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي (حاسم للرسالة):</b> كيف ستثبت أن التصميم المقلص إلى K≤4 يحقق ثباتاً ميكانيكياً فعلياً ولا يكتفي بالشكل الهندسي؟ <b>الإجابة:</b> نتبع نفس منهجية Lapresa (2024) ببناء نموذج يد متعدد الأجسام في Simulink/Simscape Multibody لاختبار انغلاق القوة (Force closure) ومقاومة الانزلاق تحت أحمال خارجية.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-12">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>13 / 19</b> — بطاقة البحث رقم <b>#12</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#12 | Bazina et al. (2024)</span>
+        <span class="role-badge">Direct KIN-MUS UJI Analytical Benchmark</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.3390/robotics13060082</div>
+    </div>
+    <h2>تقليص درجات حرية الأصابع (من 16 إلى 5–15 DoF، الوسيط 12) عبر الاقترانات الخطية على قاعدة KIN-MUS UJI</h2>
+    <div class="title-en">Reduction of Finger Degrees of Freedom via Linear Inter-Joint Couplings in 23 Activities of Daily Living</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> T. Bazina, V. Gracia-Ibáñez, M. Vergara et al. (UJI Lab, Spain)</span>
+      <span><b>جهة النشر:</b> MDPI Robotics, Vol. 13(6):82, 2024</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>تصميم يد روبوتية بـ 16–20 مشغلاً مستقلاً غير عملي؛ لكن طرق تقليص الأبعاد مثل PCA تعطي أوزاناً عامة قد تخفي العلاقات الفيزيائية المباشرة بين مفاصل الإصبع الواحد (مثل اقتران DIP-PIP).</li>
+<li>الحاجة لتحليل رياضي كمي يحدد بدقة أي درجات الحرية يمكن دمجها خطياً دون فقدان الأداء في الأنشطة اليومية الحقيقية.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>قاعدة البيانات:</b> <b>23 حركة وظيفية يومية (ADLs)</b> مستخرجة من بيانات قفاز UJI (<b>KIN-MUS UJI</b>)، تغطي <b>16 درجة حرية</b> لثني وبسط الأصابع.</li>
+<li><b>النموذج الإحصائي:</b> تطبيق النماذج الخطية العامة (<b>GLM</b>) والنماذج المختلطة الخطية الموزونة (<b>Weighted LME</b>) + تجميع هرمي إلى <b>30 عنقوداً (Hierarchical clusters)</b>.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">θ<sub>dependent</sub> = β<sub>0</sub> + ∑<sub>j∈indep</sub> β<sub>j</sub> θ<sub>j</sub> + b<sub>subject</sub> + ε &nbsp; (Weighted LME)<br>DoF Reduction Ratio: 16 DoFs − Δ<sub>coupled</sub> ∈ [5, 15] &nbsp; (Median = 12 DoFs)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">β<sub>j</sub></span>: معاملات الاقتران التشريحي الخطية الثابتة بين المفاصل (مثل DIP ≈ k·PIP)</div>
+<div class="glossary-item"><span class="glossary-sym">b<sub>subject</sub></span>: التأثير العشوائي لاختلاف تشريح اليد بين المتطوعين في LME</div>
+<div class="glossary-item"><span class="glossary-sym">30 Clusters</span>: مجموعات الأنماط الوظيفية لتصنيف الاعتمادية عبر الـ 23 ADL</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>مقدار التقليص الصارم:</b> تقليص الـ 16 درجة حرية بمقدار يصل إلى <b>11 DoF</b>، ليترك <b>5 إلى 15 درجة حرية مستقلة (الوسيط = 12 DoF)</b>.</li>
+<li><b>ثبات الاقتران:</b> تحديد دقيق لروابط MCP-PIP-DIP القابلة للتنفيذ عبر وصلات ميكانيكية أو تآزرات أوتار مباشرة.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> النتيجة الوسيطة (12 DoF مستقلة) لا تزال أعلى بكثير من هدفنا الهندسي K_min≤4 إذا لم تُدمج لاحقاً مع التآزرات بين الأصابع (Inter-finger synergies / JGKSE).</div>
+      <div class="qa-line"><b>سؤال د. محمد عوض:</b> ورقة Bazina استخدمت قاعدة KIN-MUS UJI نفسها التي في حاسوبك ووصلت للوسيط 12 DoF، كيف تنزل أنت إلى K≤4؟ <b>الإجابة:</b> Bazina حذفت الاقترانات الخطية الصارمة داخل الأصابع فقط (Lossless hard coupling)، أما نحن فنضيف طبقة NMF/PCA/JGKSE فوق الـ 12 DoF لنصل بالتحكم الفعلي لـ K≤4 مع VAF≥90%.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-13">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>14 / 19</b> — بطاقة البحث رقم <b>#13</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#13 | West &amp; Hogan (2024)</span>
+        <span class="role-badge">Grasp vs. Tool Manipulation Dimensionality</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/BioRob60516.2024.10719816</div>
+    </div>
+    <h2>مقارنة أبعاد التآزر الحركي: مهام القبض البسيط (2 PCs &gt; 80%) مقابل التجميع الصناعي المعقد للضفائر الكهربائية</h2>
+    <div class="title-en">Comparing Kinematic Synergy Dimensionality Between Reach-to-Grasp and Dextrous Industrial Wire-Harness Manipulation</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> A. M. West Jr. &amp; N. Hogan (Eric P. Newman Lab, MIT)</span>
+      <span><b>جهة النشر:</b> IEEE BioRob, 2024</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>الاعتقاد الشائع في الأدبيات أن مكونين رئيسيين (2 PCs) يكفيان لجميع مهام اليد بني على تجارب 'الامتداد والقبض الساكن' فقط، وهو ما قد ينهار في التجميع الصناعي الفعلي.</li>
+<li>غياب اختبار تجريبي يقارن فضاء التآزر لنفس المتطوعين بين القبض على أداة والمعالجة الدقيقة (In-hand manipulation).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>العينة والبروتوكول (MIT IRB):</b> <b>7 متطوعين</b> يرتدون قفاز <b>19-DoF CyberGlove</b> بتردد <b>200 Hz</b> ودقة زاوية <b>&lt; 0.1°</b>.</li>
+<li><b>المهام المقارنة:</b> (أ) 5 مهام امتداد وقبض على أدوات (Reach-and-grasp)، مقابل (ب) مهمة تجميع صناعية من 5 خطوات لربط الضفائر الكهربائية (Wire-harness assembly).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">VAF<sub>grasp</sub>(2) &gt; 80% &nbsp;&nbsp; vs. &nbsp;&nbsp; VAF<sub>manip</sub>(2) &lt; VAF<sub>grasp</sub>(2)<br>S<sub>manip</sub> = span(s<sub>1</sub>, s<sub>2</sub>) ⊕ ΔS<sub>higher-order</sub></div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">200 Hz / <0.1°</span>: تردد ودقة قياس قفاز CyberGlove في مختبر MIT</div>
+<div class="glossary-item"><span class="glossary-sym">ΔS<sub>higher-order</sub></span>: المتجهات الإضافية المطلوبة لإدارة الأدوات وتعديل القبضة أثناء العمل</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>مهام القبض البسيط:</b> المكونان الأولان (<b>2 PCs</b>) فسرا <b>&gt;80%</b> من التباين الكلي.</li>
+<li><b>مهام التجميع الصناعي:</b> استدعت المهام المهارية مكونات تآزر أعلى رتبة، لكنها <b>حافظت على نفس الفضاء الأساسي (Core grasp subspace)</b> دون تدميره.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> استخدام عتبة VAF بدون فترات ثقة إحصائية (Confidence Intervals) في هذه النسخة، وغياب المقارنة مع مهام مهارية فائقة التخصص كالعزف (الذي استُكمل في 2025).</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة:</b> ألا تناقض زيادة الأبعاد في التجميع الصناعي هدفك في حصر المحركات عند K≤4؟ <b>الإجابة:</b> على العكس؛ يثبت West & Hogan 2024 أن حتى في التجميع المعقد، يبقى 'قلب التآزر للقبض' محفوظاً بالرتب الدنيا (2–4)، والرتب الأعلى للتعديلات الدقيقة التي يمكن تغطيتها بمرونة سلبية أو مفصل إبهام مخصص.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-14">
+  <div class="paper-topbar">
+    <span><b>المحور 1: التآزر الحركي والنمذجة وثبات الفضاء الجزئي</b></span>
+    <span>صفحة <b>15 / 19</b> — بطاقة البحث رقم <b>#14</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#eff6ff;border-color:#bfdbfe;border-right:5px solid #1d4ed8;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#1d4ed8;">#14 | West &amp; Hogan (2025)</span>
+        <span class="role-badge">RQ2 Theoretical Anchor (Proves K_min ≤ 4)</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/ICRA55743.2025.11128417</div>
+    </div>
+    <h2>البرهان الإحصائي (VAF-CI و Principal Angles) لثبات الفضاء الجزئي ذي الـ 3–4 تآزرات — السند النظري لـ K_min ≤ 4</h2>
+    <div class="title-en">An Invariant Low-Dimensional Kinematic Subspace Across Wire-Harness Assembly and Expert Piano Performance</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> A. M. West Jr. &amp; N. Hogan (Eric P. Newman Lab, MIT)</span>
+      <span><b>جهة النشر:</b> IEEE ICRA, 2025</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>اختيار عدد التآزرات K بالعين المجردة عبر منحنى VAF غير موضوعي إحصائياً، ولا يثبت أن تلك التآزرات متشابهة هندسياً بين مهام متباينة الجذر.</li>
+<li>هل الفضاء منخفض الأبعاد (3–4 DoF) حقيقة بيوميكانيكية ثابتة أم مجرد مصادفة لمهام الالتقاط البسيطة؟</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>المهام والفئات (20 DoF):</b> مقارنة مجموعتين متباعدتين جذرياً: (1) تجميع الضفائر الكهربائية الصناعي (<b>n = 7</b>)، مقابل (2) <b>5 عازفي بيانو محترفين</b> بمتوسط خبرة <b>20.0 ± 8.3 سنة</b> (بالتقاط بصري عبر كاميرات Sony RX0 II).</li>
+<li><b>معيار التوقف الصارم:</b> استيفاء شرطين معاً: <b>VAF ≥ 90%</b> وأن يكون التحسن الحدي لأي مكون تالٍ <b>&lt; 5% Marginal Gain</b> مع حساب فترات الثقة <b>VAF-CI (Bootstrap)</b>.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">K<sub>min</sub> = min { K : VAF<sub>CI_lower</sub>(K) ≥ 90% &nbsp;∧&nbsp; ΔVAF(K+1) &lt; 5% }<br>cos(θ<sub>i</sub>) = σ<sub>i</sub>(U<sub>wire</sub><sup>T</sup> U<sub>piano</sub>) &nbsp; (Subspace Principal Angles)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">VAF-CI</span>: حدود الثقة الإحصائية لنسبة التباين المفسّر لمنع الانحياز العيني</div>
+<div class="glossary-item"><span class="glossary-sym">ΔVAF(K+1) &lt; 5%</span>: الشرط الحدي لعدم إضافة مشغل جديد إذا كان ربحه &lt; 5%</div>
+<div class="glossary-item"><span class="glossary-sym">θ<sub>i</sub></span>: الزوايا الرئيسية بين فضاء الضفائر الكهربائية وفضاء عزف البيانو</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>الرتبة الحقيقية المثبتة:</b> تتقاطع المهمتان عند <b>3 إلى 4 تآزرات حركية ثابتة (K_min ≤ 4)</b> تحقق <b>VAF ≥ 90%</b> وهامش أقل من 5%.</li>
+<li><b>تقارب الفضاءات (Principal Angles):</b> زوايا تقاطع صغيرة جداً دالة إحصائياً بين عمال الصناعة وعازفي البيانو المحترفين.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> التحليل يركز على الهندسة الحركية للمسارات دون ترجمتها بعد إلى أوزان تقسيم مفاصل (JGKSE) أو ربطها بإشارات العضلات MMF.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي:</b> على أي أساس اخترت أن يكون السؤال البحثي الثاني محصوراً في K_min ≤ 4 تحديداً؟ <b>الإجابة:</b> استناداً مباشراً إلى برهان MIT (West & Hogan 2025) عبر VAF-CI≥90% + حد <5% + Principal Angles، الذي أثبت أن النواة الحركية الثابتة عبر أقصى مهام المهارة البشرية تقع تحديداً في 3–4 أبعاد.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-15">
+  <div class="paper-topbar">
+    <span><b>المحور 4: خط أساس عين شمس والبدائيات الزمنية ونماذج الأساس</b></span>
+    <span>صفحة <b>16 / 19</b> — بطاقة البحث رقم <b>#15</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#fffbeb;border-color:#fde68a;border-right:5px solid #b45309;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#b45309;">#15 | Pham et al. (2026)</span>
+        <span class="role-badge">Spatial PCA + Temporal ProMPs Generalization</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1016/j.robot.2025.105232</div>
+    </div>
+    <h2>تعميم المهارات الروبوتية الغنية بالتلامس (13 مهمة تنظيف) بدمج PCA المكاني مع بدائيات ProMPs الزمنية</h2>
+    <div class="title-en">Generalizing Dextrous Contact-Rich Manipulation Skills Using Kinematic PCA Synergies and ProMPs</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> T. Pham et al. (Robotics and Autonomous Systems, 2026)</span>
+      <span><b>جهة النشر:</b> Robotics &amp; Autonomous Systems (RAS), 2026</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>تآزرات PCA المكانية تعطي وضعيات ساكنة (Postures) ولا تولّد مسارات زمنية سلسة (Trajectories) لعمليات تلامسية معقدة كالمسح والتنظيف.</li>
+<li>تعلم كل مهمة جديدة على يد Shadow Hand ذات 20 درجة حرية من الصفر غير عملي؛ المطلوب إعادة تركيب البدائيات لـ 8 مهام غير مرئية مسبقاً.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>المهام والعتاد:</b> قفاز هيكلي خارجي <b>20-DoF haptic exoskeleton glove</b> جمع بيانات <b>13 مهمة تنظيف تلامسية</b> (5 مهام للتدريب، و 8 مهام جديدة غير مرئية للتحقق) مع التنفيذ على يد <b>Shadow Hand</b>.</li>
+<li><b>الخوارزمية:</b> ضغط الفضاء المكاني بالـ PCA ثم نمذجة التطور الزمني للمعاملات عبر <b>Probabilistic Movement Primitives (ProMPs)</b> ومقارنة 3 استراتيجيات مزج (Nearest-Expert, Convex Blend, PoE).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">c(t) = Φ(t)<sup>T</sup> w + ε<sub>c</sub>, &nbsp;&nbsp; w ~ N(μ<sub>w</sub>, Σ<sub>w</sub>) &nbsp; (ProMP in PCA Space)<br>q̂(t) = q̄ + S<sub>K</sub> Φ(t)<sup>T</sup> w*</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">Φ(t)</span>: دوال الأساس الزمنية الغاوسية (Radial Basis Functions) للـ ProMPs</div>
+<div class="glossary-item"><span class="glossary-sym">w ~ N(μ<sub>w</sub>, Σ<sub>w</sub>)</span>: التوزيع الاحتمالي لأوزان المسار الممثل للتباين البشري</div>
+<div class="glossary-item"><span class="glossary-sym">Nearest-Expert</span>: استراتيجية اختيار وتكييف أقرب خبير ProMP للمهمة الجديدة</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>نسبة التباين المفسَّرة:</b> بلغت <b>≥ 90% VAF</b> عند <b>5 PCs لنظام 15-DoF</b> و <b>7 PCs لنظام 20-DoF</b>.</li>
+<li><b>دقة إعادة البناء والتعميم:</b> خطأ مفاصل <b>&lt; 10%</b>، وتفوقت استراتيجية <b>Nearest-Expert</b> بوضوح على المزج المحدب (Convex Blend) وضرب الخبراء (PoE) في الـ 8 مهام غير المرئية.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> يركز على أذرع وأيدٍ عالية الرتبة (15–20 محركاً في Shadow Hand) وتعلم التظاهر الحركي فقط دون استشعار عضلي (sEMG) أو تقليص للمحركات الفيزيائية (Underactuation).</div>
+      <div class="qa-line"><b>سؤال د. محمد عوض:</b> أين يظهر دور ProMPs في مقارنة التآزر الساكن بالديناميكي؟ <b>الإجابة:</b> تثبت ورقة Pham 2026 أن تمثيل المسار الزمني داخل فضاء الـ PCA (عبر ProMPs) يحفظ دقة المفاصل بأقل من 10% خطأ ويتفوق عند استخدام أقرب بدائية (Nearest-Expert)، وهو مرجع مهم عندما نحول معاملات التآزر الثابتة H(t) لمسارات حركة مستمرة.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-16">
+  <div class="paper-topbar">
+    <span><b>المحور 3: العتاد ناقص التشغيل (Underactuated) وتآزر المجموعات (JGKSE)</b></span>
+    <span>صفحة <b>17 / 19</b> — بطاقة البحث رقم <b>#16</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#ecfdf5;border-color:#a7f3d0;border-right:5px solid #047857;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#047857;">#16 | Chu et al. (2026)</span>
+        <span class="role-badge">RQ2 Hardware &amp; JGKSE Core Benchmark</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: 10.1109/TRO.2026.3656614</div>
+    </div>
+    <h2>يد SX-Hand (2026): خوارزمية JGKSE وتقوس راحة اليد CMC لتحقيق 33/33 قبضة Feix و 10/10 Kapandji</h2>
+    <div class="title-en">SX-Hand: Anthropomorphic Hand with Movable CMC Palm Arch &amp; Joint-Group Kinematic Synergy Extraction (JGKSE)</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> Z. Chu et al. (IEEE T-RO, 2026)</span>
+      <span><b>جهة النشر:</b> IEEE Trans. Robotics (T-RO), 2026</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>التآزر الحركي العالمي (Global PCA / GCKS) قد يحقق متوسط VAF عالياً لكنه يضحي بدقة مفاصل معينة حيوية (Low Individual Joint Reconstruction Quality - IRQ)، خاصة مفاصل الإبهام وتقوّس الكف.</li>
+<li>الأيدي ذات الكف الثابت تعاني للوصول لتغطية 100% من قبضات Feix الـ 33 أو تحقيق التلامس التشريحي التام للإبهام (Kapandji).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>تصميم اليد (SX-Hand):</b> <b>21 مفصلاً</b> تشمل مفاصل تقوّس كف متحركة للبنصر والخنصر (<b>Movable Ring/Little CMC palm arch</b>) وإبهام مرن بـ <b>5 DoFs</b>، مدفوعة بـ <b>12 مشغلاً</b> بوزن كلي <b>690 جراماً</b>.</li>
+<li><b>خوارزمية JGKSE:</b> استخلاص تآزر مجموعات المفاصل بشرطين متزامنين: جودة البناء الكلي <b>ORQ &gt; 90%</b> وجودة كل مفصل منفرد <b>IRQ<sub>i</sub> &gt; 90%</b> لـ ≥90% من المفاصل.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">ORQ = 1 − (‖Q<sub>m</sub> − Q̂<sub>m</sub>‖<sub>F</sub><sup>2</sup> / ‖Q<sub>m</sub> − Q̄<sub>m</sub>‖<sub>F</sub><sup>2</sup>) &gt; 90%<br>IRQ<sub>i</sub> = 1 − (‖q<sub>i</sub> − q̂<sub>i</sub>‖<sub>2</sub><sup>2</sup> / ‖q<sub>i</sub> − q̄<sub>i</sub>‖<sub>2</sub><sup>2</sup>) &gt; 90% &nbsp; ∀ i ∈ ≥90% joints</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">ORQ</span>: جودة إعادة البناء الكلية للمجموعة (Overall Reconstruction Quality)</div>
+<div class="glossary-item"><span class="glossary-sym">IRQ<sub>i</sub></span>: جودة إعادة بناء المفصل الفردي رقم i لمنع ضياع المفاصل الحرجة</div>
+<div class="glossary-item"><span class="glossary-sym">CMC Palm Arch</span>: مفاصل الرسغ السنعية المتحركة للبنصر والخنصر لتقويس راحة اليد</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>مؤشرات التآزر (Case II PIP grouping):</b> حققت <b>ORQ = 96.3 ± 1.5%</b> وبلغ الحد الأدنى لدقة المفصل الفردي <b>min(IRQ) = 94.6 ± 2.7%</b>.</li>
+<li><b>الأداء الوظيفي القياسي:</b> <b>33/33 قبضة Feix (100%)</b>، ودرجة <b>10/10 Kapandji</b> لتقابل الإبهام، وتغطية <b>93%</b> من فضاء عمل أطراف الأصابع البشري.</li>
+<li><b>المتانة الميكانيكية:</b> قدرة حمل قصوى للقبض تصل إلى <b>20 كجم</b> عند وزن يد 690 جم فقط.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> استخدام 12 مشغلاً كهربائياً لا يزال مرتفع التكلفة والوزن مقارنة بتحدينا البحثي لضغط المشغلات إلى K_min ≤ 4؛ كما غابت اختبارات فك التشفير العضلي sEMG.</div>
+      <div class="qa-line"><b>سؤال أ.د. محمد حمدي:</b> لماذا لا يكفي ORQ مثل VAF وتصر على قياس IRQ_i؟ <b>الإجابة:</b> كما أثبت Chu (2026)، قد ينجح ORQ العام على حساب تدمير حركة مفصل الإبهام أو الخنصر؛ فرض قيد IRQ_i>90% على مجموعات المفاصل مع تضمين تقوس الـ CMC يضمن احتفاظ الـ K≤4 المحوري لدينا بقدرته على أداء قبضات الدقة.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-17">
+  <div class="paper-topbar">
+    <span><b>المحور 2: التآزر العضلي (NMF) والاقتران (MMF) وفك التشفير العصبي</b></span>
+    <span>صفحة <b>18 / 19</b> — بطاقة البحث رقم <b>#17</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#f5f3ff;border-color:#ddd6fe;border-right:5px solid #6d28d9;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#6d28d9;">#17 | Encord &amp; Wearable Devices (2026)</span>
+        <span class="role-badge">2026 Multimodal 8-ch sEMG &amp; Occlusion-Proof Dataset</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: github.com/wearable-devices/emg-1-benchmark</div>
+    </div>
+    <h2>قاعدة بيانات EMG-1 (100 ساعة) وسوار Kavana/Mudra: تتبع 20 درجة حرية بدقة 4.21° وتغلب كامل على الحجب البصري</h2>
+    <div class="title-en">EMG-1: A 100-Hour Multimodal Wrist sEMG &amp; Optical Motion Capture Dataset for 20-DoF Continuous Finger Tracking</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> Encord &amp; Wearable Devices Ltd. (Mudra / Kavana Research Group, Oct 2026)</span>
+      <span><b>جهة النشر:</b> EMG-1 Benchmark &amp; Kavana/Mudra Validation (Oct 2026)</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>قواعد البيانات القديمة (مثل Ninapro) محدودة الساعات وتستخدم أقطاباً على الساعد العلوي مع حساسيات قفازات مرنة ذات تشوش ميكانيكي (CyberGlove).</li>
+<li>الكاميرات والرؤية الحاسوبية (CV) تفقد الأصابع تماماً عند انحجاب اليد (Visual occlusion) وتفشل في تقدير قوة الضغط الساكنة (Isometric grip force).</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>الحجم الإجمالي (100 ساعة):</b> مسار <code>8ch-mocap</code> (<b>12 متطوعاً، 920 تسجيلاً، 15 ساعة</b>) + مسار <code>3ch-video</code> (<b>105 متطوعين، 85 ساعة</b>).</li>
+<li><b>عتاد التزامن الدقيق (8ch-mocap):</b> سوار معصم sEMG ذو <b>8 قنوات @ 2000 Hz</b> + <b>IMU @ 200 Hz</b> + <b>23 علامة بصرية OptiTrack @ 120 Hz</b> + كاميرا RGB 60 fps. (تم التحقق محلياً على الملف <code>OP-001/s003/02</code>).</li>
+<li><b>اختبار القوة المتساوية الطول:</b> معايرة مستمرة من 0 إلى 80 نيوتن.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">q̂<sub>t</sub> ∈ ℝ<sup>20</sup> = f<sub>neural</sub>(E<sub>wrist</sub>[t−Δ:t], ω<sub>IMU</sub>[t−Δ:t])<br>MAE = (1/20T) ∑<sub>t</sub> ∑<sub>j=1..20</sub> |q<sub>j,t</sub> − q̂<sub>j,t</sub>|</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">8ch-mocap (@2000 Hz)</span>: إشارات معصم عالية التردد متزامنة مع موشن كابشر 23 علامة @120 Hz</div>
+<div class="glossary-item"><span class="glossary-sym">20 finger DoFs</span>: الزوايا الـ 20 الكاملة لمفاصل الأصابع والإبهام المقاسة بـ OptiTrack</div>
+<div class="glossary-item"><span class="glossary-sym">Isometric Force</span>: قوة القبضة (0–80 N) بدون حركة ظاهرة للعين أو الكاميرا</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>دقة تتبع الزوايا (MAE):</b> متوسط خطأ <b>4.21°</b> (وينخفض إلى <b>2.61° للإطار اللحظي</b>) مقابل <b>9.02°</b> للرؤية الحاسوبية (تحسن <b>-53.3%</b>).</li>
+<li><b>مقاومة الحجب البصري (Occlusion):</b> استمرارية تتبع <b>100%</b> أثناء حجب الأصابع تماماً عن الكاميرات.</li>
+<li><b>تقدير القوة:</b> تتبع مستمر لقوة القبض الإيزومترية في النطاق <b>0 – 80 N</b> من المعصم.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> النماذج العصبية العميقة الكاملة في المعيار القياسي تعمل كصندوق أسود دون تفسير التآزرات الحيوية (W_EMG / S_kin) أو ربطها بمشغلات K≤4.</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة:</b> لماذا تضيف EMG-1 (2026) بجانب KIN-MUS UJI الأقدم؟ <b>الإجابة:</b> KIN-MUS UJI تمنحنا مرجعاً تشريحياً منشوراً (Bazina 2024)، و EMG-1 تمنحنا إشارات معصم صناعية حديثة @2000 Hz متزامنة مع OptiTrack 20-DoF لإثبات أن خط أنابيب التآزر لدينا يعمم عبر الأجيال المختلفة من العتاد بدون انحياز لقاعدة واحدة.</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-container paper-page" id="paper-18">
+  <div class="paper-topbar">
+    <span><b>المحور 4: خط أساس عين شمس والبدائيات الزمنية ونماذج الأساس</b></span>
+    <span>صفحة <b>19 / 19</b> — بطاقة البحث رقم <b>#18</b></span>
+  </div>
+
+  <div class="id-banner" style="background:#fffbeb;border-color:#fde68a;border-right:5px solid #b45309;">
+    <div class="id-top">
+      <div>
+        <span class="paper-num-badge" style="background:#b45309;">#18 | NVIDIA GEAR Lab (2026)</span>
+        <span class="role-badge">Foundation VLA Latent Synergy Validation</span>
+      </div>
+      <div class="ltr" style="font-weight:700;color:#0f172a;">DOI/Ref: NVIDIA Project GR00T 2 Technical Report (2026)</div>
+    </div>
+    <h2>نموذج الأساس الروبوتي GR00T 2 (NVIDIA, 2026): إثبات حاجة نماذج VLA الحديثة لعنق زجاجة تآزري كامن (VQ-VAE)</h2>
+    <div class="title-en">GR00T 2: Generalist Foundation Models for Humanoid &amp; 20–22 DoF Dexterous Manipulation via Latent Action Quantization</div>
+    <div class="id-meta">
+      <span><b>المؤلفون والمختبر:</b> NVIDIA GEAR Lab (Generalist Embodied Agent Research, Nov 2026)</span>
+      <span><b>جهة النشر:</b> GR00T 2 Whitepaper (135 pp, Nov 2026)</span>
+    </div>
+  </div>
+
+  <div class="blocks-grid">
+    <div class="block-card">
+      <div class="block-title"><span>1.</span> المشكلة التقنية الدقيقة والفجوة البحثية (Exact Technical Problem &amp; Gap)</div>
+      <ul><li>التحكم المباشر لحظياً في 20–22 درجة حرية بأيدي الروبوتات البشرية (Humanoid hands) عبر سياسات Vision-Language-Action يواجه انفجار الأبعاد وتراكم أخطاء التلامس.</li>
+<li>الحاجة لتوحيد التمثيل الحركي عبر مختلف أشكال الأيدي الروبوتية (Cross-embodiment morphologies) أثناء المهام التلامسية.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>2.</span> البروتوكول التجريبي، العينة، وقائمة العتاد والحساسات (Protocol &amp; Sensors BOM)</div>
+      <ul><li><b>النطاق والوثيقة:</b> ورقة بيضاء تقنية من <b>135 صفحة</b> تستعرض معمارية GR00T 2 لأيدي روبوتية بـ <b>20–22 DoF</b>.</li>
+<li><b>المعمارية الأساسية:</b> استخدام <b>Latent Action Quantization (VQ-VAE)</b> لضغط الفضاء الحركي البشري/الروبوتي في رموز كامنة منخفضة الأبعاد، مقترنة بمولد مسارات شرطي <b>Conditional Flow Matching Action Transformer</b>.</li></ul>
+    </div>
+
+    <div class="block-card">
+      <div class="block-title"><span>3.</span> المعادلات الحاكمة ودلالات الرموز الرياضية (Governing Equations &amp; Symbol Glossary)</div>
+      <div class="math-box">z<sub>q</sub> = argmin<sub>e<sub>k</sub>∈C</sub> ‖E<sub>enc</sub>(Δq<sub>1:H</sub>) − e<sub>k</sub>‖<sub>2</sub> &nbsp; (VQ-VAE Latent Synergy Codebook)<br>dx/dt = v<sub>θ</sub>(x<sub>t</sub>, t | obs, z<sub>q</sub>), &nbsp; t ∈ [0,1] &nbsp; (Conditional Flow Matching)</div>
+      <div class="glossary-grid"><div class="glossary-item"><span class="glossary-sym">VQ-VAE Codebook C</span>: قاموس رموز تآزرية متقطعة يوازي مفهوم التآزر الحركي الرقمي</div>
+<div class="glossary-item"><span class="glossary-sym">Δq<sub>1:H</sub></span>: مقطع مسار حركي للأصابع عبر أفق زمني H (Action chunk)</div>
+<div class="glossary-item"><span class="glossary-sym">v<sub>θ</sub></span>: حقل السرعة المتعلم لتوليد مسارات تلامس ناعمة ومنضبطة</div></div>
+    </div>
+
+    <div class="block-card metrics-box">
+      <div class="block-title"><span>4.</span> النتائج الكمية والمقاييس المحققة (Verified Quantitative Results &amp; Metrics)</div>
+      <ul><li><b>منع تراكم أخطاء التلامس:</b> أثبت تجريبياً أن فرض <b>عنق زجاجة كامن منخفض الأبعاد (Low-dimensional latent synergy bottleneck)</b> شرط أساسي لثبات المعالجة اليدوية ومنع الانزلاق.</li>
+<li><b>التعميم عبر الأجسام:</b> إمكانية نقل بدائيات الحركة الكامنة بين أيدٍ ذات درجات حرية مختلفة.</li></ul>
+    </div>
+
+    <div class="block-card qa-box">
+      <div class="block-title"><span>5.</span> القيود الهندسية وسؤال لجنة المناقشة المتوقع (Limitations &amp; Committee Q&amp;A)</div>
+      <div class="lim-line"><b>القيد/الفجوة المتبقية:</b> تحتاج لمجمعات بيانات وحوسبة GPU ضخمة وتعمل في فضاء الرؤية واللغة دون استغلال الإشارات الحيوية العضلية المباشرة sEMG أو التقيد بعتاد منخفض المحركات K≤4.</div>
+      <div class="qa-line"><b>سؤال لجنة المناقشة (خارج الصندوق):</b> في عصر نماذج الذكاء الاصطناعي الضخمة مثل GR00T، لماذا ندرس التآزر الكلاسيكي PCA/NMF/MMF؟ <b>الإجابة:</b> تثبت ورقة NVIDIA نفسها (2026) أن حتى نماذج VLA بـ 20–22 DoF تفشل بدون ضغط الفعل إلى فضاء تآزري كامن (VQ-VAE bottleneck)؛ وأطروحتنا تصيغ هذا الفضاء الكامن رياضياً وميكانيكياً بشفافية تامة عند K≤4.</div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
